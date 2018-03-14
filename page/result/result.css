@@ -1,0 +1,79 @@
+.header_box{
+        background-color: #414959;
+        padding: 10px;
+        font-weight: bold;
+        color: #ffffff;
+        font-size: 16px;
+    }
+    .box_body{
+        background-color: #EEEEEE;
+        border: 1px solid #414959;
+
+        padding: 20px;
+    }
+    .head_id{
+        background-color: #414959;
+        padding: 15px;
+        margin-left: 80px;: 
+        
+    }
+
+    .box_overview{
+        background-color: #ffffff;
+        padding: 15px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+        .select,
+.download-target {
+  width: 15em;
+}
+.select {
+  position: relative;
+  display: block;
+  height: 3em;
+  line-height: 3;
+  background: #2c3e50;
+  overflow: hidden;
+  border-radius: .25em;
+  display: inline-block;
+  display: -webkit-inline-box;
+  border: 1px solid #667780;
+  margin: 1em 0;
+}
+select {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 1em;
+  background: #34495e;
+  pointer-events: none;
+}
+.select:hover::after {
+  color: #f39c12;
+}
+.select::after {
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+
+.img{
+    height: 40px;
+    width: 30px;
+}
+
