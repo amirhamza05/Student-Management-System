@@ -50,11 +50,11 @@ if($flag==1){
     }
 </style>
 
-<div class="container">
+<div class="containerr">
    
     <div class="row">
-    	<div class="col-md-1"></div>
-        <div class="col-md-8">
+    	
+        <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="panel with-nav-tabs panel-primary">
                 <div class="header_box">
                         <ul class="nav nav-tabs">

@@ -25,7 +25,7 @@ class subject
   public function get_subject_info(){
       $info=array();
       $sub=array();
-     $sql="select * from subject";
+     $sql="select * from subject ORDER BY id DESC";
      $res=$this->select($sql);
      while ($row=mysqli_fetch_array($res)) {
      	$id=$row['id'];
@@ -53,7 +53,7 @@ class subject
 
   
 
-
+ 
 }
 
 ?>

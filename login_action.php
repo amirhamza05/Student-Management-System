@@ -11,29 +11,28 @@ if(isset($_POST['login'])){
   $uname = strip_tags($uname);
   $uname = htmlspecialchars($uname);
 
-  $pass = trim($_POST['pass']);
-  $pass = strip_tags($pass);
-  $pass = htmlspecialchars($pass);
+  $pass = $_POST['pass'];
+  $pass=hash('sha256', $pass);
 
 	$flag=0;
 	foreach ($user as $key => $value) {
 		$id=$value['id'];
 		$uname1=$value['uname'];
 		$pass1=$value['pass'];
-		$pass=hash('sha256', $pass);
 		if($pass1==$pass && $uname==$uname1){
+
 			$flag=1;
 			break;
 		}
 	}
+	
 	if($flag==0){
-    
-     echo "<script>alert('Failed...Please Again Try!');</script><script>document.location='login.php'</script>";
+        echo "0";
 	}
 	else{
+		echo $id;
 		$_SESSION['user']=$id;
-			echo "<script>alert('Successfully Login Account!');</script><script>document.location='index.php'</script>";
-			$ex=$_SESSION['user'];
+		$ex=$_SESSION['user'];
 	}
 }
 else{

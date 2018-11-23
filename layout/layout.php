@@ -2,10 +2,10 @@
 
 include "layout_style.php";
 include "nev_bar.php";
-include "side_bar1.php";
+include "side_bar.php";
 
 ?>
-<div class="content">
+<div id="content" class="content">
  
 
  <?php
@@ -16,12 +16,15 @@ $page_name=$site->get_page_name($sub_str);
 $root=$site->get_url_root($sub_str);
   ?>
 
-       <!--  <div class="header">
-            <h1 class="page-title"><?php //echo "$page_name"; ?></h1>
-        </div> -->
 
-        <title><?php echo "$page_name"; ?></title>
-        <center><?php //include 'menu_button.php'; ?></center>
-        <div class="main-content" style=" padding-bottom: 30px;margin-top: 15px;" >
+<title><?php echo "$page_name"; ?></title>
+<center><?php //include 'menu_button.php'; ?></center>
+<div class="main-content" style="padding-bottom: 30px;margin-top: 15px;" >
+<?php 
 
-        	<?php include "loader.php"; ?>
+  include "bubble.php"; 
+  include "loader.php";
+  include "modal_lib.php";
+
+ ?>
+

@@ -25,21 +25,7 @@ public $subject=array();
 }
 
  public function num_array($st){
- 	$num=array();
- 	$n=0;
- 	$c=0;
- 	for($i=0; $i<strlen($st); $i++){
- 		if($st[$i]==','){
- 			array_push($num, $n);
- 		    $n=1;
- 		    $c=0;
- 		}
- 		else{
-            
-            $n=($n*$c)+(int)$st[$i];
-            $c=10;
- 		}
- 	}
+ 	$num=explode(',', $st);
  	return $num;
  } 
 
@@ -89,7 +75,7 @@ return $st;
  public function get_program_info(){
     $info=array();
     $sub=array();
-    $sql="select * from program";
+    $sql="select * from program  ORDER BY id DESC";
     $res=$this->select($sql);
     while ($row=mysqli_fetch_array($res)) {
     	$id=$row['id'];
@@ -102,9 +88,10 @@ return $st;
         $sub['batch']=$this->in_batch($this->num_array($row['batch']));
         $sub['batch_string']=$this->convert_arr($sub['batch']);
         $sub['fee']=$row['fee'];
-        $sub['start_fee']=$row['start_fee'];
-        $sub['end_fee']=$row['end_fee'];
         $sub['date']=$row['date'];
+        $sub['type']=$row['type'];
+        $sub['monthly_fee']=$row['monthly_fee'];
+        $sub['type_string']=($sub['type']==1)?"Package":"Monthly";
         $sub['add_by']=$row['add_by'];
         $info[$id]=$sub;
     }
@@ -163,7 +150,7 @@ public function select_batch($pro_id=-1){
      }
         foreach ($batch as $key => $value) {
          $id=$value['id'];
-         $name=$value['name'];
+         $name=$value['name']; 
          $start=$value['start'];
          $end=$value['end'];
          if($mark[$id]==0){
@@ -185,7 +172,6 @@ public function select_program(){
       
       echo "<option value='$id'> $name </option>";
    }
-
 }
 
 public function option_subject($program_id){
@@ -197,7 +183,7 @@ public function option_subject($program_id){
     echo "<option value='$id'>$name</option>";
   }
 }
-
+ 
 public function select_batch_option($pro_id){
    $info=$this->get_program_info();
    foreach ($info[$pro_id]['batch'] as $key => $value) {
@@ -208,6 +194,19 @@ public function select_batch_option($pro_id){
       echo "<option value='$id'>$name ( $start - $end )</option>";
    }
 
+}
+
+public function select_program_batch($program_id,$batch_id){
+  $info=$this->get_program_info();
+  echo "hey";
+   foreach ($info[$program_id]['batch'] as $key => $value) {
+      $id=$value['id'];
+      $name=$value['name'];
+      $start=$value['start'];
+      $end=$value['end'];
+      $st=($batch_id==$id)?"selected":"";
+      echo "<option value='$id' $st>$name ( $start - $end )</option>";
+   }
 }
 
 

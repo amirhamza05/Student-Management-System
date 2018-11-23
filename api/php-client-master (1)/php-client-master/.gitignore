@@ -1,0 +1,11 @@
+.DS_Store
+.idea/
+sjc.iml
+/config.yml
+vendor/
+.settings
+.project
+build/
+.buildpath
+*.phar
+composer.lock

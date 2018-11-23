@@ -6,19 +6,67 @@
 		<div class="header_box">Login Your Id</div>
 		<div class="logo">
 			
-			<h1 class="logo-caption"><span class="tweak">Y</span>outh Admission Care</h1>
+			<h1 class="logo-caption"><span class="tweak">T</span>ech<span class="tweak">S</span>erm Education Software</h1>
 		</div><!-- /.logo -->
 		<div class="controls">
-<form action="login_action.php" method="post">
-			<input type="text" name="uname" placeholder="Username" class="form-control" required="" />
-			<input type="password" name="pass" placeholder="Password" class="form-control" required="" />
-			<button type="submit" name="login" class="btn btn-default btn-block btn-custom">Login</button>
-</form>
+      <div id="error_msg" style="color: #F64343; display: none;">Please Fill Up Correct User Name OR Password</div>
+<!-- <form action="login_action.php" method="post"> -->
+			<input type="text" autocomplete="off"
+ id="uname" name="uname" placeholder="Username" class="form-control" required="" />
+			<input type="password" id="pass" name="pass" placeholder="Password" class="form-control" required="" />
+
+			<button type="submit"  style="font-size: 16px;" id="login_btn" onclick="login()" name="login" class="btn btn-default btn-block btn-custom">Login</button>
+<!-- </form> -->
 		</div><!-- /.controls -->
 	</div><!-- /#login-box -->
 </div><!-- /.container -->
 <div id="particles-js"></div>
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+
+<script type="text/javascript">
+  function login(){
+    uname=document.getElementById('uname').value;
+    pass=document.getElementById('pass').value;
+    document.getElementById("error_msg").style.display="none";
+
+     $.ajax({
+        type: 'POST',
+        url: 'login_action.php',
+        data: {
+            login: uname,
+            uname: uname,
+            pass: pass
+        },
+        beforeSend: function() {
+              document.getElementById("login_btn").disabled=true;
+              document.getElementById("login_btn").innerHTML="<div class='lds-dual-ring'></div>";
+
+        },
+        success: function(response) {
+          
+          per=parseInt(response);
+           setTimeout(function () {
+                fun_wait(per);
+           }, 2000); 
+          
+        }
+    });
+
+ 
+           
+  }
+
+  function fun_wait(per){
+      if(per!=0)location.reload();
+      else{
+           document.getElementById("login_btn").disabled=false;
+           document.getElementById("error_msg").style.display="block";
+           document.getElementById("login_btn").innerHTML="Login";
+      }
+  }
+</script>
+
 
 <style type="text/css">
 	@import url('https://fonts.googleapis.com/css?family=Nunito');
@@ -110,6 +158,36 @@ body, html {
   	top: 0px;
   	z-index:1;
 }
+
+/*animation loder*/
+.lds-dual-ring {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(300deg);
+  }
+  100% {
+    transform: rotate(600deg);
+  }
+}
+
 </style>
 
 <script type="text/javascript">
@@ -233,10 +311,6 @@ body, html {
     );
 
 });
-
-
-
-
 
 
 </script>

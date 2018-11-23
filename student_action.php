@@ -7,11 +7,19 @@ function valid_input($val){
   return !empty($val)?"{$val}": 0;
 }
 
-if(isset($_POST['insert'])){
+if(isset($_POST['test_data'])){
+  $info=$_POST;
+  unset($info['id']);
+  $info['id1']=1;
+  $data=json_encode($info);
+  echo "$data";
+}
 
-    $id=$student_ob->new_id();
+if(isset($_POST['insert_name'])){
+
+  $id=$student_ob->new_id();
 	$info['id']=$id;
-	$info['name']=$_POST['name'];
+	$info['name']=$_POST['insert_name'];
 	$info['nick']=$_POST['nick'];
 	$info['father_name']=$_POST['father_name'];
 	$info['mother_name']=$_POST['mother_name'];
@@ -31,16 +39,16 @@ if(isset($_POST['insert'])){
 	$info['ssc_board']=$_POST['ssc_board'];
 	$info['ssc_result']=valid_input($_POST['ssc_result']);
     
-  $info['program']=$_POST['program'];
-  $info['batch']=$_POST['batch'];
-  $info['fee']=(int)$_POST['total']; 
+  $info['program']=2;
+  $info['batch']=1;
+  $info['fee']=1500; 
   $date=date("Y-m-d");
 	$info['date']=$date;
 
 
 
 //image option
-    $imagename="avatar.png";
+   $imagename="avatar.png";
 
    if(isset($_FILES['image'])){
  
@@ -75,16 +83,16 @@ if(isset($_POST['insert'])){
 
 $info['photo']=$imagename;
 
-
-	
-	$db->sql_action("student","insert",$info,"yes");
-   
+$data=json_encode($info);
+  echo "$data";
+$db->sql_action("student","insert",$info,"no");
 	
 }
 
 else if(isset($_POST['update'])){
     
   $info['id']=$_POST['student_id'];
+  $id=$info['id'];
   $student_id=$_POST['student_id'];
   $info['name']=$_POST['name'];
   $info['nick']=$_POST['nick'];
@@ -106,11 +114,8 @@ else if(isset($_POST['update'])){
   $info['ssc_board']=$_POST['ssc_board'];
   $info['ssc_result']=valid_input($_POST['ssc_result']);
 
-  $info['batch']=$_POST['batch_edit'];
-
 
 //image option
-   
 $flag=0;
 $imagename=$student[$student_id]['photo'];
 
@@ -126,13 +131,13 @@ $imagename=$student[$student_id]['photo'];
       $file_ext=end($file_ext);
       
       $imagename=$imagename;
-      $expensions= array("jpeg","jpg","png");
+      $expensions= array("jpeg","jpg","png","PNG");
       
       if(in_array($file_ext,$expensions)== false){
          $errors[]="extension not allowed, please choose a JPEG or PNG file.";
       }
       
-      if($file_size > 2097152) {
+      if($file_size > 5097152) {
          $errors[]='File size must be excately 2 MB';
       }
       
@@ -152,7 +157,8 @@ if($flag==1){
 
 //$site->myprint_r($info);
 
-  $db->sql_action("student","update",$info,"yes");
+  $db->sql_action("student","update",$info,"no");
+  echo "<script>alert('Successfully Update Student Information!');</script><script>document.location='student_profile.php?get_id=$id'</script>";
 	
 }
 

@@ -14,7 +14,7 @@ public $student_ob;
      
      $this->db=new database();
      $this->conn=$this->db->conn;
-        $this->student_ob=new student();
+     $this->student_ob=new student();
      $this->student=$this->student_ob->get_student_info();
      
  }
@@ -25,7 +25,7 @@ public $student_ob;
 
  public function send_sms($to,$message){
 
-$token="your token key";
+$token="2782dd388e780708ebc38ddecfe135e1";
 $url = "http://sms.greenweb.com.bd/api.php";
 $data= array(
 'to'=>"$to",

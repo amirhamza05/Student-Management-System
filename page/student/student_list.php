@@ -5,10 +5,7 @@
         .pre-cost{text-decoration: line-through; color: #a5a5a5;}
         .space-ten{padding: 10px 0;}
 
- .modal-backdrop
-{
-    opacity:0.9 !important;
-}
+
 
 tbody> tr.odd td,tr{ 
     background: #ffffff;
@@ -18,12 +15,7 @@ tbody> tr.odd td,tr{
 tbody tr.odd:hover td,tr:hover { 
     background: #D5D6D7;
 }
-thead{
-  background-color: #2E363F;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #2E363F;
-}
+
 table{
   border-width: 2px;
   border-color: #2E363F;
@@ -37,12 +29,13 @@ table{
 
 <div class="btn-toolbar list-toolbar">
     <button class="btn btn-primary" data-title="Add Product" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>Add Student</button>
+    <a href="export.php"><i class="fa fa-plus"></i>Export</a>
     
 </div>
 </center>
 <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-            <thead style="">
-            <tr style="background-color: #2E363F;">
+            <thead>
+            <tr style="background-color: var(--bg-color); color: var(--font-color)">
               <th><center>Student Photo</center></th>
               <th><center>Student Id</center></th>
               <th><center>Student Name</center></th>
@@ -93,7 +86,13 @@ foreach ($student as $key => $value) {
               <td onclick="profile(<?php echo "$id"; ?>)"><center><?php echo "$batch_name"; ?></center></td>
 
                 
-                <td><div class="btn-toolbar list-toolbar"><center><button class="btn btn-primary btn-xs" onclick="edit_student(<?php echo "$id"; ?>)" style="margin-right: 4px;" title="Edit" data-title="Add Product" data-toggle="modal" data-target="#student_edit_<?php echo "$id"; ?>" ><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-danger btn-xs" title="Delete" data-title="Delete" data-toggle="modal" data-target="#delete<?php echo"$id"; ?>" ><span class="glyphicon glyphicon-trash"></span></button></center></div></td>
+                <td><div class="btn-toolbar list-toolbar"><center>
+
+          <button class="btn btn-primary btn-xs" onclick="edit_student(<?php echo "$id"; ?>)" style="margin-right: 4px;" title="Edit" data-title="Add Product" data-toggle="modal" data-target="#student_edit_<?php echo "$id"; ?>" ><span class="glyphicon glyphicon-pencil"></span></button>
+
+          <button class="btn btn-danger btn-xs" title="Delete" data-title="Delete" data-toggle="modal" data-target="#delete<?php echo"$id"; ?>" ><span class="glyphicon glyphicon-trash"></span></button>
+
+        </center></div></td>
     
             </tr>
 

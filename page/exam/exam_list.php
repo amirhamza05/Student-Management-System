@@ -85,7 +85,7 @@ foreach ($exam as $key => $value) {
 <div class="modal large fade" id="edit<?php echo "$id"; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-        <div class="modal-header" style="background-color: #414959; color: #ffffff">
+        <div class="modal-header" style="">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h4 id="myModalLabel"><?php echo "$subject_name"; ?></h4>
         </div>
@@ -169,7 +169,7 @@ $site->form_input("Exam Date","date","date","date","exclamation-sign","$date");
   <div class="modal large fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-        <div class="modal-header" style="background-color: #414959; color: #ffffff">
+        <div class="modal-header" style="">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #ffffff">Close</button>
             <h4 id="myModalLabel">Add Exam</h4>
         </div>

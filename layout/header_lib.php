@@ -9,5 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
 
 	<script language="JavaScript" src="style/lib/custom/custom.js" type="text/javascript"></script>
+	<script language="JavaScript" src="layout/site_script.js" type="text/javascript"></script>
 
     

@@ -20,9 +20,7 @@ public $program;
      $this->student_ob=new student();
      $this->student=$this->student_ob->get_student_info();
      
-
-     
- }
+ } 
 
  public function select($query){
    return $this->result=$this->db->select($query);
@@ -69,19 +67,18 @@ public function student_edit_form($id){
       background-color: #414959;
     }
     .box_header{
-        background-color: #2E363F;
-        color: #ffffff;
+        background-color: var(--bg-color);
+        color: var(--font-color);
         padding: 15px;
         border-width: 0px;
         border-style: solid;
-        border-color: #2E363F;
-
+        border-color: var(--bg-color);
 
     }
     .box{
-      border-width: 1px;
+        border-width: 1px;
         border-style: solid;
-        border-color: #2E363F;
+        border-color: var(--bg-color);
     }
 
     .box_body{
@@ -116,13 +113,12 @@ public function student_edit_form($id){
 
       //$site->form_input($level,$name,$id,$type="text",$icon="exclamation-sign",$value="",$ex="",$req="yes")
       
-
        $this->site_ob->form_input("Student Full Name","name","name","text","exclamation-sign","$name","","yes");
 
       $site->form_input("Student Nick Name","nick","nick","text","exclamation-sign","$nick","","yes");
 
-      $site->form_input("Father Name","father_name","father_name","text","exclamation-sign","$father_name","","yes");
-      $site->form_input("Mother Name","mother_name","mother_name","text","exclamation-sign","$mother_name","","yes");
+      $site->form_input("Father Name","father_name","father_name","text","exclamation-sign","$father_name","","no");
+      $site->form_input("Mother Name","mother_name","mother_name","text","exclamation-sign","$mother_name","","no");
       $site->form_input("Sudent mobile","student_mobile","student_mobile","number","exclamation-sign","$student_mobile","","no");
 
       $site->form_input("Father mobile","father_mobile","number","number","exclamation-sign","$father_mobile","","no");
@@ -204,37 +200,14 @@ public function student_edit_form($id){
         </div>  
         <div id='err_product_date' class='error'></div>
 </div>
-   <div class='form-group'>
-        <label class='control-label' for='inputName'><b>Religion</b></label>
-        <div class='input-group'>
-            <span class='input-group-addon'><i class='glyphicon glyphicon-exclamation-sign'></i></span> 
-<select class='form-control'  name='batch_edit' id='brand_edit' class='cs-select cs-skin-border' required="">
-  <?php 
-  foreach ($program[$program_id]['batch'] as $key => $value) {
-    $name=$value['name'];
-    $b_id=$value['id'];
-    $start=$value['start'];
-    $end=$value['end'];
-     if($b_id==$batch)$per="selected";
-     else $per="";
-    echo "<option value='$b_id' $per>$name ($start - $end)</option>";
-  }
-
-   ?>
-</select>
- 
-</div></div>        
+          
 </div>  
 
 <!-- End Academic Information -->
 
 <!-- Start Academic Information -->
 
-
-
 <!-- End Academic Information -->
-
-
 
        <button class="box_btn" name="update" type="submit" style=""><span class="glyphicon glyphicon-floppy-save"></span> Update Information</button>                  
     

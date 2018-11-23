@@ -4,13 +4,14 @@
 	.select,
 .download-target {
   width: 15em;
+
 }
 .select {
   position: relative;
   display: block;
   height: 3em;
   line-height: 3;
-  background: #2c3e50;
+  background: var(--bg-color);
   overflow: hidden;
   border-radius: .25em;
   display: inline-block;
@@ -23,7 +24,7 @@ select {
   height: 100%;
   margin: 0;
   padding: 0 0 0 .5em;
-  color: #fff;
+  color: var(--font-color);
   cursor: pointer;
 }
 select::-ms-expand {
@@ -76,7 +77,7 @@ select::-ms-expand {
 		        </select>
 		    </a>
 
-		         <a id="btnn"  onclick="print_id_card()" class="btn btn-success download-target" style="padding: 10px;" title="Download" alt="Download">Print ID Card</a>
+		         <a id="btnn"  onclick="print_id_card()" class="btn btn-primary download-target" style="padding: 10px;" title="Download" alt="Download">Print ID Card</a>
 		    </div>
 		    
 

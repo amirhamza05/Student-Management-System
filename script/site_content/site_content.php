@@ -106,9 +106,7 @@ public function get_url_root($sub_str){
 
 public function array_to_string($arr){
  $st="";
- foreach ($arr as $key => $value) {
-  $st.=$value.",";
- }
+ $st=implode(',', $arr);
 return $st;
 }
 

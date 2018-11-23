@@ -1,0 +1,66 @@
+
+[
+    {
+        "pron": [
+            "",
+            "Bahana ana"
+        ],
+        "bn": "বহন অন",
+        "en": "carry-on",
+        "bn_syns": [],
+        "en_syns": [],
+        "sents": [
+            "And it can be attached to purses, laptops, <b>carry-ons</b> , and suitcases.",
+            "Though the no-bags option is an appealing one, I think I'll stick to <b>carry-on</b> luggage."
+        ]
+    },
+    {
+        "pron": [
+            "ˈkarē",
+            "Bahana"
+        ],
+        "bn": "বহন",
+        "en": "carry",
+        "bn_syns": [
+            "বয়ে নিয়ে যাওয়া",
+            "বহন করা",
+            "টানা",
+            "বহিয়া লইয়া যাত্তয়া",
+            "সংবাহন করা",
+            "ধারণ করা",
+            "ভারবহন করা",
+            "ঘটান",
+            "নেত্তয়া",
+            "লত্তয়া",
+            "বলপূর্বক অধিকার করা",
+            "জের টানা",
+            "আচরণ করা",
+            "দেহভঙ্গি করা",
+            "গর্ভবতী হত্তয়া",
+            "পৌঁছাইয়া দেত্তয়া",
+            "পৌঁছান",
+            "লাভ করা",
+            "প্রকাশ করা",
+            "প্রসারিত হত্তয়া",
+            "বহা",
+            "ব্যাপ্ত হত্তয়া",
+            "বহন"
+        ],
+        "en_syns": [
+            "convey",
+            "transfer",
+            "move",
+            "take",
+            "bring",
+            "bear",
+            "lug",
+            "tote",
+            "fetch",
+            "cart"
+        ],
+        "sents": [
+            "Now, large supermarkets <b>carry</b> as many as 20,000 different food items on their shelves.",
+            "A few newspapers did <b>carry</b> the story but wildly distorted the facts, greatly upsetting the brothers."
+        ]
+    }
+]

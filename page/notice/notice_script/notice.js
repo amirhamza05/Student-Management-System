@@ -20,8 +20,6 @@ program_id=document.getElementById("program_select").value;
 
 function batch(){
 
-
-
   program_id=document.getElementById("program_select").value;
   batch_id=document.getElementById("batch_select").value;
 

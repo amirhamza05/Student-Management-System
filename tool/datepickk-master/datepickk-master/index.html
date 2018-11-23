@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Datepickk - Documentation</title>
+	<link rel="stylesheet" href="dist/doc.css">
+	<link rel="stylesheet" href="dist/datepickk.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/zenburn.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+</head>
+<body>
+	<script src="dist/datepickk.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<div class="nav">
+		<h1>Datepickk<span> . js</span></h1>
+		<p>Made with <i class="fa fa-heart" style="color:#AA3F3F;"></i> by <a href="http://codepen.io/crsten">Carsten J</a>.</p>
+		<a class="github-button" href="https://github.com/crsten/datepickk" data-icon="octicon-star" data-style="mega" data-count-href="/crsten/datepickk/stargazers" data-count-api="/repos/crsten/datepickk#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star crsten/datepickk on GitHub">Star</a>
+	</div>
+
+	<div class="container">
+		<div class="row align-center equal-height" style="margin-bottom:50px;">
+			<h1 class="center" style="margin-bottom:50px;"><span class="line"></span>Get started<span class="line"></span></h1>
+			<div class="col-xs-12 col-md-4">
+				<pre style="max-width: 800px;margin: 0 auto;">
+					<code>
+						npm install datepickk<br>
+					</code>
+				</pre>
+			</div>
+
+			<div class="col-md-1 align-center align-middle">
+				or
+			</div>
+
+			<div class="col-xs-12 col-md-4">
+				<pre style="max-width: 800px;margin: 0 auto;">
+					<code>
+						bower install datepickk<br>
+					</code>
+				</pre>
+			</div>
+
+			<div class="col-xs-12" style="margin:50px 0;">
+				<pre style="max-width: 800px; margin: 0 auto;">
+					<code>
+						//Initialize<br>
+						var datepicker = new Datepickk();<br>
+						/*And some more stuff down there...*/
+					</code>
+				</pre>
+				<script>
+					var datepicker = new Datepickk();
+				</script>
+			</div>
+			<div class="col-xs-12 col-md-5 align-middle">
+				<button class="orange" style="margin:0 auto;" onclick="datepicker.show();">Modal<span>onclick="datepicker.show();"</span></button>
+			</div>
+			<div class="col-xs-12 col-md-1 align-middle align-center">
+				<p style="width:100%;text-align:center;">or</p>
+			</div>
+			<div class="col-xs-12 col-md-6 align-center" >
+				<div id="demoPicker" style="height:600px;width:100%;max-width: 600px;"></div>
+				<script>
+					var now = new Date();
+					var demoPicker = new Datepickk({
+						container: document.querySelector('#demoPicker'),
+						inline:true,
+						range: true,
+						tooltips: {
+							date: new Date(),
+							text: 'Tooltip'
+						},
+						highlight:{
+							start: new Date(now.getFullYear(),now.getMonth(),3),
+							end: new Date(now.getFullYear(),now.getMonth(),6),
+							backgroundColor:'#05676E',
+							color:'#fff',
+							legend: 'Highlight'
+						}
+					});
+				</script>
+			</div>
+		</div>
+
+		<div class="row align-center" id="browsers">
+			<div class="col-xs-3 align-center">
+				<i class="fa fa-chrome"></i>
+				<p>31 +</p>
+			</div>
+			<div class="col-xs-3 align-center">
+				<i class="fa fa-firefox"></i>
+				<p>31 +</p>
+			</div>
+			<div class="col-xs-3 align-center">
+				<i class="fa fa-internet-explorer"></i>
+				<p>10 +</p>
+			</div>
+			<div class="col-xs-3 align-center">
+				<i class="fa fa-safari"></i>
+				<p>Not tested yet</p>
+			</div>
+		</div>
+
+		<div class="row align-center equal-height" id="index">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 block">
+				<h2>Settings</h2>
+				<ul>
+					<li><a href="#startDate">startDate</a></li>
+					<li><a href="#minDate">minDate</a></li>
+					<li><a href="#maxDate">maxDate</a></li>
+					<li><a href="#currentDate">currentDate</a></li>
+					<li><a href="#currentDate">setDate (alias)</a></li>
+					<li><a href="#maxSelections">maxSelections</a></li>
+					<li><a href="#months">months</a></li>
+					<li><a href="#title">title</a></li>
+					<li><a href="#button">button</a></li>
+					<li><a href="#lang">lang</a></li>
+					<li><a href="#weekStart">weekStart</a></li>
+					<li><a href="#range">range</a></li>
+					<li><a href="#container">container</a></li>
+					<li><a href="#inline">inline</a></li>
+					<li><a href="#closeOnSelect">closeOnSelect</a></li>
+					<li><a href="#closeOnClick">closeOnClick</a></li>
+					<li><a href="#tooltips">tooltips</a></li>
+					<li><a href="#highlight">highlight</a></li>
+					<li><a href="#disabledDays">disabledDays</a></li>
+					<li><a href="#disabledDates">disabledDates</a></li>
+					<li><a href="#today">today</a></li>
+					<li><a href="#daynames">daynames</a></li>
+					<li><a href="#fullscreen">fullscreen</a></li>
+					<li><a href="#locked">locked</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 block">
+				<h2>Status</h2>
+				<ul>
+					<li><a href="#selectedDates">selectedDates</a></li>
+					<li><a href="#isOpen">isOpen</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 block">
+				<h2>Functions</h2>
+				<ul>
+					<li><a href="#show">show(props)</a></li>
+					<li><a href="#hide">hide()</a></li>
+					<li><a href="#selectDate">selectDate(Date,ignoreOnSelect)</a></li>
+					<li><a href="#unselectDate">unselectDate(Date,ignoreOnSelect)</a></li>
+					<li><a href="#unselectAll">unselectAll(ignoreOnSelect)</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 block">
+				<h2>Callbacks</h2>
+				<ul>
+					<li><a href="#onConfirm">onConfirm</a></li>
+					<li><a href="#onClose">onClose</a></li>
+					<li><a href="#onSelect">onSelect</a></li>
+					<li><a href="#onNavigation">onNavigation</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<h1 class="center"><span class="line"></span>Take a tour<span class="line"></span></h1>
+
+		<div class="row equal-height">
+
+			<div class="col-xs-12 col-md-6 block" id="startDate">
+				<h2>startDate <span>Setting</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Date<br>
+						//Default: null -> takes current date<br>
+						//Reset: assign non date object to reset default<br><br>
+						/*Set startDate*/<br>
+						datepicker.startDate = new Date(2000,0,1);<br><br>
+						/*Get startDate*/<br>
+						console.log(datepicker.startDate);
+					</code>
+				</pre>
+				<button class="grey full" onclick="startDateDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>Each time you show the calendar this date will show up!</p>
+				<script>
+					function startDateDemo(){
+						datepicker.unselectAll();
+						datepicker.startDate = new Date(2000,0,1);
+						console.log(datepicker.startDate);
+						datepicker.onClose = function(){
+							datepicker.startDate = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="minDate">
+				<h2>minDate <span>Setting</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Date<br>
+						//Default: null -> no limit<br>
+						//Reset: assign non date object to reset default<br><br>
+						/*Set minDate*/<br>
+						datepicker.minDate = new Date(2015,0,1);<br><br>
+						/*Get minDate*/<br>
+						console.log(datepicker.minDate);
+					</code>
+				</pre>
+				<button class="grey full" onclick="minDateDemo()">Let's try that</button>
+				<script>
+					function minDateDemo(){
+						datepicker.unselectAll();
+						datepicker.minDate = new Date(2015,0,1);
+						datepicker.startDate = new Date(2015,0,1);
+						console.log(datepicker.minDate);
+						datepicker.onClose = function(){
+							datepicker.minDate = null;
+							datepicker.startDate = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="maxDate">
+				<h2>maxDate <span>Setting</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Date<br>
+						//Default: null -> no limit<br>
+						//Reset: assign non date object to reset default<br><br>
+						/*Set maxDate*/<br>
+						datepicker.maxDate = new Date(2015,11,31);<br><br>
+						/*Get maxDate*/<br>
+						console.log(datepicker.maxDate);
+					</code>
+				</pre>
+				<button class="grey full" onclick="maxDateDemo()">Let's try that</button>
+				<script>
+					function maxDateDemo(){
+						datepicker.unselectAll();
+						datepicker.maxDate = new Date(2015,11,31);
+						datepicker.startDate = new Date(2015,11,1);
+						console.log(datepicker.maxDate);
+						datepicker.onClose = function(){
+							datepicker.maxDate = null;
+							datepicker.startDate = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="currentDate">
+				<h2>currentDate | setDate (alias) <span>Setting</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Date<br>
+						//Default: current date<br><br>
+						/*Set currentDate*/<br>
+						datepicker.currentDate = new Date(2015,3,1);<br>
+						//OR<br>
+						datepicker.setDate = new Date(2015,3,1)<br><br>
+						/*Get currentDate*/<br>
+						console.log(datepicker.currentDate);
+					</code>
+				</pre>
+				<button class="grey full" onclick="currentDateDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>Use me to jump to spesific dates</p>
+				<script>
+					function currentDateDemo(){
+						datepicker.unselectAll();
+						datepicker.setDate = new Date(2015,3,1);
+						console.log(datepicker.currentDate);
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="maxSelections">
+				<h2>maxSelections <span>Setting</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Number<br>
+						//Default: null -> infinite<br>
+						//Reset: assign non number object to reset default<br><br>
+						/*Set maxSelections*/<br>
+						datepicker.maxSelections = 3;<br><br>
+						/*Get maxSelections*/<br>
+						console.log(datepicker.maxSelections);
+					</code>
+				</pre>
+				<button class="grey full" onclick="maxSelectionsDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>If you don't want to let the user select anyting you should use <a href="#locked">locked</a> instead. Check it out</p>
+				<script>
+					function maxSelectionsDemo(){
+						datepicker.unselectAll();
+						datepicker.maxSelections = 3;
+						console.log(datepicker.maxSelections);
+						datepicker.onClose = function(){
+							datepicker.maxSelections = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="months">
+				<h2>months <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">
+					If you need to show multiple months at once this feature is perfect for you!
+				</p>
+				<pre>
+					<code>
+						//Type: Number (must be > 0)<br>
+						//Default: 1<br><br>
+						/*Set maxSelections*/<br>
+						datepicker.months = 2;<br><br>
+						/*Get months*/<br>
+						console.log(datepicker.months);
+					</code>
+				</pre>
+				<button class="grey full" onclick="monthsDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>Showing multiple months at once needs much space! Be careful, the pretty looking datepicker might get ulgy <i class="fa fa-thumbs-o-down"></i></p>
+				<script>
+					function monthsDemo(){
+						datepicker.unselectAll();
+						datepicker.months = 2;
+						console.log(datepicker.months);
+						datepicker.onClose = function(){
+							datepicker.months = 1;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="title">
+				<h2>title <span>Setting</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: String<br>
+						//Default: null<br>
+						//Reset: assign non string object to reset default<br><br>
+						/*Set title*/<br>
+						datepicker.title = 'Choose date:';<br><br>
+						/*Get title*/<br>
+						console.log(datepicker.title);
+					</code>
+				</pre>
+				<button class="grey full" onclick="titleDemo()">Let's try that</button>
+				<script>
+					function titleDemo(){
+						datepicker.unselectAll();
+						datepicker.title = 'Choose date:';
+						console.log(datepicker.title);
+						datepicker.onClose = function(){
+							datepicker.title = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="button">
+				<h2>button <span>Setting</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: String<br>
+						//Default: null<br>
+						//Reset: assign non string object to reset default<br><br>
+						/*Set button*/<br>
+						datepicker.button = 'OK';<br><br>
+						/*Get button*/<br>
+						console.log(datepicker.button);
+					</code>
+				</pre>
+				<button class="grey full" onclick="buttonDemo()">Let's try that</button>
+				<script>
+					function buttonDemo(){
+						datepicker.unselectAll();
+						datepicker.button = 'OK';
+						console.log(datepicker.button);
+						datepicker.onClose = function(){
+							datepicker.button = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="lang">
+				<h2>lang <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">
+					You can change the language and the day the week starts by changing the lang property.<br>
+					By default there are 5 languages: English (en), Norwegian (no), German (de), Swedish (se), Russian (ru). <br>
+					Add your own languages to the 'languages' property in the source code.
+				</p>
+				<pre>
+					<code>
+						//Type: String<br>
+						//Default: 'en'<br><br>
+						/*Set lang*/<br>
+						datepicker.lang = 'no';<br><br>
+						/*Get lang*/<br>
+						console.log(datepicker.lang);
+					</code>
+				</pre>
+				<button class="grey full" onclick="langDemo()">Let's try that</button>
+				<script>
+					function langDemo(){
+						datepicker.unselectAll();
+						datepicker.lang = 'no';
+						console.log(datepicker.lang);
+						datepicker.onClose = function(){
+							datepicker.lang = 'en';
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="weekStart">
+				<h2>weekStart <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">
+					You can change when the week should start by setting the weekStart property to a number between 0 - 6 where 0 is sunday and 6 is saturday.
+					The languages have the weekStart predefined. So if you choose norwegian it will automatically start the week on monday if no weekStart has been set.
+				</p>
+				<pre>
+					<code>
+						//Type: Number<br>
+						//Default: from language<br><br>
+						/*Set weekStart*/<br>
+						datepicker.weekStart = 1; //week starts at monday<br><br>
+						/*Get weekStart*/<br>
+						console.log(datepicker.weekStart);
+					</code>
+				</pre>
+				<button class="grey full" onclick="weekStartDemo()">Let's try that</button>
+				<script>
+					function weekStartDemo(){
+						datepicker.weekStart = 1;
+						console.log(datepicker.weekStart);
+						datepicker.onClose = function(){
+							datepicker.weekStart = 0;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="range">
+				<h2>range <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">Do you need to select a range of two dates? Use this</p>
+				<pre>
+					<code>
+						//Type: Boolean<br>
+						//Default: false<br><br>
+						/*Set range*/<br>
+						datepicker.range = true;<br><br>
+						/*Get range*/<br>
+						console.log(datepicker.range);
+					</code>
+				</pre>
+				<button class="grey full" onclick="rangeDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>This one overwrites the <a href="#maxSelections">maxSelections</a> property with 2.</p>
+				<script>
+					function rangeDemo(){
+						datepicker.unselectAll();
+						datepicker.range = true;
+						console.log(datepicker.range);
+						datepicker.onClose = function(){
+							datepicker.range = false;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-8 block" id="container">
+				<h2>container <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">Do you not like modals? Don't worry you can place the datepicker in a container you want.</p>
+				<pre>
+					<code>
+						//Type: String(selector) or HTMLElement(no jQuery bro! You can do better;)<br>
+						//Default: document.body<br><br>
+						/*Set container*/<br>
+						datepicker.container = document.querySelector('#sampleContainer');<br><br>
+						/*Get container*/<br>
+						console.log(datepicker.range);
+					</code>
+				</pre>
+				<button class="grey full" onclick="containerDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>I'm pretty sure you will like <a href="#inline">inline</a> aswell</p>
+				<script>
+					function containerDemo(){
+						var container = document.querySelector('#sampleContainer');
+						container.innerHTML = '';
+						var cdatepicker = new Datepickk();
+						cdatepicker.button = 'Close me';
+						cdatepicker.unselectAll();
+						cdatepicker.container = container;
+						console.log(cdatepicker.container);
+						cdatepicker.onClose = function(){
+							cdatepicker = null;
+							container.innerHTML = '<p>Hi! My name is #sampleContainer</p>'
+						}
+						cdatepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-4 block align-center align-middle" id="sampleContainer">
+				<p>Hi! My name is #sampleContainer</p>
+			</div>
+
+			<div class="col-xs-8 block" id="inline">
+				<h2>inline <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">If you set a container and set inline true it will always be visible and you don't need to show it first</p>
+				<pre>
+					<code>
+						//Type: Boolean<br>
+						//Default: false<br><br>
+						/*Set inline*/<br>
+						datepicker.inline = true;<br><br>
+						/*Get inline*/<br>
+						console.log(datepicker.inline);
+					</code>
+				</pre>
+				<button class="grey full" onclick="inlineDemo()">Initialize me</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>You should set <a href="#container">container</a> first</p>
+				<script>
+					function inlineDemo(){
+						var container = document.querySelector('#inlineContainer');
+						var height = document.querySelector('#inline').getBoundingClientRect().height;//Hey don't judge me! everything is built with flexbox :) that's why i need to do this
+						container.setAttribute('style','height:' + height + 'px;');
+						container.innerHTML = '';
+						var idatepicker = new Datepickk({
+							container: container,
+							inline: true
+						});
+						console.log(idatepicker.inline);
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-4 block align-center align-middle" id="inlineContainer">
+				<p>Hi! My name is #inlineContainer</p>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="closeOnSelect">
+				<h2>closeOnSelect <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">If a date gets selected the datepicker will close</p>
+				<pre>
+					<code>
+						//Type: Boolean<br>
+						//Default: false<br><br>
+						/*Set closeOnSelect*/<br>
+						datepicker.closeOnSelect = true;<br><br>
+						/*Get closeOnSelect*/<br>
+						console.log(datepicker.closeOnSelect);
+					</code>
+				</pre>
+				<button class="grey full" onclick="closeOnSelectDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>This is not the same as <a href="#closeOnClick">closeOnClick</a></p>
+				<script>
+					function closeOnSelectDemo(){
+						datepicker.unselectAll();
+						datepicker.closeOnSelect = true;
+						console.log(datepicker.closeOnSelect);
+						datepicker.onClose = function(){
+							datepicker.closeOnSelect = false;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="closeOnClick">
+				<h2>closeOnClick <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">If someone clicks outside the datepicker it closes</p>
+				<pre>
+					<code>
+						//Type: Boolean<br>
+						//Default: true<br><br>
+						/*Set closeOnClick*/<br>
+						datepicker.closeOnClick = false;<br><br>
+						/*Get closeOnClick*/<br>
+						console.log(datepicker.closeOnClick);
+					</code>
+				</pre>
+				<button class="grey full" onclick="closeOnClickDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>This is not the same as <a href="#closeOnSelect">closeOnSelect</a></p>
+				<script>
+					function closeOnClickDemo(){
+						datepicker.unselectAll();
+						datepicker.closeOnClick = false;
+						datepicker.button = 'Close me';
+						console.log(datepicker.closeOnClick);
+						datepicker.onClose = function(){
+							datepicker.closeOnClick = true;
+							datepicker.button = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="tooltips">
+				<h2>tooltips <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">Put some notes on it</p>
+				<pre>
+					<code>
+						//Type: Object or Array of Objects (look how the object is built in the other code block)<br>
+						//Default: null<br><br>
+						/*Set tooltips*/<br>
+						datepicker.tooltips = [tooltip,tooltip2];<br><br>
+						/*Get tooltips*/<br>
+						console.log(datepicker.tooltips);
+					</code>
+				</pre>
+				<pre>
+					<code>
+						/*tooltip object*/<br><br>
+
+						var tooltip = {<br>
+							 date: new Date(2015,6,1),<br>
+							 text: 'Tooltip'<br>
+						};<br><br>
+
+						var tooltip2 = {<br>
+							 date: new Date(2015,6,4),<br>
+							 text: 'Tooltip 2'<br>
+						};<br><br>
+					</code>
+				</pre>
+				<button class="grey full" onclick="tooltipsDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>Just put multiple tooltip objects in an array if you have more than 1 tooltip object</p>
+				<script>
+					function tooltipsDemo(){
+						var tooltip = {
+							 date: new Date(2015,6,1),
+							 text: 'Tooltip'
+						};
+
+						var tooltip2 = {
+							 date: new Date(2015,6,4),
+							 text: 'Tooltip 2'
+						};
+						datepicker.unselectAll();
+						datepicker.tooltips = [tooltip,tooltip2];
+						datepicker.setDate = new Date(2015,6,1);
+						console.log(datepicker.tooltips);
+						datepicker.onClose = function(){
+							datepicker.tooltips = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="highlight">
+				<h2>highlight <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">This is a nice way to mark stuff in the datepicker</p>
+				<pre>
+					<code>
+						//Type: Object or Array of Objects (look how the object is built in the other code block)<br>
+						//Default: null<br><br>
+						/*Set highlight*/<br>
+						datepicker.highlight = [highlight,highlight2];<br><br>
+						/*Get highlight*/<br>
+						console.log(datepicker.highlight);
+					</code>
+				</pre>
+				<pre>
+					<code>
+						/*highlight object*/<br><br>
+
+						/*Single daterange*/<br>
+						var highlight = {<br>
+							 start: new Date(2015,6,13),<br>
+							 end: new Date(2015,6,19),<br>
+							 backgroundColor: '#3faa56',<br>
+							 color: '#ffffff',<br>
+							 legend: 'CSS Conf.'//this is optional<br>
+						};<br><br>
+
+						/*highlight with multiple dateranges*/<br>
+						var highlight2 = {<br>
+							 dates: [<br>
+								 {<br>
+									 start: new Date(2015,6,6),<br>
+									 end: new Date(2015,6,7)<br>
+								 },<br>
+								 {<br>
+									 start: new Date(2015,6,22),<br>
+									 end: new Date(2015,6,23)<br>
+								 }<br>
+							 ],<br>
+							 backgroundColor: '#E99C00',<br>
+							 color: '#ffffff',<br>
+							 legend: 'Holidays'//this is optional<br>
+						};
+					</code>
+				</pre>
+				<button class="grey full" onclick="highlightDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>Just put multiple highlight objects in an array if you have more than 1 highlight object</p>
+				<script>
+					function highlightDemo(){
+						var highlight = {
+							 start: new Date(2015,6,13),
+							 end: new Date(2015,6,19),
+							 backgroundColor: '#3faa56',
+							 color: '#ffffff',
+							 legend: 'CSS Conf.'
+						};
+
+						var highlight2 = {
+							 dates: [
+								 {
+									 start: new Date(2015,6,6),
+									 end: new Date(2015,6,7)
+								 },
+								 {
+									 start: new Date(2015,6,22),
+									 end: new Date(2015,6,23)
+								 }
+							 ],
+							 backgroundColor: '#E99C00',
+							 color: '#ffffff',
+							 legend: 'Holidays'
+						};
+						datepicker.unselectAll();
+						datepicker.highlight = [highlight,highlight2];
+						datepicker.setDate = new Date(2015,6,1);
+						console.log(datepicker.highlight);
+						datepicker.onClose = function(){
+							datepicker.highlight = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="disabledDays">
+				<h2>disabledDays <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">You can disable spesific days</p>
+				<pre>
+					<code>
+						//Type: Number(0-6) or Array of Numbers(0-6)<br>
+						//Default: null<br><br>
+						/*Set disabledDays*/<br>
+						datepicker.disabledDays = 0;<br><br>
+						/*Get disabledDays*/<br>
+						console.log(datepicker.disabledDays);
+					</code>
+				</pre>
+				<button class="grey full" onclick="disabledDaysDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>This is not the same as <a href="#disabledDates">disabledDates</a></p>
+				<script>
+					function disabledDaysDemo(){
+						datepicker.unselectAll();
+						datepicker.disabledDays = 0;
+						console.log(datepicker.disabledDays);
+						datepicker.onClose = function(){
+							datepicker.disabledDays = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="disabledDates">
+				<h2>disabledDates <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">You can disable spesific days</p>
+				<pre>
+					<code>
+						//Type: Date or Array of Dates<br>
+						//Default: null<br><br>
+						/*Set disabledDates*/<br>
+						datepicker.disabledDates = [new Date(),new Date(2015,6,20)];<br><br>
+						/*Get disabledDates*/<br>
+						console.log(datepicker.disabledDates);
+					</code>
+				</pre>
+				<button class="grey full" onclick="disabledDatesDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>This is not the same as <a href="#disabledDays">disabledDays</a></p>
+				<script>
+					function disabledDatesDemo(){
+						datepicker.unselectAll();
+						datepicker.disabledDates = [new Date(),new Date(2015,6,20)];
+						datepicker.setDate = new Date(2015,6,1);
+						console.log(datepicker.disabledDates);
+						datepicker.onClose = function(){
+							datepicker.disabledDates = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="today">
+				<h2>today <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">Show little line on todays date</p>
+				<pre>
+					<code>
+						//Type: Boolean<br>
+						//Default: true<br><br>
+						/*Set today*/<br>
+						datepicker.today = true;<br><br>
+						/*Get today*/<br>
+						console.log(datepicker.today);
+					</code>
+				</pre>
+				<button class="grey full" onclick="todayDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>This is not the same as <a href="#currentDate">currentDate</a></p>
+				<script>
+					function todayDemo(){
+						datepicker.unselectAll();
+						console.log(datepicker.today);
+						datepicker.onClose = function(){
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="daynames">
+				<h2>daynames <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">Show/hide daynames line</p>
+				<pre>
+					<code>
+						//Type: Boolean<br>
+						//Default: true<br><br>
+						/*Set daynames*/<br>
+						datepicker.daynames = false;<br><br>
+						/*Get daynames*/<br>
+						console.log(datepicker.daynames);
+					</code>
+				</pre>
+				<button class="grey full" onclick="daynamesDemo()">Let's try that</button>
+				<script>
+					function daynamesDemo(){
+						datepicker.unselectAll();
+						datepicker.daynames = false;
+						console.log(datepicker.daynames);
+						datepicker.onClose = function(){
+							datepicker.daynames = true;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="fullscreen">
+				<h2>fullscreen <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">Shows the datepicker fullscreen</p>
+				<pre>
+					<code>
+						//Type: Boolean<br>
+						//Default: false<br><br>
+						/*Set fullscreen*/<br>
+						datepicker.fullscreen = true;<br><br>
+						/*Get fullscreen*/<br>
+						console.log(datepicker.fullscreen);
+					</code>
+				</pre>
+				<button class="grey full" onclick="fullscreenDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>This feature is not made for inline or container</p>
+				<script>
+					function fullscreenDemo(){
+						datepicker.unselectAll();
+						datepicker.fullscreen = true;
+						datepicker.button = 'Close me';
+						console.log(datepicker.fullscreen);
+						datepicker.onClose = function(){
+							datepicker.fullscreen = false;
+							datepicker.button = null;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="locked">
+				<h2>locked <span>Setting</span> <a href="#index">Go up</a></h2>
+				<p class="description">Locks the datepicker (viewonlymode)</p>
+				<pre>
+					<code>
+						//Type: Boolean<br>
+						//Default: false<br><br>
+						/*Set locked*/<br>
+						datepicker.locked = true;<br><br>
+						/*Get locked*/<br>
+						console.log(datepicker.locked);
+					</code>
+				</pre>
+				<button class="grey full" onclick="lockedDemo()">Let's try that</button>
+				<script>
+					function lockedDemo(){
+						datepicker.unselectAll();
+						datepicker.locked = true;
+						console.log(datepicker.fullscreen);
+						datepicker.onClose = function(){
+							datepicker.locked = false;
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="selectedDates">
+				<h2>selectedDates <span>Status</span> <a href="#index">Go up</a></h2>
+				<p class="description">Returns all selected dates</p>
+				<pre>
+					<code>
+						/*Get selectedDates*/<br>
+						console.log(datepicker.selectedDates);
+					</code>
+				</pre>
+				<button class="grey full" onclick="selectedDatesDemo()">Let's try that</button>
+				<script>
+					function selectedDatesDemo(){
+						datepicker.unselectAll();
+						datepicker.onClose = function(){
+							console.log(datepicker.selectedDates);
+							datepicker.onClose = null;
+						}
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="isOpen">
+				<h2>isOpen <span>Status</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						/*Get isOpen*/<br>
+						console.log(datepicker.isOpen);
+					</code>
+				</pre>
+				<button class="grey full" onclick="isOpenDemo()">Let's try that</button>
+				<script>
+					function isOpenDemo(){
+						console.log(datepicker.isOpen);
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="show">
+				<h2>show() <span>Function</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						/*Show datepicker*/<br>
+						datepicker.show({<br>
+							today:false<br>
+						});
+					</code>
+				</pre>
+				<button class="grey full" onclick="showDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>You can pass all settings and callbacks as object</p>
+				<script>
+					function showDemo(){
+						datepicker.unselectAll();
+						datepicker.show({
+							today:false,
+							onClose:function(){
+								datepicker.onClose = null;
+								datepicker.today = true;
+							}
+						});
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="hide">
+				<h2>hide() <span>Function</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						/*Hide datepicker*/<br>
+						datepicker.hide();
+					</code>
+				</pre>
+				<button class="grey full">A bit hard to show that! But you get it :)</button>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="selectDate">
+				<h2>selectDate( Date, ignoreOnSelectEvent ) <span>Function</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Date<br>
+						datepicker.selectDate(new Date());
+					</code>
+				</pre>
+				<button class="grey full" onclick="selectDateDemo()">Let's try that</button>
+				<script>
+					function selectDateDemo(){
+						datepicker.unselectAll();
+						datepicker.selectDate(new Date());
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="unselectDate">
+				<h2>unselectDate( Date, ignoreOnSelectEvent ) <span>Function</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Date<br>
+						datepicker.unselectDate(new Date());
+					</code>
+				</pre>
+				<button class="grey full" onclick="unselectDateDemo()">Let's try that</button>
+				<script>
+					function unselectDateDemo(){
+						datepicker.unselectAll();
+						datepicker.selectDate(new Date())
+						datepicker.show();
+						setTimeout(function(){
+							datepicker.unselectDate(new Date());
+						},1000);
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="unselectAll">
+				<h2>unselectAll( ignoreOnSelectEvent ) <span>Function</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Unselect all<br>
+						datepicker.unselectAll();
+					</code>
+				</pre>
+				<button class="grey full" onclick="unselectAllDemo()">Let's try that</button>
+				<script>
+					function unselectAllDemo(){
+						datepicker.unselectAll();
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="onConfirm">
+				<h2>onConfirm <span>Callback</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Function<br>
+						datepicker.onConfirm = function(){<br>
+							alert('onConfirm')<br>
+						};
+					</code>
+				</pre>
+				<button class="grey full" onclick="onConfirmDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>The context(this) is the datepicker object</p>
+				<script>
+					function onConfirmDemo(){
+						datepicker.unselectAll();
+						datepicker.button = 'OK';
+						datepicker.onConfirm = function(){alert('onCofirm')};
+						datepicker.onClose = function(){
+							datepicker.onConfirm = null;
+							datepicker.button = null;
+							datepicker.onClose = null;
+						};
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="onClose">
+				<h2>onClose <span>Callback</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Function<br>
+						datepicker.onClose = function(){<br>
+							alert('onClose')<br>
+						};
+					</code>
+				</pre>
+				<button class="grey full" onclick="onCloseDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>The context(this) is the datepicker object</p>
+				<script>
+					function onCloseDemo(){
+						datepicker.unselectAll();
+						datepicker.onClose = function(){
+							alert('onClose');
+							datepicker.onClose = null;
+						};
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="onSelect">
+				<h2>onSelect <span>Callback</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Function<br>
+						datepicker.onSelect = function(checked){<br>
+							var state = (checked)?'selected':'unselected';<br>
+							alert(this.toLocaleDateString() + ' ' + state)<br>
+						};
+					</code>
+				</pre>
+				<button class="grey full" onclick="onSelectDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>The context(this) is the date. The first parameter is the un-/selected state as Boolean</p>
+				<script>
+					function onSelectDemo(){
+						datepicker.unselectAll();
+						datepicker.onSelect = function(checked){
+							var state = (checked)?'selected':'unselected';
+							alert(this.toLocaleDateString() + ' ' + state)
+						};
+						datepicker.onClose = function(){
+							datepicker.onSelect = null;
+							datepicker.onClose = null;
+						};
+						datepicker.show();
+					}
+				</script>
+			</div>
+
+			<div class="col-xs-12 col-md-6 block" id="onNavigation">
+				<h2>onNavigation <span>Callback</span> <a href="#index">Go up</a></h2>
+				<pre>
+					<code>
+						//Type: Function<br>
+						datepicker.onNavigation = function(){<br>
+							alert('Navigation happened!')<br>
+						};
+					</code>
+				</pre>
+				<button class="grey full" onclick="onNavigationDemo()">Let's try that</button>
+				<p><i class="fa fa-lightbulb-o hint"></i>The context(this) is the datepicker object.</p>
+				<script>
+					function onNavigationDemo(){
+						datepicker.onNavigation = function(){
+							alert('Navigation happened!');
+						};
+						datepicker.onClose = function(){
+							datepicker.onNavigation = null;
+						};
+						datepicker.show();
+					}
+				</script>
+			</div
+
+		</div>
+
+	</div>
+	<script src="docs/demo.js"></script>
+	<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>

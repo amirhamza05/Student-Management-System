@@ -48,42 +48,21 @@ class batch
  }
 
 public function num_array($st){
-  $num=array();
-  $n=0;
-  $c=0;
-  for($i=0; $i<strlen($st); $i++){
-    if($st[$i]==','){
-      array_push($num, $n);
-        $n=1;
-        $c=0;
-    }
-    else{
-            
-            $n=($n*$c)+(int)$st[$i];
-            $c=10;
-    }
-  }
+  $num=explode(',', $st);
   return $num;
  } 
 
  public function convert_arr($arr){
  //convert arr to string ex:a[2]={1,2} output: st="1,2";
    $st="";
-   $c=0;
-   $si=sizeof($arr);
-   foreach ($arr as $key => $value) {
-      $c++;
-      $s=$value;
-      $st=$st.$s;
-     if($si!=$c) $st=$st.' , ';
-   }
-return $st;
+   $st=implode(',', $arr);
+   return $st;
  } 
 
   public function batch_info(){
       $info=array();
       $sub=array();
-     $sql="select * from batch";
+     $sql="select * from batch ORDER BY id DESC";
      $res=$this->select($sql);
      while ($row=mysqli_fetch_array($res)) {
      	$id=$row['id'];
@@ -104,19 +83,26 @@ return $st;
          $day_index=$this->day_index();
          $mark=array();
          for($i=1; $i<=7; $i++)$mark[$i]=0;
+
          for($i=0; $i<sizeof($arr); $i++){
              $mark[$arr[$i]]=1;
          }
+
+         echo "<div class='day_header'>Select Day</div>
+    <div class='day_body'>";
+
          for($i=1; $i<=7; $i++){
            $day=$day_index[$i];
            if($mark[$i]==1){
-             echo "<input type='checkbox' name='batch_day[]' value='$i' checked> $day<br>";
+             echo "<b><input type='checkbox' name='batch_day[]' value='$i' checked> $day<br></b>";
            }
            else{
-             echo "<input type='checkbox' name='batch_day[]' value='$i'> $day<br>";
+             echo "<b><input type='checkbox' name='batch_day[]' value='$i'> $day<br></b>";
            }
 
          }
+
+         echo "</div>";
   }
 
 

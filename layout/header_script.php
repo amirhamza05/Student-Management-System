@@ -8,8 +8,10 @@ include "config/config.php";
 $db=new database();
 
 include 'script/program/program.php';
-
 include "script/site_content/site_content.php";
+include "script/payment/set_payment.php";
+
+
 $site=new site_content();
 
 
@@ -40,6 +42,9 @@ include 'script/payment/payment.php';
 $payment=new payment();
 $payment_info=$payment->get_payment_info();
 
+$set_payment_ob=new set_payment();
+$set_payment_info=$set_payment_ob->get_set_payment_list();
+
 include 'script/id_card/id_card.php';
 $id_card=new id_card();
 
@@ -55,11 +60,16 @@ include 'script/notice/notice.php';
 $notice=new notice();
 $notice_info=$notice->get_notice_info();
 
+include 'script/theme/theme.php';
+$theme=new theme();
+$theme_info=$theme->get_theme_info();
+
 include 'script/user/user.php';
 $id=$_SESSION['user'];
 $user_ob=new user($id);
 $user=$user_ob->get_user_info();
 $login_user=$user_ob->get_login_user();
+$user_id=$login_user['id'];
 }
 else{
 

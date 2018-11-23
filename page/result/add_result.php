@@ -1,6 +1,6 @@
 
 <style type="text/css">
-  .top-alert {
+  .top-alert { 
   position: fixed;
   top: 0px;
   width: 100%;
@@ -42,10 +42,11 @@
 
 
   .button_result{
-    background: #2c3e50;
+    background: var(--bg-color);
+    width: 31%;
     border-width: 0px;
     border-radius: 3%;
-    color: #ffffff;
+    color: var(--font-color);
     padding: 20px;
     font-weight: bold;
   }
@@ -54,17 +55,17 @@
 </style>
 
 
-<h2> Result Add, Show, Send SMS </h2>
-    
+
 <link rel="stylesheet" type="text/css" href="page/result/result.css">
 
-<div class="container">
+
   <div class="row">
     
     
-        <div class="dropdown">
+        <div class="dropdown" style="padding: 50px">
 
-            <select onchange="program()" class="dropdown-select-version select" id="program_select" name="options">
+          <div class="col-md-7" style="margin-right: -25px; margin-left: 25px;">
+            <select onchange="program()" class="select" id="program_select" name="options">
               <option value="0">--Select Program--</option>
         <?php  foreach ($program as $key => $value) {
               $id=$value['id'];
@@ -83,17 +84,20 @@
                 <option value="0"> --Select Exam-- </option>
             </select>
         </a>
-
+        </div>
+        <div class="col-md-5">
+ 
              <button id="btnn"  onclick="add_result()" class="button_result" style="margin-right: 4px;" title="Add Result" alt="Download"><span style="margin-right: 2px;" class="glyphicon glyphicon-plus"></span>Add Result</button>
 
              <button id="btnn"  onclick="show_result('yes')" class="button_result" style="" title="Show Result" alt="Show Result"><span style="margin-right: 4px;" class="glyphicon glyphicon-th-list"></span>Show Result</button>
 
              <button id="btnn"  onclick="send_sms()" class="button_result" style="" title="Send SMS" alt="Download"><span style="margin-right: 6px;" class="glyphicon glyphicon-envelope"></span>Send SMS</button>
+          </div>
         </div>
         
     
   </div>
-</div>
+
  
 
 

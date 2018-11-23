@@ -1,0 +1,3 @@
+[submodule "client-commons"]
+	path = client-commons
+	url = git@github.com:sphere-engine/client-commons.git

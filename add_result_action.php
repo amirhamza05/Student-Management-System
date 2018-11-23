@@ -88,22 +88,7 @@ if($mcq!="N/A" && $written!="N/A")$flag=1;
         
       </div>
 
-<style type="text/css">
-table{
-  margin-top: 10px;
-}
-  table, th, td {
-    border: 2px solid #D7DDE2;
-    background-color: #ffffff;
-    border-collapse: collapse;
-    padding: 5px;
-    }
-    th{
-      font-size: 15px;
-    }
 
- 
-</style>
 <table style="width: 100%">
   <center></center>
   <tr>
@@ -224,22 +209,7 @@ if($mcq_exam!="N/A" && $written_exam!="N/A")$flag=1;
         
       </div>
 
-<style type="text/css">
-table{
-  margin-top: 10px;
-}
-  table, th, td {
-    border: 2px solid #D7DDE2;
-    background-color: #ffffff;
-    border-collapse: collapse;
-    padding: 5px;
-    }
-    th{
-      font-size: 15px;
-    }
 
- 
-</style>
 <table style="width: 100%">
   <center></center>
   <tr>
@@ -270,7 +240,7 @@ table{
  <div class="box_body" id="ranklist_body">
 
 <!-- start datatable -->
-
+ 
 <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             
             <tr>
@@ -455,28 +425,13 @@ if($mcq!="N/A" && $written!="N/A")$flag=1;
  <div class="box_body">
   <center>
     <div style="font-weight: bold;font-size: 16px;">
-    <?php echo "$program_name"; ?><br/>
+        <?php echo "$program_name"; ?><br/>
         <?php echo "$subject_name"; ?><br/>
         <?php echo "$exam_name"; ?><br/>
         
       </div>
 
-<style type="text/css">
-table{
-  margin-top: 10px;
-}
-  table, th, td {
-    border: 2px solid #D7DDE2;
-    background-color: #ffffff;
-    border-collapse: collapse;
-    padding: 5px;
-    }
-    th{
-      font-size: 15px;
-    }
 
- 
-</style>
 <table style="width: 100%">
   <center></center>
   <tr>
@@ -558,3 +513,20 @@ else if(isset($_POST['send_sms_sending'])){
 }
 
 ?>
+
+<style type="text/css">
+table{
+  margin-top: 10px;
+}
+  table, th, td {
+    border: 2px solid #D7DDE2;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    padding: 5px;
+    }
+    th{
+      font-size: 15px;
+    }
+
+ 
+</style>

@@ -1,9 +1,7 @@
 <?php
 
 include "layout/header.php";
-
-$name=$login_user['uname'];
-echo "$name";
+include "page/index/dashboard.php";
 include "layout/footer.php";
 
 ?>

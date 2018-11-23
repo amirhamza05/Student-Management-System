@@ -41,8 +41,6 @@ public function get_printable_id($program_id,$batch_id,$student_id){
 	    $visit_student[$i]=0;
 	}
 
-
-
 	foreach ($this->program as $key => $value) {
 		$id=$value['id'];
 		if($id==$program_id || $program_id==0){
@@ -58,7 +56,6 @@ public function get_printable_id($program_id,$batch_id,$student_id){
 	}
 
 	
-
 	foreach ($this->student as $key => $value) {
 		$id=$value['id'];
 		$batch1=$value['batch'];
@@ -72,7 +69,7 @@ public function get_printable_id($program_id,$batch_id,$student_id){
 		}
 	}
 
-return $visit_student;
+ return $visit_student;
 }
 
 public function make_name($name){
@@ -80,9 +77,14 @@ public function make_name($name){
   return $name;
 }
 
+public function get_separate_id_card($student_id,$program_id,$batch_id){
+  
+
+}
+
 public function get_id_card($info){
 	foreach ($info as $key => $value) {
-	$name=$value['nick'];
+	$name=$value['name'];
 	$name=$this->make_name($name);
 	$id=$value['id'];
 	$photo=$value['photo'];
@@ -103,36 +105,35 @@ public function get_id_card($info){
  ?>
 
 <div class="card_box">
-	<div class="card_header"><div class="font_name">Youth Admission Care</div>Phone: +8801799398177</div>
-
+	<div class="card_header"><div class="font_name">Creative Admission Care</div>Phone: +8801799398177</div>
 	<div class="box_body">
-       
-
 	 	<img src="<?php echo "$photo"; ?>" class="img_card" align="right">
 	 	<div class="title">ID Card</div>
+        <div class="field">
+        	<div class="name_field">
+	 		<div class="id_field">Student Name : </div> <div class="inf"><b><?php echo "$name"; ?></b></div>
+			</div><div class="name_field">
+	 		<div class="id_field">Id Number : </div> <div class="inf"><b><?php echo "$id"; ?></b></div>
+			</div>
 
-<div class="field">
-<div class="name_field">
-	 	<div class="id_field">Student Name : </div> <div class="inf"><b><?php echo "$name"; ?></b></div>
-</div><div class="name_field">
-	 	<div class="id_field">Id Number : </div> <div class="inf"><b><?php echo "$id"; ?></b></div>
-</div><div class="name_field">	 	
-	 	<div class="id_field">Program :</div> <div class="inf"><b><?php echo "$program_name"; ?></b></div>
-</div><div class="name_field">	 	
-	 	<div class="id_field">Batch :</div> <div class="inf"><b><?php echo "$batch_name ($start - $end)"; ?></b></div>
-</div><div class="name_field">	 	
-	 	<div class="id_field">Duration :</div> <div class="inf"><b><?php echo "$duration"; ?></b></div>
-	 </div>
-</div>
-<center>
-	<div class="barcode_div">
+			<div class="name_field">	 	
+	 		<div class="id_field">Program :</div>
+	 		<div class="inf"><b><?php echo "$program_name"; ?></b></div>
+			</div>
+
+			<div class="name_field">	 	
+	 		<div class="id_field">Batch :</div> <div class="inf"><b><?php echo "$batch_name ($start - $end)"; ?></b></div>
+			</div>
+			<div class="name_field">	 	
+	 		<div class="id_field">Duration :</div> <div class="inf"><b><?php echo "$duration"; ?></b></div>
+	 		</div>
+		</div>
+		<center>
+		<div class="barcode_div">
 	 	<img src="barcode.php?text=<?php echo "$id"; ?>" class="barcode">
-	 </div>
-</center>
-	</div>
-
-	
-
+	 	</div>
+		</center>
+	</div> 
 </div>
  
 <?php }

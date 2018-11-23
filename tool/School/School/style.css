@@ -1,0 +1,146 @@
+.mainbody{
+	position: relative;
+	z-index: 1;
+	height: 260px;
+	width: 350px;
+	border-color: white;
+	margin: 0px;
+	border:1px solid blue;
+	background-color: #f2ede8;
+	border-radius: 2px;
+
+}
+.logo_div{
+	position: absolute;
+	z-index: 3;
+	height: 72px;
+	width: 70px;
+	background-color: #3498db;
+	float: left;
+	border-bottom-right-radius:  10px;
+	border-bottom-left-radius: 10px;
+	display: block;
+	
+}
+
+.logo{
+	height: 100%;
+	width: 100%;
+}
+.header{
+	z-index: 3;
+	height: 60px;
+	width: 280px;
+	background-color: #3498db;
+	float: right;
+}
+
+.school_name{
+	font-weight: bolder;
+	color: white;
+	padding-top: 5px;
+	font-size: 12px;
+}
+.school_details{
+	font-weight: bolder;
+	color: white;
+	padding-top: 5px;
+	font-size: 12px;
+	text-align: center;
+}
+.id_card{
+	position: absolute;
+	z-index: 2;
+	left: 40px;
+	top: 60px;
+	width: 310px;
+	height: 22px;
+	padding-right: 0px;
+	background-color: #e0d9d9;
+	border-bottom-left-radius: 10px;	
+	text-align: center;
+	font-weight: bolder;
+}
+
+.image_div{
+	position: absolute;
+	left: 10px;
+	top: 100px;
+	height: 130px;
+	width: 120px;
+	color:white;
+	z-index: 3;
+	border-radius: 10px;
+	border:2px solid white;
+}
+
+.image{
+	height: 130px;
+	width: 120px;
+	border-radius: 10px;
+}
+
+.student_details{
+	position: absolute;
+	left: 150px;
+	top: 90px;
+	width: 200px;
+	height: 100px;
+}
+.td1{
+	text-align: right;
+	font-size: 11px;
+	color: black;
+	font-weight: bold;
+}
+.td2{
+	text-align: left;
+	font-size: 11px;
+	color: blue;
+	font-weight: bold;
+}
+.signature_div{
+	position: absolute;
+	left: 0px;
+	top: 190px;
+	width: 350px;
+	height: 55px;
+	background-color: #e0d9d9;
+	z-index: 2;
+}
+.signature{
+	position: absolute;
+	left: 250px;
+	top: 200px;
+	width: 100px;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	color: blue;
+	font-size: 15px;
+	height: 20px;
+	z-index: 3;
+}
+.pri{
+	position: absolute;
+	left: 280px;
+	top: 223px;
+	font-weight: bolder;
+	font-size: 15px;
+	color: blue;
+	height: 25px;
+	z-index: 3;
+}
+
+.footer{
+	position: absolute;
+	top: 245px;
+	left: 0px;
+	width: 350px;
+	height: 15px;
+	background-color: #3498db;
+	color: white;
+	font-size: 10px;
+	font-weight: bolder;
+	text-align: center;
+}

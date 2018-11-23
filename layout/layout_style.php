@@ -12,6 +12,8 @@ include "header_script.php";
     <meta name="description" content="">
     <meta name="author" content="">
 
+
+
     <?php include 'header_lib.php'; ?>
 
  <script>
@@ -30,22 +32,42 @@ include "header_script.php";
 
 
     <!-- End Datatable Style Sheet -->
-
-        <script src="style/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+<script src="style/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function() {
             $(".knob").knob();
         });
     </script>
+<?php
+    $ut_info=$theme->get_theme($login_user['theme']);
+    $bg_color=$ut_info['bg_color'];
+    $sidebar_hover=$ut_info['sidebar_hover'];
+    $sidebar_list=$ut_info['sidebar_list'];
+    $sidebar_list_hover=$ut_info['sidebar_list_hover'];
+    $font_color=$ut_info['font_color'];
 
+?>
+
+ <style type="text/css">
+    :root {
+      --bg-color: <?php echo "$bg_color"; ?>;
+      --sidebar-hover: <?php echo "$sidebar_hover"; ?>;
+      --sidebar-list: <?php echo "$sidebar_list"; ?>;
+      --sidebar-list-hover: <?php echo "$sidebar_list_hover"; ?>;
+      --font-color: <?php echo "$font_color"; ?>;
+    } 
+ </style>
 
 
 
     <link rel="stylesheet" type="text/css" href="style/stylesheets/theme.css">
     <!-- <link rel="stylesheet" type="text/css" href="style/stylesheets/custom.css"> -->
-    <link rel="stylesheet" type="text/css" href="style/stylesheets/premium.css">
+    
 
 </head>
+
+
+
 <body class=" theme-blue">
 
     <!-- Demo page code -->

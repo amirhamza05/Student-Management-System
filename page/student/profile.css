@@ -4,7 +4,7 @@
 	padding: 15px;
 	font-weight: bold;
 }
-
+ 
 
 /****** Searchable container */
 
@@ -97,7 +97,7 @@ table{
 }
 
 form .form-group {
-    position: relative;
+    
     margin-left: 0px !important;
     margin-right: 0px !important;
 }

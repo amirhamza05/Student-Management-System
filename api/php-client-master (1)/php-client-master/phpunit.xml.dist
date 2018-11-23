@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         bootstrap="vendor/autoload.php"
+>
+    <testsuites>
+        <testsuite name="Test Suite">
+            <file phpVersion="5.4.0" phpVersionOperator=">=">./tests/CompilersClientV3Test.php</file>
+            <file phpVersion="5.5.0" phpVersionOperator=">=">./tests/CompilersClientV3ExceptionsNewTest.php</file>
+            <file phpVersion="5.4.0" phpVersionOperator=">=">./tests/CompilersClientV3ExceptionsOldTest.php</file>
+            <file phpVersion="5.4.0" phpVersionOperator=">=">./tests/ProblemsClientV3Test.php</file>
+            <file phpVersion="5.5.0" phpVersionOperator=">=">./tests/ProblemsClientV3ExceptionsNewTest.php</file>
+            <file phpVersion="5.4.0" phpVersionOperator=">=">./tests/ProblemsClientV3ExceptionsOldTest.php</file>
+            
+            <file phpVersion="5.4.0" phpVersionOperator=">=">./tests/CompilersClientV4Test.php</file>
+            <file phpVersion="5.5.0" phpVersionOperator=">=">./tests/CompilersClientV4ExceptionsNewTest.php</file>
+            <file phpVersion="5.4.0" phpVersionOperator=">=">./tests/CompilersClientV4ExceptionsOldTest.php</file>
+            <file phpVersion="5.4.0" phpVersionOperator=">=">./tests/ProblemsClientV4Test.php</file>
+            <file phpVersion="5.5.0" phpVersionOperator=">=">./tests/ProblemsClientV4ExceptionsNewTest.php</file>
+            <file phpVersion="5.4.0" phpVersionOperator=">=">./tests/ProblemsClientV4ExceptionsOldTest.php</file>
+        </testsuite>
+    </testsuites>
+    
+    <filter>
+    	<blacklist>
+    		<exclude>
+    		</exclude>
+    	</blacklist>
+        <whitelist>
+            <directory>src/</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="build/coverage"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+    </logging>
+    
+</phpunit>

@@ -1,0 +1,26 @@
+{
+  "name": "datepickk",
+  "description": "Flexbox/js datepicker",
+  "main": "src/js/datepickk.js",
+  "authors": [
+    "Carsten Jacobsen"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "datepicker",
+    "js",
+    "flexbox"
+  ],
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "homepage": "https://crsten.github.io/datepickk",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

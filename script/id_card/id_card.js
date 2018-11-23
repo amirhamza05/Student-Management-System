@@ -99,10 +99,14 @@ function preview_id_card(){
             batch_id:batch_id,
             student_id:student_id
         },
+        beforeSend: function() {
+              loader("preview_id_card");
+          },
         success: function(response) {
           //alert("Yay!");
-            
+            close_loader("preview_id_card");
             document.getElementById("preview_id_card").innerHTML =response;
+            
             
         }
     });
@@ -116,4 +120,11 @@ link=get_link();
 //alert("hey");
  window.open(link, 'newwindow', 'width=900,height=600'); 
               return false;
+}
+
+function loader(divname){
+  document.getElementById(divname).innerHTML = "<center><img style='margin-top:35px' src='upload/site_content/processing1.gif' /></center>";
+}
+function close_loader(divname){
+  document.getElementById(divname).innerHTML = "";
 }

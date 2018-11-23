@@ -10,13 +10,13 @@
     page-break-inside: avoid;
   }
 }
+
 .box{
   height: 100%;
   padding: 15px;
-
   /*overflow: auto;*/
-  
 }
+
 .card_box{
 	background: #eeeeee;
 	height: 230px;
@@ -131,16 +131,13 @@ if(isset($_GET['program'])) {
 }
 
 //$batch_id=$site->get_encode($batch_id);
-
 if($batch_id==-1 || $student_id==-1 || $program_id==-1){
  echo "<script>window.close();</script>";
 }
 else{
-
-
 $info=$student_ob->get_select_student($program_id,$batch_id,$student_id);
-
 $id_card->get_id_card($info);
+
 ?>
 
 </div>

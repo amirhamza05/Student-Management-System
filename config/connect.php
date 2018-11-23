@@ -28,10 +28,31 @@ public function connection(){
      }
 }
 
+public function date(){
+  return $this->get_now_time();
+}
+
+public function get_now_time(){
+  date_default_timezone_set('Asia/Dhaka');
+  $now=date("Y-m-d H:i:s", time());
+  return $now;
+ }
+
 
 public function select($query){
 return $this->result=mysqli_query($this->conn, $query);
 }
+
+public function process_mysql_array($info){
+  $res=array();
+  $c=0;
+  foreach ($info as $key => $value) {
+    if($c%2==1)$res[$key]=$value;
+    $c++;
+  }
+  return $res;
+}
+
 
 public function action_link($table){
   $index["batch"]="batch_list";
@@ -39,9 +60,11 @@ public function action_link($table){
   $index["program"]="program_list";
   $index["subject"]="subject_list";
   $index['exam']="exam_list";
+  $index['theme']="theme";
 
 return $index[$table];
 }
+
 
   public function insert_sql($arr,$table){
     $sql="";
@@ -51,7 +74,6 @@ return $index[$table];
 
     return $sql;
   }
-
 
 
 public function Update_sql($arr,$table){
@@ -96,9 +118,9 @@ public function Update_sql($arr,$table){
    $res=$this->select($sql);
     //echo "$sql";
     if($res)$flag=1;
-if($table=="payment"){
-   if($flag==0)echo("Error description: " . mysqli_error($this->conn));
-}
+    if($table=="payment"){
+      if($flag==0)echo("Error description: " . mysqli_error($this->conn));
+    }
 
 else if($table=="student" && $action=="insert"){
   $id=$info['id'];

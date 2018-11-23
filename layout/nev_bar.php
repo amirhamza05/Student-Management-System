@@ -4,46 +4,51 @@
 ===============================
 -->
 
+<style type="text/css">
+  .profile_nav{
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border: 1px solid;
+    max-height: 45px;
+    overflow: hidden;
+    max-width: 100px;
+    border-color: var(--font-color); 
+    padding: 13px;
+    border-radius: 7%;
+    margin-right: 5px;
+    width: 100px;
+    box-shadow: 2px 3px var(--font-color);
+  }
+</style>
+
 <?php 
 
 $name=$login_user['uname'];
 
 ?>
- <div class="navbar navbar-default" role="navigation" style="position: auto;" >
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Youth Admission Care</span></a>
-        </div>
-        <div class="navbar-collapse collapse" style="height: 1px; margin-right: 15px;">
-           <ul id="main-menu" class="nav navbar-nav navbar-right">
-            <li class="dropdown hidden-xs">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo "$name"; ?>
-                    <i class="fa fa-caret-down"></i>
-                </a>
+ <div class="navbar navbar-default" role="navigation" style="position: auto; border-width: 0px 0px 1px 0px; border-color: rgba(0,0,0,0.2); padding: 10px;" >
 
-              <ul class="dropdown-menu">
-                <li><a href="./">My Account</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Admin Panel</li>
-                <li><a href="./">Users</a></li>
-                <li><a href="./">Security</a></li>
-                <li><a tabindex="-1" href="./">Payments</a></li>
-                <li class="divider"></li>
-                <li><a tabindex="-1" href="Logout.php">Logout</a></li>
-              </ul>
-            </li>
-          </ul>
+        <div class="navbar-headerr"  style="position: auto; border-width: 0px;">
+
+        <ul class="nav navbar-nav navbar-left">  
+          <span onclick="action_side_bar()" class="sidebar-toggle-action">
+          <button  class="btn_toggle"><i class="fa fa-bars" id="icon_div"></i></button>
+          </span>
+
+          <a class="" href="index.php"><span class="navbar-brand"  style="color:var(--font-color)"><font> TechSerm Education Software</font></span></a>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <span class="sidebar-toggle-action" style="border-radius: 100%">
+          <button style="border-radius: 100%" title="Student ID Find" class="btn_toggle"><i class="fa fa-flag" id=""></i></button>
+           </span>
           
+        </ul>
+        </div>
 </div>
 
-                                    <style type="text/css">
-                                      .mainbody {
+<style type="text/css">
+
+.mainbody {
     background:#f0f0f0;
 }
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
@@ -55,6 +60,24 @@ $name=$login_user['uname'];
   z-index: 20;
   margin-left: -15px;
   margin-right: -15px;
+}
+
+.navbar_button{
+  padding: 10px !important;
+  border-radius: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 10px;
+  border-width: 0px;
+}
+
+.navbar_button:hover{
+  padding: 10px !important;
+  border-width: 0px;
+}
+.navbar_button:active{
+  padding: 10px !important;
+  border-width: 0px;
 }
 
 /* Flip around the padding for proper display in narrow viewports */
@@ -111,12 +134,24 @@ overflow: hidden;
     position: absolute;
 }
 
+              </style>
 
-                                    </style>
-
-            
-           
         </div>
   </div>
 
 
+<script type="text/javascript">
+  function action_side_bar(){
+    div=document.getElementById('content');
+    icon_div=document.getElementById('icon_div');
+    class_name=div.className;
+    if(class_name=='content_with_sidebar'){
+      div.className = 'content';
+      icon_div.className='fa fa-bars';
+    }
+    else{
+      div.className = 'content_with_sidebar';
+      icon_div.className='fa fa-times';
+    }
+  }
+</script>
