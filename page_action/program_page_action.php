@@ -243,7 +243,7 @@ if(isset($_POST['payment_update_area'])){
    
 
 ?>
-    <b>Fee:</b> <input id="fee_input_<?php echo $id; ?>" type="text" value="<?php echo "$fee" ?>" name="">
+    <b>Fee:</b> <input id="fee_input_<?php echo $id; ?>" type="number" value="<?php echo "$fee" ?>" name="">
     <div style="margin-top: 10px;"></div>
     <center>
       <button class="btn btn-md btn-block btn_payment_update" onclick="update_payment_save(<?php echo $id; ?>)"><b>Update Fee</b></button>
@@ -384,6 +384,17 @@ if(isset($_POST['payment_info'])){
   
 }
 
+.offer:hover {
+      -webkit-transform: scale(1.1); 
+      -moz-transform: scale(1.1); 
+      -ms-transform: scale(1.1); 
+      -o-transform: scale(1.1); 
+      transform:rotate scale(1.1); 
+      -webkit-transition: all 0.4s ease-in-out; 
+      -moz-transition: all 0.4s ease-in-out; 
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+  }
 .shape{    
     border-style: solid; border-width: 0 70px 40px 0; float:right; height: 0px; width: 0px;
   -ms-transform:rotate(360deg); /* IE 9 */

@@ -35,6 +35,7 @@ function get_program_form(type, id = 0) {
     get_ajax(action_data, data);
 }
 
+
 function select_year(pid){
     year=get_value("select_year");
     var data1 = {
