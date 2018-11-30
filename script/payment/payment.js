@@ -40,9 +40,7 @@ function save(total,paid,due,date,id){
            document.getElementById("sucess_payment").innerHTML =response;
            document.getElementById("meney_receipt").innerHTML="<button class='btn btn-primary' id='print_money_receipt()'>Print Last Money Receipt</button>";
            update_field();
-
-
-        }
+        } 
     });
 }
 

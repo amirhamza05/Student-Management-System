@@ -53,6 +53,16 @@ public function process_mysql_array($info){
   return $res;
 }
 
+public function get_sql_array($sql){
+  $info=array();
+  $res=$this->select($sql);
+  while($row=mysqli_fetch_array($res)){
+      $sub=array();
+      $sub=$this->process_mysql_array($row);
+      array_push($info, $sub);
+   }
+   return $info;
+}
 
 public function action_link($table){
   $index["batch"]="batch_list";

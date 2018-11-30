@@ -100,6 +100,89 @@ return $info;
  } 
 
 
+public function get_separate_program_info($select_value="*",$program_id){
+  $sql="select $select_value from program where id=$program_id";
+  $info=$this->db->get_sql_array($sql);
+  if(isset($info[0]))$info=$info[0];
+  return $info;
+}
+
+public function get_program_type_option($program_id){
+   $info=$this->get_separate_program_info("type",$program_id);
+   $type=$info['type'];
+   if($type==1 || $type==2)echo "<option value='1'>Admission Fee</option>";
+   if($type==2)echo "<option value='2'>Monthly Fee</option>";
+}
+
+function get_payment_month_status($info,$condition=""){
+
+  if($condition==""){
+    $student_id=$info['student_id'];
+    $year=(int)$info['year'];
+    $month=$info['month'];
+    $program_id=$info['program_id'];
+    $type=$info['type'];
+    if($type==1){
+      $condition="student_id=$student_id and program_id=$program_id and type=1";
+   }
+    else{
+      $condition="student_id=$student_id and program_id=$program_id and month=$month and year=$year";
+ }
+}
+
+  
+
+  $sql="select * from student_payment where $condition";
+  
+  $info=$this->db->get_sql_array($sql);
+  if(!isset($info[0]))return -1;
+  
+  $res=array();
+
+  $info=$info[0];
+
+  $res['payment_id_info']=$info;
+  
+  $payment_id=$info['id'];
+  $total_fee=$info['total_fee'];
+  $pay=0;
+
+  $sql="select SUM(pay) from receive_payment where payment_id=$payment_id";
+  
+  $info=$this->db->get_sql_array($sql);
+  $info=$info[0];
+  if($info["SUM(pay)"]!="")$pay=$info["SUM(pay)"];
+
+  $paid=0;
+  $due=$total_fee-$pay;
+  if($due<=0)$paid=1;
+  $res['total_fee']=$total_fee;
+  $res['paid']=$paid;
+  $res['total_pay']=$pay;
+  $res['due']=$due;
+  $res['payment_id']=$payment_id;
+
+ 
+return $res;
+
+}
+
+
+function sum_of_payment(){
+  $sql="SELECT SUM(pay) FROM receive_payment where date='2018-11-15 00:00:00'";
+  $info=$this->db->get_sql_array($sql);
+}
+
+
+public function conver_string_table_id($st,$table){
+  $sql="select * from batch where id in($st)";
+  $info=$this->db->get_sql_array($sql);
+  echo "<pre>";
+  print_r($info);
+  echo "</pre>";
+}
+
+
 public function select_subject($pro_id=-1){
        $subject=$this->subject;
        $info=$this->get_program_info();
@@ -183,6 +266,35 @@ public function option_subject($program_id){
     echo "<option value='$id'>$name</option>";
   }
 }
+
+
+
+public function get_program_batch($program_id){
+  $sql="select batch from program where id=$program_id";
+  $info=$this->db->get_sql_array($sql);
+  $info=array_unique(explode(',', $info[0]['batch']));
+  $res=array();
+  foreach ($info as $key => $value) {
+    $sql="select * from batch where id=$value";
+    $sub=$this->db->get_sql_array($sql);
+    array_push($res, $sub[0]);
+  }
+  return $res;
+}
+
+
+
+public function get_select_option_batch($program_id){
+  $info=$this->get_program_batch($program_id);
+  print_r($info);
+  foreach ($info as $key => $value) {
+    $id=$value['id'];
+    $name=$value['name'];
+    echo "<option value='$id'>$name</option>";
+  }
+}
+
+
  
 public function select_batch_option($pro_id){
    $info=$this->get_program_info();

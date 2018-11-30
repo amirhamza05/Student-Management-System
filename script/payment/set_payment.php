@@ -43,26 +43,67 @@ class set_payment {
 
   public function get_set_payment_list_by_id($program_id){
   	
-    $info=$this->get_set_payment_list();
-
-    
+    $sql="select * from set_payment where program_id=$program_id ORDER BY id DESC";
+    $info=$this->db->get_sql_array($sql);
     $res=array();
   	foreach ($info as $key => $value) {
-  		$id=$value['id'];
-  		$pid=$value['program_id'];
-  		if($pid==$program_id){
-        $per=$this->check_date_interver($this->program_info[$program_id],$value['year'],$value['month']);
-        if($per==1)$res[$id]=$value;
-        
-      }
+      $per=$this->check_date_interver($program_id,$value['year'],$value['month']);
+      $value['month_name']=$this->get_month_name($value['month']);
+      if($per==1)array_push($res, $value);
   	}
-
   	return $res;
   }
 
- public function check_date_interver($program_info,$year,$month){
-  $start=$program_info['start'];
-  $end=$program_info['end'];
+  public function get_set_payment_by_id($condition,$data="*"){
+    $sql="select $data from set_payment where  $condition";
+    $info=$this->db->get_sql_array($sql);
+    $info=$info[0];
+    return $info;
+  }
+  
+  public function get_payment_list($payment_id){
+    $sql="select * from receive_payment where  payment_id=$payment_id";
+    $info=$this->db->get_sql_array($sql);
+    return $info;
+  }
+
+ public function get_payment_receive_list($condition){
+  $sql="select id from student_payment where  $condition ORDER by id DESC";
+  $info=$this->db->get_sql_array($sql);
+  $res=array();
+  $condition="";
+  foreach ($info as $key => $value) {
+    $payment_id=$value['id'];
+    array_push($res, $payment_id);
+  }
+  $condition=implode(',',$res);
+  if($condition=="")return $info;
+
+  $sql="
+    select receive_payment.*,student_payment.program_id,student_payment.month,student_payment.year,student_payment.type,program.name
+    from receive_payment 
+    INNER JOIN student_payment ON receive_payment.payment_id=student_payment.id 
+    INNER JOIN program ON program.id=student_payment.program_id
+    where receive_payment.payment_id IN ($condition) ORDER by receive_payment.id DESC";
+  
+
+  $info=$this->db->get_sql_array($sql);
+
+  $sql="select id from student_payment where  $condition ORDER by id DESC";
+
+  return $info;
+ }
+
+
+  public function get_student_payment_list($student_id,$program_id){
+      $info=$this->get_set_payment_list_by_id($program_id);
+      return $info;
+  }
+
+ public function check_date_interver($program_id,$year,$month){
+  $p_info=$this->program_ob->get_separate_program_info("start,end",$program_id);
+  $start=$p_info['start'];
+  $end=$p_info['end'];
      $info=$this->get_month_list($start,$end);
      foreach ($info as $key => $value) {
         $year1=$key;

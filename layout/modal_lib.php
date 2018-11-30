@@ -115,11 +115,14 @@
 </style>
 
 <script type="text/javascript">
-    function modal_open(type,header="Header"){
-        if(type=="sm")modal_sm("open",header);
-        else if(type=="md")modal_md("open",header);
-        else if(type=="lg")modal_lg("open",header);  
+    function modal_open(type,header="Header",permission="open"){
+        
+        if(type=="sm")modal_sm(permission,header);
+        else if(type=="md")modal_md(permission,header);
+        else if(type=="lg")modal_lg(permission,header);  
+
     }
+
 
     function modal_sm(permission,header){
         modal_ob=$("#modal_sm");

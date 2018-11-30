@@ -89,20 +89,10 @@ public function get_url_root($sub_str){
 
 
  public function myprint_r($my_array) {
-    if (is_array($my_array)) {
-        echo "<center><table border=1 cellspacing=0 cellpadding=3 width=100%>";
-        echo '<tr><td colspan=2 style="background-color:#333333; padding:1px;"><strong><font color=white>array</font></strong></td></tr>';
-        foreach ($my_array as $k => $v) {
-                echo '<tr><td valign="top" style="width:40px;background-color:#F0F0F0;">';
-                echo '<strong>' . $k . "</strong></td><td>";
-                $this->myprint_r($v);
-                echo "</td></tr>";
-        }
-        echo "</table></center>";
-        return;
-    }
-    echo $my_array;
-}
+    echo "<pre>";
+    print_r($my_array);
+    echo "</pre>";
+  }
 
 public function array_to_string($arr){
  $st="";

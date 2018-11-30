@@ -98,10 +98,32 @@ public function get_separate_program_list($student_id){
 return $info;
 }
 
+
+
+public function get_admit_program_option($student_id){
+   $sql="select * from admit_program  where student_id= '$student_id'";
+   $info=$this->db->get_sql_array($sql);
+   return $info;
+}
+
+public function get_student_program_option($student_id){
+  $sql="select admit_program.program_id,program.name from admit_program LEFT JOIN program ON admit_program.program_id = program.id WHERE admit_program.student_id='$student_id'";
+  $info=$this->db->get_sql_array($sql);
+
+  foreach ($info as $key => $value) {
+        $program_id=$value['program_id'];
+        $program_name=$value['name'];
+        echo "<option value='$program_id'>$program_name</option>";
+  }
+  return $info;
+}
+
+
+
 public function get_program_list(){
    $info=array();
    $sub=array();
-   $sql="select * from admit_program ORDER BY id DESC;";
+   $sql="select * from admit_program ORDER BY id DESC";
    $res=$this->select($sql);
    while($row=mysqli_fetch_array($res)){
       $id=$row['id'];

@@ -1,3 +1,5 @@
+
+<?php
 if(isset($_POST['student_profile'])){
   $per=$_POST['student_profile'];
   $id=$_POST['student_id'];
