@@ -243,9 +243,9 @@ public function select_batch($pro_id=-1){
         echo "<input type='checkbox' name='batch[]' value='$id' checked> $name ( $start - $end )<br>";
        }
     }
-
-
 }
+
+
 
 public function select_program(){
    $info=$this->get_program_info();
@@ -305,6 +305,7 @@ public function select_batch_option($pro_id){
       $end=$value['end'];
       echo "<option value='$id'>$name ( $start - $end )</option>";
    }
+
 
 }
 

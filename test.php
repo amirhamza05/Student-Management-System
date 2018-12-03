@@ -1,5 +1,5 @@
 
-<?php for($i=0; $i<1; $i++){ ?>
+<?php for($i=0; $i<3; $i++){ ?>
 
 <div class="money_recept">
   <div class="money_recept_header" >

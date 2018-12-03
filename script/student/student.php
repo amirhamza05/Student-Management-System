@@ -106,10 +106,15 @@ public function get_admit_program_option($student_id){
    return $info;
 }
 
-public function get_student_program_option($student_id){
+
+public function get_student_program_info($student_id){
   $sql="select admit_program.program_id,program.name from admit_program LEFT JOIN program ON admit_program.program_id = program.id WHERE admit_program.student_id='$student_id'";
   $info=$this->db->get_sql_array($sql);
+  return $info;
+}
 
+public function get_student_program_option($student_id){
+  $info=$this->get_student_program_info($student_id);
   foreach ($info as $key => $value) {
         $program_id=$value['program_id'];
         $program_name=$value['name'];
@@ -117,8 +122,6 @@ public function get_student_program_option($student_id){
   }
   return $info;
 }
-
-
 
 public function get_program_list(){
    $info=array();
@@ -134,7 +137,6 @@ return $info;
 }
 
 
-
 public function cheikh_student($program_id,$student_id){
   $info=$this->get_student_info();
   $info=$info[$student_id]['program_list'];
@@ -146,9 +148,26 @@ public function cheikh_student($program_id,$student_id){
   return 0;
 }
 
+public function select_pending_program_by_student($student_id){
+  $sql="select DISTINCT(program_id) from admit_program where student_id=$student_id"; 
+  $info=$this->db->get_sql_array($sql);
+  $admit_program=array();
+  foreach ($info as $key => $value){
+    array_push($admit_program, $value);
+  }
+ 
+  $people = array(3,20,2);
+  $criminals = array( 2, 4, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+  $fastfind = array_diff($people,$criminals);
+   echo "<pre>";
+   print_r($fastfind);
+   echo "</pre>";
+}
+
+
 public function select_program_by_student($s_id){
    $info=$this->program_ob->get_program_info();
-  
+   
    foreach ($info as $key => $value) {
       $id=(int)$value['id'];
       $student_id1=(int)$s_id;
