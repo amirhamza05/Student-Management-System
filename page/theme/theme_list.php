@@ -50,7 +50,7 @@ foreach ($theme_info as $key => $value) {
 
 
 <script type="text/javascript">
-	function fun(uid,theme_id){
+	function themes_select(uid,theme_id){
 
 		$.ajax({
           type: 'POST',
@@ -74,7 +74,7 @@ foreach ($theme_info as $key => $value) {
 <input type="text" name="" id="color_id" hidden="">
 	<div class="col-md-3 col-sm-3" style="margin-top: 15px; margin-right: 0px;">
 		<div class="theme">
-			<div class="header_theme" style="background-color: <?php echo "$bg_color"; ?>; color: <?php echo "$font_color"; ?>"onclick="fun(<?php echo "$uid,$id"; ?>)" >
+			<div class="header_theme" style="background-color: <?php echo "$bg_color"; ?>; color: <?php echo "$font_color"; ?>"onclick="themes_select(<?php echo "$uid,$id"; ?>)" >
 			<center>	
 			<?php echo "$name"; ?>
 			<?php

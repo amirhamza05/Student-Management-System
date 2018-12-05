@@ -40,6 +40,14 @@ function get_value(div){
 	return val;
 }
 
+function set_html(div,val){
+  document.getElementById(div).innerHTML=val;
+}
+
+function set_value(div,val){
+  document.getElementById(div).value=val;
+}
+
 function get_checkbox_value(field_name){
   var checkboxes = document.getElementsByName(field_name);
   var vals = "";

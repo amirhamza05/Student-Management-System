@@ -48,9 +48,12 @@ else if(isset($_POST['view'])){
 }
 
 else if(isset($_POST['overview'])){
+	
 	$program_id=$_POST['overview'];
+
 	$program=$program[$program_id];
 	$program_name=$program['name'];
+
 	$batch_id=$_POST['batch_id_ov'];
 	$subject=$program['subject_string'];
 	$admission_fee=$program['fee'];
@@ -131,8 +134,7 @@ else if(isset($_POST['student_list'])){
 	$program_id=$_POST['student_list'];
 	$batch_id=$_POST['batch_id'];
 	$batch_id=($batch_id==-1)?0:$batch_id;
-	
-	$info=$student_ob->get_program_student($program_id,$batch_id);
+	$info= $student_ob->get_student_list($program_id,$batch_id);
    ?>
 
 <table id="datatable" style="width: 100%">
@@ -149,21 +151,18 @@ else if(isset($_POST['student_list'])){
 
 	
       foreach ($info as $key => $value) {
-      	$id=$value['id'];
+      	$id=$value['student_id'];
+      	$value1=$value;
+
+      	$value=$student[$id];
       	$name=$value['name'];
       	$father_name=$value['father_name'];
       	$mother_name=$value['mother_name'];
         $img=$value['photo'];
         $nick=$value['nick'];
-       
-        foreach ($value['program_list'] as $key => $val) {
-        	$pro_id=$val['program_id'];
-        	$batch_id=$val['batch_id'];
-        	
-        	if($program_id==$pro_id)break;
-        }
-       
+        $batch_id=$value1['batch_id'];
         $batch_name=$batch[$batch_id]['name'];
+
 	 ?>
 	<tr class="tr_list" onclick="go_to_profile(<?php echo "$id"; ?>)">
 		<td class="student_td_2"><?php echo "$id"; ?></td>

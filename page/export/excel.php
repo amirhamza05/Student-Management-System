@@ -44,24 +44,15 @@ table#t01 {
   <?php
   //print_r($student);
 $c=0;
-  foreach ($student as $key => $value) {
-    # code...
-  $c++;
-  if($c>20)break;
-  $name=$value["name"];
-  $nick=$value["nick"];
-  $id=$value["id"];
-  $student_mobile=$value["personal_mobile"];
-  $program_name=$program[$value["program"]]["name"];
-  $batch_name=$batch[$value["batch"]]["name"];
+  for($c=0; $c<10; $c++) {
 
     ?>
   <tr>
-    <td><?php echo "$id"; ?></td>
-    <td><?php echo "$name"; ?></td>
-    <td><?php echo "$student_mobile"; ?></td>
-    <td><?php echo "$program_name"; ?></td>
-    <td><?php echo "$batch_name"; ?></td>
+    <td><?php echo "$c"; ?></td>
+    <td><?php echo "name"; ?></td>
+    <td><?php echo "student_mobile"; ?></td>
+    <td><?php echo "program_name"; ?></td>
+    <td><?php echo "batch_name"; ?></td>
   </tr>
   <?php } ?>
 </table>
@@ -75,8 +66,19 @@ $c=0;
 
 <?php
 
- header('Content-Type: application/xls');
-header('Content-Disposition: attachment; filename=download4.xls');
+header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+header("Content-Disposition: attachment;filename=\"filename.xlsx\"");
+header("Cache-Control: max-age=0");
 
+/** Error reporting */
+error_reporting(E_ALL);
 
+/** Include path **/
+ini_set('include_path', ini_get('include_path').';../Classes/');
+
+/** PHPExcel */
+include 'PHPExcel.php';
+
+/** PHPExcel_Writer_Excel2007 */
+include 'PHPExcel/Writer/Excel2007.php';
 ?>

@@ -73,6 +73,15 @@ public function valid_mobile_number($val){
   }
 
 
+
+public function get_student_list($program_id,$batch_id=0){
+  if($batch_id==0)$sql="select * from admit_program where program_id=$program_id";
+  else $sql="select * from admit_program where program_id=$program_id and batch_id=$batch_id";
+  $info=$this->db->get_sql_array($sql);
+ return $info;
+}
+
+
 public function process_array($info){
   $res=array();
   $c=0;
@@ -235,83 +244,11 @@ public function select_program_by_student($s_id){
     return $res_info;
   }
 
- public function get_program($program_id){
-    $info=$this->get_student_info();
-    $res_info=array();
-    foreach ($info as $key => $value) {
-      $id=$value['id']; 
-      $program=$value['program'];
-      $per=$this->cheikh_student_program($id,$program_id);
-      if($per==1){
-        $res_info[$id]=$value;
-      }
-    }
-    return $res_info;
-  }
 
- public function get_program_batch($program_id,$batch_id){
-    $info=$this->get_student_info();
-    $res_info=array();
-    
-    foreach ($info as $key => $value) {
-      $id=$value['id'];
-      $per=$this->cheikh_student_batch($id,$program_id,$batch_id);
-       if($per==1)$res_info[$id]=$value; 
-    }
-  return $res_info;
-  }
-
-public function get_student($student_id){
-  $info=$this->get_student_info();
-    $res_info=array();
-    foreach ($info as $key => $value) {
-      $id=$value['id'];
-      if($id==$student_id){
-        $res_info[$id]=$value;
-      }
-    }
-  return $res_info;
-}
-
-public function get_program_student($program_id,$batch_id=0){
-    
-    $info=$this->get_student_info();
-    $res=array();
-
-    $res=$this->get_program($program_id);
-    if($batch_id!=0)$res=$this->get_program_batch($program_id,$batch_id);
-    return $res;
-}
-
-public function get_select_student($program_id,$batch_id=0,$student_id=0){
-    $info=$this->get_student_info();
-    $res=array();
-    
-    if($student_id>0){
-       $res=$this->get_student($student_id);
-    }
-    else{
-
-      if($program_id==0 && $batch_id==0){
-        
-         $res=$info;
-      }
-      else if($program_id==0 && $batch_id>0){
-         $res=$this->get_batch($batch_id);
-      }
-      else if($program_id>0 && $batch_id==0){
-         $res=$this->get_program($program_id);
-      }
-      else if($program_id>0 && $batch_id>0){
-         $res=$this->get_program_batch($program_id,$batch_id);
-      }
-    }
-return $res;
-}
 
 
 public function get_total_student($program_id,$batch_id){
-  $info=$this->get_program_student($program_id,$batch_id);
+  $info=$this->get_student_list($program_id,$batch_id);
   return count($info);
 }
 
