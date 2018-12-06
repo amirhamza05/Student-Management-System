@@ -6,6 +6,28 @@ if(isset($_POST['select_program'])){
     $program_ob->select_batch_option($program_id);
 }
 
+if(isset($_POST['save_attend'])){
+	$info=$_POST['save_attend'];
+	$program_id=$info['program_id'];
+	$date=$info['date'];
+	$attend_list=$info['student_list'];
+	foreach ($attend_list as $key => $value) {
+		$student_id=$value['student_id'];
+		$status=$value['status'];
+        $data['student_id']=$student_id;
+        $data['program_id']=$program_id;
+        $data['date']=$date;
+        $data['status']=$status;
+        $ch_info=$attend_ob->get_attendence_info($program_id,$student_id,$date);
+        $action="insert";
+        if($ch_info!=-1){
+        	$action="update";
+        	$data['id']=$ch_info['id'];
+        }
+        $db->sql_action("student_attendence",$action,$data,"no");
+	}
+	
+}
 
 if(isset($_POST['view_attend'])){
 	$info=$_POST['view_attend'];
@@ -16,6 +38,7 @@ if(isset($_POST['view_attend'])){
 	$student_list= $student_ob->get_student_list($program_id,$batch_id);
     
     $date=$info['date'];
+    $db_date=$date;
     $date=date("d F Y",strtotime($date));
     $data=json_encode($info);
 	?>
@@ -27,55 +50,17 @@ if(isset($_POST['view_attend'])){
 		<?php $site->header_info_area(); ?>
 
   	<div class="daily_attend_header">
-		
-		<div class="row">
-			<div class='pull-left' style="margin-bottom: 10px;">	
-				<table width="100%">
-					<tr>
-						<td class="attend_td1" style="width: 130px">Program: </td>
-						<td class="attend_td2" style="width: 250px"><?php echo "$program_name"; ?> </td>
-					</tr>
-					<tr>
-						<td class="attend_td1">Batch: </td>
-						<td class="attend_td2"><?php echo "$batch_name"; ?> </td>
-					</tr>
-					<tr>
-						<td class="attend_td1">Date: </td>
-						<td class="attend_td2"><?php echo "$date"; ?> </td>
-					</tr>
-				</table>
-				
-			</div>
-			<div class='pull-left' style="width: 320px; margin-top: 30px;">
-				<center>
-				<font style="font-size: 22px; ">
-					Daily Attendence
-				</font>
-				</center>
-			</div>
-		<div class='pull-right'>
-			<table width="100%">
-					<tr>
-						<td class="attend_td1" style="width: 140px">Total Student: </td>
-						<td class="attend_td2" style="width: 150px">108 </td>
-					</tr>
-					<tr>
-						<td class="attend_td1">Total Attends: </td>
-						<td class="attend_td2">5 </td>
-					</tr>
-					<tr>
-						<td class="attend_td1">Total Presend: </td>
-						<td class="attend_td2">100 </td>
-					</tr>
-				</table>
-		</div>
-	</div>
+<center>		
+	<span class="glyphicon glyphicon-pencil"></span>  
+	<font style="font-size: 22px; padding-bottom: 15px">Daily Attendence</font>
+</center>
 
- <span class="glyphicon glyphicon-certificate"></span> <u><b>Program Name</u>: </b> <?php echo "$program_name"; ?>
-  <span class="glyphicon glyphicon-fire"></span> <u><b>Batch Name</u>: </b> <?php echo "$batch_name"; ?>
- <span class="glyphicon glyphicon-calendar"></span> <u><b>Date</u>: </b> <?php echo "$date"; ?>
- <span class="glyphicon glyphicon-calendar"></span> <u><b>Total Student</u>: </b> <?php echo "$date"; ?>
- 
+<center>
+ <span class="glyphicon glyphicon-certificate"></span> <u><b>Program Name</u>: </b> <?php echo "$program_name"; ?> | 
+  <span class="glyphicon glyphicon-certificate"></span> <u><b>Batch Name</u>: </b> <?php echo "$batch_name"; ?> | 
+ <span class="glyphicon glyphicon-certificate"></span> <u><b>Date</u>: </b> <?php echo "$date"; ?> | 
+ <span class="glyphicon glyphicon-certificate"></span> <u><b>Total Student</u>: </b> <?php echo "$date"; ?>
+ </center>
 
 
 	</div>
@@ -93,6 +78,15 @@ if(isset($_POST['view_attend'])){
       		$value=$student[$id];
       		$name=$value['name'];
         	$img=$value['photo'];
+            $ch_info=$attend_ob->get_attendence_info($program_id,$id,$db_date);
+            $ch1="";
+            $ch2="";
+            if($ch_info!=-1){
+            	if($ch_info['status']==1)$ch1="checked";
+            	else $ch2="checked";
+            }
+           
+
        	 	
 
        ?>
@@ -101,8 +95,8 @@ if(isset($_POST['view_attend'])){
 		<td class="attend_td2"><img src="<?php echo "$img"; ?>" class="img_td"></td>
 		<td class="attend_td2"><?php echo "$name"; ?></td>
 		<td class="attend_td2">
-			<input type="radio" name="attend[<?php echo "$id" ?>]" value="1">Present 
-			<input type="radio" name="attend[<?php echo "$id" ?>]" value="0">Absent</td>
+			<input type="radio" name="attend[<?php echo "$id" ?>]" value="1" <?php echo $ch1; ?>>Present 
+			<input type="radio" name="attend[<?php echo "$id" ?>]" value="0" <?php echo $ch2; ?>>Absent</td>
 	</tr>
     <?php } ?>
 </table>
@@ -117,13 +111,18 @@ if(isset($_POST['view_attend'])){
 }
 
 if(isset($_POST['attend_report'])){
+
+ 	
+
 	?>
 
+<div class="attend_area">	
+ <?php $site->header_info_area(); ?>
 <table width="100%">
 	<tr class="attend_tr">
 		<td class="attend_td1" style="width: 80px">ID</td>
-		<td class="attend_td1" style="width: 140px">Name</td>
-		<?php for($i=1; $i<=31; $i++){ ?>
+		<td class="attend_td1" style="width: 130px">Name</td>
+		<?php for($i=1; $i<=28; $i++){ ?>
 		<td class="attend_td1" style="width: 5px"><?php echo "$i"; ?></td>
 	    <?php } ?>
 	    <td class="attend_td1" style="width: 10px">T.P.</td>
@@ -134,13 +133,13 @@ if(isset($_POST['attend_report'])){
        	?>
 
 		<tr class="attend_tr">
-			<td class="attend_td2" style="width: 80px">10035</td>
-			<td class="attend_td2" style="width: 140px;">Amir Hamza</td>
-			<?php for($i=1; $i<=31; $i++){ ?>
-			<td class="attend_td2" style="width: 5px"><?php echo "P"; ?></td>
+			<td class="attend_td2" style="width: 80px;background-color: var(--bg-color);color: var(--font-color)">10035</td>
+			<td class="attend_td2" style="width: 130px;background-color: var(--bg-color);color: var(--font-color)">Amir Hamza dsf sdf</td>
+			<?php for($i=1; $i<=28; $i++){ ?>
+			<td class="attend_td2" style=""><?php echo "P"; ?></td>
 	    	<?php } ?>
-	    	<td class="attend_td2" style="width: 10px">T.P.</td>
-	    	<td class="attend_td2" style="width: 10px">T.A.</td>		
+	    	<td class="attend_td2" style="width: 10px; background-color: var(--bg-color);color: var(--font-color)">T.P.</td>
+	    	<td class="attend_td2" style="width: 10px; background-color: var(--bg-color);color: var(--font-color)">T.A.</td>		
 		</tr>
 
        	<?php
@@ -148,6 +147,8 @@ if(isset($_POST['attend_report'])){
 
 	?>
 </table>
+
+</div>
 
 <?php
 }
@@ -160,8 +161,8 @@ if(isset($_POST['attend_report'])){
 	}
 	.attend_td1{
 		padding: 10px 5px 10px 5px;
-		background: #f5f5f5;
-		color: #000000;
+		background-color: var(--bg-color);
+		color: var(--font-color);
 		font-weight: bold;
 		border: 1px solid #eeeeee;
 		text-align: center;

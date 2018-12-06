@@ -56,6 +56,10 @@ include 'script/result/result.php';
 $result=new result();
 $result_info=$result->get_result();
 
+
+include 'script/attendence/attendence.php';
+$attend_ob=new attendence();
+
 include 'script/notice/notice.php';
 $notice=new notice();
 $notice_info=$notice->get_notice_info();

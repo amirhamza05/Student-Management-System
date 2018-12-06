@@ -1,6 +1,7 @@
 
 
 <script src="page/attend/js/attend.js"></script>
+
 <?php 
 $date=date("Y-m-d",strtotime($db->date()));
 ?>
@@ -116,4 +117,45 @@ $date=date("Y-m-d",strtotime($db->date()));
     border-width: 0px;
     border-radius: .25em;
 }
+
+.top-alert { 
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 100000;
+  left: 0;
+  padding: 50px;
+  display: inline-block;
+  text-align: center;
+}
+.top-alert .alert {
+  width: auto !important;
+  height: 100%;
+  display: inline;
+  position: relative;
+  margin: 0;
+}
+.top-alert .alert .close {
+  position: absolute;
+  top: 11px;
+  right: 10px;
+  color: inherit;
+}
+
+.alert-purple { border-color: #694D9F;background: #694D9F;color: #fff; }
+.alert-info-alt { border-color: #B4E1E4;background: #81c7e1;color: #fff; }
+.alert-danger-alt { border-color: #B63E5A;background: #E26868;color: #fff; }
+.alert-warning-alt { border-color: #F3F3EB;background: #E9CEAC;color: #fff; }
+.alert-success-alt { 
+  border-color: #19B99A;
+  background: #20A286;
+  color: #fff; 
+  padding: 20px;
+  float: right;
+  border-radius: 15px;
+}
+
+.alert a {color: gold;}
+
+
 </style>

@@ -65,22 +65,7 @@ function select_program(){
     });
 }
 
-function save_attend(data){
-	console.log(data);
-	var values = document.getElementsByName("attend");
-	var radios = document.getElementsByName('attend[10001]');
-    var length = radios.length; 
-    console.log(length);
-    for (var i = 0; i < length; i++) {
-    if (radios[i].checked) {
-        // do whatever you want with the checked radio
-        console.log(i);
 
-        // only one radio can be logically checked, don't check the rest
-        break;
-    }
-}
-}
 
 function attend_report(){
    
@@ -90,6 +75,55 @@ function attend_report(){
     //modal_open(modal, "Attendence Report");
     loader("res");
     get_ajax(get_action_data("res"), data);
-    $("table").tableExport({formats: ["xlsx","xls", "csv", "txt"],    });
 }
 
+function save_attend(info){
+    
+   var arr=[];
+
+    $(':radio').each(function () {
+            var myval = $(this).val();
+
+            name=$(this).attr('name');
+            student_id = name.split(/(\d+)/);
+            student_id=parseInt(student_id[1]);
+            val=$("input:radio[name='"+name+"']:checked").val();
+            arr[student_id]=val;
+        });
+        
+
+        var attend_list=[];
+        for (var student_id in arr) {
+    		var status = arr[student_id];
+            if(!status){
+            	alert("Please Select Student " + student_id);
+            	return;
+            }
+            attend_list.push({student_id,status});
+		}
+        
+        var data1={
+        	"program_id": info.program_id,
+        	"date": info.date,
+        	"student_list":attend_list
+        }
+
+        var data = {
+          "save_attend": data1
+    	}
+        loader("res");
+        $.ajax({
+        type: 'POST',
+        url: url,
+        data:data,
+        success: function(response) {
+        	success("Successfully Taken Student Attendence");
+            add_attend();
+        }
+    });
+
+}
+
+function p(val){
+	console.log(val);
+}
