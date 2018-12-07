@@ -8,6 +8,19 @@ Dtatable Style
     opacity: 0.9 !important;
 }
 
+    
+.button {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  border-width: 0px;
+  padding:12px;
+  border-radius: 5px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
  thead{
    background-color: var(--bg-color);
   border-width: 2px;

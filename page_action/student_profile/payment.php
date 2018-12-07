@@ -99,6 +99,7 @@ if(isset($_POST['get_payment_list'])){
 
 <div style="margin-top: 10px;"></div>
 <div id="payment_body_panel">
+  
 <table width="100%">
 	<tr style="text-align: center;">
 		<td class="td_list1">#</td>
@@ -144,7 +145,7 @@ if(isset($_POST['get_payment_list'])){
 		<td class="td_list2"><?php echo "$date"; ?></td>
 		<td class="td_list2">
         <button class="btn btn-danger btn-xs" title="Print Money Recept" onclick="print_money_recept(<?php echo "$id"; ?>)" ><span class="glyphicon glyphicon-print"></span></button>
-        <button class="btn btn-danger btn-xs" title="Send Payment Receive SMS" onclick="get_program_form('delete',<?php echo "$id"; ?>)" ><span class="glyphicon glyphicon-send"></span></button>
+        <button class="btn btn-danger btn-xs" title="Send Payment Receive SMS" onclick="send_sms_page('<?php echo "$id"; ?>')" ><span class="glyphicon glyphicon-send"></span></button>
 
     </td>
 	</tr>
@@ -473,8 +474,8 @@ if(isset($_POST['payment_panel'])){
                       <td class="td_list2"><?php echo "$uname"; ?></td>
                       <td class="td_list2">
                         <button class="btn btn-danger btn-xs" title="Delete" onclick="delete_payment_form(<?php echo "$id,$payment_id"; ?>)" ><span class="glyphicon glyphicon-trash"></span></button>
-                        <button class="btn btn-danger btn-xs" title="Print Money Recept" onclick="get_program_form('delete',<?php echo "$id"; ?>)" ><span class="glyphicon glyphicon-print"></span></button>
-                        <button class="btn btn-danger btn-xs" title="Send Payment Receive SMS" onclick="get_program_form('delete',<?php echo "$id"; ?>)" ><span class="glyphicon glyphicon-send"></span></button>
+                        <button class="btn btn-danger btn-xs" title="Print Money Recept" onclick="print_money_recept('<?php echo "$id"; ?>')" ><span class="glyphicon glyphicon-print"></span></button>
+                        <button class="btn btn-danger btn-xs" title="Send Payment Receive SMS" onclick="send_sms_page('<?php echo "$id"; ?>')"><span class="glyphicon glyphicon-send"></span></button>
                       </td>
                     </tr>
                      <?php } ?>
@@ -518,13 +519,40 @@ if(isset($_POST['payment_panel'])){
 </div>
 <?php
 }
-if(isset($_POST['print_money_recept'])){
-  include "test.php";
+
+ if(isset($_POST['print_money_recept'])){
+  $payment_id=$_POST['print_money_recept'];
+  $set_payment_ob->get_money_recept($payment_id);
+  $url="student_money_recept=".base64_encode($payment_id);
+  $url="print_page.php?".$url;
 ?>
 
-
+<center><a onclick="print_action('<?php echo $url; ?>')" class='btn btn-default'> <i class='glyphicon glyphicon-print'></i> Print Money Recept</a></center>
 
 <?php  
+}
+
+if(isset($_POST['send_sms_page'])){
+  $payment_id=$_POST['send_sms_page'];
+  $sms=$set_payment_ob->money_recept_sms($payment_id);
+  echo strlen($sms);
+  $info=$student_ob->get_mobile_number(10048,"all");
+  print_r($info);
+?>
+
+<textarea class="sms_text_area"><?php echo "$sms"; ?></textarea>
+<select class="form-control" id="select_payment">
+            <option value="-1">Select Recever</option>
+            <option value="-1">All</option>
+            <option value="-1">Student</option>
+            <option value="-1">Gurdians</option>
+
+</select>
+<center>
+  <button class="btn btn-default">Send SMS</button>
+</center>
+<?php
+
 }
 
 ?>
@@ -535,7 +563,10 @@ if(isset($_POST['print_money_recept'])){
     --unpaid: #b33939; 
 }
 
-
+.sms_text_area{
+  height: 150px;
+  width: 100%;
+}
 
 /*payment field*/
 .fee_input{

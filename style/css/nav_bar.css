@@ -1,0 +1,199 @@
+.navbar-right:hover{
+  background-color: rgba(0,0,0,0.3)!important;
+  outline: 0 !important;
+}
+.dropdown-toggle{
+  background-color: rgba(0,0,0.1,0.1)!important;
+  color: var(--font-color)!important;
+  padding: 12px;
+  border-radius: 15px;
+  margin-left: 5px;
+  border: 1px solid rgba(0,0,0.1,0.1);
+  font-size: 15px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+.dropdown-toggle:hover{
+  background-color: rgba(0,0,0,0.3)!important;
+  outline: 0 !important;
+}
+.dropdown-toggle:focus{
+    outline: 0 !important;
+    background-color: rgba(0,0,0,0.3)!important;
+}
+
+.navbar_right_custom:hover{
+  background-color:none!important;
+  outline: 0 !important;
+
+}
+.navbar_right_custom:focus{
+    outline: 0 !important;
+    background-color: rgba(0,0,0,0.3)!important;
+}
+.dropdown:hover{
+  background: none;
+  outline: 0 !important;
+  border-radius: 15px;
+  
+}
+.dropdown:focus{
+    outline: 0 !important;
+    background-color: rgba(0,0,0,0.3)!important;
+    border-radius: 15px;
+}
+
+
+  .dropdown-menu{
+    
+    width: auto !important;
+    padding: 20px !important;
+    border-radius: 10px !important;
+
+  }
+  
+
+.profile_nav{
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    border: 1px solid;
+    max-height: 45px;
+    overflow: hidden;
+    max-width: 100px;
+    border-color: var(--font-color); 
+    padding: 13px;
+    border-radius: 7%;
+    margin-right: 5px;
+    width: 100px;
+    box-shadow: 2px 3px var(--font-color);
+  }
+.btn_nav_toggle{
+  background-color: rgba(0,0,0.1,0.1);
+  color: var(--font-color);
+  width: 55px;
+  height: 47px;
+  border-radius: 120px;
+  margin-left: 5px;
+  border: 1px solid rgba(0,0,0.1,0.1);
+  font-size: 30px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.btn_nav_toggle:hover{
+  background-color: rgba(0,0,0,0.3);
+}
+.btn_nav_toggle:focus{
+    outline: 0 !important;
+    background-color: rgba(0,0,0,0.3);
+}
+
+
+
+.btn_tab{
+  background-color: rgba(0,0,0.1,0.1);
+  color: var(--font-color);
+  padding: 12px;
+  border-radius: 15px;
+  margin-left: 5px;
+  border: 1px solid rgba(0,0,0.1,0.1);
+  font-size: 15px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+.btn_tab:hover{
+   background-color: rgba(0,0,0,0.3);
+}
+.btn_tab:focus {
+    outline: 0 !important;
+    background-color: rgba(0,0,0,0.3);
+}
+.btn_toggle:focus {
+    outline: 0 !important;
+}
+
+.logo_title{
+  font-family: Verdana, Geneva, sans-serif ;
+}
+.mainbody {
+    background:#f0f0f0;
+}
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.navbar_button{
+  padding: 10px !important;
+  border-radius: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 10px;
+  border-width: 0px;
+}
+
+.navbar_button:hover{
+  padding: 10px !important;
+  border-width: 0px;
+}
+.navbar_button:active{
+  padding: 10px !important;
+  border-width: 0px;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-wrapper .navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.navbar-content
+{
+    width:320px;
+    padding: 15px;
+    padding-bottom:0px;
+}
+.navbar-content:before, .navbar-content:after
+{
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.navbar-nav.navbar-right:last-child {
+    margin-right: 15px !important;
+}
+.navbar-footer 
+{
+    background-color:#DDD;
+}
+.navbar-footer-content { padding:15px 15px 15px 15px; }
+.dropdown-menu {
+padding: 0px;
+overflow: hidden;
+}
+
+.brand_network {
+    color: #9D9D9D;
+    float: left;
+    position: absolute;
+    left: 70px;
+    top: 30px;
+    font-size: smaller;
+}
+
+.post-content {
+    margin-left:58px;
+}
+
+.badge-important {
+    margin-top: 3px;
+    margin-left: 25px;
+    position: absolute;
+}

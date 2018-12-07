@@ -62,3 +62,14 @@ function get_checkbox_value(field_name){
 if (vals) vals = vals.substring(1);
 return vals;
 }
+
+
+function print_action(url,width=1000,height=800){
+  var w = width;
+        var h = height;
+        var left = Number((screen.width/2)-(w/2));
+        var tops = Number((screen.height/2)-(h/2));
+
+window.open(url, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+tops+', left='+left);
+}
+

@@ -12,7 +12,7 @@ $(document).ready(function (e) {
       beforeSend: function() {
       	document.getElementById('add_body').style.display="none";
       	loader("output");
-      },
+      }, 
       success: function(data){
       	document.getElementById("add_student").reset();
       	var data = JSON.parse(data);
@@ -20,7 +20,7 @@ $(document).ready(function (e) {
         
     }
   });
-}));
+})); 
 
 
 

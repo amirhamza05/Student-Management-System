@@ -73,6 +73,25 @@ public function valid_mobile_number($val){
   }
 
 
+public function get_info($student_id){
+  $sql="select * from student where id=$student_id";
+  $info=$this->db->get_sql_array($sql);
+  $info=$info[0];
+  return $info;
+}
+
+public function get_mobile_number($student_id,$per){
+  $con="";
+  if($per=="all")$con="personal_mobile,father_mobile,mother_mobile";
+  else if($per=="ga")$con="father_mobile,mother_mobile";
+  else if($per=="st")$con="personal_mobile";
+  $sql="select $con from student where id=$student_id";
+  $info=$this->db->get_sql_array($sql);
+ 
+
+ return $info;
+}
+
 
 public function get_student_list($program_id,$batch_id=0){
   if($batch_id==0)$sql="select * from admit_program where program_id=$program_id";

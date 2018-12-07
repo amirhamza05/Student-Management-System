@@ -1,7 +1,10 @@
 
 function program() {
+  bar_url="student_profile.php?get_id="+student_id+"&tab=program";
+   window.history.pushState('', '', bar_url);
+  set_html("profile_option","Program Panel");
 
-    var data = {
+  var data = {
         "get_program_list": student_id
     }
 

@@ -60,7 +60,7 @@ foreach ($student as $key => $info) {
 <div class="col-sm-12">
 <div class="text-center" style="">
 
-<div onclick="personal_info()" class="nb-btn-circle">
+<div onclick="info()" class="nb-btn-circle">
    <i class="fa fa-home"></i>
    <p>Info</p>
 </div>
@@ -105,6 +105,19 @@ foreach ($student as $key => $info) {
 <script type="text/javascript">
   set_profile_data(<?php echo $id; ?>);
 </script>
+
+<?php
+
+if(isset($_GET['tab'])){
+  $tab=$_GET['tab'];
+  if($tab=="payment")echo "<script>payment()</script>";
+  else if($tab=="program")echo "<script>program()</script>";
+  else echo "<script>info()</script>";
+}
+else echo "<script>info()</script>";
+
+?>
+
 
 <?php
 

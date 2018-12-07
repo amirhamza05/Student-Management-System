@@ -1,0 +1,81 @@
+
+.money_recept .title_logo{
+	font-size: 18px;
+	font-weight: bold;
+	color: #2D2D2D;
+}
+.money_recept .comments{
+	border-width: 0px 0px 1px 0px;
+	border-style:solid;
+	border-color: #000000;
+	width: 30%;
+	padding: 5px;
+	height: 20px;
+	margin-top: 5px;
+}
+.money_recept .title_detail{
+	font-size: 14px;
+}
+.money_recept .payment_recept_body{
+  padding: 5px;
+}
+.money_recept .payment_recept_body table{
+	border: 0px solid #000000;
+}
+.money_recept .td_name,.td_value{
+	padding: 3px 2px 2px 5px;
+	border: 0px solid #000000;
+}
+.money_recept .td_name{
+ text-align: right;
+ font-weight: bold;
+}
+
+.money_recept{
+  width: 100%;
+  height: 357px;
+  
+  background-color: #ffffff;
+  border: 1px solid #2D2D2D;
+  border-radius: 5px;
+  color: #464646;
+  font-size: 14px;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.money_recept .barcode_recept{
+	height: 30px;
+	width: 150px;
+}
+.money_recept .money_logo{
+  height: 100px;
+  width: 90px;
+}
+.money_recept .money_recept_header{
+  background: url('http://www.designbolts.com/wp-content/uploads/2012/12/White-Linen-Seamless-Pattern-For-Website-Backgrounds.jpg');
+  border-width: 0px 0px 1px 0px;
+  border-style:  solid;
+  border-color: #2D2D2D;
+  height: 130px;
+  width: 100%;
+  padding: 2px;
+  overflow: hidden;
+}
+.money_recept .left_header{
+  float: left;
+  width:65%;
+  padding: 3px 0px 0px 30px;
+}
+.money_recept .right_header{
+  padding: 20px 15px 15px 15px;
+}
+
+.money_recept .left_body{
+ padding-right: 15px;
+  float: left;
+  width:50%;
+}
+.money_recept .right_body{
+
+}

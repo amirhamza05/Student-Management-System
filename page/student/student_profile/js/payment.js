@@ -14,6 +14,10 @@ function get_action_data(_div = modal_body, _load = 0, _url = url) {
 }
 
 function payment() {
+   bar_url="student_profile.php?get_id="+student_id+"&tab=payment";
+   window.history.pushState('', '', bar_url);
+
+   set_html("profile_option","Payment Panel");
 
     var data = {
         "get_payment_list": student_id
@@ -250,4 +254,14 @@ function print_money_recept(id){
     modal_open("lg", "Print Payment Recept");
     loader("modal_lg_body");
     get_ajax(get_action_data("modal_lg_body"), data);
+}
+function send_sms_page(id){
+
+  var data = {
+        "send_sms_page": id
+    }
+    
+    modal_open("sm", "Send Payment Info");
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body"), data);
 }

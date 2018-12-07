@@ -1,5 +1,6 @@
 
 
+
  <div class="row" >
                     <div class="col-lg-3 col-sm-6">
                         <div class="circle-tile">
@@ -75,45 +76,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="circle-tile">
-                            <a href="#">
-                                <div class="circle-tile-heading red">
-                                    <i class="fa fa-shopping-cart fa-fw fa-3x"></i>
-                                </div>
-                            </a>
-                            <div class="circle-tile-content red">
-                                <div class="circle-tile-description text-faded">
-                                    Orders
-                                </div>
-                                <div class="circle-tile-number text-faded">
-                                    24
-                                    <span id="sparklineC"></span>
-                                </div>
-                                <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="circle-tile">
-                            <a href="#">
-                                <div class="circle-tile-heading purple">
-                                    <i class="fa fa-comments fa-fw fa-3x"></i>
-                                </div>
-                            </a>
-                            <div class="circle-tile-content purple">
-                                <div class="circle-tile-description text-faded">
-                                    Mentions
-                                </div>
-                                <div class="circle-tile-number text-faded">
-                                    96
-                                    <span id="sparklineD"></span>
-                                </div>
-                                <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+
+
+        
 
 <style type="text/css">
     @media (min-width: 768px){
