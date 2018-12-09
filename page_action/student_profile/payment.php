@@ -533,25 +533,38 @@ if(isset($_POST['payment_panel'])){
 }
 
 if(isset($_POST['send_sms_page'])){
-  $payment_id=$_POST['send_sms_page'];
-  $sms=$set_payment_ob->money_recept_sms($payment_id);
-  echo strlen($sms);
-  $info=$student_ob->get_mobile_number(10048,"all");
-  print_r($info);
+  $data=$_POST['send_sms_page'];
+  $payment_id=$data['payment_id'];
+  $message=$set_payment_ob->money_recept_sms($payment_id);
+  
+  
 ?>
 
-<textarea class="sms_text_area"><?php echo "$sms"; ?></textarea>
-<select class="form-control" id="select_payment">
-            <option value="-1">Select Recever</option>
-            <option value="-1">All</option>
-            <option value="-1">Student</option>
-            <option value="-1">Gurdians</option>
-
-</select>
-<center>
-  <button class="btn btn-default">Send SMS</button>
-</center>
+<div id="message_body">
+  <textarea class="sms_text_area" id="message" readonly=""><?php echo "$message"; ?> </textarea>
+      <?php $sms->get_sms_recever_option(); ?>
+  <center>
+    <button class='btn btn-default' onclick='send_sms()'>Send SMS</button>
+  </center>
+</div>
+<div id="message_sending"></div>
 <?php
+
+}
+
+if(isset($_POST['send_sms'])){
+  $info=$_POST['send_sms'];
+  $message=$info['message'];
+  $receiver=$info['receiver'];
+  $student_id=$info['student_id'];
+  $info=$sms->get_student_mobile_number($student_id,$receiver);
+  $list=array();
+  foreach ($info as $key => $value) {
+    $res=$sms->make_sms_array($value,$message);
+    array_push($list, $res);
+  }
+
+  $sms->send_sms($list);
 
 }
 

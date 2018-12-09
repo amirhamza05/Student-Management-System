@@ -257,11 +257,39 @@ function print_money_recept(id){
 }
 function send_sms_page(id){
 
-  var data = {
-        "send_sms_page": id
+    var data1 = {
+      "student_id": student_id,
+      "payment_id": id
+    }
+  
+    var data = {
+        "send_sms_page": data1
     }
     
     modal_open("sm", "Send Payment Info");
     loader("modal_sm_body");
     get_ajax(get_action_data("modal_sm_body"), data);
+}
+
+function send_sms(){
+  message=get_value("message");
+  receiver=get_value("select_receiver");
+  if(receiver==-1){
+    alert("Select Receiver");
+    return;
+  }
+  var data1 = {
+      "student_id": student_id,
+      "message": message,
+      "receiver": receiver
+  }
+  var data = {
+        "send_sms": data1
+  }
+
+  var msg_loading='<center><b>Message Sending Processing...Please Do Not Refresh Page or do not close tab</b></center>'
+  set_html("message_sending",msg_loading);
+  loader("message_body","120");
+  get_ajax(get_action_data("modal_sm_body"), data);
+
 }

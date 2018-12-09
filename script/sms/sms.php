@@ -9,15 +9,17 @@ class sms
     
     public $student;
     public $student_ob;
+    public $login_user;
     
-    public function __construct()
+    public function __construct($user_id)
     {
         
         $this->db         = new database();
+        $this->login_user = $this->db->login_user;
         $this->conn       = $this->db->conn;
         $this->student_ob = new student();
         $this->student    = $this->student_ob->get_student_info();
-        
+        $this->login_user=$user_id;
     }
     
     public function select($query)
@@ -46,7 +48,6 @@ class sms
         $message = $info['message'];
         $token   = $info['token'];
         $url     = $info['gateway'];
-        
         $data = array(
             'to' => "$to",
             'message' => "$message",
@@ -166,7 +167,7 @@ class sms
             $info['gateway'] = $gateway;
             $info['date']    = $this->db->date();
             $info['token']   = $token;
-            $info['sender']  = 3;
+            $info['sender']  = $this->login_user;
             $this->db->sql_action("sms_list", "insert", $info, "no");
         }
     }
@@ -209,11 +210,7 @@ class sms
     
     public function valid_mobile($number)
     {
-        $c    = strlen($number);
-        $flag = 0;
-        if ($c == 11)
-            $flag = 1;
-        return $flag;
+      return (strlen($number)==11)?1:0;
     }
     
     
@@ -230,10 +227,41 @@ class sms
     
     public function get_sms_recever_option()
     {
-        echo " <option value='0'> --Select Recever-- </option>
-                <option value='a'> ALL </option>
-                <option value='s'> Student </option>
-                <option value='g'> Guardians </option>";
+
+        echo " 
+              <b>Select Recever</b>
+              <select class='form-control' id='select_receiver'>
+                <option value='-1'> --Select Recever-- </option>
+                <option value='all'> ALL </option>
+                <option value='st'> Student </option>
+                <option value='ga'> Guardians </option>
+              </select> 
+              
+
+                ";
+    }
+
+    
+
+    public function get_student_mobile_number($student_id,$per){
+     
+      $con="personal_mobile,father_mobile,mother_mobile";
+      $sql="select $con from student where id=$student_id";
+      $info=$this->db->get_sql_array($sql);
+      $info=$info[0];
+      $list=array();
+      $personal_mobile=$info['personal_mobile'];
+      $father_mobile=$info['father_mobile'];
+      $mother_mobile=$info['mother_mobile'];
+      if($per=="st" || $per=="all" && $this->valid_mobile($personal_mobile)==1)array_push($list, $personal_mobile);
+        if($per=="ga" || $per=="all"){
+      if($this->valid_mobile($father_mobile)==1)array_push($list, $father_mobile);
+      if($this->valid_mobile($mother_mobile)==1)array_push($list, $mother_mobile);
+          
+      }
+
+
+      return $list;
     }
     
     public function get_syn()

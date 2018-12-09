@@ -10,6 +10,7 @@ function program() {
 
     loader(body);
     get_ajax(get_action_data(body), data);
+
 }
 
 function add_program(){
@@ -18,10 +19,10 @@ function add_program(){
         "add_program": student_id
     }
     
-    modal_open(modal, "Add Program");
+    modal_open("sm", "Add Program");
     
-    loader(modal_body);
-    get_ajax(get_action_data(modal_body), data);
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body"), data);
 }
 
 function add_batch(){
@@ -60,7 +61,7 @@ function save_add_program(){
         url: url,
         data:data,
         success: function(response) {
-           modal_open(modal, "Payment","close");
+           modal_open("sm", "Payment","close");
            //document.getElementById("res").innerHTML=response;
            success(response);
            program();

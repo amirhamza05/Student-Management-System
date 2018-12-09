@@ -12,6 +12,15 @@ include "script/site_content/site_content.php";
 include "script/payment/set_payment.php";
 
 
+include 'script/user/user.php';
+$id=$_SESSION['user'];
+$user_ob=new user($id);
+$user=$user_ob->get_user_info();
+$login_user=$user_ob->get_login_user();
+$user_id=$login_user['id'];
+$db->set_login_user($user_id);
+
+
 $site=new site_content();
 
 
@@ -32,7 +41,7 @@ $student_ob=new student();
 $student=$student_ob->get_student_info();
 
 include 'script/sms/sms.php';
-$sms=new sms();
+$sms=new sms($user_id);
 
 
 include 'script/contest/contest.php';
@@ -68,12 +77,7 @@ include 'script/theme/theme.php';
 $theme=new theme();
 $theme_info=$theme->get_theme_info();
 
-include 'script/user/user.php';
-$id=$_SESSION['user'];
-$user_ob=new user($id);
-$user=$user_ob->get_user_info();
-$login_user=$user_ob->get_login_user();
-$user_id=$login_user['id'];
+
 }
 else{
 

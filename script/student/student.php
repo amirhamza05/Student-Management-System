@@ -43,11 +43,9 @@ public function valid_mobile_number($val){
       $sub['nick']=$row['nick'];
       $sub['father_name']=$row['father_name'];
       $sub["mother_name"]=$row['mother_name'];
-
-      $sub["personal_mobile"]=$this->valid_mobile_number($row['personal_mobile']);
-
-      $sub["father_mobile"]=$this->valid_mobile_number($row['father_mobile']);
-      $sub["mother_mobile"]=$this->valid_mobile_number($row['mother_mobile']);
+      $sub["personal_mobile"]=$row['personal_mobile'];
+      $sub["father_mobile"]=$row['father_mobile'];
+      $sub["mother_mobile"]=$row['mother_mobile'];
 
       $sub["email"]=$row['email'];
       $sub["birth_day"]=$row['birth_day'];
@@ -77,9 +75,7 @@ public function get_info($student_id){
   $sql="select * from student where id=$student_id";
   $info=$this->db->get_sql_array($sql);
   $info=$info[0];
-  $info['personal_mobile']=$this->valid_mobile_number($info['personal_mobile']);
-  $info['father_mobile']=$this->valid_mobile_number($info['father_mobile']);
-  $info['mother_mobile']=$this->valid_mobile_number($info['mother_mobile']);
+  
   return $info;
 }
 
@@ -90,8 +86,6 @@ public function get_mobile_number($student_id,$per){
   else if($per=="st")$con="personal_mobile";
   $sql="select $con from student where id=$student_id";
   $info=$this->db->get_sql_array($sql);
- 
-
  return $info;
 }
 

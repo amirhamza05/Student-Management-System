@@ -7,7 +7,8 @@ if(isset($_POST['get_program_list'])){
 <button class="btn btn-primary btn-xs" onclick="add_program()" style="margin-right: 4px; padding: 10px" title="Add Program" data-title="Add Program" ><span class="glyphicon glyphicon-plus"></span> Add Program</button>
 
 </div>
-<table style="width: 100%">
+<table class="display" style="width: 100%">
+  <thead>
   <tr>
     <td class="program_td">Admit ID</td>
     <td class="program_td">Program Name</td>
@@ -16,6 +17,8 @@ if(isset($_POST['get_program_list'])){
     <td class="program_td">Admit By</td>
     <td class="program_td">Action</td>
   </tr>
+  </thead>
+  <tbody>
 <?php
 
  foreach ($student[$id]['program_list'] as $key => $value) {
@@ -50,6 +53,7 @@ if(isset($_POST['get_program_list'])){
     </td>
   </tr>
  <?php } ?>
+ </tbody>
 </table>
 
 <?php

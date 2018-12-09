@@ -21,6 +21,8 @@ $res=$sms->make_sms_array("01777564786",$msg);
 array_push($list, $res);
 //$sms->send_sms($list);
 //print_r($list);
+$u=$sms->login_user;
+
 $info=$sms->sms_balance();
 
 ?>
@@ -170,10 +172,10 @@ $info=$sms->sms_balance();
                 		<tr>
                 			<td class="td_list1"></td>
                 			<td class="td_list1">#</td>
-                			<td class="td_list1">Phone Number</td class="td_list1">
-                			<td class="td_list1">Message</td class="td_list1">
-                			<td class="td_list1">Time</td class="td_list1">
-                			<td class="td_list1">Sender</td class="td_list1">
+                			<td class="td_list1">Phone Number</td>
+                			<td class="td_list1">Message</td>
+                			<td class="td_list1">Time</td>
+                			<td class="td_list1">Sender</td>
                 		</tr>
                 	</thead>
                 	<tbody>
@@ -188,8 +190,10 @@ $info=$sms->sms_balance();
 							<td class="td_list2"></td>
                 			<td class="td_list2"><?php echo $value['id']; ?></td>
                 			<td class="td_list2"><?php echo $value['number']; ?></td class="td_list1">
-                			<td class="td_list2"><?php echo $value['message']; ?></td class="td_list1">
-                			<td class="td_list2"><?php echo $date; ?></td class="td_list1">
+                			<td class="td_list2">
+                				<textarea><?php echo $value['message']; ?></textarea>
+                				</td>
+                			<td class="td_list2"><?php echo $date; ?></td>
                 			<td class="td_list2"><?php echo $value['user']; ?></td class="td_list1">
                 		</tr>
                 		<?php } ?>

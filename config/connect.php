@@ -10,6 +10,7 @@ class database {
  public $db=db_name;
  public $result;
  public $conn;
+ public $login_user;
 
 
  //conection start
@@ -38,6 +39,9 @@ public function get_now_time(){
   return $now;
  }
 
+public function set_login_user($uid){
+  $this->login_user=$uid;
+}
 
 public function select($query){
 return $this->result=mysqli_query($this->conn, $query);

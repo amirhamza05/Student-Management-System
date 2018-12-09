@@ -255,7 +255,7 @@ class set_payment {
       $month_status="Monthly Fee '$month-$year'";
     }
 
-    $msg="Dear $nick,\nYour $month_status in '$program_name' is Successfully Taken.\n\nPayment ID: $payment_id\nPay: $pay Tk.\nDue: $due Tk.\n\n@TechSerm\n01991223020";
+    $msg="Dear $nick,\nYour Payment $pay Tk for $month_status in '$program_name' is Successfully Taken.\nYour Payment ID: $payment_id\n\n@TechSerm\n01991223020";
           return $msg;
   }
 
