@@ -16,7 +16,7 @@ foreach ($student as $key => $info) {
 
 
  ?>
-
+ 
 <div class="row">
   <div class="col-md-3 about_profile">
     <div class="profile_header">Profile</div>
@@ -129,86 +129,16 @@ else echo "<script>info()</script>";
 
 
 
-
-
-<div class="modal fade student_add" id="student_edit_<?php echo "$id"; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade student_add" id="student_profile_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
     <div class="modal-content">
         
         <div style="padding: 0px;" class="modal-body" style="background-color: #ecf0f1">
             <?php 
-       $student_ob->student_edit_form($id);
+            $student_ob->student_edit_form($id);
           ?>
         </div>
       </div>
     </div>
 </div>
 
-<div class="modal fade program_add" id="add_program" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-    <div class="modal-content">
-        
-        <div style="padding: 0px;" class="modal-body" style="background-color: #ecf0f1;" >
-           <div style="padding: 30px;" id="add_program_body">
-            
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-
-<div class="modal fade program_add" id="edit_program" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-    <div class="modal-content">
-        
-        <div style="padding: 0px;" class="modal-body" style="background-color: #ecf0f1;" >
-           <div style="padding: 30px;" id="">
-            <div id="msg"></div>
-            <div id="edit_program_body"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-
-<!-- Start Delete Model -->
-<div class="modal small fade" id="delete_program" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Delete Confirmation</h3>
-        </div>
-        <div class="modal-body">
-            <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete the Program?<br>This cannot be undone.</p>
-            <input type="number" name="" id="delete_id" hidden="">
-        </div>
-        <div class="modal-footer">
-          
-            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            <button class="btn btn-danger" onclick="delete_program()" name="delete">Delete</button>
-        </div>
-      </div>
-    </div>
-</div>
-<!-- End Delete Model -->
-
-<div class="modal fade student_add" id="view_program" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-    <div class="modal-content">
-        
-        <div style="padding: 0px;" class="modal-body" style="background-color: #ecf0f1">
-          <button type="button" style="padding: 5px 15px 10px 10px; color: #000000" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <div id="view_program_body" style="padding: 20px;">
-            
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-
-
-<style type="text/css">
- 
-
-</style>

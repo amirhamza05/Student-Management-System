@@ -28,9 +28,7 @@ if(isset($_POST['send_sms'])){
             $msg.="\n(Youth Admission Care)";
             $sms->send_sms_student($id,$msg,"a");
             echo "Sucessfully Send SMS.";
-
-
-		}
+		}		
 	}
 }
 

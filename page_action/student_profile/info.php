@@ -8,7 +8,8 @@
 <div class="row">
 <div class="col-md-0"></div>
 <div class="col-md-12">
-	<div class="text-right"><button class="button" onclick="update_profile_form()">Update Profile</button></div>
+
+	<div class="text-right"><button class="button" onclick="edit_student(<?php echo "$id"; ?>)" style="margin-right: 4px; padding: 10px" title="Edit" data-title="Add Product" data-toggle="modal" data-target="#student_profile_update"><span class="glyphicon glyphicon-pencil"></span> Update Student Information</button></div>
 <table width="100%">
 	<tr>
 		<td class="td_info1">Full Name: </td>

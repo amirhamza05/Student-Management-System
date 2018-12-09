@@ -106,7 +106,7 @@ function student_info($id,$student,$student_ob){
 <div style="text-align: right;margin-bottom: 10px;">
 <button class="btn btn-primary btn-xs" onclick="edit_student(<?php echo "$id"; ?>)" style="margin-right: 4px; padding: 10px" title="Edit" data-title="Add Product" data-toggle="modal" data-target="#student_edit_<?php echo "$id"; ?>" ><span class="glyphicon glyphicon-pencil"></span>Edit Student Information</button>
 
-</div>
+</div> 
 <div class="panel panel-default">
   
 <style type="text/css">

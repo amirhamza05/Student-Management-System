@@ -9,7 +9,7 @@
   border-color: #DDDDDD;
   border-width: 1px;
   border-style: solid;
-}
+} 
 .about_profile_body{
   box-shadow: 10px 5px 8px 5px #888888;
 }
@@ -84,7 +84,11 @@ background: var(--bg-color);
 border-color: var(--bg-color);
 color: var(--font-color);
 } 
-
+.nb-btn-circle:focus{
+background: var(--bg-color)!important;
+border-color: var(--bg-color)!important;
+color: var(--font-color)!important;
+} 
 
 
 

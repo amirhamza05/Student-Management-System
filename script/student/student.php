@@ -77,6 +77,9 @@ public function get_info($student_id){
   $sql="select * from student where id=$student_id";
   $info=$this->db->get_sql_array($sql);
   $info=$info[0];
+  $info['personal_mobile']=$this->valid_mobile_number($info['personal_mobile']);
+  $info['father_mobile']=$this->valid_mobile_number($info['father_mobile']);
+  $info['mother_mobile']=$this->valid_mobile_number($info['mother_mobile']);
   return $info;
 }
 
