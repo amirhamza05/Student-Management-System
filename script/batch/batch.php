@@ -35,6 +35,23 @@ class batch
  	}
  	return $day;
  }
+ public function day_sort($st){
+  $day=array();
+  for($i=0; $i<strlen($st); $i++){
+    if($st[$i]!=','){
+
+      if($st[$i]=='1')$day[1]="Sat";
+        else if($st[$i]=='2')$day[2]="Sun";
+        else if($st[$i]=='3')$day[3]="Mon";
+        else if($st[$i]=='4')$day[4]="Tue";
+        else if($st[$i]=='5')$day[5]="Wed";
+        else if($st[$i]=='6')$day[6]="Thu";
+        else if($st[$i]=='7')$day[7]="Fri"; 
+ 
+    }
+  }
+  return $day;
+ }
 
  public function day_index(){
       $day[1]="Saturday";
@@ -46,6 +63,18 @@ class batch
       $day[7]="Friday";
       return $day;
  }
+
+public function day_so_index(){
+      $day[1]="Sat";
+      $day[2]="Sun";
+      $day[3]="Mon";
+      $day[4]="Tue";
+      $day[5]="Wed";
+      $day[6]="Thu";
+      $day[7]="Fri";
+      return $day;
+ }
+
 
 public function num_array($st){
   $num=explode(',', $st);
@@ -70,8 +99,10 @@ public function num_array($st){
      	$sub["name"]=$row['name'];
      	$sub["start"]=$row['start'];
      	$sub["end"]=$row['end'];
+      $sub['day_sort']=$this->day_sort($row['day']);
      	$sub["day"]=$this->day($row['day']);
       $sub["day_string"]=$this->convert_arr($sub["day"]);
+      $sub['day_sort_string']=$this->convert_arr($sub['day_sort']);;
       $sub["day"]=$row['day'];
       $info[$id]=$sub;
      }

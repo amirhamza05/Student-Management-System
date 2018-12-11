@@ -18,12 +18,15 @@ $name=$login_user['uname'];
           <span onclick="action_side_bar()" class="sidebar-toggle-action">
           <button  class="btn_nav_toggle"><i class="fa fa-bars" id="icon_div"></i></button>
           </span>
-
+        
+        
           <a class="" href="index.php"><span class="navbar-brand"  style="color:var(--font-color)"><font class="logo_title"> TechSerm Education Software</font></span></a>
+          <span class="nev_bar_button_area">
             <a href="add_student.php">
               <button class="btn_tab" style="margin-left: 15px;"><i class="fa fa-home"></i> Add Student</button></a>
             <button class="btn_tab"><i class="fa fa-home"></i> View Student</button>
             <button class="btn_tab"><i class="fa fa-home"></i> Payment Receive</button>
+          </span>
           
         </ul>
         
@@ -33,7 +36,20 @@ $name=$login_user['uname'];
         </div>
 </div>
 
-                
+  
+<style type="text/css">
+  @media screen and (max-width: 800px) {
+  .nev_bar_button_area {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+}
+</style>
+
        
 <script type="text/javascript">
   function action_side_bar(){

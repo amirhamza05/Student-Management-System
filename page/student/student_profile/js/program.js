@@ -55,7 +55,7 @@ function save_add_program(){
 	var data={
 		"save_add_program":data1
 	}
-
+  loader("modal_sm_body");
 	$.ajax({
         type: 'POST',
         url: url,
@@ -68,3 +68,102 @@ function save_add_program(){
         }
     });
 }
+
+function view_program(admit_id){
+  
+  var data = {
+        "view_program": admit_id
+    }
+    
+    modal_open("lg", "Program Information");
+    loader("modal_lg_body");
+
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data:data,
+        success: function(response) {
+          set_html("modal_lg_body",response)
+           program_view_info(admit_id);
+        }
+    });
+    
+
+}
+
+function program_id_card(admit_id){
+  
+  var data = {
+        "program_id_card": admit_id
+    }
+    
+    loader("view_program_body");
+    get_ajax(get_action_data("view_program_body"), data);
+}
+
+function program_view_info(admit_id){
+  
+  var data = {
+        "program_view_info": admit_id
+    }
+    
+    loader("view_program_body");
+    get_ajax(get_action_data("view_program_body"), data);
+}
+
+function send_admission_sms(admit_id){
+  
+  var receiver=get_value("select_receiver");
+
+  if(receiver==-1){
+    alert("Please Select Receiver");
+    return;
+  }
+
+  var data1 = {
+    "admit_id": admit_id,
+    "receiver": receiver
+  }
+
+  var data = {
+        "send_admission_sms": data1
+    }
+
+  var msg_loading='<center><b>Message Sending Processing...Please Do Not Refresh Page or do not close tab</b></center>'
+  set_html("message_sending",msg_loading);
+  loader("message_body","140");
+
+  get_ajax(get_action_data("view_program_body"), data);
+}
+
+function send_admission_sms_area(admit_id){
+  
+  var data = {
+        "send_admission_sms_area": admit_id
+    }
+    
+    loader("view_program_body");
+    get_ajax(get_action_data("view_program_body"), data);
+}
+
+function admission_recept(admit_id){
+  
+  var data = {
+        "admission_recept": admit_id
+    }
+    
+    loader("view_program_body");
+    get_ajax(get_action_data("view_program_body"), data);
+}
+
+ function printDiv(divName) {
+        
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    
+        
+  }
+

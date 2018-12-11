@@ -9,6 +9,7 @@ class student extends student_edit
 {
   public $db;
   public $program_ob;
+  public $student_list;
 	
 	 public function __construct(){
      
@@ -16,6 +17,7 @@ class student extends student_edit
      $this->conn=$this->db->conn;
      $this->site_ob=new site_content();
      $this->program_ob=new program();
+     $this->student_list=$this->get_student_info1();
      
  }
 
@@ -30,7 +32,11 @@ public function valid_mobile_number($val){
   return ($val!=0)?'0'.$val: "";
 }
 
-  public function get_student_info(){
+ public function get_student_info(){
+      return $this->student_list;
+ }
+
+  public function get_student_info1(){
     $info=array();
     $sub=array();
     $sql="select * from student ORDER BY id DESC;";
@@ -77,6 +83,36 @@ public function get_info($student_id){
   $info=$info[0];
   
   return $info;
+}
+
+public function get_admit_program_info($admit_id){
+  $sql="
+  select 
+  admit_program.*,student.name as student_name,
+  program.name as program_name, batch.name as batch_name,
+  user.uname as admit_by
+  from admit_program
+  INNER JOIN program ON program.id=admit_program.program_id 
+  INNER JOIN student ON student.id=admit_program.student_id 
+  INNER JOIN user ON user.id=admit_program.admit_by 
+  INNER JOIN batch ON batch.id=admit_program.batch_id 
+  WHERE admit_program.id=$admit_id
+  ";
+  $info=$this->db->get_sql_array($sql);
+  return $info[0];
+}
+
+
+public function stuednt_admission_sms($admit_id){
+  
+  $info=$this->get_admit_program_info($admit_id);
+
+  $sms="Dear student_name,\nCongratulation for admit our program_name.\nYour ID: 10007\nBatch: Protassa\nBatch Time: Mon,Wed,Fry(10-11)\n\nBest Wish.
+
+  TechSerm
+  01991223020
+  ";
+  return $sms;
 }
 
 public function get_mobile_number($student_id,$per){

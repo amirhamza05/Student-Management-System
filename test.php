@@ -1,104 +1,117 @@
+<html>
+<head>
+  
+  <title>Certificate</title>
+</head>
 
-<?php
+<body>
 
-$string = '';
-
-?> 
-
-<?php for($i=0; $i<3; $i++){ ?>
-
-<div class='money_recept'>
-  <div class='money_recept_header' >
-    <center><b>Payment Recept</b></center>
-    <div class='left_header'>
-      <table style='background-color: none'>
-        <tr>
-          <td style='padding-right: 15px; background-color: none'>
-            <img class='money_logo' src='https://britainstandardschool.com/wp-content/uploads/2018/11/rsz_master_logo2-1.jpg'>
-          </td>
-          <td style='background-color: none'>
-            <font class='title_logo'>TechSerm Educational Software</font><br/>
-            <font class='title_detail'>
-            	Excellence in Education<br/>
-            	South Keraniganj , Dhaka , Bangladesh<br/>
-            	01716404120<br/>
-            	britainstandard@gmail.com
-            </font>
-          </td>
-        </tr>
-      </table>
-      
-    </div>
-    <div class='right_header'>
-      <img class='barcode_recept' src='https://thewindowsclub-thewindowsclubco.netdna-ssl.com/wp-content/uploads/2011/11/Barcode.jpg'><br/>	
-      <b>Recept No:</b> <u>450</u><br/>
-      <b>Recept Date:</b> 23-8-2018 4:32:23<br/>
-      <b>Receive By:</b> Hamza<br/>
-    </div>
+  <div id="certificate_background">
+    <img src="https://raw.githubusercontent.com/TheRaihan/Techserm/master/TC2.jpg" />
   </div>
-  <div class='payment_recept_body'>
-  	 <div class='left_body'>
-  	 	<table>
-  	 		<tr>
-  	 			<td class='td_name'>ID: </td>
-  	 			<td class='td_value'>10006</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Name: </td>
-  	 			<td class='td_value'>Sk.Amir Hamza</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Type: </td>
-  	 			<td class='td_value'>Monthly</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Program Name: </td>
-  	 			<td class='td_value'>10006</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Year: </td>
-  	 			<td class='td_value'>10006</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Month</td>
-  	 			<td class='td_value'>10006</td>
-  	 		</tr>
-  	 	</table>
-     
-  	 </div>
-  	 <div class='right_body'>
-  	 	<table>
-  	 		<tr>
-  	 			<td class='td_name'>Total Fee: </td>
-  	 			<td class='td_value'>10006</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Previous Total Pay: </td>
-  	 			<td class='td_value'>Sk.Amir Hamza</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Previous Total Due: </td>
-  	 			<td class='td_value'>Monthly</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Today Pay: </td>
-  	 			<td class='td_value'>10006</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Total Due: </td>
-  	 			<td class='td_value'>10006</td>
-  	 		</tr>
-  	 		<tr>
-  	 			<td class='td_name'>Status: </td>
-  	 			<td class='td_value'>10006</td>
-  	 		</tr>
-  	 	</table>
-  	 	
-  	 </div>
-<center><div class='comments'></div>
-     Signature</center>
-    
-  </div>
-</div>
 
-<?php } ?>
+  <div id="SchoolName">
+    Govt. Science School<br>Dhaka 1215
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <td>Name of Student: </td>
+        <td>Raihan Taher</td>
+      </tr>
+      <tr>
+        <td>Date of Birth: </td>
+        <td>20/04/1998</td>
+      </tr>
+      <tr>
+        <td>Current Grade: </td>
+        <td>4.00</td>
+      </tr>
+      <tr>
+        <td>Date of Admission: </td>
+        <td>05/01/2010</td>
+      </tr>
+      <tr>
+        <td>Leaving Date: </td>
+        <td>03/12/2018</td>
+      </tr>
+    </table>
+  </div>
+  <div id="blw_table">Completed Grade <u>4.5</u> and has been  promoted  to  Grade __________  for the Academic  
+    Year ____2018________ . <p style="font-size: 21px; position: absolute;top:95px;line-height: 30px;">(This  is  only  required  for transfers taking  place at  the end of  the Academic Year)</p>
+  </div>
+
+  <div id="signature">______________ <br>Principle</div>
+
+</body>
+</html>
+<style type="text/css">
+  html, body{
+    padding:0;
+    margin: 0;
+    font-family: Courier, serif;
+}
+
+table{
+    width: 660px;
+    height: 290px;
+    font-size: 25px;
+    font-family: Courier, serif;
+    position: absolute;
+    top: 450px;
+    left: 130px;
+}
+#blw_table {
+    width: 660px;
+    height: 290px;
+    line-height: 38px;
+    font-size: 25px;
+    font-family: Courier, serif;
+    position: absolute;
+    top: 790px;
+    left: 130px;
+    text-align: justify;
+}
+
+#signature{
+    font-size: 25px;
+    font-family: Courier, serif;
+    position: absolute;
+    top: 1080px;
+    left: 580px;
+    text-align: center;
+    line-height: 50px;
+}
+
+#certificate_background{
+    width:951px;
+    height: 1350px;
+    margin:0;
+    padding:0;
+    position: absolute;
+}
+
+#certificate_background img{
+    width:951px;
+    height: 1350px;
+}
+
+#SchoolName{
+
+    color: #ffffff;
+    text-align: center;
+    font-size: 39px;
+    top: 25px;
+    left: 173px;
+    width: 590px;
+    width: 590px;
+    height: 48px;
+    padding: 5px;
+    line-height: 60px;
+    border: 1px solid red;
+    position: absolute;
+    border: none;
+
+}
+</style>

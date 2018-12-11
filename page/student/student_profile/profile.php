@@ -21,6 +21,8 @@ foreach ($student as $key => $info) {
            $('table.display').DataTable();
       } );
  </script>
+
+
 <div class="row">
   <div class="col-md-3 about_profile">
     <div class="profile_header">Profile</div>

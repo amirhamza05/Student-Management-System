@@ -82,61 +82,152 @@ public function get_separate_id_card($student_id,$program_id,$batch_id){
 
 }
 
-public function get_id_card($info){
-	foreach ($info as $key => $value) {
-	$name=$value['name'];
-	$name=$this->make_name($name);
-	$id=$value['id'];
-	$photo=$value['photo'];
-	$mobile=$value['personal_mobile'];
-	if($mobile=="")$mobile=$value['father_mobile'];
-	if($mobile=="")$mobile=$value['mother_mobile'];
-	$batch_id=$value['batch'];
-	$batch=$this->batch;
-	$batch_name=$batch[$batch_id]['name'];
-	$start=$batch[$batch_id]['start'];
-	$end=$batch[$batch_id]['end'];
-	
-	$program_id=$value['program'];
-	$program_name=$this->program[$program_id]['name'];
-	$duration=$this->program[$program_id]['end'];
-	$duration=date('F, Y', strtotime($duration));
-   
+public function get_id_card($type="single"){
+	$float="";
+	if($type!="single")$float="float: left;";
  ?>
 
+<div class="id_card">
 <div class="card_box">
-	<div class="card_header"><div class="font_name">Creative Admission Care</div>Phone: +8801799398177</div>
-	<div class="box_body">
-	 	<img src="<?php echo "$photo"; ?>" class="img_card" align="right">
-	 	<div class="title">ID Card</div>
+  <div class="card_header"><div class="font_name">Creative Admission Care</div>Phone: +8801799398177</div>
+  <div class="box_body">
+    <img src="<?php echo "photo"; ?>" class="img_card" align="right">
+    <div class="title">ID Card</div>
         <div class="field">
-        	<div class="name_field">
-	 		<div class="id_field">Student Name : </div> <div class="inf"><b><?php echo "$name"; ?></b></div>
-			</div><div class="name_field">
-	 		<div class="id_field">Id Number : </div> <div class="inf"><b><?php echo "$id"; ?></b></div>
-			</div>
+          <div class="name_field">
+      <div class="id_field">Student Name : </div> <div class="inf"><b><?php echo "name"; ?></b></div>
+      </div><div class="name_field">
+      <div class="id_field">Id Number : </div> <div class="inf"><b><?php echo "id"; ?></b></div>
+      </div>
 
-			<div class="name_field">	 	
-	 		<div class="id_field">Program :</div>
-	 		<div class="inf"><b><?php echo "$program_name"; ?></b></div>
-			</div>
+      <div class="name_field">    
+      <div class="id_field">Program :</div>
+      <div class="inf"><b><?php echo "program_name"; ?></b></div>
+      </div>
 
-			<div class="name_field">	 	
-	 		<div class="id_field">Batch :</div> <div class="inf"><b><?php echo "$batch_name ($start - $end)"; ?></b></div>
-			</div>
-			<div class="name_field">	 	
-	 		<div class="id_field">Duration :</div> <div class="inf"><b><?php echo "$duration"; ?></b></div>
-	 		</div>
-		</div>
-		<center>
-		<div class="barcode_div">
-	 	<img src="barcode.php?text=<?php echo "$id"; ?>" class="barcode">
-	 	</div>
-		</center>
-	</div> 
+      <div class="name_field">    
+      <div class="id_field">Batch :</div> <div class="inf"><b><?php echo "batch_name (start - end)"; ?></b></div>
+      </div>
+      <div class="name_field">    
+      <div class="id_field">Duration :</div> <div class="inf"><b><?php echo "duration"; ?></b></div>
+      </div>
+    </div>
+    <center>
+    <div class="barcode_div">
+    <img src="barcode.php?text=<?php echo "id"; ?>" class="barcode">
+    </div>
+    </center>
+  </div> 
 </div>
- 
-<?php }
+ </div>
+<style type="text/css">
+	
+
+.id_card .box1{
+  height: auto;
+  overflow: auto;
+  padding: 15px;
+  overflow: auto;
+  margin-left: 50px;
+
+}
+.id_card .card_box{
+	overflow: hidden;
+	background: #eeeeee;
+	height: 260px;
+	width: 350px;
+	border-radius: 0px;
+	border-style: solid;
+	border-color: #2E363F;
+	border-width: 2px;
+	<?php echo "$float"; ?>
+	margin-right: 10px;
+	margin-bottom: 15px;
+	page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+    page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+    page-break-inside: avoid; 
+}
+
+.id_card .card_header{
+	background-color: #2E363F;
+	padding: 5px;
+	color: #ffffff;
+}
+
+.id_card .font_name{
+	font-size: 18px;
+	margin-left: 0px;
+	font-weight: bold;
+}
+
+.id_card .img_card{
+	height: 100px;
+	width: 80px;
+	overflow: visible;
+	margin-top: -35px;
+	margin-right: 5px;
+	border-style: solid;
+	border-width: 1px
+}
+
+.id_card .title{
+	background-color: #2E363F;
+	height: 20px;
+	width: 100px;
+	margin-top: 0px;
+	border-radius: 0% 0% 15% 15%;
+	font-weight: bold;
+	text-align: center;
+	font-size: 15px;
+	margin-left: 33%;
+	padding: 2px;
+	color: #ffffff; 
+	margin-bottom: 7px;
+
+}
+
+.id_card .id_field{
+	background-color: #BDC1CB; 
+	width: 98px;
+	font-size: 12px;
+	font-weight: bold;
+	float: left;
+	padding: 1px;
+	margin-right: 5px;
+
+}
+
+.id_card .inf{
+	margin-right: 5px;
+	font-size: 14px;
+}
+	
+.id_card .barcode{
+   text-align: center;
+   height: 30px;
+   width: 200px;
+   margin-top: 5px;
+}	
+
+.id_card .barcode_div{
+	border-style: solid;
+	border-width: 1px 0px 0px 0px;
+	border-color: #BDC1CB;
+	margin-top: 5px;
+
+}
+
+.id_card .box_body{
+
+}
+
+.id_card .name_field{
+	margin-bottom: 0px;
+}
+
+</style>
+
+<?php
 }
 
 

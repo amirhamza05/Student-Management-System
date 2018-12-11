@@ -6,6 +6,7 @@ if(isset($_POST['get_program_list'])){
 <div style="text-align: right;margin-bottom: 10px;">
 <button class="btn btn-primary btn-xs" onclick="add_program()" style="margin-right: 4px; padding: 10px" title="Add Program" data-title="Add Program" ><span class="glyphicon glyphicon-plus"></span> Add Program</button>
 
+
 </div>
 <table class="display" style="width: 100%">
   <thead>
@@ -46,7 +47,7 @@ if(isset($_POST['get_program_list'])){
     <td class="program_td_body" style="width: 100px;">
       <div class="btn-toolbar list-toolbar"><center>
       
-      <button style="" title="view" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" onclick="open_dilog_view_program(<?php echo "$id"; ?>)"></span></button>
+      <button style="" title="view" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" onclick="view_program(<?php echo "$id"; ?>)"></span></button>
       <button style="" title="Edit" onclick="edit_program(<?php echo "$id"; ?>)"  class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
       <button class="btn btn-danger btn-xs" title="Delete"  onclick="open_dilog_delete(<?php echo "$id"; ?>)"><span class="glyphicon glyphicon-trash"></span></button>
     </center></div>
@@ -116,12 +117,184 @@ if(isset($_POST['get_program_list'])){
   else{
     echo "Program Aready Added";
   }
-  
-
  }
 
+if(isset($_POST['view_program'])){
+  $admit_id=$_POST['view_program'];
+  ?>
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="view_program_body" id="view_program_body">
+        
+      </div>
+       
+    </div>
+    <div class="col-md-3">
+      <center>
+      <button class="view_program_btn" onclick="program_view_info(<?php echo $admit_id; ?>)">Admission Info</button>
+      <button class="view_program_btn" onclick="send_admission_sms_area(<?php echo $admit_id; ?>)">Send Admission SMS</button>
+      <button class="view_program_btn" onclick="program_id_card(<?php echo $admit_id; ?>)">ID Card</button>
+      <button class="view_program_btn" onclick="admission_recept(<?php echo $admit_id; ?>)">Admission Recept</button>
+      </center>
+    </div>
+  </div>
+<?php
+
+}
+
+if(isset($_POST['program_id_card'])){
+ $id_card->get_id_card();
+ ?>
+<button onclick="printDiv('print_area')">Print</button>
+ <?php
+}
+
+if(isset($_POST['program_view_info'])){
+  $id=$_POST['program_view_info'];
+  $info=$student_ob->get_admit_program_info($id);
+  $student_id=$info['student_id'];
+  $program_id=$info['program_id'];
+  $batch_id=$info['batch_id'];
+  $student_name=$student[$student_id]['name'];
+  $program_name=$program[$program_id]['name'];
+  $batch_name=$batch[$batch_id]['name'];
+  $batch_day=$batch[$batch_id]['day_string'];
+  $batch_time=$batch[$batch_id]['start']." - ".$batch[$batch_id]['end'];
+  $program_start=$program[$program_id]['start'];
+
+  ?>
+   <table width="100%">
+     <tr>
+       <td class="td_view1">Student Name:</td>
+       <td class="td_view2"><?php echo $student_name; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Student ID:</td>
+       <td class="td_view2"><?php echo $student_id; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Program Name:</td>
+       <td class="td_view2"><?php echo $program_name; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Batch Name:</td>
+       <td class="td_view2"><?php echo $batch_name; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Program Start:</td>
+       <td class="td_view2"><?php echo $program_start; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Program End:</td>
+       <td class="td_view2"><?php echo $program[$program_id]['end']; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Batch Day:</td>
+       <td class="td_view2"><?php echo $batch_day; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Batch Time:</td>
+       <td class="td_view2"><?php echo $batch_time; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Admission Date:</td>
+       <td class="td_view2"><?php echo $info['admit_date']; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Admit By:</td>
+       <td class="td_view2"><?php echo $info['admit_by'] ?></td>
+     </tr>
+   </table>
+
+
+  <?php
+}
+
+if(isset($_POST['admission_recept'])){
+  
+  ?>
+  
+<div id="print_area">
+  <?php $site->header_info_area(); ?>
+</div>
+<button onclick="printDiv('print_area')">Print</button>
+<?php
+} 
+
+if(isset($_POST['send_admission_sms_area'])){
+  $admit_id=$_POST['send_admission_sms_area'];
+  ?>
+  <center>
+  <div style="width: 250px" id="message_body">
+    <?php $sms->get_sms_recever_option(); ?>
+      <button class='btn btn-default' style="margin-top: 5px;" onclick='send_admission_sms(<?php echo "$admit_id"; ?>)'>Send SMS</button>
+  </div>
+  <div id="message_sending"></div>
+  </center>
+<?php
+}
+
+if(isset($_POST['send_admission_sms'])){
+ $info=$_POST['send_admission_sms'];
+ $admit_id=$info['admit_id'];
+ $receiver=$info['receiver'];
+ $info=$student_ob->get_admit_program_info($admit_id);
+ $student_id=$info['student_id'];
+  $program_id=$info['program_id'];
+  $batch_id=$info['batch_id'];
+  $student_name=$student[$student_id]['nick'];
+  $program_name=$program[$program_id]['name'];
+  $batch_name=$batch[$batch_id]['name'];
+  $batch_day=$batch[$batch_id]['day_sort_string'];
+  $batch_time=$batch[$batch_id]['start']." - ".$batch[$batch_id]['end'];
+  $message="Dear $student_name,\nCongrats For Admitting In Our '$program_name' Program.\n
+Your ID: $student_id
+Batch: $batch_name
+Time: $batch_day ($batch_time)
+
+@TechSerm
+";
+
+  $info=$sms->get_student_mobile_number($student_id,$receiver);
+  $list=array();
+  foreach ($info as $key => $value) {
+    $res=$sms->make_sms_array($value,$message);
+    array_push($list, $res);
+  }
+  $sms->send_sms($list);
+}
 ?>
  <style type="text/css">
+ 
+
+
+ .td_view1,.td_view2{
+  padding: 10px;
+  border: 1px solid #C6C9D1;
+ }
+ .td_view1{
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: right;
+  width: 220px;
+ }
+
+ .view_program_btn{
+   background-color: var(--bg-color);
+   color: var(--font-color);
+   padding: 15px;
+   width: 170px;
+   border-width: 0px;
+   margin-top: 5px;
+   border-radius: 5px;
+ }
+  .view_program_body{
+    background-color: #ffffff;
+    border: 1px solid #DDDDDD;
+    padding: 10px;
+  }
+
    .program_td{
     padding: 10px;
     border-style: solid;
