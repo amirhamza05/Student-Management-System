@@ -25,6 +25,48 @@ function add_program(){
     get_ajax(get_action_data("modal_sm_body"), data);
 }
 
+function edit_program_area(id){
+  
+  var data = {
+        "edit_program_area": id
+    }
+    
+    modal_open("sm", "Add Program");
+    
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body"), data);
+}
+
+function update_program(admit_id){
+  
+  batch_id=get_value("edit_batch_id");
+  if(batch_id==-1){
+        alert("Select Program Batch");
+    return;
+  }
+  var data1={
+      "admit_id":admit_id,
+      "batch_id":batch_id
+  }
+
+  var data={
+    "update_program":data1
+  }
+
+  loader("modal_sm_body");
+  $.ajax({
+        type: 'POST',
+        url: url,
+        data:data,
+        success: function(response) {
+           modal_open("sm", "Program Update Success","close");
+           success(response);
+           program();
+        }
+    });
+}
+
+
 function add_batch(){
 	program_id=get_value("select_program");
 	if(program_id==-1){
@@ -87,8 +129,6 @@ function view_program(admit_id){
            program_view_info(admit_id);
         }
     });
-    
-
 }
 
 function program_id_card(admit_id){

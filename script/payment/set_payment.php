@@ -93,7 +93,7 @@ class set_payment {
      }
      else{
       $info['month']="-";
-    $info['year']="-";
+      $info['year']="-";
      }
      $info['type']=($info['type']==1)?"Admission Fee":"Monthly Fee";
 

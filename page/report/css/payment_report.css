@@ -1,0 +1,43 @@
+
+.select {
+  position: relative;
+  display: block;
+  height: 3.4em;
+ 
+  width: 100%;
+  padding: 10px;
+  background: var(--bg-color);
+  color: var(--font-color);
+  overflow: hidden;
+  border-radius: .25em;
+  display: inline-block;
+  display: -webkit-inline-box;
+  border: 1px solid #667780;
+  margin: 0.5em 0em 1em 0em;
+}
+.input_date{
+    width: 100%;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    margin: 0.5em 0em 1em 0em;
+    height: 3.5em;
+    padding: 10px;
+    border-width: 0px;
+    border-radius: .25em;
+}
+.btn_select{
+  position: relative;
+  display: block;
+  height: 3.5em;
+ 
+  width: 100%;
+  padding: 10px;
+  background: var(--bg-color);
+  color: var(--font-color);
+  overflow: hidden;
+  border-radius: .25em;
+  display: inline-block;
+  display: -webkit-inline-box;
+  border: 1px solid #667780;
+  margin: 0.5em 0em 1em 0em;
+}

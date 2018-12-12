@@ -1,9 +1,6 @@
 <?php
-
 include 'layout/header.php';
-include "page/payment/payment.php";
-
+include "page/report/payment_report.php";
 include "layout/footer.php";
-
 
 ?>

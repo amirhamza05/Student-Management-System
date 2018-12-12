@@ -77,6 +77,8 @@ include 'script/theme/theme.php';
 $theme=new theme();
 $theme_info=$theme->get_theme_info();
 
+include 'script/report/report.php';
+$report=new report();
 
 }
 else{

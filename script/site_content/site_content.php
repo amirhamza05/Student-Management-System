@@ -168,7 +168,7 @@ public function header_info_area(){
       text-align: center;
       font-size: 14px;
       padding-bottom: 10px;
-      color: #868686;
+      color: #000000;
       border-width: 0px 0px 1px 0px;
       border-color: #eeeeee;
       border-style: solid;
@@ -178,11 +178,13 @@ public function header_info_area(){
   .school_title{
     font-size: 25px;
     font-family: 'Trocchi', serif;
+    font-weight: bold;
   }
   .header_area_logo{
           height: 60px;
           width: 60px;
   }
+  
     </style>
 
   <?php

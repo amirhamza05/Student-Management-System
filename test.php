@@ -1,117 +1,342 @@
-<html>
-<head>
-  
-  <title>Certificate</title>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script type="text/javascript">
+        function PrintPage() {
+            document.getElementById('print').style.display = 'none';
+            window.resizeTo(960, 600);
+            document.URL = "";
+            window.location.href = "";
+            window.print();
+        }
+
+    </script>
+    <style type="text/css" media="print">
+        @page
+        {
+            size: auto; /* auto is the initial value */
+            margin: 2mm 4mm 0mm 0mm; /* this affects the margin in the printer settings */
+        }
+        thead
+        {
+            display: table-header-group;
+        }
+        tfoot
+        {
+            display: table-footer-group;
+        }
+    </style>
+    <style type="text/css" media="screen">
+        thead
+        {
+            display: block;
+        }
+        tfoot
+        {
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
-
-  <div id="certificate_background">
-    <img src="https://raw.githubusercontent.com/TheRaihan/Techserm/master/TC2.jpg" />
-  </div>
-
-  <div id="SchoolName">
-    Govt. Science School<br>Dhaka 1215
-  </div>
-
-  <div>
-    <table>
-      <tr>
-        <td>Name of Student: </td>
-        <td>Raihan Taher</td>
-      </tr>
-      <tr>
-        <td>Date of Birth: </td>
-        <td>20/04/1998</td>
-      </tr>
-      <tr>
-        <td>Current Grade: </td>
-        <td>4.00</td>
-      </tr>
-      <tr>
-        <td>Date of Admission: </td>
-        <td>05/01/2010</td>
-      </tr>
-      <tr>
-        <td>Leaving Date: </td>
-        <td>03/12/2018</td>
-      </tr>
-    </table>
-  </div>
-  <div id="blw_table">Completed Grade <u>4.5</u> and has been  promoted  to  Grade __________  for the Academic  
-    Year ____2018________ . <p style="font-size: 21px; position: absolute;top:95px;line-height: 30px;">(This  is  only  required  for transfers taking  place at  the end of  the Academic Year)</p>
-  </div>
-
-  <div id="signature">______________ <br>Principle</div>
-
+    <form id="form1" runat="server">
+    <div>
+        <table style="width: 500px; margin: 0 auto;">
+            <thead>
+                <tr>
+                    <td>
+                        header comes here for each page
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        3
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        4
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        5
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        6
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        7
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        8
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        9
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        10
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        11
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        12
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        13
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        14
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        15
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        16
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        17
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        18
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        19
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        20
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        21
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        22
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        23
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        24
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        25
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        26
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        27
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        28
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        29
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        30
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        31
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        32
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        33
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        34
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        35
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        36
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        37
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        38
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        39
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        40
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        41
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        42
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        43
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        44
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        45
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        46
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        47
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        48
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        49
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        50
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        51
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        52
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        53
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        54
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        55
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        footer comes here for each page
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <br clear="all" />
+    <input type="button" id="print" name="print" value="Print" onclick="javascript:PrintPage();"
+        class="button" />
+    </form>
 </body>
 </html>
-<style type="text/css">
-  html, body{
-    padding:0;
-    margin: 0;
-    font-family: Courier, serif;
-}
-
-table{
-    width: 660px;
-    height: 290px;
-    font-size: 25px;
-    font-family: Courier, serif;
-    position: absolute;
-    top: 450px;
-    left: 130px;
-}
-#blw_table {
-    width: 660px;
-    height: 290px;
-    line-height: 38px;
-    font-size: 25px;
-    font-family: Courier, serif;
-    position: absolute;
-    top: 790px;
-    left: 130px;
-    text-align: justify;
-}
-
-#signature{
-    font-size: 25px;
-    font-family: Courier, serif;
-    position: absolute;
-    top: 1080px;
-    left: 580px;
-    text-align: center;
-    line-height: 50px;
-}
-
-#certificate_background{
-    width:951px;
-    height: 1350px;
-    margin:0;
-    padding:0;
-    position: absolute;
-}
-
-#certificate_background img{
-    width:951px;
-    height: 1350px;
-}
-
-#SchoolName{
-
-    color: #ffffff;
-    text-align: center;
-    font-size: 39px;
-    top: 25px;
-    left: 173px;
-    width: 590px;
-    width: 590px;
-    height: 48px;
-    padding: 5px;
-    line-height: 60px;
-    border: 1px solid red;
-    position: absolute;
-    border: none;
-
-}
-</style>

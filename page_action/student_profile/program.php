@@ -48,7 +48,7 @@ if(isset($_POST['get_program_list'])){
       <div class="btn-toolbar list-toolbar"><center>
       
       <button style="" title="view" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" onclick="view_program(<?php echo "$id"; ?>)"></span></button>
-      <button style="" title="Edit" onclick="edit_program(<?php echo "$id"; ?>)"  class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+      <button style="" title="Edit" onclick="edit_program_area(<?php echo "$id"; ?>)"  class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
       <button class="btn btn-danger btn-xs" title="Delete"  onclick="open_dilog_delete(<?php echo "$id"; ?>)"><span class="glyphicon glyphicon-trash"></span></button>
     </center></div>
     </td>
@@ -118,6 +118,35 @@ if(isset($_POST['get_program_list'])){
     echo "Program Aready Added";
   }
  }
+
+if(isset($_POST['edit_program_area'])){
+$admit_id=$_POST['edit_program_area'];
+$info=$student_ob->get_admit_program_info($admit_id);
+$program_id=$info['program_id'];
+$batch_id=$info['batch_id'];
+$program_name=$info['program_name'];
+
+?>
+
+<b class="txt">Select Batch</b>
+  <select class="select" id="edit_batch_id">
+     <option value="-1">Select <?php echo "$program_name"; ?> Batch</option>
+      <?php $program_ob->select_program_batch($program_id,$batch_id); ?>
+  </select>
+   <center> 
+    <button class="btn btn-primary btn-xs" style="margin-right: 4px; padding: 10px" title="Update Program" onclick="update_program(<?php echo "$admit_id"; ?>)">Update Program</button>
+
+<?php
+}
+
+if(isset($_POST['update_program'])){
+  $info=$_POST['update_program'];
+  $data['id']=$info['admit_id'];
+  $data['batch_id']=$info['batch_id'];
+  $db->sql_action("admit_program","update",$data,"no");
+  echo "Sucessfully Update Batch";
+}
+
 
 if(isset($_POST['view_program'])){
   $admit_id=$_POST['view_program'];
@@ -248,7 +277,7 @@ if(isset($_POST['send_admission_sms'])){
   $batch_name=$batch[$batch_id]['name'];
   $batch_day=$batch[$batch_id]['day_sort_string'];
   $batch_time=$batch[$batch_id]['start']." - ".$batch[$batch_id]['end'];
-  $message="Dear $student_name,\nCongrats For Admitting In Our '$program_name' Program.\n
+  $message="Dear $student_name,\nCongratulation For Admitting In Our '$program_name' Program.\n
 Your ID: $student_id
 Batch: $batch_name
 Time: $batch_day ($batch_time)
