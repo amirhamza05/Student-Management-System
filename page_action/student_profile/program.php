@@ -173,9 +173,12 @@ if(isset($_POST['view_program'])){
 }
 
 if(isset($_POST['program_id_card'])){
- $id_card->get_id_card();
+
  ?>
-<button onclick="printDiv('print_area')">Print</button>
+ <div id="print_area">
+  <?php  $id_card->get_id_card(); ?>
+</div>
+<button onclick="print('print_area')">Print</button>
  <?php
 }
 
@@ -247,7 +250,7 @@ if(isset($_POST['admission_recept'])){
 <div id="print_area">
   <?php $site->header_info_area(); ?>
 </div>
-<button onclick="printDiv('print_area')">Print</button>
+<button onclick="print('print_area')">Print</button>
 <?php
 } 
 

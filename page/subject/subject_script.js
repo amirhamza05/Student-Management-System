@@ -8,7 +8,7 @@ var action_data={
   	'div':modal_body,
   	'load':0
 };
-
+ 
 function get_subject_form(type,id=0){
   if(type=="insert"){
   	header="Add Subject";

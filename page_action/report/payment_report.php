@@ -12,7 +12,7 @@ $type=$info['type'];
 $data['program_id']=$program_id;
 $data['type']=$type;
 $data['date1']=$date1;
-$data['date2']=date('Y-m-d', strtotime($date2 . ' +1 day'));;
+$data['date2']=date('Y-m-d', strtotime($date2 . ' +1 day'));
 $program_name=($program_id==0)?"All Program":$program[$program_id]['name'];
 $type_string=($type==0)?"Admission & Monthly Fee":(($type==1)?"Admission Fee":"Monthly Fee");
 $date1=date("d M Y", strtotime($date1));

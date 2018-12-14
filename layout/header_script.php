@@ -80,6 +80,8 @@ $theme_info=$theme->get_theme_info();
 include 'script/report/report.php';
 $report=new report();
 
+include 'script/account/account.php';
+$account=new account();
 }
 else{
 

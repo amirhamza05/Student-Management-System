@@ -8,9 +8,7 @@
     <div class="modal-content">
         <div id="modal_sm_header" class="modal_content_header">Header</div>
             <div class="modal_sm_body" id="modal_sm_body">
-                <?php for($i=0; $i<50; $i++){ ?>
-              sadfsadf
-            <?php } ?>             
+                          
             </div>
 
     </div>
@@ -28,9 +26,7 @@
     <div class="modal-content">
         <div id="modal_md_header" class="modal_content_header">Header</div>
             <div class="modal_md_body" id="modal_md_body">
-                <?php for($i=0; $i<50; $i++){ ?>
-              sadfsadf
-            <?php } ?>             
+                           
             </div>
 
     </div>
@@ -48,9 +44,7 @@
     <div class="modal-content">
         <div id="modal_lg_header" class="modal_content_header">Header</div>
             <div class="modal_lg_body" id="modal_lg_body">
-                <?php for($i=0; $i<50; $i++){ ?>
-              sadfsadf
-            <?php } ?>             
+                           
             </div>
 
     </div>

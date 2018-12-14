@@ -1,5 +1,9 @@
 
 <script type="text/javascript" src="page/batch/batch_script.js"></script>
+
+
+<div class="row">
+<div class="col-md-12">
 <center>
 <div class="btn-toolbar list-toolbar">
     
@@ -48,3 +52,5 @@ foreach ($batch as $key => $value) {
           </tbody>
         </table>
 
+</div>
+</div>

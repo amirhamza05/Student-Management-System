@@ -17,7 +17,7 @@ $name=$login_user['uname'];
         <ul class="nav navbar-nav navbar-left">  
           <span onclick="action_side_bar()" class="sidebar-toggle-action">
           <button  class="btn_nav_toggle"><i class="fa fa-bars" id="icon_div"></i></button>
-          </span>
+          </span> 
         
         
           <a class="" href="index.php"><span class="navbar-brand"  style="color:var(--font-color)"><font class="logo_title"> TechSerm Education Software</font></span></a>
@@ -50,7 +50,7 @@ $name=$login_user['uname'];
 }
 </style>
 
-       
+        
 <script type="text/javascript">
   function action_side_bar(){
     div=document.getElementById('content');

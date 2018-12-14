@@ -4,7 +4,7 @@
 <style type="text/css">
     .img_style{
       height: 74px;
-      width: 70px;
+      width: 70px; 
       margin: -5px;
     }
 </style>
@@ -42,7 +42,7 @@ $photo=$login_user['photo'];
         <li><a href="index.php" class="nav-header"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li> 
         <li><a href="attend.php" class="nav-header"><i class="fa fa-fw fa-dashboard"></i> Attendence</a></li>
 
-<li><a href="#" data-target=".legal-menu_s" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-user"></i> Students<i class="fa fa-collapse"></i></a></li>
+<li><a href="javascript:void(0)" data-target=".legal-menu_s" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-user"></i> Students<i class="fa fa-collapse"></i></a></li>
         
         <li>
              <ul class="legal-menu_s nav nav-list collapse<?php if($page_name=="Student List")echo "in"; ?>">
@@ -63,7 +63,7 @@ $photo=$login_user['photo'];
 <li><a href="exam_list.php" class="nav-header"><i class="fa fa-fw fa-legal"></i> Exam</a></li>
 
 
-<li><a href="#" data-target=".result" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Result<i class="fa fa-collapse"></i></a></li>
+<li><a href="javascript:void(0)" data-target=".result" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Result<i class="fa fa-collapse"></i></a></li>
         
         <li>
              <ul class="result nav nav-list collapse">
@@ -72,7 +72,7 @@ $photo=$login_user['photo'];
            
         </ul></li>
 
-<li><a href="#" data-target=".notice" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Notice<i class="fa fa-collapse"></i></a></li>
+<li><a href="javascript:void(0)" data-target=".notice" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Notice<i class="fa fa-collapse"></i></a></li>
         
         <li>
              <ul class="notice nav nav-list collapse">
@@ -80,7 +80,7 @@ $photo=$login_user['photo'];
             <li ><a href="notice_list.php"><span class="fa fa-caret-right"></span>Notice List</a></li>
         </ul></li>
 
-<li><a href="#" data-target=".user" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-user"></i> User<i class="fa fa-collapse"></i></a></li>
+<li><a href="javascript:void(0)" data-target=".user" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-user"></i> User<i class="fa fa-collapse"></i></a></li>
         
         <li>
              <ul class="user nav nav-list collapse">

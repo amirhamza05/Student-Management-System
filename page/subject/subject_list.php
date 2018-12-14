@@ -19,7 +19,7 @@
           <tbody>
 
 <?php 
-
+ 
 foreach ($subject as $key => $value) {
   $subject_name=$value['name'];
   $subject_code=$value['code'];

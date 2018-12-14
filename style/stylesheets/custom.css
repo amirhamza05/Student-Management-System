@@ -166,7 +166,7 @@ Box
 
 
 .sidebar-nav {
-  width: 250px;
+  width: 240px;
   position: absolute;
   overflow: hidden;
   float: left;
@@ -209,7 +209,7 @@ Box
   margin-right: .25em;
   line-height: 1.5em;
 }
-.sidebar-nav .nav-header:hover {
+.sidebar-nav .nav-header:hover,.sidebar-nav .nav-header:focus {
   background-color: rgba(0,0,0,0.2);
   color: var(--font-color);
 }
@@ -249,7 +249,7 @@ Box
 }
 
 .sidebar-nav .nav-list  > .active > a,
-.sidebar-nav .nav-list  > .active > a:hover {
+.sidebar-nav .nav-list  > .active > a:hover{
   text-shadow: none;
   background-color: rgba(0,0,0,0.2);
   border-top: 1px solid #1F262D;
@@ -269,7 +269,10 @@ Box
 .sidebar-nav .nav-list  > li:hover a {
   margin-left: -4px;
 }
-
+.sidebar-nav .nav-list  > li:focus a {
+  margin-left: -4px;
+  background-color: rgba(0,0,0,0.2);  
+}
 
 .sidebar-nav .nav-list  > .active {
   overflow: hidden;
