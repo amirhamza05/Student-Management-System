@@ -266,7 +266,7 @@ class set_payment {
       return;
     }
     ?>
-      
+    <link rel="stylesheet" type="text/css" href="style/stylesheets/money_recept.css">  
   <div class='money_recept'>
   <div class='money_recept_header' >
     <center><b>Payment Recept</b></center>
@@ -352,7 +352,7 @@ class set_payment {
         </tr>
       </table>
       
-     </div>
+     </div> 
 <center><div class='comments'></div>
      Signature</center>
   </div>

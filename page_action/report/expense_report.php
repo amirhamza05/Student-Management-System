@@ -1,24 +1,18 @@
 <?php
 
-if(isset($_POST['view_payment_report'])){
+if(isset($_POST['view_expence_report'])){
 
-$info=$_POST['view_payment_report'];
+$info=$_POST['view_expence_report'];
 
 $date1=$info['date1'];
 $date2=$info['date2'];
-$program_id=$info['program_id'];
-$type=$info['type'];
 
-$data['program_id']=$program_id;
-$data['type']=$type;
 $data['date1']=$date1;
 $data['date2']=date('Y-m-d', strtotime($date2 . ' +1 day'));
-$program_name=($program_id==0)?"All Program":$program[$program_id]['name'];
-$type_string=($type==0)?"Admission & Monthly Fee":(($type==1)?"Admission Fee":"Monthly Fee");
+$info=$report->get_expence_report($data);
 $date1=date("d M Y", strtotime($date1));
 $date2=date("d M Y", strtotime($date2));
 
-$info=$report->get_payment_report_list($data);
 ?>
 
 <div class="pull-right">
@@ -96,17 +90,14 @@ $info=$report->get_payment_report_list($data);
 	<div class="col-md-12">
 		<font class="report_title">
 			<center>
-				Payment Report<br/>
+				Expence Report<br/>
 			</center>
 		</font>
 		<center>
 			<font class="report_description">
 				<?php echo "$date1 - $date2"; ?><br/>
-				<?php echo "$type_string"; ?>
 			</font>	
 		</center>
-	<div style="float: left;"><b>Program: </b><?php echo "$program_name"; ?> </div>
-	<div style="float: right;"><b>Batch:</b> All Batch</div>
 	</div>
 </div>
 <div style="margin-top: 5px;"></div>
@@ -114,47 +105,33 @@ $info=$report->get_payment_report_list($data);
 	<tr>
 		<td class="td1">#</td>
 		<td class="td1">Date</td>
-		<td class="td1">Name</td>
-		<td class="td1">Program Name</td>
-		<td class="td1">Pyament Type</td>
-		<td class="td1">Year</td>
-		<td class="td1">Month</td>
-		<td class="td1">Receive By</td>
-		<td class="td1" style="width: 100px">Pay</td>
+		<td class="td1">Expence Name</td>
+		<td class="td1">Notes</td>
+		<td class="td1">Add By</td>
+		<td class="td1">Amount</td>
 	</tr>
 	<?php 
     $sum=0;
     foreach ($info as $key => $value) {
-    if($value['type']==2){
-      $value['month']=$set_payment_ob->get_month_name($value['month']);
-     }
-     else{
-      $value['month']="-";
-      $value['year']="-";
-     }
-     $value['type']=($value['type']==1)?"Admission Fee":"Monthly Fee";
-     $sum+=$value['pay'];
-     $pay_date=date("d M Y h:i:A", strtotime($value['date']));
-
+     
+     $sum+=$value['amount'];
+     $date=date("d M Y h:i:A", strtotime($value['date']));
+     $user_id=$value['add_by'];
+     $user_name=$user[$user_id]['uname'];
 	?>
 	<tr>
 		<td class="td2"><?php echo $value['id']; ?></td>
-		<td class="td2"><?php echo $pay_date; ?></td>
-		<td class="td2"><?php echo $value['student_name']; ?></td>
-		<td class="td2"><?php echo $value['program_name']; ?></td>
-		<td class="td2"><?php echo $value['type']; ?></td>
-		<td class="td2"><?php echo $value['year']; ?></td>
-		<td class="td2"><?php echo $value['month']; ?></td>
-		<td class="td2"><?php echo $value['add_by']; ?></td>
-		<td class="td2"><?php echo $value['pay']; ?> Tk</td>
+		<td class="td2"><?php echo $date; ?></td>
+		<td class="td2"><?php echo $value['name']; ?></td>
+		<td class="td2"><?php echo $value['notes']; ?></td>
+		<td class="td2"><?php echo $user_name; ?></td>
+		<td class="td2"><?php echo $value['amount']; ?> Tk</td>
 		
 	</tr>
 
 	<?php } ?>
 	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
+		
 		<td></td>
 		<td></td>
 		<td></td>

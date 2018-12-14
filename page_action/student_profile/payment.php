@@ -522,12 +522,13 @@ if(isset($_POST['payment_panel'])){
 
  if(isset($_POST['print_money_recept'])){
   $payment_id=$_POST['print_money_recept'];
-  $set_payment_ob->get_money_recept($payment_id);
-  $url="student_money_recept=".base64_encode($payment_id);
-  $url="print_page.php?".$url;
+  
 ?>
+<div id="print_recept_area">
+  <?php $set_payment_ob->get_money_recept($payment_id); ?>
+</div>
 
-<center><a onclick="print_action('<?php echo $url; ?>')" class='btn btn-default'> <i class='glyphicon glyphicon-print'></i> Print Money Recept</a></center>
+<center><a onclick="print('print_recept_area')" class='btn btn-default'> <i class='glyphicon glyphicon-print'></i> Print Money Recept</a></center>
 
 <?php  
 }

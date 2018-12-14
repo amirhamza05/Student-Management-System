@@ -33,31 +33,3 @@
 
 </div>
 
-<script type="text/javascript">
-	 function printDiv(divName) {
-        
-    var printContents = document.getElementById(divName).innerHTML;
-    var originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
-    
-        
-  }
-
-
-  function print(divName){
-  	var printContents = document.getElementById(divName).innerHTML;
-  	w=1150;
-  	h=750;
-  	var left = (screen.width/2)-(w/2);
-    var top = (screen.height/2)-(h/2);
-  	myWindow=window.open('', '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);;
-    myWindow.document.write(printContents);
-    myWindow.document.close();
-    myWindow.focus();
-    myWindow.print();
-    myWindow.close();
-  }
-</script>
-

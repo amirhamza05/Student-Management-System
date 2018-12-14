@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="style/stylesheets/money_recept.css">
 
+ 
 <?php
 
 include "layout/header_script.php";

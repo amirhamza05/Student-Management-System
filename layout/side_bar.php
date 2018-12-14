@@ -40,7 +40,6 @@ $photo=$login_user['photo'];
  </li>
 
         <li><a href="index.php" class="nav-header"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li> 
-        <li><a href="attend.php" class="nav-header"><i class="fa fa-fw fa-dashboard"></i> Attendence</a></li>
 
 <li><a href="javascript:void(0)" data-target=".legal-menu_s" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-user"></i> Students<i class="fa fa-collapse"></i></a></li>
         
@@ -48,8 +47,7 @@ $photo=$login_user['photo'];
              <ul class="legal-menu_s nav nav-list collapse<?php if($page_name=="Student List")echo "in"; ?>">
             <li class=""><a href="student_list.php" class=""><span class="fa fa-caret-right"></span>Student List</a></li>
             <li ><a href="add_student.php"><span class="fa fa-caret-right"></span>Add Student</a></li>
-            <li ><a href="id_card.php"><span class="fa fa-caret-right"></span>ID Card</a></li>
-            <li ><a href="payment_add.php"><span class="fa fa-caret-right"></span>Payment</a></li>
+            <li ><a href="attend.php"><span class="fa fa-caret-right"></span>Attendence</a></li>
         </ul></li>
 
 
@@ -60,34 +58,69 @@ $photo=$login_user['photo'];
 
 <li><a href="subject_list.php" class="nav-header"><i class="fa fa-fw fa-legal"></i> Subject</a></li>
 
-<li><a href="exam_list.php" class="nav-header"><i class="fa fa-fw fa-legal"></i> Exam</a></li>
 
 
-<li><a href="javascript:void(0)" data-target=".result" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Result<i class="fa fa-collapse"></i></a></li>
+
+<li><a href="javascript:void(0)" data-target=".result" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Exam<i class="fa fa-collapse"></i></a></li>
         
         <li>
              <ul class="result nav nav-list collapse">
+            <li ><a href="exam_list.php" class="l_active"><span class="fa fa-caret-right"></span>Exam List</a></li>
             <li ><a href="result.php" class="l_active"><span class="fa fa-caret-right"></span>Show Result</a></li>
             <li ><a href="add_result.php" class="l_active"><span class="fa fa-caret-right"></span>ADD Result</a></li>
            
         </ul></li>
 
-<li><a href="javascript:void(0)" data-target=".notice" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Notice<i class="fa fa-collapse"></i></a></li>
+    <li><a href="javascript:void(0)" data-target=".notice" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Notice<i class="fa fa-collapse"></i></a></li>
         
-        <li>
-             <ul class="notice nav nav-list collapse">
+    <li>
+        <ul class="notice nav nav-list collapse">
             <li ><a href="send_notice.php" class="l_active"><span class="fa fa-caret-right"></span>Send Notice</a></li>
             <li ><a href="notice_list.php"><span class="fa fa-caret-right"></span>Notice List</a></li>
-        </ul></li>
+    </ul></li>
 
-<li><a href="javascript:void(0)" data-target=".user" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-user"></i> User<i class="fa fa-collapse"></i></a></li>
+        <li><a href="javascript:void(0)" data-target=".user" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-user"></i> User<i class="fa fa-collapse"></i></a></li>
         
         <li>
              <ul class="user nav nav-list collapse">
             <li ><a href="user_list.php" class="l_active"><span class="fa fa-caret-right"></span>User List</a></li>
             <li ><a href="add_student.php"><span class="fa fa-caret-right"></span>User Profile</a></li>
         </ul></li>
-</ul>
+
+        <li><a href="javascript:void(0)" data-target=".account" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Account<i class="fa fa-collapse"></i></a></li>
+        
+        <li>
+             <ul class="account nav nav-list collapse">
+            <li ><a href="expence.php" class="l_active"><span class="fa fa-caret-right"></span>Add Expence</a></li>
+            
+        </ul></li>
+
+        <li><a href="javascript:void(0)" data-target=".report" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Report<i class="fa fa-collapse"></i></a></li>
+        
+        <li>
+             <ul class="report nav nav-list collapse">
+            <li ><a href="payment_report.php" class="l_active"><span class="fa fa-caret-right"></span>Payment Report</a></li>
+            <li ><a href="expence_report.php"><span class="fa fa-caret-right"></span>Expence Report</a></li>
+            <li ><a href="profit_report.php"><span class="fa fa-caret-right"></span>Profit Report</a></li>
+        </ul></li>
+         
+         <li><a href="javascript:void(0)" data-target=".sms" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> SMS<i class="fa fa-collapse"></i></a></li>
+        
+        <li>
+             <ul class="sms nav nav-list collapse">
+            <li ><a href="sms_dashboard.php" class="l_active"><span class="fa fa-caret-right"></span>SMS Dashboard</a></li>
+            <li ><a href="notice_list.php"><span class="fa fa-caret-right"></span>SMS Setting</a></li>
+        </ul></li>
+
+        <li><a href="javascript:void(0)" data-target=".setting" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Setting<i class="fa fa-collapse"></i></a></li>
+        
+        <li>
+             <ul class="setting nav nav-list collapse">
+            <li ><a href="setting.php" class="l_active"><span class="fa fa-caret-right"></span>General Setting</a></li>
+            
+        </ul></li>
+
+    </ul>
     </div>
 
     </div>

@@ -7,7 +7,7 @@
    				 $('table.display').DataTable();
 			} );
     	</script>
-    	 
+    	  
 
         <div class="col-md-12">
             <div class="dashboard_box">

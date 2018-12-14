@@ -10,6 +10,8 @@
 $name=$login_user['uname'];
 
 ?>
+
+<script type="text/javascript" src="layout/js/nav_bar_script.js"></script>
  <div class="navbar navbar-default" role="navigation" style="position: auto; border-width: 0px 0px 1px 0px; border-color: rgba(0,0,0,0.2); padding: 10px;" >
 
         <div class="navbar-headerr"  style="position: auto; border-width: 0px;">
@@ -22,10 +24,8 @@ $name=$login_user['uname'];
         
           <a class="" href="index.php"><span class="navbar-brand"  style="color:var(--font-color)"><font class="logo_title"> TechSerm Education Software</font></span></a>
           <span class="nev_bar_button_area">
-            <a href="add_student.php">
-              <button class="btn_tab" style="margin-left: 15px;"><i class="fa fa-home"></i> Add Student</button></a>
-            <button class="btn_tab"><i class="fa fa-home"></i> View Student</button>
-            <button class="btn_tab"><i class="fa fa-home"></i> Payment Receive</button>
+             <button onclick="nav_bar_student()" class="btn_tab" style="margin-left: 15px;"><i class="fa fa-home"></i> Student</button>
+            
           </span>
           
         </ul>

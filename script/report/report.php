@@ -20,9 +20,9 @@ class report {
 //end dabtabase connection
   public function get_payment_report_list($data){
     $date1=$data['date1'];
-	$date2=$data['date2'];
-	$program_id=$data['program_id'];
-	$type=$data['type'];
+	 $date2=$data['date2'];
+	 $program_id=$data['program_id'];
+	 $type=$data['type'];
     $q_program="";
     $q_type="";
     $where="";
@@ -62,6 +62,37 @@ class report {
   	
   	$month_array=array("January","February","March","April","May","June","July","August","September","October","November","December");
   	return $month_array[$month-1];
+  }
+
+  public function get_expence_report($data){
+    $date1=$data['date1'];
+    $date2=$data['date2'];
+    $sql="select expence.* from expence
+    where (expence.date BETWEEN CAST('$date1' AS DATE) AND CAST('$date2' AS DATE))
+    ";
+
+    $info=$this->db->get_sql_array($sql);
+    return $info;
+  }
+
+  public function get_profit_report($data){
+    $ex_rep=$this->get_expence_report($data);
+    $data['program_id']=0;
+    $data['type']=0;
+    $pay_rep=$this->get_payment_report_list($data);
+    $total_expence=0;
+    foreach ($ex_rep as $key => $value) {
+      $total_expence+=$value['amount'];
+    }
+    
+    $total_payment=0;
+    foreach ($pay_rep as $key => $value) {
+      $total_payment+=$value['pay'];
+    }
+    $info['total_expence']=$total_expence;
+    $info['total_payment']=$total_payment;
+    $info['total_profit']=$total_payment-$total_expence;
+return $info;
   }
 
 
