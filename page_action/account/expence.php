@@ -59,8 +59,6 @@ if(isset($_POST['delete_expence_form'])){
 }
 
 
-
-
 ?>
 
 <style type="text/css">

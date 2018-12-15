@@ -1,9 +1,4 @@
 
-
-
-
-
-
 function nav_bar_student() {
 
     var data = {

@@ -1,10 +1,22 @@
 
+<script type="text/javascript">
+            $(document).ready(function() {
+                 $('table.display').DataTable();
+            } );
+        </script>
 
+<?php
+
+$total_student=count($student);
+$total_notice=count($notice_info);
+$info=$sms->sms_balance();
+
+?>
 
  <div class="row" >
                     <div class="col-lg-3 col-sm-6">
                         <div class="circle-tile">
-                            <a href="#">
+                            <a href="">
                                 <div class="circle-tile-heading dark-blue">
                                     <i class="fa fa-users fa-fw fa-3x"></i>
                                 </div>
@@ -14,16 +26,16 @@
                                     Total Students
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    265
+                                    <?php echo "$total_student"; ?>
                                     <span id="sparklineA"></span>
                                 </div>
-                                <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="circle-tile">
-                            <a href="#">
+                            <a href="">
                                 <div class="circle-tile-heading dark-blue">
                                     <i class="fa fa-money fa-fw fa-3x"></i>
                                 </div>
@@ -33,27 +45,27 @@
                                     Total Teacher
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    510
+                                    -
                                 </div>
-                                <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="circle-tile">
-                            <a href="#">
+                            <a href="">
                                 <div class="circle-tile-heading dark-blue">
                                     <i class="fa fa-bell fa-fw fa-3x"></i>
                                 </div>
                             </a>
                             <div class="circle-tile-content dark-blue">
                                 <div class="circle-tile-description text-faded">
-                                    Due SMS
+                                    SMS Balance
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    9
+                                   <?php echo $info['balance']; ?>
                                 </div>
-                                <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
+                                <a href="" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -69,7 +81,7 @@
                                     Total Notice
                                 </div>
                                 <div class="circle-tile-number text-faded">
-                                    10
+                                    <?php echo "$total_notice"; ?>
                                     <span id="sparklineB"></span>
                                 </div>
                                 <a href="#" class="circle-tile-footer">More Info <i class="fa fa-chevron-circle-right"></i></a>
@@ -79,38 +91,39 @@
         </div>
 
 
+
     <div class="row">
-        <div class="col-md-6">
-            <div class="dashboard_box">
-                <div class="box_header">Message Option</div>
-                <div class="box_body"></div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="dashboard_box">
-                <div class="box_header">Message Option</div>
-                <div class="box_body"></div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="dashboard_box">
-                <div class="box_header">Message Option</div>
-                <div class="box_body"></div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="dashboard_box">
-                <div class="box_header">Message Option</div>
-                <div class="box_body"></div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="dashboard_box">
-                <div class="box_header">Message Option</div>
-                <div class="box_body"></div>
-            </div>
-        </div>
+
+
+        <?php 
+       
+       if($user_permit>=2){
+        include "message_list.php"; 
+        include "expence_list.php";
+       }
+        ?>
 
     </div>    
 
 <link rel="stylesheet" type="text/css" href="page/index/style.css">
+<style type="text/css">
+    thead{
+        background-color: #EFF0F2;
+        border-width: 0px;
+    }
+    .td_list1{
+        background-color: #EFF0F2;
+        color: #000000;
+        padding: 10px;
+        font-weight: bold;
+        border: 1px solid #C6C9D1;
+        text-align: center;
+    }
+    .td_list2{
+        background-color: #ffffff;
+        color: #000000;
+        padding: 8px;
+        border: 1px solid #C6C9D1;
+        text-align: center;
+    }
+</style>

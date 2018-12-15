@@ -1,9 +1,8 @@
-<script type="text/javascript" src="page/notice/notice_script/notice.js"></script>
+<script type="text/javascript" src="page/notice/js/notice.js"></script>
 
 <center>
 <div class="btn-toolbar list-toolbar">
-    <button class="btn btn-primary" data-title="Add Product" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>Add Notice</button>
-    
+   <button class="btn btn-primary" onclick="get_notice_form('insert')"><i class="fa fa-plus"></i> Add Notice</button>
 </div>
 </center>
 
@@ -14,6 +13,11 @@ foreach ($notice_info as $key => $value) {
   $title=$value['title'];
   $description=$value['description'];
   $id=$value['id'];
+  $date=$value['date'];
+  $day=date("d", strtotime($date));
+  $month=date("M", strtotime($date));
+  $year=date("Y", strtotime($date));
+  
   for($i=0; $i<1; $i++){
 ?>
         <div class="row carousel-row">
@@ -22,12 +26,13 @@ foreach ($notice_info as $key => $value) {
 <div id="carousel-1" style="" class="carousel slide slide-carousel">
   
               <!-- Wrapper for slides -->
-              <div style="background-color: #2E363F;height: 160px;">
+        <div style="background-color: background-color: var(--bg-color);  
+    color: var(--font-color)!important;height: 160px;">
               <div class="carousel-inner">
                   <div class="time_body">
-              <span class="day">4</span>
-              <span class="month">Jul</span>
-              <span class="year">2014</span>
+              <span class="day"><?php echo "$day"; ?></span>
+              <span class="month"><?php echo "$month"; ?></span>
+              <span class="year"><?php echo "$year"; ?></span>
                   </div>
               </div>
             </div>
@@ -45,9 +50,9 @@ foreach ($notice_info as $key => $value) {
             </div>
             <div class="slide-footer">
                 <span class="pull-right buttons">
-                  <button class="btn btn-sm btn-primary" data-toggle="modal" onclick="send_btn(<?php echo "$id"; ?>)" data-target="#send_sms"><i class="fa fa-fw fa-shopping-cart"></i><b>Send SMS</b></button>
-                  <button class="btn btn-sm btn-primary"><i class="fa fa-fw fa-shopping-cart"></i><b>Edit</b></button>
-                   <button class="btn btn-sm btn-primary"><i class="fa fa-fw fa-shopping-cart"></i><b>Delete</b></button>
+                  <button class="btn btn-sm btn-primary" data-toggle="modal" onclick="send_sms_form(<?php echo "$id"; ?>)" data-target="#send_sms"><i class="fa fa-fw fa-shopping-cart"></i><b>Send SMS</b></button>
+                  <button class="btn btn-sm btn-primary" onclick="get_notice_form('update',<?php echo "$id"; ?>)"><i class="fa fa-fw fa-shopping-cart"></i><b>Edit</b></button>
+                   <button class="btn btn-sm btn-primary" onclick="get_notice_form('delete',<?php echo "$id"; ?>)"><i class="fa fa-fw fa-shopping-cart"></i><b>Delete</b></button>
                 </span>
             </div>
         </div>
@@ -56,55 +61,11 @@ foreach ($notice_info as $key => $value) {
 <?php } } ?>
         
 </div>
-<!-- start Add model -->
 
-  <div class="modal large fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header" style="">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 id="myModalLabel">Add Notice</h4>
-        </div>
-
-        <div class="modal-body" style="background-color: #3D3D3D; margin-bottom: -15px ">
-          <input id="title" type="text" placeholder="Enter Notice Title" name="" style="width: 100%; padding: 15px;margin-bottom: 5px; font-weight: bold;font-size: 20px;">
-            <?php include "page/editor/sms_editor.php"; ?>
-        </div>
-          <div class="modal-footer" style="background-color: #414959; color: #ffffff">
-       
-
-        <button type="button" onclick="save_notice()" class="btn btn-primary">Save Notice</button>
-      </div>
-       
-      </div>
-    </div>
-</div>
-
-
-<div class="modal fade notice" id="send_sms" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header" style="">
-            <button style="padding: 15px;" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 id="myModalLabel">Save Notice</h4>
-        </div>
-        <div class="modal-body" id="send_body" style="">
-
-        </div>
-       
-      </div>
-    </div>
-</div>
   <input type="number" name="" id="notice_id" hidden="">
 
     <style type="text/css">
-.notice .modal-dialog{max-width: 700px; width: 100%;}
 
-  .modal-backdrop
-{
-    opacity: .9 !important;
-} 
-      /* FONT AWESOME & not necessary for functions */
   .btn_send{
     padding: 10px;
     background-color: #2B383B;
@@ -180,8 +141,8 @@ select::-ms-expand {
 .time{
     display: inline-block;
     width: 100%;
-    color: #ffffff;
-    background-color: rgb(197, 44, 102);
+    background-color: var(--bg-color);  
+    color: var(--font-color)!important;
     padding: 5px;
     text-align: center;
     text-transform: uppercase;
@@ -191,7 +152,7 @@ select::-ms-expand {
     font-size: 56pt;
     font-weight: 100;
     line-height: 1;
-    color: #ffffff;
+    
 }
 .notice_des{
   margin-left: -15px;
@@ -204,13 +165,13 @@ select::-ms-expand {
     font-size: 24pt;
     font-weight: 900;
     line-height: 1;
-    color: #ffffff;
   }
 .year{
-  color: #ffffff;
+  
 }
   .time_body{
-      
+    background-color: var(--bg-color);  
+    color: var(--font-color)!important;
     box-shadow: 0px 0px 5px rgb(51, 51, 51);
     box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
     padding: 0px;
@@ -222,7 +183,8 @@ select::-ms-expand {
 .slide-carousel {
     width: 15%;
     float: left;
-    background-color: #000000;
+    background-color: var(--bg-color);  
+    color: var(--font-color)!important;
     
 }
 

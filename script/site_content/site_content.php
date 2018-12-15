@@ -10,7 +10,18 @@ include "script/site_content/site_config.php";
 class site_content extends site_config {
 
 
+//starting connection
 
+ public function __construct(){
+     
+     $this->db=new database();
+     $this->conn=$this->db->conn;
+
+ }
+
+ public function select($query){
+   return $this->result=$this->db->select($query);
+  }
    
 public function url_list(){
 
@@ -157,8 +168,8 @@ public function make_name($name){
 public function header_info_area(){
   ?>
   <div class="school_header_area">
-      <img class="header_area_logo" src="https://britainstandardschool.com/wp-content/uploads/2018/11/rsz_master_logo2-1.jpg"><br/>
-      <span class="school_title">TechSerm Educational Software</span><br/>
+      <img class="header_area_logo" src="<?php echo $this->db->logo; ?>"><br/>
+      <span class="school_title"><?php echo $this->db->site_name; ?></span><br/>
       <span class="glyphicon glyphicon-map-marker"></span> South Keraniganj , Dhaka , Bangladesh<br/>
       <span class="glyphicon glyphicon-phone"></span> Phone: 01716404120 | <span class="glyphicon glyphicon-envelope"></span> Email: 
             britainstandard@gmail.com

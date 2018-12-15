@@ -18,7 +18,7 @@ class sms
         $this->login_user = $this->db->login_user;
         $this->conn       = $this->db->conn;
         $this->student_ob = new student();
-        $this->student    = $this->student_ob->get_student_info();
+        
         $this->login_user=$user_id;
     }
     
@@ -41,6 +41,12 @@ class sms
         return $info;
     }
     
+    public function get_separate_sms_buy($id){
+        $sql  = "select * from sms_add where id=$id";
+        $info = $this->db->get_sql_array($sql);
+        return $info[0];
+    }
+
     public function send_sms_getway($info)
     {
         
@@ -89,10 +95,8 @@ class sms
     {
         
         $data = $this->check_sms_balance_list($sms_list);
-        if ($data['per'] == 0) {
-            echo "Insufficient Balance.Please Recharge Your Balance And Again Send SMS";
-            return;
-        }
+        if ($data['per'] == 0)return;
+
         $total      = $data['total'];
         $start_time = strtotime($this->db->date());
         $this->sms_dist($total);
@@ -101,7 +105,9 @@ class sms
         $end_time = strtotime($this->db->date());
         $diff     = $end_time - $start_time;
         
-        echo "All SMS Successfully Send.<li>Total SMS Send: $total</li><li>Total Time: $diff Second</li>";
+        echo "<b style='color:green'>All SMS Successfully Send.
+        <li>Total SMS Send: $total</li>
+        <li>Total Time: $diff Second</li></b>";
     }
     
     
@@ -118,6 +124,15 @@ class sms
         $data['total'] = $total;
         $data['per']   = ($total > $balance) ? 0 : 1;
         
+        if($data['per']==0){
+            $need=$total-$balance;
+            echo "<b style='color:red'>Insufficient Balance.
+            <li>Your Total SMS: $total sms</li>
+            <li>Your Balance: $balance sms</li>
+            <li>Your Need: $need sms</li>
+            Please Recharge Your Balance And Again Send SMS.Contact TechSerm Authority For Recharge Your Balance.</b>";
+        }
+
         return $data;
     }
     
@@ -214,16 +229,7 @@ class sms
     }
     
     
-    public function syn_info($id)
-    {
-        $info1                    = $this->student;
-        $st_info                  = $info1[$id];
-        $info['{{student_name}}'] = $st_info['name'];
-        $info['{{nick_name}}']    = $st_info['nick'];
-        $info['{{id}}']           = $st_info['id'];
-        
-        return $info;
-    }
+   
     
     public function get_sms_recever_option()
     {
@@ -240,6 +246,20 @@ class sms
 
                 ";
     }
+
+
+   public function get_sms_recever_only_option()
+    {
+
+        echo " 
+             
+                <option value='-1'> --Select Recever-- </option>
+                <option value='all'> ALL </option>
+                <option value='st'> Student </option>
+                <option value='ga'> Guardians </option>
+                ";
+    }
+
 
     
 
@@ -263,6 +283,8 @@ class sms
 
       return $list;
     }
+
+
     
     public function get_syn()
     {
@@ -280,7 +302,17 @@ class sms
             echo "<option value='$key'>$value</option>";
         }
     }
-    
+
+     public function syn_info($id)
+    {
+      
+        $st_info=$this->student_ob->get_info($id);
+        $info['{{student_name}}'] = $st_info['name'];
+        $info['{{nick_name}}']    = $st_info['nick'];
+        $info['{{id}}']           = $st_info['id'];
+        
+        return $info;
+    }
     
     public function get_sms($student_id, $text)
     {

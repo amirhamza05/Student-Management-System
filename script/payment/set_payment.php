@@ -254,8 +254,9 @@ class set_payment {
     if($type!="Admission Fee"){
       $month_status="Monthly Fee '$month-$year'";
     }
+    $site_msg=$this->db->msg;
 
-    $msg="Dear $nick,\nYour Payment $pay Tk for $month_status in '$program_name' is Successfully Taken.\nYour Payment ID: $payment_id\n\n@TechSerm\n01991223020";
+    $msg="Dear $nick,\nYour Payment $pay Tk for $month_status in '$program_name' is Successfully Taken.\nYour Payment ID: $payment_id\n\n$site_msg";
           return $msg;
   }
 
@@ -274,10 +275,10 @@ class set_payment {
       <table style='background-color: none'>
         <tr>
           <td style='padding-right: 15px; background-color: none'>
-            <img class='money_logo' src='https://britainstandardschool.com/wp-content/uploads/2018/11/rsz_master_logo2-1.jpg'>
+            <img class='money_logo' src='<?php echo $this->db->logo; ?>'>
           </td>
           <td style='background-color: none'>
-            <font class='title_logo'>TechSerm Educational Software</font><br/>
+            <font class='title_logo'>Britain Standard School</font><br/>
             <font class='title_detail'>
               Excellence in Education<br/>
               South Keraniganj , Dhaka , Bangladesh<br/>

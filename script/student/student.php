@@ -81,6 +81,8 @@ public function get_info($student_id){
   $sql="select * from student where id=$student_id";
   $info=$this->db->get_sql_array($sql);
   $info=$info[0];
+  $url="upload/student_photo/";
+  $info['photo']=$url.$info['photo'];
   
   return $info;
 }

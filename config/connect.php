@@ -11,7 +11,9 @@ class database {
  public $result;
  public $conn;
  public $login_user;
-
+ public $logo="upload/custom_content/logo.png";
+ public $site_name="Britain Standard School";
+ public $msg="@ Britain Standard School";
 
  //conection start
 

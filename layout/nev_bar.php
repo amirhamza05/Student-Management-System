@@ -22,9 +22,9 @@ $name=$login_user['uname'];
           </span> 
         
         
-          <a class="" href="index.php"><span class="navbar-brand"  style="color:var(--font-color)"><font class="logo_title"> TechSerm Education Software</font></span></a>
+          <a class="" href="index.php"><span class="navbar-brand"  style="color:var(--font-color)"><font class="logo_title"> <?php echo $db->site_name; ?></font></span></a>
           <span class="nev_bar_button_area">
-             <button onclick="nav_bar_student()" class="btn_tab" style="margin-left: 15px;"><i class="fa fa-home"></i> Student</button>
+             <!-- here button -->
             
           </span>
           

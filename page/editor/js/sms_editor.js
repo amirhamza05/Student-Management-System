@@ -106,7 +106,7 @@ function setCaretToPos (input, pos) {
   setSelectionRange(input, pos, pos);
 }
 
-function loader(divname){
+function loader1(divname){
   document.getElementById(divname).innerHTML = "<img src='https://public.udvash.com/Content/Image/ajax-loader.gif' />";
 }
 function close_loader(divname){

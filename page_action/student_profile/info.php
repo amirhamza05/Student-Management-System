@@ -21,7 +21,7 @@
 	</tr>
 	<tr>
 		<td class="td_info1">Student Photo: </td>
-		<td class="td_info2"><img src="upload/student_photo/<?php echo $student_id; ?>" class="info_img" /></td>
+		<td class="td_info2"><img src="<?php echo $info['photo']; ?>" class="info_img" /></td>
 	</tr>
 	<tr>
 		<td class="td_info1">Student ID: </td>

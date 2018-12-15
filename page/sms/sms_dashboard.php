@@ -5,23 +5,6 @@
 
 <?php
 
-$list=array();
-//$res=$sms->make_sms_array("01991223020","Hello Normal Phone");
-//array_push($list, $res);
-$msg="Dear Hamza,
-Your Monthly Fee 'Sep-2018' in 'SSC Program 2018' is Successfully Taken.
-
-Payment ID: 54
-Pay: 200 Tk.
-Due: 300 Tk.
-
-@TechSerm
-01991223020";
-$res=$sms->make_sms_array("01777564786",$msg);
-array_push($list, $res);
-//$sms->send_sms($list);
-//print_r($list);
-$u=$sms->login_user;
 
 $info=$sms->sms_balance();
 
@@ -112,13 +95,14 @@ $info=$sms->sms_balance();
 			} );
     	</script>
     	
-
+ 
         <div class="col-md-6">
             <div class="dashboard_box">
                 <div class="box_header">Buy SMS List</div>
                 <div class="box_body">
                 	 <div class="pull-rightt" style="margin-top: -20px;">
-						<center><button class="button" onclick="buy_sms_btn()">+ Add SMS</button></center>
+						<center>
+                            <button class="button" onclick="get_sms_form('insert')">+ Add SMS</button></center>
 					</div>
                 
                 	<table id="" class="display" width="100%">
@@ -126,20 +110,21 @@ $info=$sms->sms_balance();
                 		<tr>
                 			<td class="td_list1"></td>
                 			<td class="td_list1">#</td>
-                			<td class="td_list1">Total Buy SMS</td class="td_list1">
-                			<td class="td_list1">Total Use</td class="td_list1">
-                			<td class="td_list1">Buy Date</td class="td_list1">
-                			<td class="td_list1">Expire Date</td class="td_list1">
-                			<td class="td_list1">Add By</td class="td_list1">
-                			<td class="td_list1">Status</td class="td_list1">
+                			<td class="td_list1">Total Buy SMS</td>
+                			<td class="td_list1">Total Use</td>
+                			<td class="td_list1">Buy Date</td>
+                			<td class="td_list1">Expire Date</td>
+                			<td class="td_list1">Add By</td>
+                            <td class="td_list1">Status</td>
+                			<td class="td_list1">Action</td>
                 		</tr>
-                	</thead>
+                	</thead> 
                 	<tbody>
                 		<?php 
 
 						$info=$sms->get_buy_sms_list();
                 		foreach ($info as $key => $value) {
-
+                            $id=$value['id'];
                 			$end=$value['end'];
                 			$now=strtotime($db->date());
                 			$now=date("Y-m-d", $now);
@@ -150,12 +135,18 @@ $info=$sms->sms_balance();
 						<tr>
 							<td class="td_list2"></td>
                 			<td class="td_list2"><?php echo $value['id']; ?></td>
-                			<td class="td_list2"><?php echo $value['total_sms']; ?></td class="td_list1">
-                			<td class="td_list2"><?php echo $value['total_send']; ?></td class="td_list1">
-                			<td class="td_list2"><?php echo $value['start']; ?></td class="td_list1">
-                			<td class="td_list2"><?php echo $value['end']; ?></td class="td_list1">
-                			<td class="td_list2"><?php echo $value['user']; ?></td class="td_list1">
-                			<td class="td_list2"><?php echo $status; ?></td class="td_list1">
+                			<td class="td_list2"><?php echo $value['total_sms']; ?></td>
+                			<td class="td_list2"><?php echo $value['total_send']; ?></td>
+                			<td class="td_list2"><?php echo $value['start']; ?></td>
+                			<td class="td_list2"><?php echo $value['end']; ?></td>
+                			<td class="td_list2"><?php echo $value['user']; ?></td>
+                            <td class="td_list2"><?php echo $status; ?></td>
+                			<td class="td_list2">
+                                <button class="btn btn-primary btn-xs" style="margin-right: 4px;" title="Update" data-title="Update" onclick="get_sms_form('update',<?php echo "$id"; ?>)" >
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                                 <button class="btn btn-danger btn-xs" title="Delete" data-title="Delete" onclick="get_sms_form('delete',<?php echo "$id"; ?>)" ><span class="glyphicon glyphicon-trash"></span></button>         
+                            </td>
                 		</tr>
                 		<?php } ?>
                 		</tbody>

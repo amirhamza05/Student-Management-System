@@ -50,7 +50,7 @@ $photo=$login_user['photo'];
             <li ><a href="attend.php"><span class="fa fa-caret-right"></span>Attendence</a></li>
         </ul></li>
 
-
+<?php if($user_permit>=2){ ?>
 
 <li><a href="batch_list.php" class="nav-header"><i class="fa fa-fw fa-legal"></i> Batch</a></li>
 
@@ -75,7 +75,7 @@ $photo=$login_user['photo'];
         
     <li>
         <ul class="notice nav nav-list collapse">
-            <li ><a href="send_notice.php" class="l_active"><span class="fa fa-caret-right"></span>Send Notice</a></li>
+            
             <li ><a href="notice_list.php"><span class="fa fa-caret-right"></span>Notice List</a></li>
     </ul></li>
 
@@ -84,7 +84,7 @@ $photo=$login_user['photo'];
         <li>
              <ul class="user nav nav-list collapse">
             <li ><a href="user_list.php" class="l_active"><span class="fa fa-caret-right"></span>User List</a></li>
-            <li ><a href="add_student.php"><span class="fa fa-caret-right"></span>User Profile</a></li>
+           
         </ul></li>
 
         <li><a href="javascript:void(0)" data-target=".account" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Account<i class="fa fa-collapse"></i></a></li>
@@ -109,17 +109,12 @@ $photo=$login_user['photo'];
         <li>
              <ul class="sms nav nav-list collapse">
             <li ><a href="sms_dashboard.php" class="l_active"><span class="fa fa-caret-right"></span>SMS Dashboard</a></li>
-            <li ><a href="notice_list.php"><span class="fa fa-caret-right"></span>SMS Setting</a></li>
-        </ul></li>
-
-        <li><a href="javascript:void(0)" data-target=".setting" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Setting<i class="fa fa-collapse"></i></a></li>
-        
-        <li>
-             <ul class="setting nav nav-list collapse">
-            <li ><a href="setting.php" class="l_active"><span class="fa fa-caret-right"></span>General Setting</a></li>
             
         </ul></li>
 
+      
+       
+<?php } ?>
     </ul>
     </div>
 
@@ -129,3 +124,4 @@ $photo=$login_user['photo'];
         /*Navigation*/
 
     </style>
+

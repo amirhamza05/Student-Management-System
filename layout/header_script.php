@@ -18,6 +18,7 @@ $user_ob=new user($id);
 $user=$user_ob->get_user_info();
 $login_user=$user_ob->get_login_user();
 $user_id=$login_user['id'];
+$user_permit=$login_user['permit'];
 $db->set_login_user($user_id);
 
 
@@ -71,7 +72,7 @@ $attend_ob=new attendence();
 
 include 'script/notice/notice.php';
 $notice=new notice();
-$notice_info=$notice->get_notice_info();
+$notice_info=$notice->get_notice_info(); 
 
 include 'script/theme/theme.php';
 $theme=new theme();

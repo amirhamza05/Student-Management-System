@@ -6,8 +6,11 @@
 		<div class="header_box">Login Your Id</div>
 		<div class="logo">
 			
-			<h1 class="logo-caption"><span class="tweak">T</span>ech<span class="tweak">S</span>erm Education Software</h1>
-		</div><!-- /.logo -->
+			<h1 class="logo-caption">
+        <img src="upload/custom_content/logo.png" style="height: 180px;width: 180px;">
+        <br/>
+        <span class="tweak">B</span>ritain <span class="tweak">S</span>tandard School</h1>
+		</div><!-- /.logo --> 
 		<div class="controls">
       <div id="error_msg" style="color: #F64343; display: none;">Please Fill Up Correct User Name OR Password</div>
 <!-- <form action="login_action.php" method="post"> -->

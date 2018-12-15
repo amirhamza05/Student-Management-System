@@ -280,12 +280,13 @@ if(isset($_POST['send_admission_sms'])){
   $batch_name=$batch[$batch_id]['name'];
   $batch_day=$batch[$batch_id]['day_sort_string'];
   $batch_time=$batch[$batch_id]['start']." - ".$batch[$batch_id]['end'];
+  $site_msg=$db->msg;
   $message="Dear $student_name,\nCongratulation For Admitting In Our '$program_name' Program.\n
 Your ID: $student_id
 Batch: $batch_name
 Time: $batch_day ($batch_time)
 
-@TechSerm
+$site_msg
 ";
 
   $info=$sms->get_student_mobile_number($student_id,$receiver);

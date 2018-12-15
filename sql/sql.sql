@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2018 at 12:57 AM
+-- Generation Time: Dec 14, 2018 at 06:22 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -220,7 +220,9 @@ CREATE TABLE `expence` (
 INSERT INTO `expence` (`id`, `name`, `amount`, `notes`, `add_by`, `date`) VALUES
 (3, 'table chair', 180, '', 3, '2018-12-14 04:03:11'),
 (2, 'Chair', 6000, 'chair', 3, '2018-12-14 03:16:14'),
-(4, 'book', 7000, '', 3, '2018-12-14 06:54:30');
+(4, 'book', 7000, '', 3, '2018-12-14 06:54:30'),
+(5, 'book', 7000, '', 3, '2018-12-14 09:35:54'),
+(6, 'banner', 7000, '', 3, '2018-12-14 23:47:34');
 
 -- --------------------------------------------------------
 
@@ -494,7 +496,8 @@ INSERT INTO `receive_payment` (`id`, `payment_id`, `pay`, `sms`, `date`, `add_by
 (71, 43, 3000, 0, '2018-12-11 23:18:26', 3),
 (72, 44, 2500, 0, '2018-12-12 00:15:23', 3),
 (73, 45, 500, 0, '2018-12-13 08:57:07', 3),
-(74, 46, 5000, 0, '2018-12-13 10:39:36', 3);
+(74, 46, 5000, 0, '2018-12-13 10:39:36', 3),
+(75, 47, 500, 0, '2018-12-14 09:40:33', 3);
 
 -- --------------------------------------------------------
 
@@ -584,7 +587,9 @@ INSERT INTO `set_payment` (`id`, `program_id`, `year`, `month`, `fee`, `add_by`,
 (27, 3, 2018, 12, 700, 3, 3),
 (28, 3, 2019, 2, 300, 3, 3),
 (29, 8, 2019, 5, 500, 3, 3),
-(30, 8, 2019, 6, 500, 3, 7);
+(30, 8, 2019, 6, 500, 3, 7),
+(31, 13, 2019, 1, 1000, 3, 3),
+(32, 13, 2019, 3, 1000, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -599,7 +604,7 @@ CREATE TABLE `sms_add` (
   `total_send` int(11) NOT NULL DEFAULT '0',
   `start` date NOT NULL,
   `end` date NOT NULL,
-  `date` date NOT NULL,
+  `date` datetime NOT NULL,
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -608,9 +613,7 @@ CREATE TABLE `sms_add` (
 --
 
 INSERT INTO `sms_add` (`id`, `total_sms`, `pay`, `total_send`, `start`, `end`, `date`, `add_by`) VALUES
-(1, 500, 200, 418, '2018-06-01', '2018-09-29', '2018-12-31', 3),
-(2, 0, 300, 0, '2018-09-29', '2018-11-24', '2018-12-11', 3),
-(3, 500, 200, 60, '2018-12-01', '2019-03-31', '2018-12-09', 3);
+(7, 1, 40, 1, '2018-12-12', '2018-12-31', '2018-12-14 23:23:47', 3);
 
 -- --------------------------------------------------------
 
@@ -694,7 +697,9 @@ INSERT INTO `sms_list` (`id`, `number`, `message`, `len`, `date`, `gateway`, `to
 (69, '01777564786', 'Dear Hamza,\nYour Payment 500 Tk for Monthly Fee \'August-2018\' in \'SSC Program 2018\' is Successfully Taken.\nYour Payment ID: 73\n\n@TechSerm\n01991223020 ', 1, '2018-12-13 08:57:16', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
 (70, '01991223020', 'Dear Hamza,\nYour Payment 5000 Tk for Admission Fee in \'Academic Program\' is Successfully Taken.\nYour Payment ID: 74\n\n@TechSerm\n01991223020 ', 1, '2018-12-13 10:39:42', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
 (71, '01991223020', 'Dear Hamza,\nYour Payment 5000 Tk for Admission Fee in \'Academic Program\' is Successfully Taken.\nYour Payment ID: 74\n\n@TechSerm\n01991223020 ', 1, '2018-12-13 10:40:04', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
-(72, '01991223020', 'Dear Hamza,\nCongratulation For Admitting In Our \'Academic Program\' Program.\n\r\nYour ID: 10001\r\nBatch: Section 1\r\nTime: Sat,Tue,Wed (8:00 AM - 1:00 PM)\r\n\r\n@TechSerm\r\n', 2, '2018-12-13 10:41:20', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3);
+(72, '01991223020', 'Dear Hamza,\nCongratulation For Admitting In Our \'Academic Program\' Program.\n\r\nYour ID: 10001\r\nBatch: Section 1\r\nTime: Sat,Tue,Wed (8:00 AM - 1:00 PM)\r\n\r\n@TechSerm\r\n', 2, '2018-12-13 10:41:20', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(73, '01991223020', 'Dear Hamza,\nYour Payment 500 Tk for Monthly Fee \'June-2019\' in \'SSC Program 2018\' is Successfully Taken.\nYour Payment ID: 75\n\n@TechSerm\n01991223020 ', 1, '2018-12-14 09:40:41', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(74, '01991223020', 'Dear Hamza,\nYour Payment 5000 Tk for Admission Fee in \'Academic Program\' is Successfully Taken.\nYour Payment ID: 74\n\n@TechSerm\n01991223020 ', 1, '2018-12-14 23:38:04', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3);
 
 -- --------------------------------------------------------
 
@@ -1000,7 +1005,8 @@ INSERT INTO `student_payment` (`id`, `student_id`, `program_id`, `type`, `year`,
 (43, 10068, 13, 1, 0, 0, 4000, '2018-12-11 23:18:13', 3),
 (44, 10051, 13, 1, 0, 0, 5000, '2018-12-12 00:15:10', 3),
 (45, 10001, 8, 2, 2018, 8, 500, '2018-12-13 08:56:59', 3),
-(46, 10001, 5, 1, 0, 0, 7500, '2018-12-13 10:39:28', 3);
+(46, 10001, 5, 1, 0, 0, 7500, '2018-12-13 10:39:28', 3),
+(47, 10051, 8, 2, 2019, 6, 500, '2018-12-14 09:40:19', 3);
 
 -- --------------------------------------------------------
 
@@ -1123,7 +1129,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `uname`, `fname`, `photo`, `gender`, `email`, `phone`, `address`, `pass`, `permit`, `theme`) VALUES
-(3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'hamza@gmail.com', 1991223020, 'Habiganj', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 12),
+(3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'hamza@gmail.com', 1991223020, 'Habiganj', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 4, 12),
 (2, 'shakib', 'all hassan', 'avatar.png', '', 'sk.amirhamza1@gmail.com', 177756478, '', '123', 1, 1),
 (5, 'rahim', 'Musfiqur Rahim', 'user_5.jpg', 'Male', 'rahim@gmail.com', 17841561, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 1),
 (7, 'admin', 'amir hamza', 'avatar.png', '', 'sf', 32154, '', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 1, 12);
@@ -1298,7 +1304,7 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT for table `expence`
 --
 ALTER TABLE `expence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `expence_category`
 --
@@ -1323,7 +1329,7 @@ ALTER TABLE `program`
 -- AUTO_INCREMENT for table `receive_payment`
 --
 ALTER TABLE `receive_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `result`
 --
@@ -1333,17 +1339,17 @@ ALTER TABLE `result`
 -- AUTO_INCREMENT for table `set_payment`
 --
 ALTER TABLE `set_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `sms_add`
 --
 ALTER TABLE `sms_add`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `sms_list`
 --
 ALTER TABLE `sms_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- AUTO_INCREMENT for table `sms_setting`
 --
@@ -1368,7 +1374,7 @@ ALTER TABLE `student_id`
 -- AUTO_INCREMENT for table `student_payment`
 --
 ALTER TABLE `student_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `subject`
 --

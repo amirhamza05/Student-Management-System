@@ -27,7 +27,7 @@ public function get_notice_info(){
        	 $sub_res['title']=$row['title'];
        	 $sub_res['description']=$row['description'];
        	 $sub_res['date']=$row['date'];
-       	 $sub_res['ad_by']=$row['ad_by'];
+       	 $sub_res['add_by']=$row['add_by'];
        	 $info[$id]=$sub_res;
        }
 
