@@ -1,9 +1,12 @@
 <?php
 session_start();
 include "config/config.php";
+$db=new database();
+
 include 'script/user/user.php';
 $user_ob=new user();
 $user=$user_ob->get_user_info();
+
 
 if(isset($_POST['login'])){
 
@@ -33,6 +36,12 @@ if(isset($_POST['login'])){
 		echo $id;
 		$_SESSION['user']=$id;
 		$ex=$_SESSION['user'];
+		$info=array();
+		$info['user_id']=$id;
+        $ip = $_SERVER['REMOTE_ADDR'];
+		$browser = $user_ob->get_browser($_SERVER['HTTP_USER_AGENT']);
+        $db->set_login_user($id,$ip,$browser);
+	    $db->sql_action("login","insert",$info,"no");
 	}
 }
 else{

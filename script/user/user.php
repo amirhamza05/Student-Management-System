@@ -49,6 +49,26 @@ public function get_login_user(){
 	return $info[$this->login_user_id];
 }
 
+public function get_browser($browser){
+	if(strpos($browser, 'MSIE') !== FALSE)
+   		$browser='Internet explorer';
+ 	elseif(strpos($browser, 'Trident') !== FALSE)
+    	$browser='Internet explorer';
+ 	elseif(strpos($browser, 'Firefox') !== FALSE)
+   		$browser='Mozilla Firefox';
+ 	elseif(strpos($browser, 'Chrome') !== FALSE)
+   		$browser='Google Chrome';
+ 	elseif(strpos($browser, 'Opera Mini') !== FALSE)
+   		$browser="Opera Mini";
+ 	elseif(strpos($browser, 'Opera') !== FALSE)
+   		$browser="Opera";
+ 	elseif(strpos($browser, 'Safari') !== FALSE)
+   		$browser="Safari";
+ 	else
+   		$browser='Something else';
+	return $browser;
+}
+
 
 
 }

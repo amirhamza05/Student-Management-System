@@ -11,15 +11,17 @@ class database {
  public $result;
  public $conn;
  public $login_user;
- public $logo="upload/custom_content/logo.png";
+ public $ip;
+ public $browser;
+ public $logo="upload/custom_content/techserm_small_logo.png";
  public $site_name="Britain Standard School";
- public $msg="@ Britain Standard School";
+ public $msg="@Britain Standard School";
 
  //conection start
 
  public function __construct(){
      $this->connection();
-
+    date_default_timezone_set('Asia/Dhaka');
  }
 
 
@@ -36,17 +38,27 @@ public function date(){
 }
 
 public function get_now_time(){
-  date_default_timezone_set('Asia/Dhaka');
+  
   $now=date("Y-m-d H:i:s", time());
   return $now;
  }
 
-public function set_login_user($uid){
+public function set_login_user($uid,$ip,$browser){
   $this->login_user=$uid;
+  $this->ip=$ip;
+  $this->browser=$browser;
 }
 
 public function select($query){
-return $this->result=mysqli_query($this->conn, $query);
+ return $this->result=mysqli_query($this->conn, $query);
+}
+
+public function get_select_last_id($query){
+  
+  if(mysqli_query($this->conn, $query)){
+    return mysqli_insert_id($this->conn);
+  }
+  else 0;
 }
 
 public function process_mysql_array($info){
@@ -78,7 +90,7 @@ public function action_link($table){
   $index['exam']="exam_list";
   $index['theme']="theme";
 
-return $index[$table];
+return (isset($index[$table]))?$index[$table]:"---";
 }
 
 
@@ -105,9 +117,14 @@ public function Update_sql($arr,$table){
     }
     $sql.=$condition;
     $sql.=" WHERE id=".$arr['id'];
-    return $sql;
+    return $sql; 
 }
 
+public function get_previous_data($table,$id){
+  $sql="select * from $table WHERE id=$id";
+  $info=$this->get_sql_array($sql);
+  return json_encode($info[0]);
+}
 
 
 
@@ -130,40 +147,60 @@ public function Update_sql($arr,$table){
         $action_name="Delete ". $table;
         $sql = "DELETE FROM $table WHERE id=$id";
       }
+  
 
-   $res=$this->select($sql);
-    //echo "$sql";
-    if($res)$flag=1;
-    if($table=="payment"){
-      if($flag==0)echo("Error description: " . mysqli_error($this->conn));
+  $present_data="";
+  $previous_data="";
+
+  if($table!="login"){
+    if($action!="insert"){
+      if($table!="site_activity"){
+        $previous_data=$this->get_previous_data($table,$info['id']);
+      }
     }
+         
 
-else if($table=="student" && $action=="insert"){
-  $id=$info['id'];
-  $id1="new_student_".$id;
-  $id1=md5($id1);
-  $id1=hash('sha256', $id1);
-  $link="new_student.php?success_new_student_admission=".$id1;
-   if($flag==1 && $msg=="yes"){
-    $info1['id']=$id;
-    $info1['date']=$info['date'];
-    $this->sql_action("student_id","insert",$info1,"no");
-    echo "<script>alert('Successfully $action_name!');</script><script>document.location='$link'</script>";
+    if($action=="insert"){
+      $res=$this->get_select_last_id($sql);
+      if($table!="site_activity")$present_data=$this->get_previous_data($table,$res);
+    }
+    else{
+      $res=$this->select($sql);
+      if($table!="site_activity")$present_data=$this->get_previous_data($table,$info['id']);
+    } 
+
+    
+
+  }
+  else $res=1; 
+    //echo "$sql";
+  if($res)$flag=1;
+  
+  if($flag==1 && $table!="student_attendence" && $table!="site_activity" && $this->login_user!=""){
+    $activity=array();
+    $table_id=($action=="insert")?$res:$info['id'];
+    $login=($table=="login")?1:0;
+    $activity['user_id']=$this->login_user;
+    $activity['table_name']=$table;
+    $activity['action_type']=$action;
+    $activity['login']=$login;
+    $activity['table_id']=$table_id;
+    $activity['date']=$this->date();
+    $activity['ip']=$this->ip;
+    $activity['browser']=$this->browser;
+    $activity['present_data']=$present_data;
+    $activity['previous_data']=$previous_data;
+
+    $this->sql_action("site_activity","insert",$activity,"no");
   }
 
-   else if($msg=="yes") echo "<script>alert('Failed...Please Again Try!');</script><script>document.location='student_list.php'</script>";
-    if($flag==0)echo("Error description: " . mysqli_error($this->conn));
-    if($msg=="no")return $flag;
-}
-
-else{
-if($msg=="yes")$link=$this->action_link($table);
+  if($msg=="yes")$link=$this->action_link($table);
   if($flag==1 && $msg=="yes")echo "<script>alert('Successfully $action_name!');</script><script>document.location='$link.php'</script>";
    else if($msg=="yes") echo "<script>alert('Failed...Please Again Try!');</script><script>document.location='$link.php'</script>";
     if($flag==0)echo("Error description: " . mysqli_error($this->conn));
     if($msg=="no")return $flag;
   }
-  }
+  
 
 
 

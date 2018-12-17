@@ -15,11 +15,17 @@ include "script/payment/set_payment.php";
 include 'script/user/user.php';
 $id=$_SESSION['user'];
 $user_ob=new user($id);
+
 $user=$user_ob->get_user_info();
 $login_user=$user_ob->get_login_user();
+
 $user_id=$login_user['id'];
 $user_permit=$login_user['permit'];
-$db->set_login_user($user_id);
+
+$ip = $_SERVER['REMOTE_ADDR'];
+$browser = $user_ob->get_browser($_SERVER['HTTP_USER_AGENT']);
+
+$db->set_login_user($user_id,$ip,$browser);
 
 
 $site=new site_content();
@@ -83,6 +89,10 @@ $report=new report();
 
 include 'script/account/account.php';
 $account=new account();
+
+include 'script/site_activity/site_activity.php';
+$site_activity=new site_activity();
+
 }
 else{
 

@@ -98,10 +98,12 @@ public function get_url_root($sub_str){
 	
 	
 }
-function timeAgo($timestamp){
-    $datetime1=new DateTime("now");;
+public function timeAgo($timestamp){
+  
+    $datetime1=new DateTime("now");
     $datetime2=date_create($timestamp);
     $diff=date_diff($datetime1, $datetime2);
+
     $timemsg='';
     if($diff->y > 0){
         $timemsg = $diff->y .' year'. ($diff->y > 1?"'s":'');

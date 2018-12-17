@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2018 at 06:22 PM
+-- Generation Time: Dec 17, 2018 at 02:26 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -101,7 +101,12 @@ INSERT INTO `admit_program` (`id`, `student_id`, `program_id`, `batch_id`, `admi
 (100, 10069, 13, 23, '2018-12-11 19:21:01', 7),
 (101, 10070, 13, 23, '2018-12-11 19:24:33', 7),
 (102, 10070, 5, 23, '2018-12-11 19:29:08', 7),
-(103, 10051, 8, 12, '2018-12-11 23:41:03', 3);
+(103, 10051, 8, 11, '2018-12-11 23:41:03', 3),
+(104, 10001, 13, 23, '2018-12-15 04:53:19', 3),
+(105, 10071, 13, 23, '2018-12-16 14:34:55', 3),
+(106, 10071, 8, 11, '2018-12-16 14:46:01', 3),
+(107, 10072, 13, 12, '2018-12-17 04:02:18', 3),
+(108, 10072, 4, 15, '2018-12-17 04:29:28', 5);
 
 -- --------------------------------------------------------
 
@@ -134,6 +139,7 @@ INSERT INTO `batch` (`id`, `name`, `start`, `end`, `day`) VALUES
 (18, 'hamza123', '8:00 AM', '10:20 AM', '1,'),
 (19, 'test batch', 'Ex: 8:00 AM', 'Ex: 10:00 AM', '1'),
 (20, 'test bangla', 'Ex: 8:00 AM', 'Ex: 10:00 AM', '1'),
+(24, 'Section 3', '8:00 AM', '10:00 AM', '1,7'),
 (23, 'Section 1', '8:00 AM', '1:00 PM', '1,4,5');
 
 -- --------------------------------------------------------
@@ -221,8 +227,9 @@ INSERT INTO `expence` (`id`, `name`, `amount`, `notes`, `add_by`, `date`) VALUES
 (3, 'table chair', 180, '', 3, '2018-12-14 04:03:11'),
 (2, 'Chair', 6000, 'chair', 3, '2018-12-14 03:16:14'),
 (4, 'book', 7000, '', 3, '2018-12-14 06:54:30'),
-(5, 'book', 7000, '', 3, '2018-12-14 09:35:54'),
-(6, 'banner', 7000, '', 3, '2018-12-14 23:47:34');
+(5, 'book', 3000, '', 3, '2018-12-14 09:35:54'),
+(6, 'banner', 7000, '', 3, '2018-12-14 23:47:34'),
+(7, 'treat1', 6000, 'no treat', 3, '2018-12-17 04:41:42');
 
 -- --------------------------------------------------------
 
@@ -255,14 +262,14 @@ CREATE TABLE `notice` (
   `title` text NOT NULL,
   `description` text NOT NULL,
   `date` datetime NOT NULL,
-  `ad_by` int(11) NOT NULL
+  `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notice`
 --
 
-INSERT INTO `notice` (`id`, `title`, `description`, `date`, `ad_by`) VALUES
+INSERT INTO `notice` (`id`, `title`, `description`, `date`, `add_by`) VALUES
 (1, 'Class Close', 'Hello Today Class Is Off Hello Today Class Is OffHello Today Class Is OffHello Today Class Is OffHello Today Class Is OffHello Today Class Is OffHello Today Class Is OffHello Today Class Is OffHello Today Class Is OffHello Today Class Is Off', '2018-03-28 00:00:00', 1),
 (2, 'hello', ' hello hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello hellohellohellohellohello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello', '2018-03-15 00:00:00', 1),
 (3, 'hello', 'hello test', '2018-03-05 00:00:00', 3),
@@ -280,8 +287,9 @@ INSERT INTO `notice` (`id`, `title`, `description`, `date`, `ad_by`) VALUES
 (15, 'jjj', 'dear {{nick_name}},\nyouugtt5ygty6u7u', '2018-03-27 00:00:00', 3),
 (16, 'dfdf', 'dear {{nick_name}},\nyour coaching is off today', '2018-04-23 00:00:00', 3),
 (17, 'Close', 'Your class is off today', '2018-04-25 00:00:00', 3),
-(18, 'hgy', '{{nick_name}},\n{{id}}', '2018-05-13 00:00:00', 3),
-(19, 'ghdfhd', 'dear {{student_name}},\nhbjfghf uhfgydf', '2018-05-13 00:00:00', 3);
+(18, 'hgy', 'dear {{nick_name}},\nHow are you', '2018-05-13 00:00:00', 3),
+(22, 'Pohela Boishak', 'Dear {{nick_name}},\nWishing you a wonderful Poila Baisakh. May all your dreams come true, your aspirations find bigger wings and most importantly you feel loved wherever you go.', '2018-12-15 05:03:43', 3),
+(23, 'sdaf', 'sdaf', '2018-12-15 07:08:10', 3);
 
 -- --------------------------------------------------------
 
@@ -411,7 +419,7 @@ INSERT INTO `program` (`id`, `name`, `start`, `end`, `subject`, `batch`, `fee`, 
 (3, 'Engnerring Admission Program 2018', '2018-11-01', '2019-06-30', '21,13,11', '12,11,2,1', 15000, 2, 500, 4, '2018-03-03 00:00:00'),
 (5, 'Academic Program', '2018-03-05', '2018-03-05', '28,27', '23', 7500, 1, 0, 4, '2018-11-18 00:00:00'),
 (8, 'SSC Program 2018', '2018-04-01', '2019-06-07', '23,21,13,11,4', '12,11', 5000, 2, 400, 4, '2018-04-25 00:00:00'),
-(13, 'Class One', '2019-01-01', '2019-12-31', '26,21,11', '23', 4000, 2, 1000, 7, '2018-12-11 19:00:08');
+(13, 'Class One', '2019-01-01', '2019-12-31', '26,21,11', '23,12', 4000, 2, 1000, 7, '2018-12-11 19:00:08');
 
 -- --------------------------------------------------------
 
@@ -485,7 +493,7 @@ INSERT INTO `receive_payment` (`id`, `payment_id`, `pay`, `sms`, `date`, `add_by
 (60, 37, 520, 0, '2018-12-06 20:55:35', 3),
 (61, 37, 480, 0, '2018-12-06 21:13:23', 3),
 (62, 36, 80, 0, '2018-12-06 23:43:30', 3),
-(63, 38, 5000, 0, '2018-12-07 00:21:37', 3),
+(78, 38, 300, 0, '2018-12-17 02:46:40', 5),
 (64, 39, 500, 0, '2018-12-07 00:41:46', 3),
 (65, 19, 400, 0, '2018-12-07 17:23:24', 3),
 (66, 40, 4000, 0, '2018-12-07 19:09:46', 3),
@@ -497,7 +505,12 @@ INSERT INTO `receive_payment` (`id`, `payment_id`, `pay`, `sms`, `date`, `add_by
 (72, 44, 2500, 0, '2018-12-12 00:15:23', 3),
 (73, 45, 500, 0, '2018-12-13 08:57:07', 3),
 (74, 46, 5000, 0, '2018-12-13 10:39:36', 3),
-(75, 47, 500, 0, '2018-12-14 09:40:33', 3);
+(75, 47, 500, 0, '2018-12-14 09:40:33', 3),
+(77, 48, 780, 0, '2018-12-16 14:56:07', 3),
+(79, 51, 800, 0, '2018-12-17 04:04:53', 3),
+(80, 51, 200, 0, '2018-12-17 04:11:53', 3),
+(81, 51, 500, 0, '2018-12-17 04:27:55', 3),
+(82, 51, 100, 0, '2018-12-17 04:28:09', 3);
 
 -- --------------------------------------------------------
 
@@ -542,6 +555,30 @@ INSERT INTO `result` (`id`, `exam_id`, `student_id`, `mcq`, `written`, `total`, 
 (136, 15, 10046, 30, 20, 50, '2018-05-13 00:00:00', 3, 1),
 (139, 1, 10049, 45, 10, 55, '2018-06-19 00:00:00', 3, 1),
 (140, 11, 10050, 40, 0, 40, '2018-07-10 00:00:00', 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting`
+--
+
+CREATE TABLE `setting` (
+  `id` int(11) NOT NULL,
+  `option_name` text,
+  `option_value` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `setting`
+--
+
+INSERT INTO `setting` (`id`, `option_name`, `option_value`) VALUES
+(1, 'name', 'TechSerm'),
+(2, 'sort_name', 'techserm'),
+(3, 'address', 'Aftab Nogor'),
+(4, 'logo', NULL),
+(5, 'small_logo', NULL),
+(6, 'phone', NULL);
 
 -- --------------------------------------------------------
 
@@ -594,6 +631,112 @@ INSERT INTO `set_payment` (`id`, `program_id`, `year`, `month`, `fee`, `add_by`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `site_activity`
+--
+
+CREATE TABLE `site_activity` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `table_name` text NOT NULL,
+  `action_type` text NOT NULL,
+  `table_id` text NOT NULL,
+  `ip` text,
+  `browser` text,
+  `previous_data` text,
+  `present_data` text,
+  `login` int(11) DEFAULT '0',
+  `date` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `site_activity`
+--
+
+INSERT INTO `site_activity` (`id`, `user_id`, `table_name`, `action_type`, `table_id`, `ip`, `browser`, `previous_data`, `present_data`, `login`, `date`) VALUES
+(4, 3, 'receive_payment', 'insert', '76', NULL, NULL, NULL, NULL, 0, '2018-12-16 14:54:18'),
+(5, 3, 'student_payment', 'update', '1', NULL, NULL, NULL, NULL, 0, '2018-12-16 14:54:33'),
+(6, 3, 'receive_payment', 'delete', '1', NULL, NULL, NULL, NULL, 0, '2018-12-16 14:55:04'),
+(7, 3, 'receive_payment', 'insert', '77', NULL, NULL, NULL, NULL, 0, '2018-12-16 14:56:07'),
+(8, 3, 'admit_program', 'update', '1', NULL, NULL, NULL, NULL, 0, '2018-12-16 14:56:33'),
+(9, 3, 'admit_program', 'update', '106', NULL, NULL, NULL, NULL, 0, '2018-12-16 14:56:55'),
+(10, 3, 'student_payment', 'insert', '49', NULL, NULL, NULL, NULL, 0, '2018-12-16 14:57:50'),
+(11, 3, 'student_payment', 'update', '49', NULL, NULL, NULL, NULL, 0, '2018-12-16 14:58:08'),
+(12, 3, 'student', 'update', '10071', NULL, NULL, NULL, NULL, 0, '2018-12-16 15:01:51'),
+(13, 3, 'sms_add', 'update', '8', NULL, NULL, NULL, NULL, 0, '2018-12-16 15:04:03'),
+(14, 5, 'admit_program', 'update', '106', NULL, NULL, NULL, NULL, 0, '2018-12-16 15:12:34'),
+(15, 5, 'admit_program', 'update', '104', NULL, NULL, NULL, NULL, 0, '2018-12-16 15:30:29'),
+(16, 5, 'admit_program', 'update', '104', NULL, NULL, NULL, NULL, 0, '2018-12-16 15:30:36'),
+(17, 5, 'login', 'insert', '1', NULL, NULL, NULL, NULL, 1, '2018-12-16 15:40:40'),
+(18, 5, 'login', 'insert', '1', NULL, NULL, NULL, NULL, 1, '2018-12-16 15:41:47'),
+(19, 3, 'login', 'insert', '1', NULL, NULL, NULL, NULL, 1, '2018-12-16 15:42:24'),
+(20, 3, 'login', 'insert', '1', NULL, NULL, NULL, NULL, 1, '2018-12-16 15:49:17'),
+(21, 3, 'student', 'update', '10071', NULL, NULL, NULL, NULL, 0, '2018-12-16 16:17:00'),
+(22, 3, 'admit_program', 'update', '103', NULL, NULL, NULL, NULL, 0, '2018-12-17 00:09:00'),
+(23, 3, 'student_payment', 'insert', '50', NULL, NULL, NULL, NULL, 0, '2018-12-17 00:19:32'),
+(24, 3, 'student_attendence', 'insert', '65', NULL, NULL, NULL, NULL, 0, '2018-12-17 00:26:44'),
+(25, 3, 'student_attendence', 'insert', '66', NULL, NULL, NULL, NULL, 0, '2018-12-17 00:26:44'),
+(26, 3, 'admit_program', 'update', '106', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36', NULL, '{"id": "106", "batch_id": "12"}', 0, '2018-12-17 02:02:41'),
+(27, 3, 'admit_program', 'update', '106', '::1', 'Google Chrome', NULL, '{"id": "106", "batch_id": "11"}', 0, '2018-12-17 02:04:21'),
+(28, 3, 'admit_program', 'update', '106', '::1', 'Google Chrome', '{"id": "106", "admit_by": "3", "batch_id": "11", "admit_date": "2018-12-16 14:46:01", "program_id": "8", "student_id": "10071"}', '{"id": "106", "batch_id": "12"}', 0, '2018-12-17 02:15:32'),
+(29, 3, 'admit_program', 'update', '106', '::1', 'Google Chrome', '{"id": "106", "admit_by": "3", "batch_id": "12", "admit_date": "2018-12-16 14:46:01", "program_id": "8", "student_id": "10071"}', '{"id": "106", "admit_by": "3", "batch_id": "11", "admit_date": "2018-12-16 14:46:01", "program_id": "8", "student_id": "10071"}', 0, '2018-12-17 02:18:14'),
+(30, 3, 'admit_program', 'update', '105', '::1', 'Google Chrome', '{"id": "105", "admit_by": "3", "batch_id": "12", "admit_date": "2018-12-16 14:34:55", "program_id": "13", "student_id": "10071"}', '{"id": "105", "admit_by": "3", "batch_id": "23", "admit_date": "2018-12-16 14:34:55", "program_id": "13", "student_id": "10071"}', 0, '2018-12-17 02:20:53'),
+(31, 3, 'student_payment', 'update', '48', '::1', 'Google Chrome', '{"id": "48", "date": "2018-12-16 14:46:54", "type": "1", "year": "0", "month": "0", "add_by": "3", "total_fee": "3000", "program_id": "13", "student_id": "10071"}', '{"id": "48", "date": "2018-12-16 14:46:54", "type": "1", "year": "0", "month": "0", "add_by": "3", "total_fee": "2000", "program_id": "13", "student_id": "10071"}', 0, '2018-12-17 02:21:25'),
+(32, 5, 'login', 'insert', '1', '::1', 'Google Chrome', '', '', 1, '2018-12-17 02:43:15'),
+(33, 5, 'login', 'insert', '1', '::1', 'Google Chrome', '', '', 1, '2018-12-17 02:43:47'),
+(34, 5, 'admit_program', 'update', '104', '::1', 'Google Chrome', '{"id":"104","student_id":"10001","program_id":"13","batch_id":"12","admit_date":"2018-12-15 04:53:19","admit_by":"3"}', '{"id":"104","student_id":"10001","program_id":"13","batch_id":"23","admit_date":"2018-12-15 04:53:19","admit_by":"3"}', 0, '2018-12-17 02:44:28'),
+(35, 5, 'receive_payment', 'delete', '63', '::1', 'Google Chrome', '{"id":"63","payment_id":"38","pay":"5000","sms":"0","date":"2018-12-07 00:21:37","add_by":"3"}', 'null', 0, '2018-12-17 02:45:53'),
+(36, 5, 'receive_payment', 'insert', '78', '::1', 'Google Chrome', '', '{"id":"78","payment_id":"38","pay":"300","sms":"0","date":"2018-12-17 02:46:40","add_by":"5"}', 0, '2018-12-17 02:46:40'),
+(37, 3, 'login', 'insert', '1', '::1', 'Google Chrome', '', '', 1, '2018-12-17 02:47:39'),
+(38, 3, 'user', 'update', '3', '::1', 'Google Chrome', '{"id":"3","uname":"hamza05","fname":"Sk.Amir Hamza","photo":"user_3.jpg","gender":"Male","email":"hamza@gmail.com","phone":"1991223020","address":"Habiganj","pass":"d4fc23375ec457523736a83bc9e8815a2bf434e987d0c45a769104c566050283","permit":"4","theme":"12"}', '{"id":"3","uname":"hamza05","fname":"Sk.Amir Hamza","photo":"user_3.jpg","gender":"Male","email":"hamza@gmail.com","phone":"1991223020","address":"Habiganj","pass":"1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599","permit":"4","theme":"12"}', 0, '2018-12-17 02:48:20'),
+(39, 3, 'student_attendence', 'update', '65', '::1', 'Google Chrome', '{"id":"65","student_id":"10001","program_id":"13","status":"1","date":"2018-12-17"}', '{"id":"65","student_id":"10001","program_id":"13","status":"1","date":"2018-12-17"}', 0, '2018-12-17 02:57:04'),
+(40, 3, 'student_attendence', 'update', '66', '::1', 'Google Chrome', '{"id":"66","student_id":"10071","program_id":"13","status":"0","date":"2018-12-17"}', '{"id":"66","student_id":"10071","program_id":"13","status":"0","date":"2018-12-17"}', 0, '2018-12-17 02:57:05'),
+(41, 3, 'student_attendence', 'insert', '67', '::1', 'Google Chrome', '', '{"id":"67","student_id":"10001","program_id":"8","status":"1","date":"2018-12-17"}', 0, '2018-12-17 02:57:26'),
+(42, 3, 'student_attendence', 'insert', '68', '::1', 'Google Chrome', '', '{"id":"68","student_id":"10046","program_id":"8","status":"1","date":"2018-12-17"}', 0, '2018-12-17 02:57:26'),
+(43, 3, 'student_attendence', 'insert', '69', '::1', 'Google Chrome', '', '{"id":"69","student_id":"10048","program_id":"8","status":"0","date":"2018-12-17"}', 0, '2018-12-17 02:57:26'),
+(44, 3, 'student_attendence', 'insert', '70', '::1', 'Google Chrome', '', '{"id":"70","student_id":"10049","program_id":"8","status":"1","date":"2018-12-17"}', 0, '2018-12-17 02:57:26'),
+(45, 3, 'student_attendence', 'insert', '71', '::1', 'Google Chrome', '', '{"id":"71","student_id":"10052","program_id":"8","status":"0","date":"2018-12-17"}', 0, '2018-12-17 02:57:26'),
+(46, 3, 'student_attendence', 'insert', '72', '::1', 'Google Chrome', '', '{"id":"72","student_id":"10067","program_id":"8","status":"1","date":"2018-12-17"}', 0, '2018-12-17 02:57:26'),
+(47, 3, 'student_attendence', 'update', '67', '::1', 'Google Chrome', '{"id":"67","student_id":"10001","program_id":"8","status":"1","date":"2018-12-17"}', '{"id":"67","student_id":"10001","program_id":"8","status":"0","date":"2018-12-17"}', 0, '2018-12-17 02:57:33'),
+(48, 3, 'student_attendence', 'update', '68', '::1', 'Google Chrome', '{"id":"68","student_id":"10046","program_id":"8","status":"1","date":"2018-12-17"}', '{"id":"68","student_id":"10046","program_id":"8","status":"1","date":"2018-12-17"}', 0, '2018-12-17 02:57:33'),
+(49, 3, 'student_attendence', 'update', '69', '::1', 'Google Chrome', '{"id":"69","student_id":"10048","program_id":"8","status":"0","date":"2018-12-17"}', '{"id":"69","student_id":"10048","program_id":"8","status":"0","date":"2018-12-17"}', 0, '2018-12-17 02:57:33'),
+(50, 3, 'student_attendence', 'update', '70', '::1', 'Google Chrome', '{"id":"70","student_id":"10049","program_id":"8","status":"1","date":"2018-12-17"}', '{"id":"70","student_id":"10049","program_id":"8","status":"1","date":"2018-12-17"}', 0, '2018-12-17 02:57:33'),
+(51, 3, 'student_attendence', 'update', '71', '::1', 'Google Chrome', '{"id":"71","student_id":"10052","program_id":"8","status":"0","date":"2018-12-17"}', '{"id":"71","student_id":"10052","program_id":"8","status":"0","date":"2018-12-17"}', 0, '2018-12-17 02:57:33'),
+(52, 3, 'student_attendence', 'update', '72', '::1', 'Google Chrome', '{"id":"72","student_id":"10067","program_id":"8","status":"1","date":"2018-12-17"}', '{"id":"72","student_id":"10067","program_id":"8","status":"1","date":"2018-12-17"}', 0, '2018-12-17 02:57:33'),
+(53, 3, 'batch', 'insert', '24', '::1', 'Google Chrome', '', '{"id":"24","name":"Section 3","start":"8:00 AM","end":"10:00 AM","day":"1"}', 0, '2018-12-17 03:02:33'),
+(54, 3, 'batch', 'update', '24', '::1', 'Google Chrome', '{"id":"24","name":"Section 3","start":"8:00 AM","end":"10:00 AM","day":"1"}', '{"id":"24","name":"Section 3","start":"8:00 AM","end":"10:00 AM","day":"1,7"}', 0, '2018-12-17 03:03:06'),
+(55, 3, 'login', 'insert', '1', '::1', 'Google Chrome', '', '', 1, '2018-12-17 03:41:23'),
+(56, 3, 'login', 'insert', '1', '::1', 'Mozilla Firefox', '', '', 1, '2018-12-17 04:01:07'),
+(57, 3, 'student', 'insert', '10072', '::1', 'Mozilla Firefox', '', '{"id":"10072","name":"test_site_activity","father_name":"","mother_name":"","email":"","photo":"avatar.png","personal_mobile":"0","father_mobile":"0","mother_mobile":"0","nick":"site_activity","program":"2","batch":"1","fee":"1500","address":"","birth_day":"2018-12-17","gender":"Male","religion":"Muslim","school":"","ssc_rool":"0","ssc_reg":"0","ssc_board":"","ssc_result":"0","date":"2018-12-16"}', 0, '2018-12-17 04:02:00'),
+(58, 3, 'admit_program', 'insert', '107', '::1', 'Mozilla Firefox', '', '{"id":"107","student_id":"10072","program_id":"13","batch_id":"23","admit_date":"2018-12-17 04:02:18","admit_by":"3"}', 0, '2018-12-17 04:02:18'),
+(59, 3, 'admit_program', 'update', '107', '::1', 'Mozilla Firefox', '{"id":"107","student_id":"10072","program_id":"13","batch_id":"23","admit_date":"2018-12-17 04:02:18","admit_by":"3"}', '{"id":"107","student_id":"10072","program_id":"13","batch_id":"12","admit_date":"2018-12-17 04:02:18","admit_by":"3"}', 0, '2018-12-17 04:02:28'),
+(60, 3, 'student_payment', 'insert', '51', '::1', 'Mozilla Firefox', '', '{"id":"51","student_id":"10072","program_id":"13","type":"1","year":"0","month":"0","total_fee":"4000","date":"2018-12-17 04:04:29","add_by":"3"}', 0, '2018-12-17 04:04:29'),
+(61, 3, 'receive_payment', 'insert', '79', '::1', 'Mozilla Firefox', '', '{"id":"79","payment_id":"51","pay":"800","sms":"0","date":"2018-12-17 04:04:53","add_by":"3"}', 0, '2018-12-17 04:04:53'),
+(62, 3, 'receive_payment', 'insert', '80', '::1', 'Mozilla Firefox', '', '{"id":"80","payment_id":"51","pay":"200","sms":"0","date":"2018-12-17 04:11:53","add_by":"3"}', 0, '2018-12-17 04:11:53'),
+(63, 3, 'student', 'update', '10072', '::1', 'Mozilla Firefox', '{"id":"10072","name":"test_site_activity","father_name":"","mother_name":"","email":"","photo":"avatar.png","personal_mobile":"0","father_mobile":"0","mother_mobile":"0","nick":"site_activity","program":"2","batch":"1","fee":"1500","address":"","birth_day":"2018-12-17","gender":"Male","religion":"Muslim","school":"","ssc_rool":"0","ssc_reg":"0","ssc_board":"","ssc_result":"0","date":"2018-12-16"}', '{"id":"10072","name":"test_site_activity","father_name":"","mother_name":"","email":"","photo":"avatar.png","personal_mobile":"01991223020","father_mobile":"0","mother_mobile":"0","nick":"site_activity","program":"2","batch":"1","fee":"1500","address":"","birth_day":"2018-12-17","gender":"Male","religion":"Muslim","school":"","ssc_rool":"0","ssc_reg":"0","ssc_board":"","ssc_result":"0","date":"2018-12-16"}', 0, '2018-12-17 04:13:22'),
+(64, 3, 'sms_add', 'update', '8', '::1', 'Google Chrome', '{"id":"8","total_sms":"17","pay":"1","total_send":"17","start":"2018-12-01","end":"2018-12-31","date":"2018-12-15 04:57:38","add_by":"3"}', '{"id":"8","total_sms":"20","pay":"1","total_send":"17","start":"2018-12-01","end":"2018-12-31","date":"2018-12-15 04:57:38","add_by":"3"}', 0, '2018-12-17 04:14:16'),
+(65, 3, 'student_payment', 'update', '51', '::1', 'Mozilla Firefox', '{"id":"51","student_id":"10072","program_id":"13","type":"1","year":"0","month":"0","total_fee":"4000","date":"2018-12-17 04:04:29","add_by":"3"}', '{"id":"51","student_id":"10072","program_id":"13","type":"1","year":"0","month":"0","total_fee":"3000","date":"2018-12-17 04:04:29","add_by":"3"}', 0, '2018-12-17 04:27:00'),
+(66, 3, 'receive_payment', 'insert', '81', '::1', 'Mozilla Firefox', '', '{"id":"81","payment_id":"51","pay":"500","sms":"0","date":"2018-12-17 04:27:55","add_by":"3"}', 0, '2018-12-17 04:27:55'),
+(67, 3, 'receive_payment', 'insert', '82', '::1', 'Mozilla Firefox', '', '{"id":"82","payment_id":"51","pay":"100","sms":"0","date":"2018-12-17 04:28:09","add_by":"3"}', 0, '2018-12-17 04:28:09'),
+(68, 5, 'login', 'insert', '1', '::1', 'Mozilla Firefox', '', '', 1, '2018-12-17 04:28:43'),
+(69, 5, 'admit_program', 'insert', '108', '::1', 'Mozilla Firefox', '', '{"id":"108","student_id":"10072","program_id":"4","batch_id":"15","admit_date":"2018-12-17 04:29:28","admit_by":"5"}', 0, '2018-12-17 04:29:28'),
+(70, 5, 'admit_program', 'update', '108', '::1', 'Mozilla Firefox', '{"id":"108","student_id":"10072","program_id":"4","batch_id":"15","admit_date":"2018-12-17 04:29:28","admit_by":"5"}', '{"id":"108","student_id":"10072","program_id":"4","batch_id":"15","admit_date":"2018-12-17 04:29:28","admit_by":"5"}', 0, '2018-12-17 04:30:02'),
+(71, 5, 'student_payment', 'insert', '52', '::1', 'Mozilla Firefox', '', '{"id":"52","student_id":"10072","program_id":"4","type":"1","year":"0","month":"0","total_fee":"500","date":"2018-12-17 04:34:03","add_by":"5"}', 0, '2018-12-17 04:34:03'),
+(72, 3, 'login', 'insert', '1', '::1', 'Google Chrome', '', '', 1, '2018-12-17 04:39:52'),
+(73, 3, 'expence', 'insert', '7', '::1', 'Google Chrome', '', '{"id":"7","name":"treat","amount":"7000","notes":"treat","add_by":"3","date":"2018-12-17 04:41:42"}', 0, '2018-12-17 04:41:42'),
+(74, 3, 'expence', 'update', '5', '::1', 'Google Chrome', '{"id":"5","name":"book","amount":"7000","notes":"","add_by":"3","date":"2018-12-14 09:35:54"}', '{"id":"5","name":"book","amount":"4000","notes":"","add_by":"3","date":"2018-12-14 09:35:54"}', 0, '2018-12-17 04:43:47'),
+(75, 3, 'expence', 'update', '5', '::1', 'Google Chrome', '{"id":"5","name":"book","amount":"4000","notes":"","add_by":"3","date":"2018-12-14 09:35:54"}', '{"id":"5","name":"book","amount":"3000","notes":"","add_by":"3","date":"2018-12-14 09:35:54"}', 0, '2018-12-17 04:55:20'),
+(76, 3, 'expence', 'update', '7', '::1', 'Google Chrome', '{"id":"7","name":"treat","amount":"7000","notes":"treat","add_by":"3","date":"2018-12-17 04:41:42"}', '{"id":"7","name":"treat1","amount":"6000","notes":"no treat","add_by":"3","date":"2018-12-17 04:41:42"}', 0, '2018-12-17 06:32:40'),
+(77, 3, 'student', 'update', '10051', '::1', 'Google Chrome', '{"id":"10051","name":"Sk.Amir Hamza","father_name":"dsf","mother_name":"sdf","email":"sk.amirhamza@gmail.com","photo":"10051.jpg","personal_mobile":"01991223020","father_mobile":"01991223020","mother_mobile":"0","nick":"Hamza","program":"3","batch":"1","fee":"15000","address":"Dhaka","birth_day":"2018-08-23","gender":"Male","religion":"Muslim","school":"","ssc_rool":"0","ssc_reg":"0","ssc_board":"","ssc_result":"0","date":"2018-08-08"}', '{"id":"10051","name":"Sk.Amir Hamza","father_name":"dsf","mother_name":"sdf","email":"sk.amirhamza@gmail.com","photo":"10051.jpg","personal_mobile":"01991223020","father_mobile":"01991223020","mother_mobile":"01731133913","nick":"Hamza","program":"3","batch":"1","fee":"15000","address":"Dhaka","birth_day":"2018-08-23","gender":"Male","religion":"Muslim","school":"","ssc_rool":"0","ssc_reg":"0","ssc_board":"","ssc_result":"0","date":"2018-08-08"}', 0, '2018-12-17 06:55:40'),
+(78, 3, 'receive_payment', 'insert', '83', '::1', 'Google Chrome', '', '{"id":"83","payment_id":"50","pay":"500","sms":"0","date":"2018-12-17 07:20:32","add_by":"3"}', 0, '2018-12-17 07:20:32'),
+(79, 3, 'receive_payment', 'delete', '83', '::1', 'Google Chrome', '{"id":"83","payment_id":"50","pay":"500","sms":"0","date":"2018-12-17 07:20:32","add_by":"3"}', 'null', 0, '2018-12-17 07:20:49'),
+(80, 3, 'sms_add', 'update', '8', '::1', 'Google Chrome', '{"id":"8","total_sms":"20","pay":"1","total_send":"18","start":"2018-12-01","end":"2018-12-31","date":"2018-12-15 04:57:38","add_by":"3"}', '{"id":"8","total_sms":"22","pay":"1","total_send":"18","start":"2018-12-01","end":"2018-12-31","date":"2018-12-15 04:57:38","add_by":"3"}', 0, '2018-12-17 07:28:25'),
+(81, 3, 'user', 'update', '3', '::1', 'Google Chrome', '{"id":"3","uname":"hamza05","fname":"Sk.Amir Hamza","photo":"user_3.jpg","gender":"Male","email":"hamza@gmail.com","phone":"1991223020","address":"Habiganj","pass":"1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599","permit":"4","theme":"12"}', '{"id":"3","uname":"hamza05","fname":"Sk.Amir Hamza","photo":"user_3.jpg","gender":"Male","email":"hamza@gmail.com","phone":"1991223020","address":"Habiganj","pass":"1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599","permit":"4","theme":"12"}', 0, '2018-12-17 08:07:02'),
+(82, 3, 'user', 'update', '3', '::1', 'Google Chrome', '{"id":"3","uname":"hamza05","fname":"Sk.Amir Hamza","photo":"user_3.jpg","gender":"Male","email":"hamza@gmail.com","phone":"1991223020","address":"Habiganj","pass":"1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599","permit":"4","theme":"12"}', '{"id":"3","uname":"hamza05","fname":"Sk.Amir Hamza","photo":"user_3.jpg","gender":"Male","email":"hamza@gmail.com","phone":"1991223020","address":"Habiganj","pass":"1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599","permit":"4","theme":"20"}', 0, '2018-12-17 08:18:50'),
+(83, 3, 'user', 'update', '3', '::1', 'Google Chrome', '{"id":"3","uname":"hamza05","fname":"Sk.Amir Hamza","photo":"user_3.jpg","gender":"Male","email":"hamza@gmail.com","phone":"1991223020","address":"Habiganj","pass":"1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599","permit":"4","theme":"20"}', '{"id":"3","uname":"hamza05","fname":"Sk.Amir Hamza","photo":"user_3.jpg","gender":"Male","email":"hamza@gmail.com","phone":"1991223020","address":"Habiganj","pass":"1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599","permit":"4","theme":"12"}', 0, '2018-12-17 08:23:24');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sms_add`
 --
 
@@ -613,6 +756,7 @@ CREATE TABLE `sms_add` (
 --
 
 INSERT INTO `sms_add` (`id`, `total_sms`, `pay`, `total_send`, `start`, `end`, `date`, `add_by`) VALUES
+(8, 22, 1, 18, '2018-12-01', '2018-12-31', '2018-12-15 04:57:38', 3),
 (7, 1, 40, 1, '2018-12-12', '2018-12-31', '2018-12-14 23:23:47', 3);
 
 -- --------------------------------------------------------
@@ -699,7 +843,20 @@ INSERT INTO `sms_list` (`id`, `number`, `message`, `len`, `date`, `gateway`, `to
 (71, '01991223020', 'Dear Hamza,\nYour Payment 5000 Tk for Admission Fee in \'Academic Program\' is Successfully Taken.\nYour Payment ID: 74\n\n@TechSerm\n01991223020 ', 1, '2018-12-13 10:40:04', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
 (72, '01991223020', 'Dear Hamza,\nCongratulation For Admitting In Our \'Academic Program\' Program.\n\r\nYour ID: 10001\r\nBatch: Section 1\r\nTime: Sat,Tue,Wed (8:00 AM - 1:00 PM)\r\n\r\n@TechSerm\r\n', 2, '2018-12-13 10:41:20', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
 (73, '01991223020', 'Dear Hamza,\nYour Payment 500 Tk for Monthly Fee \'June-2019\' in \'SSC Program 2018\' is Successfully Taken.\nYour Payment ID: 75\n\n@TechSerm\n01991223020 ', 1, '2018-12-14 09:40:41', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
-(74, '01991223020', 'Dear Hamza,\nYour Payment 5000 Tk for Admission Fee in \'Academic Program\' is Successfully Taken.\nYour Payment ID: 74\n\n@TechSerm\n01991223020 ', 1, '2018-12-14 23:38:04', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3);
+(74, '01991223020', 'Dear Hamza,\nYour Payment 5000 Tk for Admission Fee in \'Academic Program\' is Successfully Taken.\nYour Payment ID: 74\n\n@TechSerm\n01991223020 ', 1, '2018-12-14 23:38:04', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(75, '01991223020', 'dear Hamza,\nHow are you', 1, '2018-12-15 04:58:09', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(76, '01777564786', 'dear Hamza,\nHow are you', 1, '2018-12-15 04:58:09', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(77, '01991223020', 'Dear Hamza,\nWishing you a wonderful Poila Baisakh. May all your dreams come true, your aspirations find bigger wings and most importantly you feel loved wherever you go.', 2, '2018-12-15 05:04:58', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(78, '01777564786', 'Dear Hamza,\nWishing you a wonderful Poila Baisakh. May all your dreams come true, your aspirations find bigger wings and most importantly you feel loved wherever you go.', 2, '2018-12-15 05:04:58', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(79, '01991223020', 'Dear Hamza,\nYour Payment 5000 Tk for Admission Fee in \'Academic Program\' is Successfully Taken.\nYour Payment ID: 74\n\n@Britain Standard School ', 1, '2018-12-15 05:15:47', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(80, '01991223020', 'Dear Hamza,\nYour Payment 5000 Tk for Admission Fee in \'Academic Program\' is Successfully Taken.\nYour Payment ID: 74\n\n@ Britain Standard School ', 1, '2018-12-15 05:16:28', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(81, '01991223020', 'Dear Hamza,\nCongratulation For Admitting In Our \'SSC Program 2018\' Program.\n\r\nYour ID: 10051\r\nBatch: tuhur\r\nTime: Sat,Sun,Mon (7:30 - 8:20)\r\n\r\n@TechSerm\r\n', 1, '2018-12-15 05:41:52', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(82, '01991223020', 'Dear Hamza,\nYour Payment 500 Tk for Monthly Fee \'June-2019\' in \'SSC Program 2018\' is Successfully Taken.\nYour Payment ID: 75\n\nupload/custom_content/logo.png ', 1, '2018-12-15 05:44:28', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(83, '01991223020', 'Dear Hamza,\nCongratulation For Admitting In Our \'SSC Program 2018\' Program.\n\r\nYour ID: 10051\r\nBatch: tuhur\r\nTime: Sat,Sun,Mon (7:30 - 8:20)\r\n\r\n@ Britain Standard School\r\n', 2, '2018-12-15 05:47:51', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(84, '01991223020', 'Dear Hamza,\nCongratulation For Admitting In Our \'SSC Program 2018\' Program.\n\r\nYour ID: 10051\r\nBatch: tuhur\r\nTime: Sat,Sun,Mon (7:30 - 8:20)\r\n\r\n@ Britain Standard School\r\n', 2, '2018-12-15 05:48:28', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(85, '01991223020', 'Dear Hamza,\nCongratulation For Admitting In Our \'SSC Program 2018\' Program.\n\r\nYour ID: 10071\r\nBatch: tuhur\r\nTime: Sat,Sun,Mon (7:30 - 8:20)\r\n\r\n@Britain Standard School\r\n', 2, '2018-12-16 15:04:09', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(86, '01991223020', 'Dear Hamza,\nYour Payment 780 Tk for Admission Fee in \'Class One\' is Successfully Taken.\nYour Payment ID: 77\n\n@Britain Standard School ', 1, '2018-12-16 15:06:43', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3),
+(87, '01991223020', 'Dear site_activity,\nYour Payment 800 Tk for Admission Fee in \'Class One\' is Successfully Taken.\nYour Payment ID: 79\n\n@Britain Standard School ', 1, '2018-12-17 04:14:39', 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', 3);
 
 -- --------------------------------------------------------
 
@@ -803,7 +960,7 @@ INSERT INTO `student` (`id`, `name`, `father_name`, `mother_name`, `email`, `pho
 (10046, 'Test 123', 'd', 'd', '', 'avatar.png', '0', '0', '0', 'test', 8, 12, 5000, '', '2018-05-24', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-05-13'),
 (10048, 'RTRTR5', 'fhs', 'fhwiopefjwo', '', 'avatar.png', '1787563057', '0', '0', 'bappy', 3, 1, 15000, 'habiganj', '2018-06-21', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-06-19'),
 (10050, 'monir vai', '', '', '', '10050.jpg', '1707515751', '14567', '0', 'monir', 2, 2, 17000, '152, Arambagg', '2018-08-09', 'Male', 'Muslim', '', 0, 0, 'Dhaka', 0, '2018-07-10'),
-(10051, 'Sk.Amir Hamza', 'dsf', 'sdf', 'sk.amirhamza@gmail.com', '10051.jpg', '01991223020', '01991223020', '0', 'Hamza', 3, 1, 15000, 'Dhaka', '2018-08-23', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-08-08'),
+(10051, 'Sk.Amir Hamza', 'dsf', 'sdf', 'sk.amirhamza@gmail.com', '10051.jpg', '01991223020', '01991223020', '01731133913', 'Hamza', 3, 1, 15000, 'Dhaka', '2018-08-23', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-08-08'),
 (10052, 'fdg', '', '', '', 'avatar.png', '0', '0', '0', 'fdsg', 2, 1, 17000, '', '2018-08-15', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-08-08'),
 (10053, 'test1', 'sdf', 'sdf', '', '10053.jpg', '0', '0', '0', 'test', 2, 1, 17000, '', '2018-08-09', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-08-08'),
 (10054, 'asdf', '', '', '', 'avatar.png', '0', '0', '0', 'afs', 2, 1, 1500, '', '2018-08-22', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-08-08'),
@@ -821,7 +978,9 @@ INSERT INTO `student` (`id`, `name`, `father_name`, `mother_name`, `email`, `pho
 (10067, 'amir hamza update', '', '', '', 'avatar.png', '01991223020', '01777564786', '0', 'hamza', 2, 1, 1500, '', '2018-12-08', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-12-07'),
 (10068, 'Mannan Omi', '', '', '', 'avatar.png', '01684473273', '0', '0', 'Futej(Omi)', 2, 1, 1500, '', '2018-12-19', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-12-11'),
 (10069, 'Jugol Kishur', '', '', '', 'avatar.png', '01521461643', '0', '0', 'Juglu', 2, 1, 1500, '', '2018-12-12', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-12-11'),
-(10070, 'Raihan Taher', '', '', '', 'avatar.png', '01521432303', '0', '0', 'Raihan ', 2, 1, 1500, '', '2018-12-02', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-12-11');
+(10070, 'Raihan Taher', '', '', '', 'avatar.png', '01521432303', '0', '0', 'Raihan ', 2, 1, 1500, '', '2018-12-02', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-12-11'),
+(10071, 'Sk.Amir Hamza', '', '', 'sk.amirhamza@gmail.com', 'avatar.png', '01991223020', '0', '0', 'Hamza', 2, 1, 1500, 'Dhaka', '2018-12-01', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-12-16'),
+(10072, 'test_site_activity', '', '', '', 'avatar.png', '01991223020', '0', '0', 'site_activity', 2, 1, 1500, '', '2018-12-17', 'Male', 'Muslim', '', 0, 0, '', 0, '2018-12-16');
 
 -- --------------------------------------------------------
 
@@ -891,7 +1050,15 @@ INSERT INTO `student_attendence` (`id`, `student_id`, `program_id`, `status`, `d
 (61, 10051, 13, 0, '2018-12-13'),
 (62, 10068, 13, 1, '2018-12-13'),
 (63, 10069, 13, 1, '2018-12-13'),
-(64, 10070, 13, 1, '2018-12-13');
+(64, 10070, 13, 1, '2018-12-13'),
+(65, 10001, 13, 1, '2018-12-17'),
+(66, 10071, 13, 0, '2018-12-17'),
+(67, 10001, 8, 1, '2018-12-17'),
+(68, 10046, 8, 1, '2018-12-17'),
+(69, 10048, 8, 0, '2018-12-17'),
+(70, 10049, 8, 1, '2018-12-17'),
+(71, 10052, 8, 0, '2018-12-17'),
+(72, 10067, 8, 1, '2018-12-17');
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1173,12 @@ INSERT INTO `student_payment` (`id`, `student_id`, `program_id`, `type`, `year`,
 (44, 10051, 13, 1, 0, 0, 5000, '2018-12-12 00:15:10', 3),
 (45, 10001, 8, 2, 2018, 8, 500, '2018-12-13 08:56:59', 3),
 (46, 10001, 5, 1, 0, 0, 7500, '2018-12-13 10:39:28', 3),
-(47, 10051, 8, 2, 2019, 6, 500, '2018-12-14 09:40:19', 3);
+(47, 10051, 8, 2, 2019, 6, 500, '2018-12-14 09:40:19', 3),
+(48, 10071, 13, 1, 0, 0, 2000, '2018-12-16 14:46:54', 3),
+(49, 10071, 13, 2, 2019, 3, 1000, '2018-12-16 14:57:50', 3),
+(50, 10051, 13, 2, 2019, 3, 1000, '2018-12-17 00:19:32', 3),
+(51, 10072, 13, 1, 0, 0, 3000, '2018-12-17 04:04:29', 3),
+(52, 10072, 4, 1, 0, 0, 500, '2018-12-17 04:34:03', 5);
 
 -- --------------------------------------------------------
 
@@ -1130,7 +1302,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `uname`, `fname`, `photo`, `gender`, `email`, `phone`, `address`, `pass`, `permit`, `theme`) VALUES
 (3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'hamza@gmail.com', 1991223020, 'Habiganj', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 4, 12),
-(2, 'shakib', 'all hassan', 'avatar.png', '', 'sk.amirhamza1@gmail.com', 177756478, '', '123', 1, 1),
+(2, 'shakib', 'all hassan', 'avatar.png', '', 'sk.amirhamza1@gmail.com', 177756478, '', 'd4fc23375ec457523736a83bc9e8815a2bf434e987d0c45a769104c566050283', 1, 1),
 (5, 'rahim', 'Musfiqur Rahim', 'user_5.jpg', 'Male', 'rahim@gmail.com', 17841561, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 1),
 (7, 'admin', 'amir hamza', 'avatar.png', '', 'sf', 32154, '', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 1, 12);
 
@@ -1205,9 +1377,21 @@ ALTER TABLE `result`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `setting`
+--
+ALTER TABLE `setting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `set_payment`
 --
 ALTER TABLE `set_payment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `site_activity`
+--
+ALTER TABLE `site_activity`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1284,12 +1468,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admit_program`
 --
 ALTER TABLE `admit_program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT for table `batch`
 --
 ALTER TABLE `batch`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `class`
 --
@@ -1304,7 +1488,7 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT for table `expence`
 --
 ALTER TABLE `expence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `expence_category`
 --
@@ -1314,7 +1498,7 @@ ALTER TABLE `expence_category`
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `payment`
 --
@@ -1329,27 +1513,37 @@ ALTER TABLE `program`
 -- AUTO_INCREMENT for table `receive_payment`
 --
 ALTER TABLE `receive_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT for table `result`
 --
 ALTER TABLE `result`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 --
+-- AUTO_INCREMENT for table `setting`
+--
+ALTER TABLE `setting`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `set_payment`
 --
 ALTER TABLE `set_payment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
+-- AUTO_INCREMENT for table `site_activity`
+--
+ALTER TABLE `site_activity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+--
 -- AUTO_INCREMENT for table `sms_add`
 --
 ALTER TABLE `sms_add`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `sms_list`
 --
 ALTER TABLE `sms_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `sms_setting`
 --
@@ -1359,12 +1553,12 @@ ALTER TABLE `sms_setting`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10071;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10073;
 --
 -- AUTO_INCREMENT for table `student_attendence`
 --
 ALTER TABLE `student_attendence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `student_id`
 --
@@ -1374,7 +1568,7 @@ ALTER TABLE `student_id`
 -- AUTO_INCREMENT for table `student_payment`
 --
 ALTER TABLE `student_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `subject`
 --

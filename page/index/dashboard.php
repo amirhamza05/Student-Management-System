@@ -1,9 +1,14 @@
 
+<script type="text/javascript" src="page/index/js/dashboard.js"></script>
+
 <script type="text/javascript">
             $(document).ready(function() {
                  $('table.display').DataTable();
             } );
         </script>
+
+
+
 
 <?php
 
@@ -12,6 +17,19 @@ $total_notice=count($notice_info);
 $info=$sms->sms_balance();
 
 ?>
+
+<?php
+/**
+* Show user information like IP address, useragent
+**/
+
+?>
+
+<?php
+
+
+?>
+
 
  <div class="row" >
                     <div class="col-lg-3 col-sm-6">
@@ -98,6 +116,7 @@ $info=$sms->sms_balance();
         <?php 
        
        if($user_permit>=2){
+        include "site_activity.php"; 
         include "message_list.php"; 
         include "expence_list.php";
        }
@@ -127,3 +146,7 @@ $info=$sms->sms_balance();
         text-align: center;
     }
 </style>
+
+<script type="text/javascript">
+    live_site_action();
+</script>
