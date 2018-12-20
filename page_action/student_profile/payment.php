@@ -411,7 +411,9 @@ if(isset($_POST['payment_panel'])){
               </span>
             </div>
             <div class="actions">
-              
+              <a title="Reload Panel" href="javascript:;" onclick="view_payment_panel(<?php echo "$payment_id"; ?>)" class="btn">
+                <i class="glyphicon glyphicon-refresh"></i>
+              </a>
               <a href="javascript:;" onclick="update_payment_form(<?php echo "$payment_id"; ?>)" class="btn">
                 <i class="glyphicon glyphicon-euro"></i>
                 Update Fee

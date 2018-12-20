@@ -12,4 +12,4 @@
 	<script language="JavaScript" src="layout/site_script.js" type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="style/stylesheets/money_recept.css">
 
-    
+     

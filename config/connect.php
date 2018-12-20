@@ -14,7 +14,7 @@ class database {
  public $ip;
  public $browser;
  public $logo="upload/custom_content/techserm_small_logo.png";
- public $site_name="Britain Standard School";
+ public $site_name="TechSerm Education Software";
  public $msg="@Britain Standard School";
 
  //conection start
@@ -31,6 +31,7 @@ public function connection(){
      if(!$this->conn){
        echo "Conection failed";
      }
+     else return 1;
 }
 
 public function date(){
@@ -157,9 +158,7 @@ public function get_previous_data($table,$id){
       if($table!="site_activity"){
         $previous_data=$this->get_previous_data($table,$info['id']);
       }
-    }
-         
-
+    }     
     if($action=="insert"){
       $res=$this->get_select_last_id($sql);
       if($table!="site_activity")$present_data=$this->get_previous_data($table,$res);

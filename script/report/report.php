@@ -95,6 +95,38 @@ class report {
 return $info;
   }
 
+  public function get_student_attend_info($date1,$date2,$program_id,$batch_id=0){
+    $b_sql="";
+    if($batch_id!=0){
+       $b_sql="and batch_id=$batch_id";
+    }
+    $p_sql="";
+    if($program_id!=0){
+      $p_sql="and program_id=$program_id";
+    }
+
+    $sql="select * from student_attendence
+    where (date BETWEEN CAST('$date1' AS DATE) AND CAST('$date2' AS DATE)) $p_sql $b_sql";
+    $info=$this->db->get_sql_array($sql);
+    $student_list=array();
+    $info_index=array();
+    foreach ($info as $key => $value) {
+      $student_id=$value['student_id'];
+      $status=$value['status'];
+      $date=$value['date'];
+      array_push($student_list, $student_id);
+      $day=date("d", strtotime($date));
+      $info_index[$student_id][(int)$day]=$status;
+    }
+    $student_list=array_unique($student_list);
+
+    $res=array();
+    $res['student_list']=$student_list;
+    $res['info_index']=$info_index;
+    
+    return $res;
+  }
+
 
 
 }

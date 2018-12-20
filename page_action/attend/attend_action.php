@@ -9,6 +9,7 @@ if(isset($_POST['select_program'])){
 if(isset($_POST['save_attend'])){
 	$info=$_POST['save_attend'];
 	$program_id=$info['program_id'];
+    $batch_id=$info['batch_id'];
 	$date=$info['date'];
 	$attend_list=$info['student_list'];
 	foreach ($attend_list as $key => $value) {
@@ -18,7 +19,8 @@ if(isset($_POST['save_attend'])){
         $data['program_id']=$program_id;
         $data['date']=$date;
         $data['status']=$status;
-        $ch_info=$attend_ob->get_attendence_info($program_id,$student_id,$date);
+        $data['batch_id']=$batch_id;
+        $ch_info=$attend_ob->get_attendence_info($program_id,$batch_id,$student_id,$date); 
         $action="insert";
         if($ch_info!=-1){
         	$action="update";
@@ -78,7 +80,7 @@ if(isset($_POST['view_attend'])){
       		$value=$student[$id];
       		$name=$value['name'];
         	$img=$value['photo'];
-            $ch_info=$attend_ob->get_attendence_info($program_id,$id,$db_date);
+            $ch_info=$attend_ob->get_attendence_info($program_id,$batch_id,$id,$db_date);
             $ch1="";
             $ch2="";
             if($ch_info!=-1){
@@ -111,42 +113,109 @@ if(isset($_POST['view_attend'])){
 }
 
 if(isset($_POST['attend_report'])){
-
- 	
+  $year=2018;
+  $month=12;
+  $program_id=8;
+  $day = cal_days_in_month(CAL_GREGORIAN,$month,$year);
+  $date1="$year-$month-01";
+  $date2="$year-$month-$day";
+  $info=$report->get_student_attend_info($date1,$date2,$program_id);
+  
+  $student_list=$info['student_list'];
+  $info_index=$info['info_index'];
+  //$site->myprint_r($info_index);
+  $program_name=$program[$program_id]['name'];
 
 	?>
 
 <div class="attend_area">	
  <?php $site->header_info_area(); ?>
-<table width="100%">
+
+<div class="row  info_area">
+	<div class="col-md-12">
+		<font class="report_title">
+			<center>
+				Monthly Attendence Report<br/>
+			</center>
+		</font>
+		<center>
+			<font class="report_description">
+				<?php echo "January 2019"; ?><br/>
+			</font>	
+		</center>
+		<font class="report_description">
+			<div style="float: left;"><b>Program: </b><?php echo "$program_name"; ?> </div>
+			<div style="float: right;"><b>Batch:</b> All Batch</div>
+		</font>
+	</div>
+
+</div>
+<table width="100%" style="background-color: #ffffff">
+	<thead style="border-width: 0px;">
 	<tr class="attend_tr">
-		<td class="attend_td1" style="width: 80px">ID</td>
-		<td class="attend_td1" style="width: 130px">Name</td>
-		<?php for($i=1; $i<=28; $i++){ ?>
-		<td class="attend_td1" style="width: 5px"><?php echo "$i"; ?></td>
+		<td class="attend_td1" style="width: 70px">ID</td>
+		<td class="attend_td1" style="width: 140px">Name</td>
+		<?php for($i=1; $i<=$day; $i++){ ?>
+		<td class="attend_td1" style="width: 15px"><?php echo "$i"; ?></td>
 	    <?php } ?>
-	    <td class="attend_td1" style="width: 10px">T.P.</td>
-	    <td class="attend_td1" style="width: 10px">T.A.</td>		
+	    <td class="attend_td1" style="width: 25px">T.P.</td>
+	    <td class="attend_td1" style="width: 25px">T.A.</td>		
 	</tr>
+	</thead>
+
+	<tbody>
+
 	<?php
-       for($j=0; $j<100; $j++){
+       
+      foreach ($student_list as $key => $value) {
+      	$student_id=$value;
+
+      	$student_name=$student[$student_id]['name'];
+        
        	?>
 
 		<tr class="attend_tr">
-			<td class="attend_td2" style="width: 80px;background-color: var(--bg-color);color: var(--font-color)">10035</td>
-			<td class="attend_td2" style="width: 130px;background-color: var(--bg-color);color: var(--font-color)">Amir Hamza dsf sdf</td>
-			<?php for($i=1; $i<=28; $i++){ ?>
-			<td class="attend_td2" style=""><?php echo "P"; ?></td>
-	    	<?php } ?>
-	    	<td class="attend_td2" style="width: 10px; background-color: var(--bg-color);color: var(--font-color)">T.P.</td>
-	    	<td class="attend_td2" style="width: 10px; background-color: var(--bg-color);color: var(--font-color)">T.A.</td>		
-		</tr>
+			<td class="attend_td2" style="width: 70px;background-color: #f7f7f7;color: #000000"><b><?php echo "$student_id"; ?></b></td>
+			<td class="attend_td2" style="width: 130px;background-color: #f7f7f7;color: #000000"><b><?php echo "$student_name"; ?></b></td>
+			<?php 
+             
+             $present=0;
+             $absent=0;
+			for($i=1; $i<=$day; $i++){
 
+                $att_cls="";
+                $att="";
+                $status=-1;
+               
+                if(isset($info_index[$student_id][$i])){
+                  $status=$info_index[$student_id][$i];
+                }
+                
+                
+                if($status==0){
+                    $absent++;
+                	$att_cls="absent_class";
+                	$att="A";
+                }
+                else if($status==-1)$pr="";
+                else {
+                	$present++;
+                	$att_cls="present_class";
+                	$att="P";
+                }
+			 ?>
+			<td class="attend_td2 <?php echo $att_cls; ?>" style=""><b><?php echo "$att"; ?></b></td>
+	    	<?php } ?>
+	    	<td class="attend_td2" style="width: 10px; background-color: #f7f7f7;color: #000000"><b><?php echo "$present"; ?></b></td>
+	    	<td class="attend_td2" style="width: 10px; background-color: #f7f7f7;color: #000000"><b><?php echo "$absent"; ?></b></td>		
+		</tr>
+	</tbody>
        	<?php
        }
 
 	?>
 </table>
+
 
 </div>
 
@@ -156,21 +225,47 @@ if(isset($_POST['attend_report'])){
 ?>
 
 <style type="text/css">
+
+.info_area{
+    	padding: 2px 0px 8px 0px;
+    }
+
+ .report_title{
+ 	font-size: 18px;
+ 	color: #1A2229;
+ 	font-family: Verdana, Geneva, sans-serif;
+ }
+ .report_description{
+ 	color: #1A2229;
+ 	font-size: 14px;
+ 	font-family: Verdana, Geneva, sans-serif;
+ }  
 	.attend_table{
 
 	}
 	.attend_td1{
-		padding: 10px 5px 10px 5px;
-		background-color: var(--bg-color);
-		color: var(--font-color);
+		padding: 8px 0px 8px 0px;
+		background-color: #EFF0F2;
+		color: #000000;
 		font-weight: bold;
-		border: 1px solid #eeeeee;
+		border: 1px solid #C6C9D1;
+		font-size: 12px;
 		text-align: center;
 	}
 	.attend_td2{
-		padding: 4px;
+		padding: 6px 2px 6px 2px;
 		text-align: center;
-		border: 1px solid #eeeeee;
+		font-size: 10px;
+		color: #5C6765;
+		border: 1px solid #C6C9D1;
+		font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	}
+	.present_class{
+       background-color: #CDFFD8;
+
+	}
+	.absent_class{
+		background-color: #FFDCE0;
 	}
 	.img_td{
 		height: 40px;
@@ -191,5 +286,24 @@ if(isset($_POST['attend_report'])){
 		font-family: 'Trocchi', serif;
 		padding: 10px 10px 10px 10px;
 	}
+	.watermark {
+            background-repeat: repeat;
+            background-image: url("http://localhost/project/youth/upload/custom_content/techserm_full_logo.jpg");
+      }
+	@page {
+  		size: landscape;
+  		margin: 1;
+  		table { page-break-after:auto }
+  		tr    { page-break-inside:avoid; page-break-after:auto }
+  		td    { page-break-inside:avoid; page-break-after:auto }
+  		thead { display:table-header-group }
+  		tfoot { display:table-footer-group }
+	}
+	
 
 </style>
+<style type="text/css" media="print">
+
+                
+
+    </style>

@@ -104,6 +104,7 @@ function save_attend(info){
         
         var data1={
         	"program_id": info.program_id,
+          "batch_id": info.batch_id,
         	"date": info.date,
         	"student_list":attend_list
         }

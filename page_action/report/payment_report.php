@@ -111,6 +111,7 @@ $info=$report->get_payment_report_list($data);
 </div>
 <div style="margin-top: 5px;"></div>
 <table width="100%">
+	<thead style="border-width: 0px;">
 	<tr>
 		<td class="td1">#</td>
 		<td class="td1">Date</td>
@@ -122,6 +123,8 @@ $info=$report->get_payment_report_list($data);
 		<td class="td1">Receive By</td>
 		<td class="td1" style="width: 100px">Pay</td>
 	</tr>
+	</thead>
+	<tbody>
 	<?php 
     $sum=0;
     foreach ($info as $key => $value) {
@@ -162,6 +165,7 @@ $info=$report->get_payment_report_list($data);
 		<td style="text-align: right;padding: 15px;"><b>Total Payment</b></td>
 		<td class="td2"><b style="font-size: 15px;"><?php echo "$sum"; ?> Tk</b></td>
 	</tr>
+	</tbody>
 </table>
 
 </div>

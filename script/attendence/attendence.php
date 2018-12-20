@@ -18,9 +18,9 @@ class attendence {
   }
 
 //end dabtabase connection
- public function get_attendence_info($program_id,$student_id,$date){
+ public function get_attendence_info($program_id,$batch_id,$student_id,$date){
  	$date=date('Y-m-d', strtotime($date));
- 	$sql="select * from student_attendence where program_id=$program_id and student_id=$student_id and date='$date'";
+ 	$sql="select * from student_attendence where program_id=$program_id and student_id=$student_id and batch_id=$batch_id and date='$date'";
  	$info=$this->db->get_sql_array($sql);
     if(isset($info[0]))return $info[0];
 

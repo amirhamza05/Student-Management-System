@@ -99,8 +99,12 @@ class sms
 
         $total      = $data['total'];
         $start_time = strtotime($this->db->date());
+        $check_getway=$this->insert_sms_database($sms_list);
+        if($check_getway==-1){
+            echo "<b style='color:red'>You Can not add any gateway.Please Add Any Gateway For Send SMS</b>";
+            return;
+        }
         $this->sms_dist($total);
-        $this->insert_sms_database($sms_list);
         $this->send_mobile_phone($sms_list);
         $end_time = strtotime($this->db->date());
         $diff     = $end_time - $start_time;
@@ -171,6 +175,7 @@ class sms
         
         $sql     = "select * from sms_setting";
         $info    = $this->db->get_sql_array($sql);
+        if(!isset($info[0]))return -1;
         $info    = $info[0];
         $gateway = $info['gateway'];
         $token   = $info['token'];
@@ -185,6 +190,7 @@ class sms
             $info['sender']  = $this->login_user;
             $this->db->sql_action("sms_list", "insert", $info, "no");
         }
+        return 1;
     }
     
     
@@ -292,6 +298,7 @@ class sms
         $info['{{student_name}}'] = "Student Name";
         $info['{{nick_name}}']    = "Nick Name";
         $info['{{id}}']           = "Student Id";
+        $info['{{student_pass}}'] = "Student Password";
         return $info;
     }
     
@@ -310,6 +317,7 @@ class sms
         $info['{{student_name}}'] = $st_info['name'];
         $info['{{nick_name}}']    = $st_info['nick'];
         $info['{{id}}']           = $st_info['id'];
+
         
         return $info;
     }
