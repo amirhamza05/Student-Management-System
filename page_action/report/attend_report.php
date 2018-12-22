@@ -1,10 +1,31 @@
 <?php
+if(isset($_POST['select_program'])){
+	$program_id=$_POST['select_program'];
+	echo "<option value='0'>Select All Batch</option>";
+    $program_ob->select_batch_option($program_id);
+}
+
+if(isset($_POST['year_set'])){
+	$program_id=$_POST['year_set'];
+	$set_payment_ob->get_program_payment_year_option($program[$program_id]);
+}
+if(isset($_POST['select_year'])){
+  $info=$_POST['select_year'];
+  $year=$info['year'];
+  $pid=$info['program_id'];
+  if($year!=-1){
+        $set_payment_ob->get_program_payment_month_option($program[$pid],$year); 
+  }
+  else echo "<option value='-1'>Select Month</option>";
+}
+
 
 if(isset($_POST['attend_report'])){
-  $year=2018;
-  $month=12;
-  $program_id=0;
-  $batch_id=0;
+  $info=$_POST['attend_report'];
+  $year=$info['year'];
+  $month=$info['month'];
+  $program_id=$info['program_id'];
+  $batch_id=$info['batch_id'];
   $day = cal_days_in_month(CAL_GREGORIAN,$month,$year);
   $date1="$year-$month-01";
   $date2="$year-$month-$day";

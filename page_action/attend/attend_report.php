@@ -1,5 +1,12 @@
 <?php
 
+if(isset($_POST['select_program'])){
+	$program_id=$_POST['select_program'];
+	echo "<option value='-1'>Select Batch</option>";
+    $program_ob->select_batch_option($program_id);
+}
+
+
 if(isset($_POST['attend_report'])){
   $year=2018;
   $month=12;

@@ -117,10 +117,9 @@ if(isset($_POST['select_year'])){
   $year=$info['year'];
   $pid=$info['program_id'];
   if($year!=-1){
-$set_payment_ob->get_program_payment_month_option($program[$pid],$year); 
+        $set_payment_ob->get_program_payment_month_option($program[$pid],$year); 
   }
   else echo "<option value='-1'>Select Month</option>";
-
 }
 if(isset($_POST['set_payment_list'])){
   $info=$_POST['set_payment_list'];

@@ -75,7 +75,7 @@ function form_step1(){
 
 function form_step2(){
 	$install=new install();
-   	$sql=$install->get_file_data("sql/install_sql1.sql");
+   	$sql=$install->get_file_data("sql/install_sql.sql");
    	$config_file=$install->config_file;
    	include "$config_file";
 	$host=db_host;

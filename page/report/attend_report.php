@@ -18,15 +18,15 @@
             <br/>
             <div id='loader_select'></div>
           </div>
-          <div class="col-md-2" id="year_select">
-            <select class="select" id="batch_select_id">
+          <div class="col-md-2" id="year_select1">
+            <select class="select" onclick="select_year()" id="year_select">
                 <option value="-1">Select Year</option>
             </select>
             <br/>
             <div id='loader_select'></div>
           </div>
-          <div class="col-md-2" id="month_select">
-            <select class="select" id="batch_select_id">
+          <div class="col-md-2" id="month_select1">
+            <select class="select" id="month_select">
                 <option value="-1">Select Month</option>
             </select>
             <br/>
@@ -39,7 +39,7 @@
     </div> 
 </div>
 <div id="report_area"></div>
-
+ 
 
 <style type="text/css">
 	.btn_attend{
