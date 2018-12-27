@@ -26,13 +26,13 @@ $date=date("Y-m-d",strtotime($db->date()));
               <input type="date" id="attend_date" value="<?php echo "$date"; ?>" class="input_date" name="">
           </div> 
           <div class="col-md-3">
-            <button class="btn_select" onclick="attend_report()">Report</button>
-            <button class="btn_select" onclick="add_attend()">Add Attendence</button>
+            <button class="btn_select" onclick="attend_panel()">Attendence Panel</button>
           </div>
     </div> 
 </div>
-<button onclick="print('res')">Print</button>
-<div id="res" style="height: auto; margin-top: 15px"></div>
+
+<div id="res" style="margin-top: 15px"></div>
+<div id="attend_reportt" style="margin-top: 15px"></div>
 
 <style type="text/css">
     .btn_attend{

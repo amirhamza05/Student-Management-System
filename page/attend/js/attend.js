@@ -3,8 +3,8 @@ url = "attend_action.php";
 modal_body = "modal_lg_body";
 modal = "lg";
 
-var program_id,batch_id;
-
+var program_id,batch_id,date;
+ 
 function get_action_data(_div = modal_body, _load = 0, _url = url) {
     var data = {
         'url': _url,
@@ -15,13 +15,13 @@ function get_action_data(_div = modal_body, _load = 0, _url = url) {
 }
 
 
-function add_attend(){
+function attend_panel(){
    pid=get_value("program_select");
    bid=get_value("batch_select_id");
    date=get_value("attend_date");
    error="";
    if(pid==-1)error="Select Program";
-   else if(bid==-1)error="Select Batch";
+   else if(bid==-1 || bid=="")error="Select Batch";
    else if(date=="")error="Select Date";
    if(error!=""){
    	alert(error);
@@ -38,12 +38,101 @@ function add_attend(){
    }
 
    var data = {
-        "view_attend":data1
+        "attend_panel":data1
     }
     //modal_open(modal, "Payment");
     loader("res");
-    get_ajax(get_action_data("res"), data);
+     $.ajax({
+        type: 'POST',
+        url: url,
+        data:data,
+        success: function(response) {
+           set_html("res",response);
+           take_attend();
+        }
+    });
+    
 }
+
+
+function take_attend(){
+    var data1 = {
+      "program_id": program_id,
+      "batch_id": batch_id,
+      "date": date
+    }
+
+   var data = {
+        "take_attend":data1
+    }
+
+    loader("take_attend");
+    get_ajax(get_action_data("take_attend"), data);
+}
+
+function attend_report(status=2){
+    var data1 = {
+      "program_id": program_id,
+      "batch_id": batch_id,
+      "date": date,
+      "status": status
+    }
+
+   var data = {
+        "attend_report":data1
+    }
+
+    loader("attend_report");
+    get_ajax(get_action_data("attend_report"), data);
+}
+
+function attend_sms(){
+  var data1 = {
+      "program_id": program_id,
+      "batch_id": batch_id,
+      "date": date
+    }
+
+   var data = {
+        "attend_sms":data1
+    }
+
+    loader("attend_sms");
+    get_ajax(get_action_data("attend_sms"), data);
+}
+
+function send_attend_sms(){
+  type=get_value("attend_type");
+  receiver=get_value("select_receiver");
+  error="";
+  if(type==-1){
+     error="Please Select Attendence Type";
+  }
+  else if(receiver==-1){
+        error="Please Select Receiver";
+  }
+
+  if(error!=""){
+    alert(error);
+    return;
+  }
+
+  var data1 = {
+      "program_id": program_id,
+      "batch_id": batch_id,
+      "date": date,
+      "type": type,
+      "receiver": receiver
+    }
+
+   var data = {
+        "send_attend_sms":data1
+    }
+
+    loader("attend_sms");
+    get_ajax(get_action_data("attend_sms"), data);
+}
+
 
 function select_program(){
 	program_id=get_value("program_select");
@@ -67,15 +156,7 @@ function select_program(){
 
 
 
-function attend_report(){
-   
-   var data = {
-        "attend_report": 1
-    }
-    //modal_open(modal, "Attendence Report");
-    loader("res");
-    get_ajax(get_action_data("res"), data);
-}
+
 
 function save_attend(info){
     
@@ -112,14 +193,14 @@ function save_attend(info){
         var data = {
           "save_attend": data1
     	}
-        loader("res");
+        loader("take_attend");
         $.ajax({
         type: 'POST',
         url: url,
         data:data,
         success: function(response) {
         	success("Successfully Taken Student Attendence");
-            add_attend();
+          take_attend();
         }
     });
 

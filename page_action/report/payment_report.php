@@ -26,6 +26,9 @@ $info=$report->get_payment_report_list($data);
 </div>
 <div id="report_body">
 	<style type="text/css">
+	table {
+  border-collapse: collapse;
+}
     .payment_report{
     	background-color: #ffffff;
     	padding: 15px;
@@ -51,6 +54,7 @@ $info=$report->get_payment_report_list($data);
 	}
 	@media print 
 	{
+
     	@page {
       	size: A4; /* DIN A4 standard, Europe */
       	margin:0;

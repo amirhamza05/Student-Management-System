@@ -21,7 +21,7 @@ foreach ($theme_info as $key => $value) {
       font-weight: bold;
       cursor: pointer;
       font-size: 20px;
-      border-radius: 5% 5% 0% 0%;
+      border-radius: 100%;
 	}
 	.img_src{
 		width: 60px;
@@ -76,16 +76,10 @@ foreach ($theme_info as $key => $value) {
 		<div class="theme">
 			<div class="header_theme" style="background-color: <?php echo "$bg_color"; ?>; color: <?php echo "$font_color"; ?>"onclick="themes_select(<?php echo "$uid,$id"; ?>)" >
 			<center>	
-			<?php echo "$name"; ?>
-			<?php
-           if($theme==$id){
-           	?>
+			
+			<?php if($theme==$id){ ?>
            	<span style="font-size: 40px" class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
-
-           
-           <?php
-			}
-			?>
+           <?php } ?>
 		</center>	
 		
 			</div>

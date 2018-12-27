@@ -148,8 +148,6 @@ else if(isset($_POST['student_list'])){
 		<td class="student_td_1">Mother Name</td>
 	</tr>
 	<?php 
-
-	
       foreach ($info as $key => $value) {
       	$id=$value['student_id'];
       	$value1=$value;
@@ -175,9 +173,7 @@ else if(isset($_POST['student_list'])){
 	</tr>
     <?php } ?>
 </table>
-
 <?php
-
 }
 
 else if(isset($_POST['get_id_card'])){
@@ -199,7 +195,6 @@ else if(isset($_POST['get_id_card'])){
 		padding: 15px;
     	border-style: solid;
     	border-width: 1px;
-    
     	font-weight: bold;
     	font-family: "Big Caslon";
     	border-color: #C6C9D1;
@@ -229,7 +224,6 @@ else if(isset($_POST['get_id_card'])){
     	border-style: solid;
     	border-width: 1px;
     	font-weight: bold;
-
     	font-family: "Big Caslon";
     	border-color: #C6C9D1;
     

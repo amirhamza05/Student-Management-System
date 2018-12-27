@@ -291,7 +291,7 @@ class set_payment {
       
     </div>
     <div class='right_header'>
-      <img class='barcode_recept' src='barcode.php?<?php echo "$id"; ?>'><br/> 
+      
       <b>Recept No:</b> <u><?php echo $info['id']; ?></u><br/>
       <b>Recept Date:</b> <?php echo $info['date']; ?><br/>
       <b>Receive By:</b> <?php echo $info['add_by']; ?><br/>

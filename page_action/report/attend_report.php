@@ -141,6 +141,7 @@ if(isset($_POST['attend_report'])){
 ?>
 
 <style type="text/css">
+
 .attend_area{
 		background-color: #ffffff;
 		padding: 15px;

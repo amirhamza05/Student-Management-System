@@ -5,6 +5,8 @@ include "nev_bar.php";
 include "side_bar.php";
 
 ?>
+
+
 <div id="content" class="content"> 
  
 
