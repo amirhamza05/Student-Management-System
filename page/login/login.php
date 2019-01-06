@@ -1,3 +1,11 @@
+ 
+<?php 
+
+include "config/config.php";
+$db=new database();
+
+
+ ?>
 
 <div style="margin-top: 45px;"></div>
 
@@ -7,9 +15,8 @@
 		<div class="logo">
 			
 			<h1 class="logo-caption">
-        <img src="upload/custom_content/logo.png" style="height: 180px;width: 180px;">
-        <br/>
-        <span class="tweak">B</span>ritain <span class="tweak">S</span>tandard School</h1>
+      <?php echo $db->site_name; ?>
+      </h1>
 		</div><!-- /.logo --> 
 		<div class="controls">
       <div id="error_msg" style="color: #F64343; display: none;">Please Fill Up Correct User Name OR Password</div>
@@ -40,7 +47,7 @@
             login: uname,
             uname: uname,
             pass: pass
-        },
+        }, 
         beforeSend: function() {
               document.getElementById("login_btn").disabled=true;
               document.getElementById("login_btn").innerHTML="<div class='lds-dual-ring'></div>";

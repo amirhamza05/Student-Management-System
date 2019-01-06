@@ -1,5 +1,4 @@
 
-<script src="script/student/add_ajax.js" type="text/javascript"></script>
 <script src="page/student/js_script/student_action.js" type="text/javascript"></script>
 
 <style type="text/css">
@@ -49,7 +48,7 @@
     <div class="boxz" >
         <div style="" class="box_bodyy" >
         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-        <form action="student_action.php" id="add_student" method="post" enctype="multipart/form-data">
+        <form action="" id="add_student" method="post" enctype="multipart/form-data">
   
 
         <div class="row">
@@ -70,7 +69,7 @@
             $site->form_input("Father mobile","father_mobile","number","number","exclamation-sign","","","no");
             $site->form_input("Mother mobile","mother_mobile","mobile","number","exclamation-sign","","","no");
             $site->form_input("Email","email","mobile","text","exclamation-sign","","","no");
-            $site->form_input("Birthday","birthday","mobile","date","exclamation-sign","","","yes");
+            $site->form_input("Birthday","birthday","mobile","date","exclamation-sign","","","no");
             ?>
 
 

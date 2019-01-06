@@ -75,6 +75,17 @@ class report {
     return $info;
   }
 
+public function get_income_report($data){
+    $date1=$data['date1'];
+    $date2=$data['date2'];
+    $sql="select income.* from income
+    where (income.date BETWEEN CAST('$date1' AS DATE) AND CAST('$date2' AS DATE))
+    ";
+
+    $info=$this->db->get_sql_array($sql);
+    return $info;
+  }
+
   public function get_profit_report($data){
     $ex_rep=$this->get_expence_report($data);
     $data['program_id']=0;
@@ -84,6 +95,12 @@ class report {
     foreach ($ex_rep as $key => $value) {
       $total_expence+=$value['amount'];
     }
+
+    $total_income=0;
+    $in_report=$this->get_income_report($data);
+    foreach ($in_report as $key => $value) {
+      $total_income+=$value['amount'];
+    }
     
     $total_payment=0;
     foreach ($pay_rep as $key => $value) {
@@ -91,7 +108,8 @@ class report {
     }
     $info['total_expence']=$total_expence;
     $info['total_payment']=$total_payment;
-    $info['total_profit']=$total_payment-$total_expence;
+    $info['total_income']=$total_income;
+    $info['total_profit']=($total_payment+$total_income)-$total_expence;
 return $info;
   }
 

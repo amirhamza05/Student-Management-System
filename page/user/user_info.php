@@ -16,6 +16,7 @@ $address=$info['address'];
 $gender=$info['gender'];
 $phone=$info['phone'];
 $permission=$info['permit'];
+
 ?>
 
 <input type="number" id="uid" value="<?php echo "$uid"; ?>" hidden>
@@ -73,7 +74,9 @@ $permission=$info['permit'];
                 </div>
               </div>
             </div>
-          <div id="update_area" class="panel_footer" style="display: none;">
+
+         <?php if($user_id==$uid){ ?>   
+          <div id="update_area" class="panel_footer" style="display: block;"> 
           <center>
                          <div class="bottom">
             <ul class="ul_cla">
@@ -110,6 +113,8 @@ $permission=$info['permit'];
                 </div>
               </center>
                     </div>
+
+            <?php } ?>        
             
           </div>
         </div>

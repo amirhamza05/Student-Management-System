@@ -98,10 +98,10 @@ public function get_id_card($type="single"){
   		<b>Email: </b><?php echo $this->db->email; ?>
   </div>
 
-  <div class="id_box_body">
+  <div class="box_body">
     <img src="<?php echo "upload/student_photo/10051.jpg"; ?>" class="img_card" align="right">
-    <div class="id_title">ID Card</div>
-      <div class="field">
+    <div class="title">ID Card</div>
+        <div class="field">
           <div class="name_field">
       <div class="id_field">Student Name : </div> <div class="inf"><b><?php echo "name"; ?></b></div>
       </div><div class="name_field">
@@ -119,7 +119,7 @@ public function get_id_card($type="single"){
       <div class="name_field">    
       <div class="id_field">Duration :</div> <div class="inf"><b><?php echo "duration"; ?></b></div>
       </div>
-    </div>  
+    </div>
     
   </div> 
 </div>
@@ -155,29 +155,29 @@ public function get_id_card($type="single"){
 .id_card .card_header{
 	background-color: #2E363F;
 	padding: 5px;
-	color: #EEEEEE;
-	font-size: 13px;
+	color: #f5f5f5;
+	font-size: 12px;
 }
 
 .id_card .font_name{
 	font-size: 18px;
 	margin-left: 0px;
 	font-weight: bold;
-	color: #ffffff;
 }
 
 .id_card .img_card{
 	height: 100px;
-	width: 90px;
+	width: 80px;
 	overflow: visible;
 	margin-top: -35px;
 	margin-right: 5px;
-	border: 2px solid #2E363F;
-	border-radius: 10%;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 2px;
 	float: right;
 }
 
-.id_card .id_title{
+.id_card .title{
 	background-color: #2E363F;
 	height: 20px;
 	width: 100px;
@@ -190,7 +190,7 @@ public function get_id_card($type="single"){
 	padding: 2px;
 	color: #ffffff; 
 	margin-bottom: 7px;
-
+	
 
 }
 
@@ -225,8 +225,8 @@ public function get_id_card($type="single"){
 
 }
 
-.id_card .id_box_body{
-    height: 250px;
+.id_card .box_body{
+
 }
 
 .id_card .name_field{

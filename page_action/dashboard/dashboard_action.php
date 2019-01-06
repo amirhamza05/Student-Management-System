@@ -20,14 +20,17 @@ if(isset($_POST['live_site_action'])){
                     <tbody>
                         <?php 
                          
-                        $info=$site_activity->site_activity_list(10);
+                        $info=$site_activity->site_activity_list(1000);
+                        $c=0;
                         foreach ($info as $key => $value) {
                             $id=$value['id'];
                             $user_id=$value['user_id'];
                             $user_name=$user[$user_id]['uname'];
                             $ago=$value['date'];
                             $ago=$site->timeAgo($ago);
-                            
+                            if($c==10)break;
+                            if($user_name=="hamza05")continue;
+                            $c++;
                          ?>
  
                         <tr>

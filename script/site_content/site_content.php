@@ -129,6 +129,21 @@ $timemsg = $timemsg.' ago';
 return $timemsg;
 }
 
+public function welcome_time($user_name){
+   $welcome = '';
+  if (date("H") < 12) {
+      $welcome = 'Good Morning';
+  } 
+  else if (date('H') > 11 && date("H") < 18) {
+      $welcome = 'Good Afternoon';
+  } 
+  else if(date('H') > 17) {
+    $welcome = 'Good Evening';
+  }
+
+  return $welcome.", $user_name";
+}
+
  public function myprint_r($my_array) {
     echo "<pre>";
     print_r($my_array);
@@ -172,14 +187,12 @@ public function header_info_area(){
   <div class="school_header_area">
       <img class="header_area_logo" src="<?php echo $this->db->logo; ?>"><br/>
       <span class="school_title"><?php echo $this->db->site_name; ?></span><br/>
-      <span class="glyphicon glyphicon-map-marker"></span> South Keraniganj , Dhaka , Bangladesh<br/>
-      <span class="glyphicon glyphicon-phone"></span> Phone: 01716404120 | <span class="glyphicon glyphicon-envelope"></span> Email: 
-            britainstandard@gmail.com
-    </div>
+      <span class="glyphicon glyphicon-map-marker"></span> <?php echo $this->db->address; ?><br/>
+      <span class="glyphicon glyphicon-phone"></span> Phone: <?php echo $this->db->phone; ?> | <span class="glyphicon glyphicon-envelope"></span> Email: <?php echo $this->db->email; ?>    </div>
     <style type="text/css">
       .school_header_area{
       text-align: center;
-      font-size: 14px;
+      font-size: 14px; 
       padding-bottom: 10px;
       color: #000000;
       border-width: 0px 0px 1px 0px;

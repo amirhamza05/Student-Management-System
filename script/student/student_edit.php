@@ -34,9 +34,7 @@ public function test_edit(){
 
 public function student_edit_form($id){
 	$site=$this->site_ob;
-	$program_ob=$this->program_ob;
-  $program=$program_ob->get_program_info();
-
+	
 	$student=$this->get_student_info();
 	$info=$student[$id];
 	$name=$info['name'];
@@ -58,8 +56,6 @@ public function student_edit_form($id){
 	$ssc_board=$info['ssc_board'];
 	$ssc_result=$info['ssc_result'];
   $address=$info['address'];
-  $batch=$info['batch'];
-  $program_id=$info['program'];
 
 	?>
 <style type="text/css">

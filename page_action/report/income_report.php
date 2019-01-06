@@ -1,15 +1,15 @@
 <?php
 
-if(isset($_POST['view_profit_report'])){
+if(isset($_POST['view_income_report'])){
 
-$info=$_POST['view_profit_report'];
+$info=$_POST['view_income_report'];
 
 $date1=$info['date1'];
 $date2=$info['date2'];
 
 $data['date1']=$date1;
 $data['date2']=date('Y-m-d', strtotime($date2 . ' +1 day'));
-$info=$report->get_profit_report($data);
+$info=$report->get_income_report($data);
 $date1=date("d M Y", strtotime($date1));
 $date2=date("d M Y", strtotime($date2));
 
@@ -90,7 +90,7 @@ $date2=date("d M Y", strtotime($date2));
 	<div class="col-md-12">
 		<font class="report_title">
 			<center>
-				Profit Report<br/>
+				Income Report<br/>
 			</center>
 		</font>
 		<center>
@@ -103,26 +103,42 @@ $date2=date("d M Y", strtotime($date2));
 <div style="margin-top: 5px;"></div>
 <table width="100%">
 	<tr>
-		<td class="td1">Option Name</td>
+		<td class="td1">#</td>
+		<td class="td1">Date</td>
+		<td class="td1">Income Name</td>
+		<td class="td1">Notes</td>
+		<td class="td1">Add By</td>
 		<td class="td1">Amount</td>
 	</tr>
+	<?php 
+    $sum=0;
+    foreach ($info as $key => $value) {
+     
+     $sum+=$value['amount'];
+     $date=date("d M Y h:i:A", strtotime($value['date']));
+     $user_id=$value['add_by'];
+     $user_name=$user[$user_id]['uname'];
+	?>
 	<tr>
-		<td class="td2">Total Student Payment</td>
-		<td class="td2"><?php echo $info['total_payment']; ?> Tk</td>
+		<td class="td2"><?php echo $value['id']; ?></td>
+		<td class="td2"><?php echo $date; ?></td>
+		<td class="td2"><?php echo $value['name']; ?></td>
+		<td class="td2"><?php echo $value['notes']; ?></td>
+		<td class="td2"><?php echo $user_name; ?></td>
+		<td class="td2"><?php echo $value['amount']; ?> Tk</td>
+		
 	</tr>
+
+	<?php } ?>
 	<tr>
-		<td class="td2">Total Expense</td>
-		<td class="td2"><?php echo $info['total_expence']; ?> Tk</td>
+		
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td style="text-align: right;padding: 15px;"><b>Total Payment</b></td>
+		<td class="td2"><b style="font-size: 15px;"><?php echo "$sum"; ?> Tk</b></td>
 	</tr>
-	<tr>
-		<td class="td2">Total Income</td>
-		<td class="td2"><?php echo $info['total_income']; ?> Tk</td>
-	</tr>
-	<tr>
-		<td class="" style="font-size: 15px;text-align: right; padding-right: 10px"><b>Total Profit</b></td>
-		<td class="td2"><b style="font-size: 15px;"><?php echo $info['total_profit']; ?> Tk</b></td>
-	</tr>
-	
 </table>
 
 </div>

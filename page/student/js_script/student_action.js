@@ -16,8 +16,7 @@ $(document).ready(function (e) {
       success: function(data){
       	document.getElementById("add_student").reset();
       	var data = JSON.parse(data);
-      	window.location.href = 'student_profile.php?get_id='+data.id;
-        
+      	window.location.href = 'student_profile.php?get_id='+data.id;     
     }
   });
 })); 

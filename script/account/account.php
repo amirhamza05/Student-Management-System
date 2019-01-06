@@ -27,8 +27,22 @@ class account {
   	return $info;
   }
 
+  public function income_list(){
+    $sql="select income.*,user.uname as user from income
+    INNER JOIN user ON income.add_by=user.id  ORDER BY income.id DESC
+    ";
+    $info=$this->db->get_sql_array($sql);
+    return $info;
+  }
+
+
   public function get_separate_expance($id){
     $sql="select * from expence where id=$id";
+    $info=$this->db->get_sql_array($sql);
+    return $info[0];
+  }
+  public function get_separate_income($id){
+    $sql="select * from income where id=$id";
     $info=$this->db->get_sql_array($sql);
     return $info[0];
   }

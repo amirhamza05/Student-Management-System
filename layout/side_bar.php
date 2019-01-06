@@ -91,7 +91,8 @@ $photo=$login_user['photo'];
         
         <li>
              <ul class="account nav nav-list collapse">
-            <li ><a href="expence.php" class="l_active"><span class="fa fa-caret-right"></span>Add Expence</a></li>
+            <li ><a href="account.php?type=expence" class="l_active"><span class="fa fa-caret-right"></span>Add Expence</a></li>
+            <li ><a href="account.php?type=income" class="l_active"><span class="fa fa-caret-right"></span>Add Income</a></li>
             
         </ul></li>
 
@@ -99,9 +100,12 @@ $photo=$login_user['photo'];
         
         <li>
              <ul class="report nav nav-list collapse">
-            <li ><a href="payment_report.php" class="l_active"><span class="fa fa-caret-right"></span>Payment Report</a></li>
-            <li ><a href="expence_report.php"><span class="fa fa-caret-right"></span>Expence Report</a></li>
-            <li ><a href="profit_report.php"><span class="fa fa-caret-right"></span>Profit Report</a></li>
+            <li ><a href="report.php?type=payment_report" class="l_active"><span class="fa fa-caret-right"></span>Payment Report</a></li>
+            <li ><a href="report.php?type=expence_report"><span class="fa fa-caret-right"></span>Expence Report</a></li>
+            <li ><a href="report.php?type=income_report"><span class="fa fa-caret-right"></span>Income Report</a></li>
+            <li ><a href="report.php?type=profit_report"><span class="fa fa-caret-right"></span>Profit Report</a></li>
+            <li ><a href="report.php?type=attendence_report"><span class="fa fa-caret-right"></span>Attendence Report</a></li>
+
         </ul></li>
          
          <li><a href="javascript:void(0)" data-target=".sms" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> SMS<i class="fa fa-collapse"></i></a></li>
@@ -109,6 +113,14 @@ $photo=$login_user['photo'];
         <li>
              <ul class="sms nav nav-list collapse">
             <li ><a href="sms_dashboard.php" class="l_active"><span class="fa fa-caret-right"></span>SMS Dashboard</a></li>
+            
+        </ul></li>
+
+         <li><a href="javascript:void(0)" data-target=".setting" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-pencil"></i> Setting<i class="fa fa-collapse"></i></a></li>
+        
+        <li>
+             <ul class="setting nav nav-list collapse">
+            <li ><a href="setting.php" class="l_active"><span class="fa fa-caret-right"></span>Genaral Setting</a></li>
             
         </ul></li>
 

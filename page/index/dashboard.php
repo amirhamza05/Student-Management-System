@@ -31,7 +31,12 @@ $info=$sms->sms_balance();
 ?>
 
 
+
+ <div class="row" style="margin-bottom: 10px;">
+    <?php include 'dashboard_info.php'; ?>
+</div>
  <div class="row" >
+
                     <div class="col-lg-3 col-sm-6">
                         <div class="circle-tile">
                             <a href="">

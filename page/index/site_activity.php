@@ -5,8 +5,7 @@
                 <div class="box_header">Live Site Activity</div>
                 <div class="box_body" id="site_activity">
                      
-                
-                    
+               
                 </div>
             </div>
         </div>

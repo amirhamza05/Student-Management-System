@@ -13,14 +13,20 @@ class database {
  public $login_user;
  public $ip;
  public $browser;
- public $logo="upload/custom_content/techserm_small_logo.png";
- public $site_name="TechSerm Education Software";
- public $msg="@Britain Standard School";
+ public $logo;
+ public $main_logo;
+ public $site_name;
+ public $sort_name;
+ public $address;
+ public $phone;
+ public $email;
+ public $msg;
 
  //conection start
 
  public function __construct(){
-     $this->connection();
+    $this->connection();
+    $this->set_institute_info();
     date_default_timezone_set('Asia/Dhaka');
  }
 
@@ -52,6 +58,21 @@ public function set_login_user($uid,$ip,$browser){
 
 public function select($query){
  return $this->result=mysqli_query($this->conn, $query);
+}
+
+public function set_institute_info(){
+  $sql="select * from setting";
+  $info=$this->get_sql_array($sql);
+  $img="upload/custom_content/";
+  $this->site_name=$info[0]['option_value'];
+  $this->sort_name=$info[1]['option_value'];
+  $this->address=$info[2]['option_value'];
+  $this->phone=$info[5]['option_value'];
+  $this->email=$info[6]['option_value'];
+  $this->logo=$img.$info[4]['option_value'];
+  $this->main_logo=$img.$info[3]['option_value'];
+  $this->msg="@".$info[1]['option_value'];
+
 }
 
 public function get_select_last_id($query){

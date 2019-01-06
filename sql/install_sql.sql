@@ -1,4 +1,6 @@
 
+-- Table structure for table `admit_program`
+--
 
 CREATE TABLE `admit_program` (
   `id` int(11) NOT NULL,
@@ -9,8 +11,7 @@ CREATE TABLE `admit_program` (
   `admit_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `admit_program`
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `batch`
@@ -24,7 +25,7 @@ CREATE TABLE `batch` (
   `day` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `class`
@@ -35,7 +36,6 @@ CREATE TABLE `class` (
   `classname` text NOT NULL,
   `subject_code` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,6 @@ CREATE TABLE `exam` (
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-
 -- --------------------------------------------------------
 
 --
@@ -71,8 +70,7 @@ CREATE TABLE `expence` (
   `date` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `expence_category`
@@ -84,8 +82,22 @@ CREATE TABLE `expence_category` (
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `income`
 --
 
+CREATE TABLE `income` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `amount` int(11) NOT NULL,
+  `notes` text,
+  `add_by` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `notice`
@@ -99,7 +111,7 @@ CREATE TABLE `notice` (
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `payment`
@@ -114,8 +126,7 @@ CREATE TABLE `payment` (
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `program`
@@ -135,8 +146,7 @@ CREATE TABLE `program` (
   `date` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `receive_payment`
@@ -151,8 +161,7 @@ CREATE TABLE `receive_payment` (
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `result`
@@ -170,8 +179,7 @@ CREATE TABLE `result` (
   `sms` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `setting`
@@ -184,7 +192,19 @@ CREATE TABLE `setting` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `setting`
+--
 
+INSERT INTO `setting` (`id`, `option_name`, `option_value`) VALUES
+(1, 'name', 'TechSerm Education Software'),
+(2, 'sort_name', 'Techserm'),
+(3, 'address', 'Aftab Nogor,Dhaka,Bangladesh'),
+(4, 'main_logo', 'techserm_full_logo.jpg'),
+(5, 'logo', 'techserm_small_logo.png'),
+(6, 'phone', '01991223020'),
+(7, 'email', 'techserm@gmail.com');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `set_payment`
@@ -200,6 +220,7 @@ CREATE TABLE `set_payment` (
   `last_update` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `site_activity`
@@ -219,8 +240,7 @@ CREATE TABLE `site_activity` (
   `date` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sms_add`
@@ -237,8 +257,7 @@ CREATE TABLE `sms_add` (
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sms_list`
@@ -255,7 +274,7 @@ CREATE TABLE `sms_list` (
   `sender` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `sms_setting`
@@ -270,7 +289,13 @@ CREATE TABLE `sms_setting` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `sms_setting`
+--
 
+INSERT INTO `sms_setting` (`id`, `gateway`, `token`, `date`, `add_by`) VALUES
+(2, 'http://api.greenweb.com.bd/api.php', '2782dd388e780708ebc38ddecfe135e1', '2018-12-24 00:00:00', 3);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `student`
@@ -287,9 +312,6 @@ CREATE TABLE `student` (
   `father_mobile` text,
   `mother_mobile` text,
   `nick` text NOT NULL,
-  `program` int(11) DEFAULT NULL,
-  `batch` int(11) DEFAULT NULL,
-  `fee` int(11) DEFAULT NULL,
   `address` text,
   `birth_day` date DEFAULT NULL,
   `gender` text,
@@ -299,11 +321,10 @@ CREATE TABLE `student` (
   `ssc_reg` int(11) DEFAULT NULL,
   `ssc_board` text,
   `ssc_result` double DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `date` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `student_attendence`
@@ -313,12 +334,12 @@ CREATE TABLE `student_attendence` (
   `id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `program_id` int(11) NOT NULL,
+  `batch_id` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `student_id`
@@ -329,8 +350,7 @@ CREATE TABLE `student_id` (
   `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `student_payment`
@@ -348,8 +368,7 @@ CREATE TABLE `student_payment` (
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `subject`
@@ -361,8 +380,7 @@ CREATE TABLE `subject` (
   `sub_code` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `theme`
@@ -392,9 +410,8 @@ INSERT INTO `theme` (`id`, `name`, `bg_color`, `sidebar_hover`, `sidebar_list`, 
 (5, 'Yello', '#AB9803', '#AB9803', '#A3AB2E', '#AB9C37', '#000000', '2018-06-13', 3),
 (6, 'Black', '#0F0000', '#1C0611', '#260817', '#2B091A', '#FFFFFF', '2018-06-13', 3),
 (7, 'Orange', '#E74C3C', '#C0392B', '#E67E22', '#D35400', '#FFFFFF', '2018-06-13', 3),
-(8, 'White', '#B0B0B0', '#CCC5CB', '#F5EEF4', '#D4CDD3', '#000000', '2018-06-13', 3),
 (9, 'Pink', '#ED5FE9', '#ED3BA1', '#ED98D4', '#ED72CD', '#FFFFFF', '2018-06-13', 3),
-(10, 'Blue', '#564C9E', '#724EED', '#907EED', '#5867ED', '#FFFFFF', '2018-06-14', 3),
+(10, 'Blue1', '#564C9E', '#724EED', '#907EED', '#5867ED', '#FFFFFF', '2018-06-14', 3),
 (14, 'Deep Rose', '#C44569', '#EDE6EC', '#EDE6EC', '#EDE6EC', '#FFFFFF', '2018-06-21', 3),
 (15, 'Purple Corallite', '#574B90', '#EDE6EC', '#EDE6EC', '#EDE6EC', '#FFFFFF', '2018-06-21', 3),
 (17, 'Red Color', '#A32929', '#6DEDC2', '#EDE6EC', '#EDE6EC', '#EDE6EC', '2018-10-08', 3),
@@ -414,7 +431,7 @@ CREATE TABLE `user` (
   `photo` text NOT NULL,
   `gender` text NOT NULL,
   `email` text,
-  `phone` text DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
   `address` text,
   `pass` varchar(100) NOT NULL,
   `permit` int(11) NOT NULL DEFAULT '0',
@@ -426,7 +443,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `uname`, `fname`, `photo`, `gender`, `email`, `phone`, `address`, `pass`, `permit`, `theme`) VALUES
-(1, 'admin', 'admin', 'avatar.png', '', 'admin@techserm.com', '', '', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 4, 12);
+(3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'hamza@gmail.com', 1991223020, 'Habiganj', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 4, 12),
+(2, 'shakib', 'all hassan', 'avatar.png', '', 'sk.amirhamza1@gmail.com', 177756478, '', 'd4fc23375ec457523736a83bc9e8815a2bf434e987d0c45a769104c566050283', 1, 1),
+(5, 'rahim', 'Musfiqur Rahim', 'user_5.jpg', 'Male', 'rahim@gmail.com', 17841561, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 1),
+(7, 'admin', 'amir hamza', 'avatar.png', '', 'sf', 32154, '', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 1, 12);
 
 --
 -- Indexes for dumped tables
@@ -466,6 +486,12 @@ ALTER TABLE `expence`
 -- Indexes for table `expence_category`
 --
 ALTER TABLE `expence_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `income`
+--
+ALTER TABLE `income`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -611,6 +637,11 @@ ALTER TABLE `expence`
 ALTER TABLE `expence_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `income`
+--
+ALTER TABLE `income`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
@@ -691,8 +722,6 @@ ALTER TABLE `student_payment`
 ALTER TABLE `subject`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `submission`
-
 -- AUTO_INCREMENT for table `theme`
 --
 ALTER TABLE `theme`

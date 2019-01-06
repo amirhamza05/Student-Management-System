@@ -16,17 +16,16 @@ if(isset($_POST['test_data'])){
 }
 
 if(isset($_POST['insert_name'])){
-
+ 
   $id=$student_ob->new_id();
 	$info['id']=$id;
 	$info['name']=$_POST['insert_name'];
 	$info['nick']=$_POST['nick'];
 	$info['father_name']=$_POST['father_name'];
 	$info['mother_name']=$_POST['mother_name'];
-	$info['personal_mobile']=valid_input($_POST['student_mobile']);
-
-	$info['father_mobile']=valid_input($_POST['father_mobile']);
-	$info['mother_mobile']=valid_input($_POST['mother_mobile']);
+	$info['personal_mobile']=$_POST['student_mobile'];
+	$info['father_mobile']=$_POST['father_mobile'];
+	$info['mother_mobile']=$_POST['mother_mobile'];
 	$info['email']=$_POST['email'];
 	$info['birth_day']=$_POST['birthday'];
 	$info['gender']=$_POST['gender'];
@@ -39,13 +38,8 @@ if(isset($_POST['insert_name'])){
 	$info['ssc_board']=$_POST['ssc_board'];
 	$info['ssc_result']=valid_input($_POST['ssc_result']);
     
-  $info['program']=2;
-  $info['batch']=1;
-  $info['fee']=1500; 
-  $date=date("Y-m-d");
-	$info['date']=$date;
-
-
+  
+	$info['date']=$db->date();
 
 //image option
    $imagename="avatar.png";

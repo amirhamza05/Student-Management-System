@@ -1,5 +1,5 @@
 $(document).ready(function (e) {
-  set_update_area();
+  //set_update_area();
   $("#update_profile").on('submit',(function(e) {
     e.preventDefault();
     $.ajax({

@@ -27,7 +27,7 @@ $browser = $user_ob->get_browser($_SERVER['HTTP_USER_AGENT']);
 
 $db->set_login_user($user_id,$ip,$browser);
 
-
+ 
 $site=new site_content();
 
 
@@ -92,6 +92,10 @@ $account=new account();
 
 include 'script/site_activity/site_activity.php';
 $site_activity=new site_activity();
+
+include 'script/setting/setting.php';
+$setting=new setting();
+
 
 }
 else{

@@ -32,7 +32,7 @@ if(isset($_POST['install_first_step'])){
 
 	$conn=mysqli_connect($host,$user,$pass,$db) or die("Unable to Connect to 'host'");
     if($conn){
-    	file_put_contents($config_file, $db_config);
+    	file_put_contents($config_file, $db_config, FILE_APPEND | LOCK_EX);
         form_step2();
     }
     else{

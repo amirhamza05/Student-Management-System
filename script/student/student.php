@@ -65,10 +65,8 @@ public function valid_mobile_number($val){
       $sub["ssc_reg"]=$this->valid_number($row['ssc_reg']);
       $sub["ssc_board"]=$row['ssc_board'];
       $sub["ssc_result"]=$this->valid_number($row['ssc_result']);
-      $sub["program"]=$row['program'];
       $sub['program_list']=$this->get_separate_program_list($id);
-      $sub["batch"]=$row['batch'];
-      $sub["fee"]=$row['fee'];
+      
       $sub["date"]=$row['date'];
 
       $info[$id]=$sub;
@@ -149,13 +147,11 @@ public function process_array($info){
 public function get_separate_program_list($student_id){
    $info=array();
    $sub=array();
-   $sql="select * from admit_program ORDER BY id DESC;";
+   $sql="select * from admit_program where student_id=$student_id ORDER BY id DESC;";
    $res=$this->select($sql);
    while($row=mysqli_fetch_array($res)){
       $id=$row['id'];
-      $student_id1=$row['student_id'];
-      if($student_id==$student_id1)
-        $info[$id]=$this->process_array($row);
+      $info[$id]=$this->process_array($row);
    }
 
 return $info;
