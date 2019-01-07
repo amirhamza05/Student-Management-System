@@ -181,10 +181,15 @@ else if(isset($_POST['get_id_card'])){
   $batch_id=$_POST['batch_id'];
   $batch_id=($batch_id==-1)?0:$batch_id;
 	
-  $info=$student_ob->get_program_student($program_id,$batch_id);
-  echo "<div class='row'>";
+  $info= $student_ob->get_student_list($program_id,$batch_id);
+
+  echo "<div id='print_area'>";
   $id_card->get_id_card($info);
-  echo "</div>";
+  echo "</div></div>";
+
+?>
+<button onclick="print('print_area')">Print</button>
+<?php
 }
 
 

@@ -7,17 +7,18 @@
 		padding: 15px;
 	}
 </style>
-<!-- <script src="tool/color_picker/jscolorr.js"></script> -->
+<script src="tool/color_picker/jscolor.js"></script>
 <script src="page/id_card/js/id_card.js"></script>
 
 
 <div class="row">
-<div class="id_card" id="id_card200">
+
+<div id="id_card200" style="align-content: center;">
 
 <style type="text/css">
 	
 
-.id_card .box1{
+ .box1{
   height: auto;
   overflow: auto;
   padding: 15px;
@@ -25,7 +26,7 @@
   margin-left: 50px;
 
 }
-.id_card .card_box{
+.card_box{
 	overflow: hidden;
 	background: #eeeeee;
 	height: 260px;
@@ -34,39 +35,35 @@
 	border-style: solid;
 	border-color: #2E363F;
 	border-width: 
+    float: left;
 	margin-right: 10px;
 	margin-bottom: 15px;
 	page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
     page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
     page-break-inside: avoid; 
 }
-
-.id_card .card_header{
+.card_header{
 	background-color: #2E363F;
 	padding: 5px;
 	color: #EEEEEE;
 	font-size: 13px;
 }
-
-.id_card .font_name{
+.font_name{
 	font-size: 18px;
 	margin-left: 0px;
 	font-weight: bold;
 	color: #ffffff;
-}
-
-.id_card .img_card{
-	height: 100px;
-	width: 90px;
+} .img_card{
+	height: 75px;
+	width: 65px;
 	overflow: visible;
-	margin-top: -35px;
+	margin-top: -10px;
 	margin-right: 5px;
-	border: 2px solid #2E363F;
-	border-radius: 10%;
+	border: 1px solid #2E363F;
+	border-radius: 10px;
 	float: right;
 }
-
-.id_card .id_title{
+.id_title{
 	background-color: #2E363F;
 	height: 20px;
 	width: 100px;
@@ -79,34 +76,42 @@
 	padding: 2px;
 	color: #ffffff; 
 	margin-bottom: 7px;
-
-
+}
+.card_footer{
+	background-color: #2E363F;
+	color: #ffffff; 
+	overflow: hidden;
+	height: 55px;
+	font-size: 13px;
 }
 
-.id_card .id_field{
+.id_field{
 	background-color: #BDC1CB; 
-	width: 98px;
+	width: 100px;
 	font-size: 12px;
 	font-weight: bold;
 	float: left;
-	padding: 1px;
+	padding: 1px 1px 1px 1px;
+	text-align: right;
 	margin-right: 5px;
+	display: block
 
 }
 
-.id_card .inf{
+.inf{
 	margin-right: 5px;
-	font-size: 14px;
+	font-size: 12px;
+	font-weight: bold;
 }
 	
-.id_card .barcode{
+.barcode{
    text-align: center;
    height: 30px;
    width: 200px;
    margin-top: 5px;
 }	
 
-.id_card .barcode_div{
+.barcode_div{
 	border-style: solid;
 	border-width: 1px 0px 0px 0px;
 	border-color: #BDC1CB;
@@ -114,53 +119,71 @@
 
 }
 
-.id_card .id_box_body{
-    height: 140px;
+.id_box_body{
+    height: 155px;
 }
 
-.id_card .name_field{
-	margin-bottom: 0px;
+.name_field{
+	margin-bottom: 3px;
+}
+.card_logo{
+	height: 45px;
+	width: 40px;
 }
 
 </style>
 
+<?php for($i=0; $i<10; $i++){ ?>	
+<div class="id_card" id="" style="float: left;">
+
+
 <div class="card_box">
   <div class="card_header">
-  	<div class="font_name">
-  		<?php echo $db->site_name; ?>	
+  	<div style="float: left;margin-right: 5px;">
+  		<img src="<?php echo $db->logo; ?>" class="card_logo">
   	</div>
+  	<div style="">
+  		<div class="font_name">
+  			<?php echo $db->site_name; ?>	
+  		</div>
   		<b></b><?php echo $db->address; ?><br/>	
-  		
+  	</div>	
   </div>
 
   <div class="id_box_body">
     <img src="<?php echo "upload/student_photo/10051.jpg"; ?>" class="img_card" align="right">
     <div class="id_title">ID Card</div>
+    <div style="margin-top: 14px;"></div>
       <div class="field">
-          <div class="name_field">
-      <div class="id_field">Student Name : </div> <div class="inf"><b><?php echo "name"; ?></b></div>
-      </div><div class="name_field">
-      <div class="id_field">Id Number : </div> <div class="inf"><b><?php echo "id"; ?></b></div>
-      </div>
+      	<div class="name_field">
+      		<span class="id_field">Student Name : </span> <span class="inf"><?php echo "name"; ?></span>
+      	</div>
 
-      <div class="name_field">    
-      <div class="id_field">Program :</div>
-      <div class="inf"><b><?php echo "program_name"; ?></b></div>
-      </div>
+	      <div class="name_field">
+	      	<span class="id_field">Id Number : </span> <span class="inf"><?php echo "id"; ?></span>
+	      </div>
 
-      <div class="name_field">    
-      <div class="id_field">Batch :</div> <div class="inf"><b><?php echo "batch_name (start - end)"; ?></b></div>
-      </div>
-      <div class="name_field">    
-      <div class="id_field">Duration :</div> <div class="inf"><b><?php echo "duration"; ?></b></div>
-      </div>
+	      <div class="name_field">    
+	      	<span class="id_field">Program :</span>
+	      	<span class="inf"><?php echo "program_namsdaf sdaf dsfe"; ?></span>
+	      </div>
+
+	      <div class="name_field">    
+	      <span class="id_field">Batch :</span> <span class="inf"><?php echo "batch_name (start - end)"; ?></span>
+	      </div>
+	      <div class="name_field">    
+	      <span class="id_field">Duration :</span> <span class="inf"><?php echo "duration"; ?></span>
+	      </div>
     </div>
-  </div> 
+  </div>
+
  
- <div class="">
+ 	<div class="card_footer">
     	<center>
-  		<b>Phone: </b><?php echo $db->phone; ?>
-  		<b>Email: </b><?php echo $db->email; ?>
+  		<b><span class="glyphicon glyphicon-phone"></span> Phone: </b><?php echo $db->phone; ?><br/>
+  		<b><span class="glyphicon glyphicon-envelope"></span> Email: </b><?php echo $db->email; ?><br/>
+  		If found please return to <?php echo $db->sort_name; ?>.
+  		
   		</center>
   	</div>
 
@@ -170,7 +193,11 @@
 
  </div>
 
+<!-- end id card -->
+<?php } ?>
 
+</div>
+<!-- end  -->
 <div class="col-md-3">
 <div style="background-color: #000000; font-weight: bold; padding: 10px; color: #ffffff">Header Panel</div>
 </div>
@@ -188,7 +215,6 @@
 </div>
 <input type="text" name="" id="">
 <div id="color_code"></div>
-<button onclick="fun()">Print ID Card</button>
-
+<button onclick="print('id_card200')">Print ID Card</button>
 
 

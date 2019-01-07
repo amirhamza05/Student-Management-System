@@ -173,10 +173,14 @@ if(isset($_POST['view_program'])){
 }
 
 if(isset($_POST['program_id_card'])){
-
+  $id=$_POST['program_id_card'];
+  $info=$student_ob->get_admit_program_info($id);
+  $data=array();
+  array_push($data, $info);
+  
  ?>
  <div id="print_area">
-  <?php  $id_card->get_id_card(); ?>
+  <?php  $id_card->get_id_card($data); ?>
 </div>
 <button onclick="print('print_area')">Print</button>
  <?php
@@ -244,11 +248,64 @@ if(isset($_POST['program_view_info'])){
 }
 
 if(isset($_POST['admission_recept'])){
-  
+   $id=$_POST['admission_recept'];
+  $info=$student_ob->get_admit_program_info($id);
+  $student_id=$info['student_id'];
+  $program_id=$info['program_id'];
+  $batch_id=$info['batch_id'];
+  $student_name=$student[$student_id]['name'];
+  $program_name=$program[$program_id]['name'];
+  $batch_name=$batch[$batch_id]['name'];
+  $batch_day=$batch[$batch_id]['day_string'];
+  $batch_time=$batch[$batch_id]['start']." - ".$batch[$batch_id]['end'];
+  $program_start=$program[$program_id]['start'];
   ?>
   
 <div id="print_area">
   <?php $site->header_info_area(); ?>
+  <table width="100%">
+     <tr>
+       <td class="td_view1">Student Name:</td>
+       <td class="td_view2"><?php echo $student_name; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Student ID:</td>
+       <td class="td_view2"><?php echo $student_id; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Program Name:</td>
+       <td class="td_view2"><?php echo $program_name; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Batch Name:</td>
+       <td class="td_view2"><?php echo $batch_name; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Program Start:</td>
+       <td class="td_view2"><?php echo $program_start; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Program End:</td>
+       <td class="td_view2"><?php echo $program[$program_id]['end']; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Batch Day:</td>
+       <td class="td_view2"><?php echo $batch_day; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Batch Time:</td>
+       <td class="td_view2"><?php echo $batch_time; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Admission Date:</td>
+       <td class="td_view2"><?php echo $info['admit_date']; ?></td>
+     </tr>
+     <tr>
+       <td class="td_view1">Admit By:</td>
+       <td class="td_view2"><?php echo $info['admit_by'] ?></td>
+     </tr>
+   </table>
+
 </div>
 <button onclick="print('print_area')">Print</button>
 <?php

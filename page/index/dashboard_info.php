@@ -2,15 +2,12 @@
    
      <div class="col-lg-8">
      	<div class="row">
-     		<div class="col-lg-1"></div>
-            <div class="col-lg-2" style="margin-right: 0px;">
-            	<div style="margin-top: 30px;"></div>
-            	<center><img src="<?php echo $db->logo; ?>" class="logo_img"></center>
-            </div>
-     		<div class="col-lg-9" style="">
+     		
+     		<div class="col-lg-12" style="">
      			<center>
-     			<br /><br/>
+     			<div style="margin-top: 20px;"></div>
      			<div class="description_area">
+            <center><img src="<?php echo $db->logo; ?>" class="logo_img"></center>
      			<font class="site_title"><?php echo $db->site_name; ?></font><br/>
      			<font class="site_description">
       <span class="glyphicon glyphicon-map-marker"></span> <?php echo $db->address; ?><br/>
@@ -87,22 +84,21 @@
 }
 .logo_img{
 
-height: 170px;
-width: 130px;
+height: 90px;
+width: 90px;
 border-radius: 10px;
-border: 3px solid rgba(255,255,255,0.3);
+
 background-color: var(--bg-color);
 
 }
 .description_area{
 	background-color: var(--bg-color); 
 	color: var(--font-color);
-	border-radius: 0px 10px 10px 0px;
-	margin-left: -13px;
-	border-width: 3px 3px 3px 0px;
+	border-radius: 5px;
+	border-width: 3px 3px 3px 3px;
 	border-color:rgba(255,255,255,0.3);
 	border-style: solid;
-	padding: 20px 0px 20px 0px;
+	padding: 10px 10px 10px 10px;
 
 }
 
