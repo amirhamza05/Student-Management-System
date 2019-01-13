@@ -21,7 +21,7 @@ if(isset($_POST['update_sms'])){
 
 if(isset($_POST['get_sms_form'])){
 
-  if($user_permit<4){
+  if($user_permit>4){
     echo "<b>You Can Not Permit This Option.If You Need SMS then Please Connect TechSerm Authority</b>";
     return;
   }

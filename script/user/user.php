@@ -69,6 +69,39 @@ public function get_browser($browser){
 	return $browser;
 }
 
+public function get_user_permission_list($permit){
+   
+   $sql="";
+   if($permit=="deactive")$sql="where status=0";
+   if($permit=="active")$sql="where status=1";
+   if($permit=="institute")$sql="where permit>5";
+   if($permit=="techserm")$sql="where permit <=5";
+   $sql=($sql!="")?"$sql and permit <8":"where permit<8";
+   $sql="select id from user $sql";
+   $info=$this->db->get_sql_array($sql);
+   return $info;
+}
+
+public function user_permission_list(){
+  $per=array();
+  $sort_name=$this->db->sort_name;
+  $per[1]="TechSerm Super Admin";
+  $per[2]="TechSerm Admin";
+  $per[3]="TechSerm Manager";
+  $per[4]="TechSerm Engineer";
+  
+  $per[6]="$sort_name Admin";
+  $per[7]="$sort_name Accountant";
+  $per[8]="$sort_name Teacher";
+
+return $per;
+}
+
+public function get_user_permission($permission){
+  $get_per=$this->user_permission_list();
+  return $get_per[$permission];
+}
+
 
 
 }

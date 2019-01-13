@@ -27,12 +27,9 @@ $name=$login_user['uname'];
              <!-- here button -->
             
           </span>
-          
-        </ul>
-        
-               
+        </ul> 
 
-              
+         <!--  -->
         </div>
 </div>
 
@@ -46,8 +43,12 @@ $name=$login_user['uname'];
     margin: 10px auto 5px 20px;
     width: 28%;
     display: none;
-  }
+  } 
 }
+
+
+
+
 </style>
 
         

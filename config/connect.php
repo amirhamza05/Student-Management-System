@@ -196,7 +196,7 @@ public function get_previous_data($table,$id){
     //echo "$sql";
   if($res)$flag=1;
   
-  if($flag==1 && $table!="student_attendence" && $table!="site_activity" && $this->login_user!=""){
+  if($flag==1 && $table!="result" && $table!="student_attendence" && $table!="site_activity" && $this->login_user!=""){
     $activity=array();
     $table_id=($action=="insert")?$res:$info['id'];
     $login=($table=="login")?1:0;

@@ -231,6 +231,7 @@ class sms
     
     public function valid_mobile($number)
     {
+        if($number=="")return 0;
       return (strlen($number)==11)?1:0;
     }
     

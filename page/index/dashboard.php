@@ -120,7 +120,7 @@ $info=$sms->sms_balance();
 
         <?php 
        
-       if($user_permit>=2){
+       if($user_permit<8){
         include "site_activity.php"; 
         include "message_list.php"; 
         include "expence_list.php";

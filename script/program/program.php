@@ -247,23 +247,28 @@ public function select_batch($pro_id=-1){
 
 
 
-public function select_program(){
+public function select_program($program_id=0){
+  $selected="";
    $info=$this->get_program_info();
    foreach ($info as $key => $value) {
       $id=$value['id'];
       $name=$value['name'];
-      
-      echo "<option value='$id'> $name </option>";
+      if($program_id==$id)$selected="selected";
+      else $selected="";
+      echo "<option value='$id' $selected> $name </option>";
    }
 }
 
-public function option_subject($program_id){
+public function option_subject($program_id,$subject_id=0){
+  $selected="";
   $program=$this->get_program_info();
   $subject=$this->subject;
   foreach ($program[$program_id]['subject'] as $key => $value) {
     $id=$value['id'];
     $name=$subject[$id]['name'];
-    echo "<option value='$id'>$name</option>";
+    if($id==$subject_id)$selected="selected";
+      else $selected="";
+    echo "<option value='$id' $selected>$name</option>";
   }
 }
 

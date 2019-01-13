@@ -1,4 +1,28 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 12, 2019 at 01:41 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `youth`
+--
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admit_program`
 --
 
@@ -51,6 +75,7 @@ CREATE TABLE `exam` (
   `total` int(11) DEFAULT NULL,
   `mcq` int(11) DEFAULT NULL,
   `written` int(11) DEFAULT NULL,
+  `exam_date` date NOT NULL,
   `date` timestamp NULL DEFAULT NULL,
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -197,8 +222,8 @@ CREATE TABLE `setting` (
 
 INSERT INTO `setting` (`id`, `option_name`, `option_value`) VALUES
 (1, 'name', 'TechSerm Education Software'),
-(2, 'sort_name', 'Techserm'),
-(3, 'address', 'Aftab Nogor,Dhaka,Bangladesh'),
+(2, 'sort_name', 'TechsermSoft'),
+(3, 'address', 'Aftab Nogor,Dhaka,Bangladesh sdaf sdaf'),
 (4, 'main_logo', 'techserm_full_logo.jpg'),
 (5, 'logo', 'techserm_small_logo.png'),
 (6, 'phone', '01991223020'),
@@ -435,6 +460,7 @@ CREATE TABLE `user` (
   `address` text,
   `pass` varchar(100) NOT NULL,
   `permit` int(11) NOT NULL DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '1',
   `theme` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -442,11 +468,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `uname`, `fname`, `photo`, `gender`, `email`, `phone`, `address`, `pass`, `permit`, `theme`) VALUES
-(3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'hamza@gmail.com', 1991223020, 'Habiganj', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 4, 12),
-(2, 'shakib', 'all hassan', 'avatar.png', '', 'sk.amirhamza1@gmail.com', 177756478, '', 'd4fc23375ec457523736a83bc9e8815a2bf434e987d0c45a769104c566050283', 1, 1),
-(5, 'rahim', 'Musfiqur Rahim', 'user_5.jpg', 'Male', 'rahim@gmail.com', 17841561, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 1),
-(7, 'admin', 'amir hamza', 'avatar.png', '', 'sf', 32154, '', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 1, 12);
+INSERT INTO `user` (`id`, `uname`, `fname`, `photo`, `gender`, `email`, `phone`, `address`, `pass`, `permit`, `status`, `theme`) VALUES
+(3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'hamza@gmail.com', 1991223020, 'Habiganj', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 1, 1),
+(2, 'shakib', 'all hassan', 'avatar.png', '', 'sk.amirhamza1@gmail.com', 177756478, '', 'd4fc23375ec457523736a83bc9e8815a2bf434e987d0c45a769104c566050283', 2, 1, 1),
+(5, 'rahim', 'Musfiqur Rahim', 'user_5.jpg', 'Male', 'rahim@gmail.com', 17841561, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 3, 0, 1),
+(7, 'admin', 'amir hamza', 'avatar.png', '', 'sf', 32154, '', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 7, 1, 12);
 
 --
 -- Indexes for dumped tables

@@ -54,4 +54,4 @@ function reload_activity(id){
 
 setInterval(function(){ 
   if(live_site_action_processing==0)live_site_action(); 
-}, 1000);
+}, 2000);

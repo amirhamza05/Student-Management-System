@@ -1,11 +1,17 @@
 <?php
 
+$path="page_action/report/";
+$file=array();
+array_push($file, "expense_report.php");
+array_push($file, "payment_report.php");
+array_push($file, "profit_report.php");
+array_push($file, "attend_report.php");
+array_push($file, "income_report.php");
 
-include "page_action/report/expense_report.php";
-include "page_action/report/payment_report.php";
-include "page_action/report/profit_report.php";
-include "page_action/report/attend_report.php";
-include "page_action/report/income_report.php";
+foreach ($file as $key => $value) {
+	$file_name="$path$value";
+	include $file_name;
+}
 
 
 ?>

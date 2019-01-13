@@ -11,7 +11,7 @@ include "header_script.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="icon" href="<?php echo $db->logo; ?>" type="image/gif" sizes="16x16">
 
 
     <?php include 'header_lib.php'; ?>

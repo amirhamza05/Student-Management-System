@@ -1,0 +1,1 @@
+<?php include "user_profile/user_profile.php"; ?>

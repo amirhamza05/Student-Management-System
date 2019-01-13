@@ -57,7 +57,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="page/result/result.css">
-
+<script type="text/javascript" src="page/result/js/result.js"></script>
 
   <div class="row">
     
@@ -65,7 +65,7 @@
         <div class="dropdown" style="padding: 50px">
 
           <div class="col-md-7" style="margin-right: -25px; margin-left: 25px;">
-            <select onchange="program()" class="select" id="program_select" name="options">
+            <select onchange="select_program()" class="select" id="select_program" name="options">
               <option value="0">--Select Program--</option>
         <?php  foreach ($program as $key => $value) {
               $id=$value['id'];
@@ -75,12 +75,12 @@
                <?php } ?>
             </select>
             <a id="batch_div">
-            <select class="dropdown-select-version select" name="options" id="subject_select" onchange ="subject()">
+            <select class="dropdown-select-version select" name="options" id="select_subject" onchange ="select_subject()">
                 <option value="0"> --Select Subject-- </option>
             </select>
          </a>   
          <a id="student_div">
-            <select class="dropdown-select-version select" name="options" id="exam_select" onchange ="exam()">
+            <select class="dropdown-select-version select" name="options" id="select_exam">
                 <option value="0"> --Select Exam-- </option>
             </select>
         </a>
@@ -91,11 +91,9 @@
 
              <button id="btnn"  onclick="show_result('yes')" class="button_result" style="" title="Show Result" alt="Show Result"><span style="margin-right: 4px;" class="glyphicon glyphicon-th-list"></span>Show Result</button>
 
-             <button id="btnn"  onclick="send_sms()" class="button_result" style="" title="Send SMS" alt="Download"><span style="margin-right: 6px;" class="glyphicon glyphicon-envelope"></span>Send SMS</button>
+             <button id="btnn"  onclick="send_sms_form()" class="button_result" style="" title="Send SMS" alt="Download"><span style="margin-right: 6px;" class="glyphicon glyphicon-envelope"></span>Send SMS</button>
           </div>
         </div>
-        
-    
   </div>
 
  
@@ -104,5 +102,5 @@
 
 <div id="exam_body">
 
-     
-     </div>
+</div>
+

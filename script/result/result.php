@@ -27,6 +27,85 @@ public $exam;
    return $batch;
   }
 
+
+public function get_exam_list($program_id,$subject_id){
+  $sql="select * from exam where program_id=$program_id and sub_id=$subject_id";
+  return $info=$this->db->get_sql_array($sql);
+}
+
+public function get_sms_pending_id($exam_id){
+   $sql="select * from result where exam_id=$exam_id and sms=0";
+   return $info=$this->db->get_sql_array($sql);
+}
+
+public function get_exam_list_option($program_id,$subject_id){
+  $info=$this->get_exam_list($program_id,$subject_id);
+
+  foreach ($info as $key => $value) {
+    $id=$value['id'];
+    $name=$value['exam_name'];
+    echo "<option value='$id'>$name</option>";
+  }
+}
+
+public function get_separeate_result($result_id){
+  $sql="select * from result where id=$result_id";
+  $info=$this->db->get_sql_array($sql);
+  return $info[0];
+}
+
+public function get_student_add_exam_list($exam_id){
+  $sql="select student_id from result where exam_id=$exam_id";
+  $info=$this->db->get_sql_array($sql);
+  $list=array();
+  foreach ($info as $key => $value) {
+    $id=$value['student_id'];
+    array_push($list, $id);
+  }
+
+  return $list;
+}
+
+public function get_exam_result($exam_id){
+
+$sql="
+
+SELECT result.*,
+exam.exam_name,student.name as student_name,program.name as program_name,batch.name as batch_name,batch.id as batch_id
+FROM `result`  
+INNER JOIN student ON student.id=result.student_id
+INNER JOIN exam ON exam.id=result.exam_id
+INNER JOIN admit_program ON admit_program.student_id=result.student_id AND admit_program.program_id=exam.program_id
+INNER JOIN batch ON batch.id=admit_program.batch_id
+INNER JOIN program ON program.id=exam.program_id
+WHERE result.exam_id=$exam_id
+ORDER BY result.total desc
+
+";
+
+$info=$this->db->get_sql_array($sql);
+$info1=array();
+
+$rank=0;
+
+for ($i=0; $i <100007 ; $i++)$batch_merit[$i]=0;
+
+foreach ($info as $key => $value) {
+  $id=$value['id'];
+  $batch_id=$value['batch_id'];
+  $rank++;
+  $batch_merit[$batch_id]++;
+
+  $info1[$id]=$value;
+  $info1[$id]['center_merit']=$rank;
+  $info1[$id]['batch_marit']=$batch_merit[$batch_id];
+}
+
+
+return $info1;
+}  
+
+
  
 
 public function batch_return($id){

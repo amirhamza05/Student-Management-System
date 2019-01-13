@@ -1,0 +1,49 @@
+	.user_list_body{
+		background-color: #ffffff;
+		border-radius: 5px;
+		
+	}
+	.list_header{
+		background-color: var(--bg-color);
+		color: var(--font-color);
+		padding: 14px;
+		border-radius: 5px 5px 0px 0px;
+		font-weight: bold;
+		font-size: 15px;
+
+	}
+	.list_body{
+		height: auto;
+		padding: 15px;
+	}
+
+	.nav-sidebar { 
+    width: 100%;
+    padding: 8px 0; 
+    border-right: 0px solid #ddd;
+}
+.nav_button{
+	cursor: default;
+    background-color: var(--bg-color);
+  	color: var(--font-color);
+    border-radius: 10px;
+    margin: 0px 0px 2px 0px; 
+    padding: 13px;
+    cursor: pointer;
+    font-weight: bold;
+} 
+
+.nav_button:hover{
+  background-color: rgba(0,0,0,0.6);
+  color: var(--font-color);
+}
+.user_active{
+  background-color: rgba(0,0,0,0.6);
+  color: var(--font-color);
+}
+
+.nav_button_active{
+  font-size: 16px;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}

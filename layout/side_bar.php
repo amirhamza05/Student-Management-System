@@ -50,7 +50,7 @@ $photo=$login_user['photo'];
             <li ><a href="attend.php"><span class="fa fa-caret-right"></span>Attendence</a></li>
         </ul></li>
 
-<?php if($user_permit>=2){ ?>
+<?php if($user_permit<8){ ?>
 
 <li><a href="batch_list.php" class="nav-header"><i class="fa fa-fw fa-legal"></i> Batch</a></li>
 

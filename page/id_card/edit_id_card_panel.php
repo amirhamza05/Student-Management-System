@@ -132,8 +132,7 @@
 }
 
 </style>
-
-<?php for($i=0; $i<10; $i++){ ?>	
+	
 <div class="id_card" id="" style="float: left;">
 
 
@@ -194,7 +193,7 @@
  </div>
 
 <!-- end id card -->
-<?php } ?>
+
 
 </div>
 <!-- end  -->

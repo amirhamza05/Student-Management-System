@@ -2,21 +2,30 @@
    
      <div class="col-lg-8">
      	<div class="row">
-     		
-     		<div class="col-lg-12" style="">
-     			<center>
-     			<div style="margin-top: 20px;"></div>
-     			<div class="description_area">
-            <center><img src="<?php echo $db->logo; ?>" class="logo_img"></center>
-     			<font class="site_title"><?php echo $db->site_name; ?></font><br/>
-     			<font class="site_description">
-      <span class="glyphicon glyphicon-map-marker"></span> <?php echo $db->address; ?><br/>
-      <span class="glyphicon glyphicon-phone"></span> Phone: <?php echo $db->phone; ?> | <span class="glyphicon glyphicon-envelope"></span> Email: <?php echo $db->email; ?>
-     				</font>
-     			</div>
-     		</center>
+     		<div class="col-ms-12 col-sm-12">
+                        <div class="circle-tile">
+                            <a href="">
+                                <div class="circle-tile-heading dark-blue">
+                                    <img src="<?php echo $db->logo; ?>" class="logo_img">
+                                </div>
+                            </a>
+                            <div class="circle-tile-content dark-blue">
+                                <center>
+          
 
-     		</div>
+                                <div class="description_area">
+                                  <font class="site_title"><?php echo $db->site_name; ?></font><br/>
+                                      <font class="site_description">
+                                        <span class="glyphicon glyphicon-map-marker"></span> <?php echo $db->address; ?><br/>
+                                        <span class="glyphicon glyphicon-phone"></span> Phone: <?php echo $db->phone; ?> | <span class="glyphicon glyphicon-envelope"></span> Email: <?php echo $db->email; ?>
+                                  </font>
+                                </div>
+                              </center>
+                               
+                            </div>
+                        </div>
+        </div>
+     	
      	</div>
          
     </div>
@@ -27,9 +36,10 @@
         	$uname=$login_user['uname'];
         	$date=date("d M Y h:i:A", strtotime($db->date()));
         	$day=date("l", strtotime($db->date()));
-         	echo $site->welcome_time($uname); 
-         ?>
          	
+         ?>
+         	<marquee behavior="scroll" direction="right"><?php echo $site->welcome_time($uname); ?></marquee>
+
          </font></center>
                 <table width="100%">
                     <tr>
@@ -78,27 +88,22 @@
   padding: 10px;
 }
 .td_info1{
-  width: 150px;
+  width: 150px; 
   background-color: var(--bg-color);
   color: var(--font-color);
 }
 .logo_img{
 
-height: 90px;
-width: 90px;
-border-radius: 10px;
-
-background-color: var(--bg-color);
+height: 75px;
+width: 75px;
+padding: 5px;
 
 }
 .description_area{
 	background-color: var(--bg-color); 
 	color: var(--font-color);
-	border-radius: 5px;
-	border-width: 3px 3px 3px 3px;
-	border-color:rgba(255,255,255,0.3);
-	border-style: solid;
-	padding: 10px 10px 10px 10px;
+
+	padding: 5px 10px 30px 10px;
 
 }
 
