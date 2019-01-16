@@ -1,5 +1,6 @@
 
 <script type="text/javascript" src="page/index/js/dashboard.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
             $(document).ready(function() {
@@ -121,9 +122,11 @@ $info=$sms->sms_balance();
         <?php 
        
        if($user_permit<8){
+        include "message_send_chart.php"; 
+        include "student_admit_graph.php"; 
+        
         include "site_activity.php"; 
-        include "message_list.php"; 
-        include "expence_list.php";
+        
        }
         ?>
 

@@ -2,7 +2,7 @@
 /*nav button*/
 
 .nav_button{
-  cursor: default;
+    cursor: default;
     background-color: var(--bg-color);
     color: var(--font-color);
     border-radius: 10px;
@@ -10,6 +10,7 @@
     padding: 13px;
     cursor: pointer;
     font-weight: bold;
+    width: 100%;
 } 
 
 .nav_button:hover{

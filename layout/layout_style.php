@@ -30,14 +30,6 @@ include "header_script.php";
 </script>
 
 
-
-    <!-- End Datatable Style Sheet -->
-<script src="style/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function() {
-            $(".knob").knob();
-        });
-    </script>
 <?php
     $ut_info=$theme->get_theme($login_user['theme']);
     $bg_color=$ut_info['bg_color'];
@@ -47,6 +39,16 @@ include "header_script.php";
     $font_color=$ut_info['font_color'];
 
 ?>
+    <!-- End Datatable Style Sheet -->
+<script src="style/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $(".knob").knob();
+        });
+
+        var bg_color="<?php echo "$bg_color"; ?>";
+    </script>
+
 
  <style type="text/css">
     :root {

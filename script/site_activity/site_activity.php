@@ -46,6 +46,13 @@ class site_activity {
     return $info[0];
   }
 
+  public function get_user_activity($uid){
+    $sql="
+    select * from site_activity where user_id=$uid ORDER BY id DESC";
+    $info=$this->db->get_sql_array($sql);
+    return $info;
+  }
+
   public function get_activity_detail($id){
     $info=$this->get_separate_activity($id);
     $user_id=$info['user_id'];

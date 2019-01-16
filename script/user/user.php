@@ -43,7 +43,7 @@ public function cheikh_user($uid){
     }
     return 0;
 }
-
+ 
 public function get_login_user(){
 	$info=$this->get_user_info();
 	return $info[$this->login_user_id];

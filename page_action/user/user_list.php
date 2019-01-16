@@ -129,9 +129,9 @@ if(isset($_POST['get_user_list'])){
 }
 
 if(isset($_POST['add_user'])){
-    $site->form_input("User Name","fname","up_full_name","text","exclamation-sign","","<b>You Can Only Use '-'<b>","yes");
-    $site->form_input("Full Name","fname","up_full_name","text","exclamation-sign","","","yes");
-    $site->form_input("Email","email","up_email","text","exclamation-sign","","","yes");
+  $site->form_input("User Name","fname","up_full_name","text","exclamation-sign","","<b>You Can Only Use '-'<b>","yes");
+  $site->form_input("Full Name","fname","up_full_name","text","exclamation-sign","","","yes");
+  $site->form_input("Email","email","up_email","text","exclamation-sign","","","yes");
 	$site->form_input("Phone","phone","up_phone","number","text","exclamation-sign","","","yes");
 	$site->form_input("Address","address","up_address","text","exclamation-sign","","","yes");
 	$site->form_input("Phone","phone","phone","text","exclamation-sign","","","yes");

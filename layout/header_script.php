@@ -20,6 +20,7 @@ $user=$user_ob->get_user_info();
 $login_user=$user_ob->get_login_user();
 
 $user_id=$login_user['id'];
+$login_user_id=$login_user['id'];
 $user_permit=$login_user['permit'];
 $role=$login_user['permit'];
 

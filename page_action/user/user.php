@@ -5,6 +5,7 @@ $file=array();
 
 array_push($file, "user_profile.php");
 array_push($file, "user_list.php");
+array_push($file, "user_profile_body.php");
 
 
 foreach ($file as $key => $value) {

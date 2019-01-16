@@ -4,7 +4,7 @@
 <style type="text/css">
     .img_style{
       height: 74px;
-      width: 70px; 
+      width: 70px;  
       margin: -5px;
     }
 </style>
@@ -13,25 +13,27 @@
 $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $sub_str=$site->get_page_sub_str($link);
 $page_name=$site->get_page_name($sub_str);
-$uname=$login_user['uname'];
-$email=$login_user['email'];
+$user_name=$login_user['uname'];
+$user_email=$login_user['email'];
 $id=$login_user['id'];
 $photo=$login_user['photo'];
+$user_name=$id_card->make_string($user_name,20);
+$user_email=$id_card->make_string($user_email,20);
 
 ?>
 
     <ul>
 
- <li class="side-user">   
+ <li class="side-user">    
 
  <div class="user-head">
     <div>
     <a class="inbox-avatar" style="border-radius: 0%" href="user_info.php?user_id=<?php echo "$id"; ?>">
         <img class="img_style"  width="74" hieght="70" src="<?php echo"$photo"; ?>">
     </a>
-    <div class="user-name">
-        <h5><a href="user_info.php?user_id=<?php echo "$id"; ?>"><?php echo "$uname"; ?></a></h5>
-        <span><a href="user_info.php?user_id=<?php echo "$id"; ?>"><?php echo "$email"; ?></a></span>
+    <div class="user-name" style="">
+        <h5><a href="user_info.php?user_id=<?php echo "$id"; ?>"><?php echo "$user_name"; ?></a></h5>
+        <span><a href="user_info.php?user_id=<?php echo "$id"; ?>"><?php echo "$user_email"; ?></a></span>
         </div>
     </div> 
           

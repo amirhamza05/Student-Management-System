@@ -280,7 +280,9 @@ if(isset($_POST['send_attend_sms'])){
 	foreach ($attend_list as $key => $value) {
 		$student_id=$value['student_id'];
 		$student_name=$student[$student_id]['nick'];
+		
 		$not=($status==1)?"":"not";
+
 		$c_name=$db->msg;
 		$message="Dear $student_name, \nYou are $not attend in '$date1' class.Please attend all class.\n\n$c_name";
 	    $mobile_number_list=$sms->get_student_mobile_number($student_id,$receiver);

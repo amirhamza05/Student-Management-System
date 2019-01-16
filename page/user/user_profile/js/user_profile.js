@@ -1,6 +1,7 @@
 url = "user_action.php";
 modal_body = "modal_md_body";
 modal = "md";
+var div_body="user_detail_body";
 var user_id;
 var photo_info = -1;
 
@@ -68,11 +69,8 @@ function upload_profile_photo() {
         },
 
         success: function(data) {
-  
-            
             success("Successfully Update Profile Picture");
             window.location.href = "";
-
 
         }
 
@@ -85,7 +83,7 @@ function get_action_data(_div = modal_body, _load = 0, _url = url) {
     var data = {
         'url': _url,
         'div': _div,
-        'load': 0
+        'load': _load
     }
     return data;
 }
@@ -93,48 +91,6 @@ function get_action_data(_div = modal_body, _load = 0, _url = url) {
 
 function set_user_id(id) {
     user_id = id;
-}
-
-function load_site_data() {
-
-}
-
-function load_profile_photo() {
-
-    var data = {
-        "load_profile_photo": 1
-    }
-    img = document.getElementById('load_profile_photo');
-    img.src = "upload/site_content/loader1.gif";
-    
-    var data={
-      "load_profile_photo": user_id
-    }
-
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data:data,
-        beforeSend: function() {
-        },
-        success: function(response) {
-            img.src=response;  
-        }
-    });
-
-}
-
-function load_cover_photo() {
-
-    var data = {
-        "load_cover_photo": 1
-    }
-    img = document.getElementById('load_cover_photo');
-    img.src = "upload/site_content/loader1.gif";
-
-    loader("load_cover_photo", 45);
-    return;
-    get_ajax(get_action_data("load_profile_photo"), data);
 }
 
 
@@ -151,29 +107,97 @@ function change_profile_photo() {
 }
 
 
-function add_user() {
-
+function update_profile_form() {
 
     var data = {
-        "add_user": 1
+        "update_profile_form": user_id
     }
 
-    modal_open(modal, "Add User");
+    modal_open("md", "Update Profile");
     loader("modal_md_body");
     get_ajax(get_action_data("modal_md_body"), data);
+
 }
 
-function get_user_list(type) {
-    bar_url = "user_list.php?type=" + type;
-    window.history.pushState('', '', bar_url);
+function update_profile_info(){
+    fname=get_value('fname');
+    email=get_value('email');
+    address=get_value('address');
+    phone=get_value('phone');
+   
+    error="";
+    if(fname=="")error="Enter Full Name";
+    else if(email=="")error="Enter Email";
+    else if(address=="")error="Enter Address";
+    else if(phone=="")error="Enter Phone";
+    
+    if(error!=""){
+        alert(error);
+        return;
+    }
+
+    var data1={
+        'id': user_id,
+        'fname': fname,
+        'email': email,
+        'address': address,
+        'phone': phone
+    }
+    var data={
+        'update_profile_info': data1
+    }
+
+    loader("modal_md_body");
+    get_ajax(action_data=get_action_data("modal_md_body",1), data);
+
+}
+
+
+function user_info() {
 
     var data = {
-        "get_user_list": type
+        "user_info": user_id
     }
-    active_button();
-    header = "<span class='glyphicon glyphicon-user'></span> " + type + " User List";
-    set_html("list_header", header);
-    loader(modal_body);
-    get_ajax(get_action_data(), data);
+    loader(div_body);
+    get_ajax(get_action_data(div_body), data);
 
+}
+
+function user_activity(page=1) {
+   
+    var data1={
+       "page": page,
+       "user_id": user_id
+    }
+
+    var data = {
+        "user_activity": data1
+    }
+
+    loader(div_body);
+    get_ajax(get_action_data(div_body), data);
+
+}
+
+function change_profile_photo() {
+
+    var data = {
+        "profile_photo_form": user_id
+    }
+
+    modal_open("sm", "Update Profile Picture");
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body"), data);
+
+}
+
+
+function change_password_form(){
+    var data = {
+        "change_password_form": user_id
+    }
+
+    modal_open("sm", "Update Password");
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body"), data);
 }
