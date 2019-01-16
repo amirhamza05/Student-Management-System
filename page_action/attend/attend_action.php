@@ -270,7 +270,7 @@ if(isset($_POST['send_attend_sms'])){
 	if($status==1)$attend_list=$attend_ob->get_present_list($program_id,$batch_id,$date);
 	else if($status==0)$attend_list=$attend_ob->get_absent_list($program_id,$batch_id,$date);
 	else $attend_list=$attend_ob->get_absent_present_list($program_id,$batch_id,$date);
-
+    
 	$program_name=$program[$program_id]['name'];
 	$batch_name=$batch[$batch_id]['name'];
 
@@ -280,11 +280,11 @@ if(isset($_POST['send_attend_sms'])){
 	foreach ($attend_list as $key => $value) {
 		$student_id=$value['student_id'];
 		$student_name=$student[$student_id]['nick'];
-		
-		$not=($status==1)?"":"not";
+		$student_status=$value['status'];
+		$not=($student_status==1)?"Present":"Absent";
 
 		$c_name=$db->msg;
-		$message="Dear $student_name, \nYou are $not attend in '$date1' class.Please attend all class.\n\n$c_name";
+		$message="Dear $student_name, \nYou are $not in '$date1' Class. Please Attend All Class.\n\n$c_name";
 	    $mobile_number_list=$sms->get_student_mobile_number($student_id,$receiver);
 	    foreach ($mobile_number_list as $key => $value1) {
 	    	$number=$value1;
