@@ -4,6 +4,8 @@
 
 <?php
 
+if(isset($_GET['get_id'])){
+
 $id=$_GET['get_id'];
 foreach ($student as $key => $info) {
   $sid=$info['id'];
@@ -12,7 +14,7 @@ foreach ($student as $key => $info) {
  $nick=$info['nick'];
 
 
-  if($sid==$id){
+if($sid==$id){
 
 
  ?>
@@ -130,6 +132,9 @@ else echo "<script>info()</script>";
 }
 
 }
+
+}
+else include "404.php";
 
  ?>
 

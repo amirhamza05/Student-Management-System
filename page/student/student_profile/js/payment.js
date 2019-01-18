@@ -78,7 +78,7 @@ function view_payment_panel(payment_id) {
 }
 
 function set_payment(program_id, year, month,type) {
-
+ 
     var data1 = {
         "student_id": student_id,
         "program_id": program_id,
@@ -122,12 +122,64 @@ function save_set_fee(program_id,month,year,type){
         url: url,
         data:data,
         success: function(response) {
+
            modal_open(modal, "Payment","close");
            success('Payment successfully Set');
            view_payment();
         }
     });    
 }
+
+function add_extra_payment_form(){
+    var data = {
+        "add_extra_payment_form": 1
+    }
+    
+    modal_open("sm", "Add Extra Payment Fee");
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body"), data);
+}
+
+
+function add_extra_fee(){
+  note="";
+  if(type==3)note=get_value("note");
+
+  fee=get_value("payment_fee");
+  if(fee==""){
+    alert("Enter Payment Fee");
+    return;
+  }
+  else if(note=="" && type==3){
+    alert("Enter Name Of Payment");
+    return;
+  }
+  var data1={
+    'program_id': program_id,
+    'student_id': student_id,
+    'type': 3,
+    'total_fee': fee,
+    'note': note
+  }
+
+  var data = {
+        "add_extra_fee": data1
+   }
+
+  loader("modal_sm_body");
+
+  $.ajax({
+        type: 'POST',
+        url: url,
+        data:data,
+        success: function(response) { 
+           view_payment();
+           modal_open("sm", "Payment","close");
+           success('Payment successfully Update');
+        }
+    }); 
+}
+
 
 function update_payment_form(payment_id){
    var data = {
@@ -151,15 +203,23 @@ function add_pay_form(payment_id){
     get_ajax(get_action_data("modal_sm_body"), data);
 }
 
-function update_payment(payment_id){
+function update_payment(payment_id,type){
+  note="";
+  if(type==3)note=get_value("note");
+
   fee=get_value("payment_fee");
   if(fee==""){
   	alert("Enter Payment Fee");
   	return;
   }
+  else if(note=="" && type==3){
+    alert("Enter Name Of Payment");
+    return;
+  }
   var data1={
   	'id': payment_id,
-  	'total_fee': fee
+  	'total_fee': fee,
+    'note': note
   }
 
   var data = {

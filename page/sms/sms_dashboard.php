@@ -174,10 +174,13 @@ $info=$sms->sms_balance();
 
                         
                 		$info=$sms->get_send_sms_list();
+                        $c=0;
                 		foreach ($info as $key => $value) {
                           $date=$value['date'];
                           $date=$site->timeAgo($date);
-                		 ?>
+                		 $c++;
+                         if($c==500)break;
+                         ?>
  
 						<tr>
 							<td class="td_list2"></td>

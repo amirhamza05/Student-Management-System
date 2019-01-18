@@ -8,6 +8,14 @@ if(isset($_POST['save_set_fee_data'])){
   echo "Fee Sucessfully Set.";
 }
 
+if(isset($_POST['add_extra_fee'])){
+  $info=$_POST['add_extra_fee'];
+  $info['add_by']=$user_id;
+  $info['date']=$db->date();
+  $db->sql_action("student_payment","insert",$info,"no");
+  echo "Fee Sucessfully Set.";
+}
+
 if(isset($_POST['save_payment'])){
   $info=$_POST['save_payment'];
 
@@ -22,21 +30,37 @@ if(isset($_POST['select_program'])){
   $pid=$_POST['select_program'];
   echo "<option value=-1>Select Payment Type</option>";
   $program_ob->get_program_type_option($pid);
+  echo "<option value=3>Extra Payment</option>";
 }
+
 if(isset($_POST['update_payment'])){
   $info=$_POST['update_payment'];
   $db->sql_action("student_payment","update",$info,"no");
 }
+
 if(isset($_POST['update_payment_form'])){
   $payment_id=$_POST['update_payment_form'];
   $condition="id=$payment_id";
   $data=array();
   $data=$program_ob->get_payment_month_status($data,$condition);
   $fee=$data['total_fee'];
+  $type=$data['payment_id_info']['type'];
+  $note=$data['payment_id_info']['note'];
+  if($type==3)echo "<input class='fee_input' id='note' type='text' value='$note'>";
   echo "<input class='fee_input' id='payment_fee' type='number' value='$fee'>";
   echo "<div style='margin-top: 5px;'>";
-  echo "<center><button class='view_btn' onclick='update_payment($payment_id)'>Update Payment</button></center>";
+  echo "<center><button class='view_btn' onclick='update_payment($payment_id,$type)'>Update Payment</button></center>";
 }
+
+if(isset($_POST['add_extra_payment_form'])){
+  echo "<input class='fee_input' placeholder='Enter Extra Payment Name' id='note' type='text' value=''>";
+  echo "<input class='fee_input' placeholder='Enter Fee' id='payment_fee' type='number' value=''>";
+
+  echo "<center><button class='view_btn' onclick='add_extra_fee()'>Add Extra Fee</button></center>";
+
+}
+
+
 if(isset($_POST['add_pay_form'])){
   $payment_id=$_POST['add_pay_form'];
   $condition="id=$payment_id";
@@ -59,10 +83,11 @@ if(isset($_POST['delete_payment_form'])){
     <center>
     <h3>Are You Want To Delete This Payment</h3><br/>
     <button class="btn btn-lg btn-primary btn-block" name="insert" type="submit" onclick="delete_payment(<?php echo "$id,$payment_id"; ?>)"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+
   </center>
 
   <?php
-}
+} 
 
 if(isset($_POST['delete_payment'])){
   $info['id']=$_POST['delete_payment'];;
@@ -71,8 +96,9 @@ if(isset($_POST['delete_payment'])){
 
 if(isset($_POST['get_payment_list'])){
   $student_id=$_POST['get_payment_list'];
-   $condition="student_id=$student_id";
-   $info=$set_payment_ob->get_payment_receive_list($condition);
+  $condition="student_id=$student_id";
+  
+  $info=$set_payment_ob->get_payment_receive_list($condition);
 
 	?>
 
@@ -121,12 +147,14 @@ if(isset($_POST['get_payment_list'])){
      $add_by=$value['add_by'];
      $program_name=$value['name'];
      $type=$value['type'];
+     
      $month=$value['month'];
 
-     $month_name="";
-     $year="";
+     $month_name="-";
+     $year="-";
      $type_string="Admission Fee";
-     
+
+     if($type==3)$type_string=$value['note'];
      if($type==2){
        $year=$value['year'];
        $type_string="Monthly";
@@ -164,20 +192,22 @@ if(isset($_POST['view_payment'])){
   $student_id=$info['student_id'];
   $program_id=$info['program_id'];
   $type=$info['type'];
-  $info=$set_payment_ob->get_student_payment_list($student_id,$program_id);
+
+  $info=array();
   
   if($type==1){
     $res["month_name"]="Admission Fee";
-    $res["year"]="0";
     $fee=$program_ob->get_separate_program_info("fee",$program_id);
     $fee=$fee['fee'];
     $res['fee']=$fee;
-    $res['month']="0";
     $info=array();
     $info[0]=$res;
   }
+  else if($type==2)$info=$set_payment_ob->get_student_payment_list($student_id,$program_id);
+  else $info=$set_payment_ob->get_student_payment_list_type($program_id,$student_id,3);
+  //$site->myprint_r($info);
 
-
+  if($type==3)echo "<center><button style='width: 130px;padding: 5px;' class='btn btn-lg btn-primary btn-block' onclick='add_extra_payment_form()'>Add Extra Fee</button></center>";
   
 	?>
 
@@ -186,31 +216,36 @@ if(isset($_POST['view_payment'])){
   <?php 
 
 
-      $i=0;
+      
   foreach ($info as $key => $value) {
-    $i++;
-
-    $month_name=$value['month_name'];
-    $year=$value['year'];
-    $fee=$value['fee'];
-    $month=$value['month'];
-
+    
+    $month_name=(isset($value['month_name']))?$value['month_name']:$value['note'];
+    $month_name=(strlen($month_name)>22)?$site->make_name($month_name,22)."...":$month_name;
+    
+    $year=(isset($value['year']))?$value['year']:"0";;
+    $fee=(isset($value['fee']))?$value['fee']:"0";
+    $month=(isset($value['month']))?$value['month']:"0";
+    
     $data=array();
     $data['student_id']=$student_id;
     $data['program_id']=$program_id;
     $data['year']=$year;
-    $data['month']=$value['month'];
+    $data['month']=$month;
     $data['type']=$type;
+    
+    $con=($type==3)?"id=".$value['id']:"";
+    $data=$program_ob->get_payment_month_status($data,$con);
+    //$site->myprint_r($data);
 
-    $data=$program_ob->get_payment_month_status($data);
+    $paid=0; 
 
-    $paid=0;
-    $total_fee="-";
+    $total_fee="-"; 
     $total_pay="-";
     $due="-";
     $status_msg="Due";
     $btn_text="Set Payment"; 
     $btn_onclick="set_payment($program_id,$year,$month,$type)";
+   
 
     if($data!=-1){
         $paid=$data['paid'];
@@ -219,10 +254,11 @@ if(isset($_POST['view_payment'])){
         $due=$data['due'];
         if($due<=0)$status_msg="Paid";
         $btn_text="View";
-        $payment_id=$data['payment_id'];
+        $payment_id=($type==3)?$value['id']:$data['payment_id'];
         $btn_onclick="view_payment_panel($payment_id)";
-
    }
+
+
 
     $status="paid";
   	$td_cls="c_paid";
@@ -231,8 +267,8 @@ if(isset($_POST['view_payment'])){
     	$status="unpaid";
   		$td_cls="c_unpaid";
   	}
-  
 
+  
   ?>
      <div class="col-md-6">
 <div class="offer offer_<?php echo $status; ?>">
@@ -357,9 +393,10 @@ if(isset($_POST['set_payment'])){
 if(isset($_POST['payment_panel'])){
   $payment_id=$_POST['payment_panel'];
   $condition="id=$payment_id";
+
   $data=array();
   $data=$program_ob->get_payment_month_status($data,$condition);
-  
+ 
 
   $payment_info=$data['payment_id_info'];
   $program_id=$payment_info['program_id'];
@@ -369,9 +406,9 @@ if(isset($_POST['payment_panel'])){
 
   $type=$payment_info['type'];
 
-  $month="";
-  $year="";
-  $type_status="Admission Fee";
+  $month="-";
+  $year="-";
+  $type_status=($type==1)?"Admission Fee":$payment_info['note'];
 
   if($type==2){
    $month=$payment_info['month'];
@@ -540,7 +577,7 @@ if(isset($_POST['send_sms_page'])){
   $payment_id=$data['payment_id'];
   $message=$set_payment_ob->money_recept_sms($payment_id);
   
-  
+   
 ?>
 
 <div id="message_body">
@@ -570,6 +607,7 @@ if(isset($_POST['send_sms'])){
   $sms->send_sms($list);
 
 }
+  
 
 ?>
 

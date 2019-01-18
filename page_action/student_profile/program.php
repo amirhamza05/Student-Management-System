@@ -338,7 +338,7 @@ if(isset($_POST['send_admission_sms'])){
   $batch_day=$batch[$batch_id]['day_sort_string'];
   $batch_time=$batch[$batch_id]['start']." - ".$batch[$batch_id]['end'];
   $site_msg=$db->msg;
-  $message="Dear $student_name,\nCongratulation For Admitting In Our '$program_name' Program.\n
+  $message="Dear $student_name,\nCongratulation. You got admitted to our '$program_name' Program.\n
 Your ID: $student_id
 Batch: $batch_name
 Time: $batch_day ($batch_time)

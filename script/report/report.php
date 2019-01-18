@@ -41,7 +41,7 @@ class report {
     receive_payment.date,receive_payment.payment_id,receive_payment.pay,receive_payment.id,
     student.name as student_name,student.id as student_id,student.nick,
     program.name as program_name,
-    student_payment.year,student_payment.month,student_payment.type,
+    student_payment.year,student_payment.month,student_payment.type,student_payment.note,
     student_payment.total_fee,
     user.uname as add_by
     from receive_payment  

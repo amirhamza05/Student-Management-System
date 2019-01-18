@@ -25,7 +25,9 @@ $name=$login_user['uname'];
           <a class="" href="index.php"><span class="navbar-brand"  style="color:var(--font-color)"><font class="logo_title"> <?php echo $db->site_name; ?></font></span></a>
           <span class="nev_bar_button_area">
              <!-- here button -->
-            
+           <button onclick="student_info_nav_bar()" class="btn_tab" style="margin-left: 15px;"><i class="fa fa-home"></i> Student Quick Access</button></a>
+           
+
           </span>
         </ul> 
 
@@ -67,6 +69,7 @@ $name=$login_user['uname'];
     }
   }
 </script>
+<script type="text/javascript" src="layout/js/nav_bar_script.js"></script>
 <link rel="stylesheet" type="text/css" href="style/css/nav_bar.css">
 
         </div>

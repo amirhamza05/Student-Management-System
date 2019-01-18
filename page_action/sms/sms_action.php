@@ -45,7 +45,7 @@ if(isset($_POST['update_sms_form'])){
   $end=$info['end'];
  
   $use=$info['total_send'];
-  if($user_permit<4){
+  if($user_permit>4){
     echo "<b>You Can Not Permit This Option.If You Need SMS then Please Connect TechSerm Authority</b>";
     return;
   }
@@ -64,7 +64,7 @@ if(isset($_POST['delete_sms_form'])){
   $id=$_POST['delete_sms_form'];
   $info=$sms->get_separate_sms_buy($id);
   $use=$info['total_send'];
-  if($user_permit<4){
+  if($user_permit>4){
     echo "<b>You Can Not Permit This Option.If You Need SMS then Please Connect TechSerm Authority</b>";
     return;
   }

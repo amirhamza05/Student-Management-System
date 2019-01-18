@@ -15,11 +15,8 @@
 	}
 </script>
 
-<?php if($login_user["permit"]==1){ ?>
 <button class="btn btn-primary" onclick="add_theme()"><i class="fa fa-plus"></i>Add Theme</button>
-<?php
-}
-?>
+
 <div id="add_theme" style="display: none;">
     <?php include "add_theme.php"; ?>   
 </div>

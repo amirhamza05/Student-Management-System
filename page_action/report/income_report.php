@@ -10,6 +10,7 @@ $date2=$info['date2'];
 $data['date1']=$date1;
 $data['date2']=date('Y-m-d', strtotime($date2 . ' +1 day'));
 $info=$report->get_income_report($data);
+
 $date1=date("d M Y", strtotime($date1));
 $date2=date("d M Y", strtotime($date2));
 

@@ -98,6 +98,8 @@ $site_activity=new site_activity();
 include 'script/setting/setting.php';
 $setting=new setting();
 
+include 'script/graph/graph.php';
+$graph=new graph();
 
 }
 else{

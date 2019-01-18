@@ -42,6 +42,9 @@ public function make_string($name,$size){
 public function get_id_card($data){
 
 
+echo "<div class='row' style=''>";
+$this->id_card_css();
+
 foreach ($data as $key => $info) {
  
   $student_id=$info['student_id'];
@@ -70,8 +73,86 @@ foreach ($data as $key => $info) {
  ?>
 
 
+
+	
+<div class="col-md-4 id_card" style='float: left;' id="" style="">
+
+
+<div class="card_box">
+  <div class="card_header">
+  	<div style="float: left; margin-right: 5px;">
+  		<img src="<?php echo $this->db->logo; ?>" class="card_logo">
+  	</div>
+  	<div style="">
+  		<div class="font_name">
+  			<?php echo $this->db->site_name; ?>	
+  		</div>
+  		<b></b><?php echo $this->db->address; ?><br/>	
+  	</div>	
+  </div>
+
+  <div class="id_box_body">
+    <img src="<?php echo "$photo"; ?>" class="img_card" align="right">
+    <div class="id_title">ID Card</div>
+    <div style="margin-top: 14px;"></div>
+      <div class="field">
+      	<div class="name_field">
+      		<span class="id_field">Student Name : </span> <span class="inf"><?php echo "$student_name"; ?></span>
+      	</div>
+
+	      <div class="name_field">
+	      	<span class="id_field">Student ID : </span> <span class="inf"><?php echo "$student_id"; ?></span>
+	      </div>
+
+	      <div class="name_field">    
+	      	<span class="id_field">Program :</span>
+	      	<span class="inf"><?php echo "$program_name"; ?></span>
+	      </div>
+
+	      <div class="name_field">    
+	      <span class="id_field">Batch :</span> <span class="inf"><?php echo $batch_time; ?></span>
+	      </div>
+	      <div class="name_field">    
+	      <span class="id_field">Duration :</span> <span class="inf"><?php echo "$duration"; ?></span>
+	      </div>
+    </div>
+  </div>
+
+ 
+ 	<div class="card_footer">
+    	<center>
+  		<b><span class="glyphicon glyphicon-phone"></span> Phone: </b><?php echo $this->db->phone; ?><br/>
+  		<b><span class="glyphicon glyphicon-envelope"></span> Email: </b><?php echo $this->db->email; ?><br/>
+  		If found please return to <?php echo $this->db->sort_name; ?>.
+  		
+  		</center>
+  	</div>
+
+</div>
+
+
+
+ </div>
+
+<!-- end id card -->
+
+
+<?php  
+}
+
+echo "</div>";
+
+}
+
+
+public function id_card_css(){
+	
+?>
 <style type="text/css">
 	
+ .id_card{
+ 	height: auto;
+ }	
 
  .box1{
   height: auto;
@@ -187,76 +268,14 @@ foreach ($data as $key => $info) {
 }
 
 </style>
-	
-<div class="id_card" id="" style="float: left;">
 
-
-<div class="card_box">
-  <div class="card_header">
-  	<div style="float: left;margin-right: 5px;">
-  		<img src="<?php echo $this->db->logo; ?>" class="card_logo">
-  	</div>
-  	<div style="">
-  		<div class="font_name">
-  			<?php echo $this->db->site_name; ?>	
-  		</div>
-  		<b></b><?php echo $this->db->address; ?><br/>	
-  	</div>	
-  </div>
-
-  <div class="id_box_body">
-    <img src="<?php echo "$photo"; ?>" class="img_card" align="right">
-    <div class="id_title">ID Card</div>
-    <div style="margin-top: 14px;"></div>
-      <div class="field">
-      	<div class="name_field">
-      		<span class="id_field">Student Name : </span> <span class="inf"><?php echo "$student_name"; ?></span>
-      	</div>
-
-	      <div class="name_field">
-	      	<span class="id_field">Student ID : </span> <span class="inf"><?php echo "$student_id"; ?></span>
-	      </div>
-
-	      <div class="name_field">    
-	      	<span class="id_field">Program :</span>
-	      	<span class="inf"><?php echo "$program_name"; ?></span>
-	      </div>
-
-	      <div class="name_field">    
-	      <span class="id_field">Batch :</span> <span class="inf"><?php echo $batch_time; ?></span>
-	      </div>
-	      <div class="name_field">    
-	      <span class="id_field">Duration :</span> <span class="inf"><?php echo "$duration"; ?></span>
-	      </div>
-    </div>
-  </div>
-
- 
- 	<div class="card_footer">
-    	<center>
-  		<b><span class="glyphicon glyphicon-phone"></span> Phone: </b><?php echo $this->db->phone; ?><br/>
-  		<b><span class="glyphicon glyphicon-envelope"></span> Email: </b><?php echo $this->db->email; ?><br/>
-  		If found please return to <?php echo $this->db->sort_name; ?>.
-  		
-  		</center>
-  	</div>
-
-</div>
-
-
-
- </div>
-
-<!-- end id card -->
-
-
-<?php  
-}
-
+<?php
 }
 
 
 }
+
+
 
 
 ?>

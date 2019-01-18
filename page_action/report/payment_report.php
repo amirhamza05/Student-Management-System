@@ -14,9 +14,15 @@ $data['type']=$type;
 $data['date1']=$date1;
 $data['date2']=date('Y-m-d', strtotime($date2 . ' +1 day'));
 $program_name=($program_id==0)?"All Program":$program[$program_id]['name'];
-$type_string=($type==0)?"Admission & Monthly Fee":(($type==1)?"Admission Fee":"Monthly Fee");
+
+if($type==0)$type_string="ALL Type Fee";
+else if($type==1)$type_string="Admission Fee";
+else if($type==2)$type_string="Monthly Fee";
+else if($type==3)$type_string="Extra Fee";
+
 $date1=date("d M Y", strtotime($date1));
 $date2=date("d M Y", strtotime($date2));
+
 
 $info=$report->get_payment_report_list($data);
 ?>
@@ -132,6 +138,8 @@ $info=$report->get_payment_report_list($data);
 	<?php 
     $sum=0;
     foreach ($info as $key => $value) {
+    $type=$value['type'];
+
     if($value['type']==2){
       $value['month']=$set_payment_ob->get_month_name($value['month']);
      }
@@ -139,17 +147,20 @@ $info=$report->get_payment_report_list($data);
       $value['month']="-";
       $value['year']="-";
      }
-     $value['type']=($value['type']==1)?"Admission Fee":"Monthly Fee";
+
+     $type=($value['type']==1)?"Admission Fee":"Monthly Fee";
+     if($value['type']==3)$type=$value['note'];
      $sum+=$value['pay'];
      $pay_date=date("d M Y h:i:A", strtotime($value['date']));
-
+     $student_name=$value['student_name'];
+     $student_id=$value['student_id'];
 	?>
 	<tr>
 		<td class="td2"><?php echo $value['id']; ?></td>
 		<td class="td2"><?php echo $pay_date; ?></td>
-		<td class="td2"><?php echo $value['student_name']; ?></td>
+		<td class="td2"><?php echo "$student_name ($student_id)"; ?></td>
 		<td class="td2"><?php echo $value['program_name']; ?></td>
-		<td class="td2"><?php echo $value['type']; ?></td>
+		<td class="td2"><?php echo $type; ?></td>
 		<td class="td2"><?php echo $value['year']; ?></td>
 		<td class="td2"><?php echo $value['month']; ?></td>
 		<td class="td2"><?php echo $value['add_by']; ?></td>

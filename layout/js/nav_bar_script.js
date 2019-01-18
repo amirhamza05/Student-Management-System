@@ -1,34 +1,53 @@
 
-function nav_bar_student() {
+action_url="nav_bar_action.php";
+
+function student_info_nav_bar(){
 
     var data = {
-        "nav_bar_student": 1
+        "student_info_nav_bar": 1
     }
-    var action_data1 = {
-        'url': "nav_bar_action.php",
-        'div': "modal_sm_body",
-        'load': 0
-    }
+    modal_open("sm", "Student Quick Access");
+    loader("modal_sm_body");
+    
+    $.ajax({
+        type: 'POST',
+        url: action_url,
+        data:data,
+        success: function(response) {
+           set_html("modal_sm_body",response);
+        }
+    });   
 
-    modal_open("sm", "Student");
-    loader1("modal_sm_body");
-    //nav_ajax(action_data1, data);
 }
 
-function nav_ajax(action_data,data){
-  url=action_data['url'];
-  div=action_data['div'];
-  load=action_data['load'];
-  
-  $.ajax({
+function nav_bar_student_action(type){
+    var data = {
+        "nav_bar_student_action": type
+    }
+    
+    loader("modal_sm_body");
+    $.ajax({
         type: 'POST',
-        url: url,
+        url: action_url,
         data:data,
-        beforeSend: function() {
-        },
         success: function(response) {
-            document.getElementById(div).innerHTML=response;
+           set_html("modal_sm_body",response);
         }
-    });
+    });   
+}
 
+function nav_bar_student_final_action(type){
+      id=get_value("student_id");
+      error="";
+      if(id=="")error="Please Enter Student ID";
+      if(error!=""){
+        alert(error);
+        return;
+      }
+      
+      type=(type==1)?"info":"payment";
+      url="student_profile.php?get_id="+id+"&tab="+type;
+      window.history.pushState('', '', url);
+      window.location.href = "";
+      
 }

@@ -177,8 +177,8 @@ public function get_user_name($uid){
   return $uname;
 }
 
-public function make_name($name){
-  $name=substr($name, 0, 17);
+public function make_name($name,$len=17){
+  $name=substr($name, 0, $len);
   return $name;
 }
 

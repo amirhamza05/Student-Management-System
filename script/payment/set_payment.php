@@ -13,6 +13,7 @@ class set_payment {
      $this->program_ob=new program();
      $this->program_info=$this->program_ob->get_program_info();
      $this->student_ob=new student();
+     $this->site=new site_content();
 
  }
 
@@ -36,6 +37,8 @@ class set_payment {
     return $info;
   }
 
+
+
   public function get_month_name($month){
   	
   	$month_array=array("January","February","March","April","May","June","July","August","September","October","November","December");
@@ -52,8 +55,22 @@ class set_payment {
       $value['month_name']=$this->get_month_name($value['month']);
       if($per==1)array_push($res, $value);
   	}
+
   	return $res;
   }
+
+  public function get_student_payment_list($student_id,$program_id){
+      $info=$this->get_set_payment_list_by_id($program_id);
+      return $info;
+  }
+
+  public function get_student_payment_list_type($program_id,$student_id,$type=0){
+      $con="";
+      if($type!=0)$con="and type=$type";
+      $sql="select * from student_payment where program_id=$program_id and student_id=$student_id $con ORDER BY id DESC";
+      $info=$this->db->get_sql_array($sql);
+      return $info;
+  } 
 
   public function receive_payment_info($payment_id){
      $sql="
@@ -62,7 +79,7 @@ class set_payment {
     receive_payment.date,receive_payment.payment_id,receive_payment.pay,receive_payment.id,
     student.name as student_name,student.id as student_id,student.nick,
     program.name as program_name,
-    student_payment.year,student_payment.month,student_payment.type,
+    student_payment.year,student_payment.month,student_payment.type,student_payment.note,
     student_payment.total_fee,
     user.uname as add_by
     from receive_payment  
@@ -77,6 +94,7 @@ class set_payment {
      $info=$this->db->get_sql_array($sql);
      if(!isset($info[0]))return -1;
      $info=$info[0];
+
 
      $payment_save_id=$info['payment_id'];
      $sql="select SUM(pay) as due from receive_payment where payment_id=$payment_save_id and id<$payment_id";
@@ -95,9 +113,11 @@ class set_payment {
       $info['month']="-";
       $info['year']="-";
      }
+     $type=$info['type'];
      $info['type']=($info['type']==1)?"Admission Fee":"Monthly Fee";
-
      
+     if($type==3)$info['type']=$info['note'];
+
      $info['status']=($due<=0)?"Paid":"Due";
      return $info;
   }
@@ -128,7 +148,7 @@ class set_payment {
   if($condition=="")return $info;
 
   $sql="
-    select receive_payment.*,student_payment.program_id,student_payment.month,student_payment.year,student_payment.type,program.name
+    select receive_payment.*,student_payment.program_id,student_payment.month,student_payment.year,student_payment.type,student_payment.note,program.name
     from receive_payment 
     INNER JOIN student_payment ON receive_payment.payment_id=student_payment.id 
     INNER JOIN program ON program.id=student_payment.program_id
@@ -143,10 +163,7 @@ class set_payment {
  }
 
 
-  public function get_student_payment_list($student_id,$program_id){
-      $info=$this->get_set_payment_list_by_id($program_id);
-      return $info;
-  }
+
 
  public function check_date_interver($program_id,$year,$month){
   $p_info=$this->program_ob->get_separate_program_info("start,end",$program_id);
@@ -250,14 +267,17 @@ class set_payment {
     $pay=$info['pay'];
     $due=$info['due'];
     $type=$info['type'];
-    $month_status="Admission Fee";
-    if($type!="Admission Fee"){
+  
+    $month_status=$type;
+
+    if($type=="Monthly Fee"){
       $month_status="Monthly Fee '$month-$year'";
     }
+
     $site_msg=$this->db->msg;
 
-    $msg="Dear $nick,\nYour Payment $pay Tk for $month_status in '$program_name' is Successfully Taken.\nYour Payment ID: $payment_id\n\n$site_msg";
-          return $msg;
+    $msg="Dear $nick,\nYour Payment $pay Tk for '$month_status' in '$program_name' is Successfully Taken.\nYour Payment ID: $payment_id\n\n$site_msg";
+    return $msg;
   }
 
   public function get_money_recept($id){
@@ -266,6 +286,15 @@ class set_payment {
       echo "Soory Money Recept Not Found";
       return;
     }
+
+   $type=$info['type'];
+   $max_len=30;
+   $student_name=$info['student_name'];
+   $program_name=$info['program_name'];
+
+   $student_name=(strlen($student_name)>=$max_len)?$this->site->make_name($student_name,$max_len)."...":$student_name;
+   $program_name=(strlen($program_name)>=$max_len)?$this->site->make_name($program_name,$max_len)."...":$program_name;
+   $type=(strlen($type)>=$max_len)?$this->site->make_name($type,$max_len)."...":$type;
     ?>
   <style type="text/css">
     
@@ -387,16 +416,16 @@ class set_payment {
         </tr>
         <tr>
           <td class='td_name'>Name: </td>
-          <td class='td_value'><?php echo $info['student_name']; ?></td>
+          <td class='td_value'><?php echo $student_name; ?></td>
         </tr>
         
         <tr>
           <td class='td_name'>Program Name: </td>
-          <td class='td_value'><?php echo $info['program_name']; ?></td>
+          <td class='td_value'><?php echo $program_name; ?></td>
         </tr>
         <tr>
           <td class='td_name'>Type: </td>
-          <td class='td_value'><?php echo $info['type']; ?></td>
+          <td class='td_value'><?php echo $type; ?></td>
         </tr>
         <tr>
           <td class='td_name'>Year: </td>

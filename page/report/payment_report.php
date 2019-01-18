@@ -14,6 +14,7 @@
 			<option value="0">Any Type</option>
 			<option value="1">Admission Fee</option>
 			<option value="2">Monthly Fee</option>
+			<option value="3">Extra Fee</option>
 		</select>
 	</div>
 	<div class="col-md-2">

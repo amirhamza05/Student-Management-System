@@ -98,7 +98,7 @@ return $st;
 
 return $info;
  } 
-
+ 
 
 public function get_separate_program_info($select_value="*",$program_id){
   $sql="select $select_value from program where id=$program_id";
@@ -122,16 +122,17 @@ function get_payment_month_status($info,$condition=""){
     $month=$info['month'];
     $program_id=$info['program_id'];
     $type=$info['type'];
+
     if($type==1){
       $condition="student_id=$student_id and program_id=$program_id and type=1";
    }
+   
     else{
       $condition="student_id=$student_id and program_id=$program_id and month=$month and year=$year";
  }
 }
 
   
-
   $sql="select * from student_payment where $condition";
   
   $info=$this->db->get_sql_array($sql);

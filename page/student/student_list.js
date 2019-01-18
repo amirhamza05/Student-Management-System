@@ -123,9 +123,7 @@ function set_header(name){
  document.getElementById('profile_option').innerHTML=name;
 }
 
-function loader(divname){
-  document.getElementById(divname).innerHTML = "<center><img style='margin-top:35px' src='http://localhost/project/youth/upload/site_content/processing1.gif' /></center>";
-}
+
 function close_loader(divname){
   document.getElementById(divname).innerHTML = "";
 }

@@ -117,12 +117,13 @@ $info=$sms->sms_balance();
 
 
     <div class="row">
+    
+    <script src="tool/chart_api/canvas_api.js"></script>
 
 
         <?php 
        
        if($user_permit<8){
-        include "message_send_chart.php"; 
         include "student_admit_graph.php"; 
         
         include "site_activity.php"; 
