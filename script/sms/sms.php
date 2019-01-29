@@ -54,6 +54,7 @@ class sms
         $message = $info['message'];
         $token   = $info['token'];
         $url     = $info['gateway'];
+        
         $data = array(
             'to' => "$to",
             'message' => "$message",
@@ -65,6 +66,56 @@ class sms
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $smsresult = curl_exec($ch);
         
+    }
+
+    public function send_mobile_phone($sms_list)
+    {
+        
+        $sms_list=$this->make_sms_list_package($sms_list);
+       
+        $sql     = "select * from sms_setting";
+        $info    = $this->db->get_sql_array($sql);
+        $info    = $info[0];
+        $gateway = $info['gateway'];
+        $token   = $info['token'];
+        
+        foreach ($sms_list as $key => $value) {
+            $data            = array();
+            $data['to']      = $value['to'];
+            $data['message'] = $value['message'];
+            $data['gateway'] = $gateway;
+            $data['token']   = $token;
+            $this->send_sms_getway($data);
+        }
+        
+    }
+
+    public function make_sms_list_package($sms_list){
+
+        $final_sms_list=array();
+        $c=0;
+        $visit_index=array();
+        foreach ($sms_list as $key => $value) {
+            $msg=$value['message'];
+            $in=$key;
+            if(isset($visit_index[$in]))continue;
+            
+            $to_list=array();
+            foreach ($sms_list as $key => $value1) {
+                $msg1=$value1['message'];
+                $number=$value1['to'];
+                
+                if($msg==$msg1){
+                    $visit_index[$key]=1;
+                    array_push($to_list, $number);
+                }
+            }
+            $to_list=implode(',', $to_list);
+            $data=$this->make_sms_array($to_list,$msg);
+            array_push($final_sms_list, $data);
+            
+        }
+        return $final_sms_list;
     }
     
     
@@ -195,28 +246,6 @@ class sms
     
     
     
-    
-    
-    public function send_mobile_phone($sms_list)
-    {
-        $sql     = "select * from sms_setting";
-        $info    = $this->db->get_sql_array($sql);
-        $info    = $info[0];
-        $gateway = $info['gateway'];
-        $token   = $info['token'];
-        foreach ($sms_list as $key => $value) {
-            $data            = array();
-            $data['to']      = $value['to'];
-            $data['message'] = $value['message'];
-            $data['gateway'] = $gateway;
-            $data['token']   = $token;
-            $this->send_sms_getway($data);
-        }
-        
-    }
-    
-    
-    
     public function make_sms_array($number, $text)
     {
         $len = strlen($text);
@@ -330,7 +359,7 @@ class sms
         $syn  = $this->get_syn();
         foreach ($syn as $key => $value) {
             $syn_val  = $key;
-            $info_val = $info[$key];
+            $info_val = (isset($info[$key]))?$info[$key]:"";
             $text     = str_replace($syn_val, $info_val, $text);
         }
         
