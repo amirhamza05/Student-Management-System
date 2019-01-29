@@ -1,0 +1,20 @@
+<ng-include src="'views/header.html'"></ng-include>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 col-sm-12">
+			<div class="row  left_panel_body">
+				<ng-include src="'views/side_bar.html'"></ng-include>
+			</div>
+		</div>
+
+		<div class="col-md-10 right_panel_body">
+			<div ng-show="loading" class="loading"><img src="...">LOADING...</div>
+			<ng-include src="getPartial()"></ng-include>
+		</div>
+		<div class="col-md-12 footer">Design And Developed By: TechSerm</div>
+
+
+	</div>
+</div>

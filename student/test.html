@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+<ul>
+  <li ng-repeat="x in myData">
+    {{ x.name + ', ' + x.nick }}
+  </li>
+</ul>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+url="http://localhost/project/youth/api.php?key=12345&type=student_info";
+app.controller('customersCtrl', function($scope, $http) {
+  $http.get(url).then(function (response) {
+      $scope.myData = response.data.data;
+      console.log(response);
+  });
+});
+</script>
+
+</body>
+</html>

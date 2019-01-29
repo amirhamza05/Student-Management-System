@@ -188,15 +188,13 @@ public function get_previous_data($table,$id){
       $res=$this->select($sql);
       if($table!="site_activity")$present_data=$this->get_previous_data($table,$info['id']);
     } 
-
-    
-
   }
+
   else $res=1; 
     //echo "$sql";
   if($res)$flag=1;
   
-  if($flag==1 && $table!="result" && $table!="student_attendence" && $table!="site_activity" && $this->login_user!=""){
+  if($flag==1 && $table!="chat" && $table!="result" && $table!="student_attendence" && $table!="site_activity" && $this->login_user!=""){
     $activity=array();
     $table_id=($action=="insert")?$res:$info['id'];
     $login=($table=="login")?1:0;

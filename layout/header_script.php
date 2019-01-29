@@ -101,6 +101,10 @@ $setting=new setting();
 include 'script/graph/graph.php';
 $graph=new graph();
 
+include 'script/chat/chat.php';
+$chat=new chat();
+
+
 }
 else{
 

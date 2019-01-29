@@ -11,7 +11,12 @@
                 <div class="profile-info-left">
                     <div class="text-center">
                         <img id="load_profile_photo" style="height: 180px; width: 180px;" src="<?php echo $info['photo']; ?>" alt="Avatar"  class="avatar img-circle">
-                        <h2><?php echo $info['uname']; ?></h2>
+                        <h2><?php echo $info['uname']; ?>
+                            <br/>
+                            <font style="font-size: 16px;font-weight: bold;"><span class="glyphicon glyphicon-flag"></span> <?php echo "$user_category"; ?></font>
+                        </h2>
+
+                    
                     </div>
                     <div class="action-buttons">
                         <div class="row">

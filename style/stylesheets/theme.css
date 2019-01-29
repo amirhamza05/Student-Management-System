@@ -130,23 +130,27 @@ label {
   
 }
 .navbar .nav > li > a {
-  color:  var(--font-color);
+  
   text-shadow: none;
-  background-color: #2A2D35;
+  background: var(--bg-color);
+  color: var(--font-color);
 }
 .navbar .nav > li:hover {
-  background-color: #2A2D35;
+ background: var(--bg-color);
+  color: var(--font-color);
+  border-radius: 0px;
 }
 .navbar .nav > li > a:hover {
-  color:  var(--font-color);
+  background: var(--bg-color);
+  color: var(--font-color);
 }
 .navbar .dropdown-menu a:hover {
-  background: #000000;
-  color: #000;
+  background: var(--bg-color);
+  color: var(--font-color);
 }
 .navbar .nav li.dropdown.open > .dropdown-toggle {
-  background-color: #7f0000;
-  color: #fff;
+  background: var(--bg-color);
+  color: var(--font-color);
 }
 .navbafr {
   position: relative;

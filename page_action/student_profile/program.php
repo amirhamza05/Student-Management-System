@@ -1,6 +1,7 @@
 <?php
 
 if(isset($_POST['get_program_list'])){
+ 
   $id=$_POST['get_program_list'];
 ?>
 <div style="text-align: right;margin-bottom: 10px;">

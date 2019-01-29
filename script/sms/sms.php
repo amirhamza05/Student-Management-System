@@ -282,6 +282,7 @@ class sms
       $mother_mobile=$info['mother_mobile'];
       if($per=="st" || $per=="all" && $this->valid_mobile($personal_mobile)==1)array_push($list, $personal_mobile);
         if($per=="ga" || $per=="all"){
+      
       if($this->valid_mobile($father_mobile)==1)array_push($list, $father_mobile);
       if($this->valid_mobile($mother_mobile)==1)array_push($list, $mother_mobile);
           

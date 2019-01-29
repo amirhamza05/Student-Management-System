@@ -1,3 +1,5 @@
+  
+
   var room = 1;
 
   function add_btn() {
@@ -11,11 +13,6 @@
       divtest.innerHTML = '<div class="form-group removeclass"><div class="row" style="margin-bottom: -13px;"><div class="col-sm-1 nopadding"></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="student_id_' + room + '" name="student_id_save[]" required="" placeholder="Student ID"></div></div> <div class="col-sm-3 nopadding"><div class="form-group"> <input type="text" class="form-control" id="mcq_save_'+ room +'" step="0.01" value="0" name="mcq[]" placeholder="MCQ Mark"></div></div><div class="col-sm-3 nopadding"><div class="form-group"> <input type="number" class="form-control" id="written_save_'+ room +'" step="0.01" name="written[]" value="0" placeholder="Written Mark"></div></div><div class="col-sm-2 nopadding"><div class="input-group-btn"> <button class="btn btn-danger" type="button" onclick="remove_education_fields(' + room + ');"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> </button></div></div></div></div>';
       objTo.appendChild(divtest)
   }
-
-
-
-
-
 
 
   function add_btn_hwritten() {
@@ -47,6 +44,8 @@
   function remove_education_fields(rid) {
       $('.removeclass' + rid).remove();
   }
+
+
 
 
 function save_student_result(){

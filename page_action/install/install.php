@@ -87,7 +87,7 @@ function form_step2(){
    $templine = '';
 // Read in entire file
 $lines = file("sql/install_sql.sql");
-// Loop through each line
+// Loop through each line 
 foreach ($lines as $line) {
 // Skip it if it's a comment
     if (substr($line, 0, 2) == '--' || $line == '')

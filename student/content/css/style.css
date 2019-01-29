@@ -1,0 +1,105 @@
+
+:root {
+      --bg-color: #6c5ce7;
+      --ui-pink: #B53471;
+      --ui-blue: #1B1464;
+      --ui-red: #EA2027;
+      --ui-green: #006266;
+      --ui-font-white: #f1f2f6;
+} 
+
+
+body{
+    background-color: #dfe6e9;
+    font-size: 16px;
+}
+
+.site_body_area{
+	background-color:#00b894;
+}
+
+.footer{
+    padding: 5px;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: center;
+    color: var(--ui-font-white);
+    background-color: var(--ui-green);
+}
+.header_dashboard{
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--ui-font-white);
+    background-color: var(--ui-green);
+}
+
+.left_panel_body{
+    padding: 15px;
+    background-color: #EFEFEF;
+    height: 100%;
+    height: 534px;
+    overflow-y: scroll;
+}
+
+.left_panel_body::-webkit-scrollbar {
+    width: 4px;
+    background-color: #b2bec3;
+} 
+.left_panel_body::-webkit-scrollbar-thumb {
+    width: 12px;
+    background-color: #a29bfe;
+}
+
+.right_panel_body{
+    background-color: #F8F7F5;
+    height: 534px;
+    overflow-y: scroll;
+    padding: 10px;
+    font-size: 18px;
+    border: 0px solid #000000;
+}
+
+.right_panel_body::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--ui-pink);
+} 
+.right_panel_body::-webkit-scrollbar-thumb {
+    width: 12px;
+    background-color: var(--ui-green);
+}
+
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.side_btn{
+    background-color: #F65F54;
+    color: var(--ui-font-white);
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px!important;
+    border-radius: 5%;
+    padding: 5px;
+    margin-top: 10px;
+}
+.side_btn:hover{
+    background-color: #000000;
+}
+
+.btn_span{
+    font-size: 60px;
+    top: 30px;
+}
+
+.side_btn_name{
+    font-size: 20px;
+    top: 100px;
+}
+
+.img_profile{
+    height: 80px;
+    width: 80px;
+}
