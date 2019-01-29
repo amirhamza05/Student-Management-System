@@ -37,7 +37,7 @@ include "header_script.php";
     $sidebar_list=$ut_info['sidebar_list'];
     $sidebar_list_hover=$ut_info['sidebar_list_hover'];
     $font_color=$ut_info['font_color'];
-
+ 
 ?>
     <!-- End Datatable Style Sheet -->
 <script src="style/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>

@@ -16,12 +16,20 @@ class site_content extends site_config {
      
      $this->db=new database();
      $this->conn=$this->db->conn;
+     $this->barcode_ob= new \Picqer\Barcode\BarcodeGeneratorPNG();
 
  }
 
- public function select($query){
+public function select($query){
    return $this->result=$this->db->select($query);
-  }
+}
+
+public function barcode($text,$image="PNG",$type="TYPE_CODE_128"){
+  $barcode="data:image/png;base64,";
+  $barcode_ob=$this->barcode_ob;
+  $barcode.=base64_encode($barcode_ob->getBarcode($text, $barcode_ob::TYPE_CODE_128));
+  return $barcode;
+}
    
 public function url_list(){
 

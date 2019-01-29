@@ -18,6 +18,7 @@ public $batch;
     $this->batch=$batch_ob->batch_info();
 
 	$program_ob=new program();
+	$this->site=new site_content();
 	$this->program=$program_ob->get_program_info();
 
     $this->student_ob=new student();

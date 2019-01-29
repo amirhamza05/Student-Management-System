@@ -1,7 +1,7 @@
 <?php
 
 session_start(); 
-
+ 
 if( isset($_SESSION['user'])!="" ){
 
 include "config/config.php";
@@ -10,7 +10,8 @@ $db=new database();
 include 'script/program/program.php';
 include "script/site_content/site_content.php";
 include "script/payment/set_payment.php";
-
+include "tool/vendor/vendor/autoload.php";
+include 'script/theme/theme.php';
 
 include 'script/user/user.php';
 $id=$_SESSION['user'];
@@ -82,7 +83,7 @@ include 'script/notice/notice.php';
 $notice=new notice();
 $notice_info=$notice->get_notice_info(); 
 
-include 'script/theme/theme.php';
+
 $theme=new theme();
 $theme_info=$theme->get_theme_info();
 
