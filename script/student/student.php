@@ -29,7 +29,7 @@ public function valid_number($val){
   return ($val!=0)?"{$val}": "";
 }
 public function valid_mobile_number($val){
-  return ($val!=0)?'0'.$val: "";
+  return (strlen($val)>=11)?$val: "";
 }
 
  public function get_student_info(){
@@ -49,9 +49,9 @@ public function valid_mobile_number($val){
       $sub['nick']=$row['nick'];
       $sub['father_name']=$row['father_name'];
       $sub["mother_name"]=$row['mother_name'];
-      $sub["personal_mobile"]=$row['personal_mobile'];
-      $sub["father_mobile"]=$row['father_mobile'];
-      $sub["mother_mobile"]=$row['mother_mobile'];
+      $sub["personal_mobile"]=$this->valid_mobile_number($row['personal_mobile']);
+      $sub["father_mobile"]=$this->valid_mobile_number($row['father_mobile']);
+      $sub["mother_mobile"]=$this->valid_mobile_number($row['mother_mobile']);
 
       $sub["email"]=$row['email'];
       $sub["birth_day"]=$row['birth_day'];

@@ -8,7 +8,7 @@ if(isset($_POST['select_program'])){
 if(isset($_POST['year_set'])){
 	$program_id=$_POST['year_set'];
 	$set_payment_ob->get_program_payment_year_option($program[$program_id]);
-}
+} 
 if(isset($_POST['select_year'])){
   $info=$_POST['select_year'];
   $year=$info['year'];

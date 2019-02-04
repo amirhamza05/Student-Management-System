@@ -13,6 +13,7 @@ public $student;
 public $program;
 
 
+
  public function __construct(){
      
      $this->db=new database();
@@ -27,6 +28,160 @@ public $program;
   }
 
 //end dabtabase connection
+
+
+public function get_student_profile($student_id){
+  $info=$this->get_student_info();
+  $info=$info[$student_id];
+  $barcode=$this->site_ob->barcode($student_id);
+?>
+
+<div style="margin-top: 70px;"></div>
+<div class="row">
+  <div class="col-md-1"></div>
+    <div class="col-md-12">
+      <div class="avatar">
+        <center>
+          <img src="<?php echo $info['photo']; ?>" class="img-circle img-thumbnail student_photo"><br/>
+          <div class="profile_info_area">
+            <?php echo $info['name']; ?><br/>
+            ID: <?php echo $info['id']; ?><br/>
+            <img class="barcode_profile" src="<?php echo "$barcode" ?>">
+          </div>
+          <a href="student_profile.php?get_id=<?php echo $student_id; ?>&tab=info" target="_blank"><button title='View Profile' class="btn btn_profile" >View Profile</button></a>
+          <a href="student_profile.php?get_id=<?php echo $student_id; ?>&tab=program" target="_blank"><button title='View Program' class="btn btn_profile" >View Program</button></a>
+          <a href="student_profile.php?get_id=<?php echo $student_id; ?>&tab=payment" target="_blank"><button title='View Payment' class="btn btn_profile" >View Payment</button></a>
+         
+        </center>
+        <div style="margin-top: 10px;"></div>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <table style="width: 100%">
+            <tr>
+              <td class="td_profile td_profile1">Full Names: </td>
+              <td class="td_profile td_profile2"><?php echo $info['name']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Nick Name: </td>
+              <td class="td_profile td_profile2"><?php echo $info['nick']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Student ID: </td>
+              <td class="td_profile td_profile2"><?php echo $info['id']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Father Name: </td>
+              <td class="td_profile td_profile2"><?php echo $info['father_name']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Mother Name: </td>
+              <td class="td_profile td_profile2"><?php echo $info['mother_name']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Student Mobile: </td>
+              <td class="td_profile td_profile2"><?php echo $info['personal_mobile']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Father Mobile: </td>
+              <td class="td_profile td_profile2"><?php echo $info['father_mobile']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Mother Mobile: </td>
+              <td class="td_profile td_profile2"><?php echo $info['mother_mobile']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Birthday: </td>
+              <td class="td_profile td_profile2"><?php echo $info['birth_day']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Religion: </td>
+              <td class="td_profile td_profile2"><?php echo $info['religion']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Gender: </td>
+              <td class="td_profile td_profile2"><?php echo $info['gender']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">Address: </td>
+              <td class="td_profile td_profile2"><?php echo $info['address']; ?></td>
+            </tr>
+            <tr>
+              <td class="td_profile td_profile1">School/College: </td>
+              <td class="td_profile td_profile2"><?php echo $info['school']; ?></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      </div>
+
+        
+    </div>    
+  
+</div>
+
+
+
+
+<style type="text/css">
+.profile_info_area{
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+.barcode_profile{
+  height: 30px;
+  width: 170px;
+}
+
+.student_photo{
+    height: 150px;
+    width: 150px;
+    margin-top: -75px;
+  }
+  .avatar{
+    background-color: #ffffff;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #B8B9B7;
+    color: #4A4A4A;
+    padding: 5px;
+    
+    font-weight: bold;
+  }
+
+
+  .td_profile1,.td_profile2{
+    border-width: 1px;
+    border-color: #DDDDDD;
+    border-style: solid;
+    padding: 10px;
+  }
+
+.td_profile1{
+  width: 230px;
+  text-align: right;
+  background-color: #ECF0F1;
+  color: #4A4A4A;
+}
+.btn_profile{
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-weight: bold;
+}
+.btn_profile:hover{
+  font-size: 15px;
+  color: var(--font-color);
+}
+.btn_profile:focus{
+  font-size: 15px;
+  color: var(--font-color);
+}
+</style>
+
+<?php
+
+}
 
 public function test_edit(){
 	echo "hello";

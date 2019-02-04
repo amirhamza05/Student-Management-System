@@ -3,19 +3,15 @@
 
 class payment {
    
- 
+
 //starting connection
-public $student;
-public $site;
+
  public function __construct(){
      
      $this->db=new database();
      $this->conn=$this->db->conn;
-
      $this->student_ob=new student();
-     $this->student=$this->student_ob->get_student_info();
 
-     $this->site=new site_content();
  }
 
  public function select($query){
@@ -23,177 +19,128 @@ public $site;
   }
 
 //end dabtabase connection
+public function get_set_payment_list($data){
 
-  public function get_payment_info(){
-    $info=array();
-  	$id_in=array();
-  	$sql="select * from payment ORDER BY id DESC";
-     $res=$this->select($sql);
-     while ($row=mysqli_fetch_array($res)) {
-  		$id=$row['id'];
-  		$id_in['id']=$row['id'];
-  		$id_in['student_id']=$row['student_id'];
-  		$id_in['paid']=$row['paid'];
-  		$id_in['next_date']=$row['next_date'];
-  		$id_in['date']=$row['date'];
-  		$id_in['add_by']=$row['add_by'];
-  		$info[$id]=$id_in;
-  	}
-  	return $info;
-  }
-
-public function get_last_id(){
-    
-   $info=$this->get_payment_info();
-   $arr=array();
-  $c=0;
-   foreach ($info as $key => $value) {
-     $id=$value['id'];
-     array_push($arr, $id);
-     $c++;
-   }
- 
-    rsort($arr);
-    return $arr[0];
-   
-  }
+  $program_id=$data['program_id'];
+  $batch_id=$data['batch_id'];
+  $type=$data['payment_type'];
+  $month=$data['month'];
+  $year=$data['year'];
 
 
- public function update_payment($student_id){
-     $info=$this->student;
-     $pay_info=$this->get_payment_info();
-     $fee=$info[$student_id]['fee'];
-     $total=0;
-     $flag=0;
-     $next_date="";
-     $today="";
-     foreach ($pay_info as $key => $value) {
-     	$sid=$value['student_id'];
-     	$paid=$value['paid'];
-     	if($sid==$student_id){
-     		$total+=$paid;
-        if($flag==0){
-          $flag=1;
-          $next_date=$value['next_date'];
-     	    $today=$paid;
-      }
-     }
-     }
-     $due=$fee-$total;
-     $data['fee']=$fee;
-     $data['paid']=$total;
-     $data['due']=$due;
-     $data['next_date']=$next_date;
-     $data['today_paid']=$today;
-     return $data;
- }
+  $student_list=$this->make_student_list($program_id,$batch_id);
+  $student_main_list=$student_list;
 
-public function get_sms($student_id){
-  $info=$this->update_payment($student_id);
+  $student_list=implode(',', $student_list);
+  $student_list=($student_list!="")?"student_id IN( $student_list)":"student_id=-1";
   
-  $name=$this->student[$student_id]['nick'];
-  $recent_payment=$info['today_paid'];
+  $sql="
+  select  
+    student_payment.student_id,
+    receive_payment.payment_id, 
+    student_payment.total_fee,   
+    sum(receive_payment.pay) as total_pay ,
+    student_payment.total_fee-sum(receive_payment.pay) as total_due,
+    IF(student_payment.total_fee <=  sum(receive_payment.pay), 'Paid', 'Due') AS status
+    
+    from student_payment
 
-  $fee=$info['fee'];
-  $pay=$info['paid'];
-  $due=$info['due'];
-  $next2=$info['next_date'];
-  $next= strtotime($next2);
-  $next=date('d M Y', $next);
+    INNER JOIN 
+      ( select id, payment_id, sum(pay) as pay  from receive_payment GROUP by id)
+    receive_payment ON receive_payment.payment_id=student_payment.id 
+    
+    where 
+    program_id=$program_id and type=$type and month=$month and year=$year and $student_list 
+    GROUP by payment_id
+  ";
 
-  $name1="Dear ".$name.",\n";
-  $recent_payment1="Your Payment ".$recent_payment." Tk. is Successfully Completed\n\n";
-  $fee1="Your Fee: ".$fee." Tk.\n";
-  $pay1="Paid: ".$pay." Tk.\n";
-  $due1="Due: ".$due." Tk.\n";
 
-  $next1="\nNext Payment Date: ".$next."\n";
-  $title="\nYOUTH\n";
-  $msg=$name1.$recent_payment1.$fee1.$pay1.$due1;
-  if($due!=0)$msg.=$next1;
-  return $msg.$title;
+  $payment_list=$this->db->get_sql_array($sql);
+
+  $info=array();
+  foreach ($payment_list as $key => $value) {
+    $student_id=$value['student_id'];
+    $info[$student_id]=$value;
+  }
+
+  $info=$this->process_student_payment_list($student_main_list,$info,$program_id,$type);
+  return $info;
 }
 
- public function paid_ammount($sid){
-     $data=$this->update_payment($sid);
-  return $data['paid'];
- }
-
- public function due_ammount($sid){
- 	$data=$this->update_payment($sid);
-  return $data['due'];
- }
-
- public function payment_table($student_id){
-       $info=$this->get_payment_info();
-
-?> 
- <table class="table table-striped table-bordered">
-            <thead style="background-color: #414959; color: #ffffff;">
-              <tr>
-                <th><center>Payment Id</center></th>
-                <th><center>Payment Ammount</center></th>
-                <th><center>Payment Date</center></th>
-                <th><center>Next Payment Date</center></th>
-                <th><center>Received By</center></th>
-                <th class="td-actions"><center>Delete</center></th>
-              </tr>
-            </thead>
-            <tbody>
-<?php
-       foreach ($info as $key => $value) {
-         $id=$value['id'];
-         $sid=$value['student_id'];
-         $paid=$value['paid'];
-         $date=$value['date'];
-         $next=$value['next_date'];
-         $add_by=$value['add_by'];
-         $add_name=$this->site->get_user_name($add_by);
-         if($sid==$student_id){
- 	?>
-
-              <tr>
-                <td><center><?php echo "$id"; ?></center></td>
-                <td><center><?php echo "$paid"; ?></center></td>
-                   <td><center><?php echo "$date"; ?></center></td>
-                   <td><center><?php echo "$next"; ?></center></td>
-                   <td><center><?php echo "$add_name"; ?></center></td>
-                <td class="td-actions"><center>
-                <button class="btn btn-danger btn-xs" title="Delete" data-title="Delete" data-toggle="modal" data-target="#delete<?php echo"$id"; ?>" ><span class="glyphicon glyphicon-trash"></span></button>                  
-                  </a>
-              </center>
-                </td>
-              </tr>
-       <!-- start delete -->
-          <!-- Start Delete Model -->
-<div class="modal small fade" id="delete<?php echo"$id"; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Delete Confirmation </h3>
-        </div>
-        <div class="modal-body">
-            <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete the Payment Id?<br>This cannot be undone.</p>
-        </div>
-        <div class="modal-footer">
-          
-            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            <button class="btn btn-danger" onclick="delete_table(<?php echo "$id"; ?>)" type="submit" name="delete">Delete</button>
-            
-        </div>
-      </div>
-    </div>
-</div>
-<!-- End Delete Model -->
-             
-
- 	<?php
+public function make_student_list($program_id,$batch_id){
+  $student_list= $this->student_ob->get_student_list($program_id,$batch_id);
+  $student_new_list=array();
+  foreach ($student_list as $key => $value) {
+    array_push($student_new_list, $value['student_id']);
+  }
+return $student_new_list;
 }
-}
-echo "</tbody></table>";
 
- }
+public function process_student_payment_list($student_list,$payment_list,$program_id,$type){
+  $info=array();
+  $payment_id=-1;
+  
+  $sql="select * from program where id=$program_id";
+  $program_info=$this->db->get_sql_array($sql);
+  $program_info=$program_info[0];
+  $total_fee=($type==1)?$program_info['fee']:$program_info['monthly_fee'];
+
+  foreach ($student_list as $key => $value) {
+    $student_id=$value;
+    $data=array();
+    if(isset($payment_list[$student_id]))$data=$payment_list[$student_id];
+    else {
+      $data['student_id']=$student_id;
+      $data['payment_id']=0;
+      $data['total_fee']=$total_fee;
+      $data['total_pay']=0;
+      $data['total_due']=$total_fee;
+      $data['status']="Due";
+    }
+    $info[$student_id]=$data;
+  }
+
+  return $info;
+}
+
+public function program_payment_info($data){
+  $info=$this->get_set_payment_list($data);
+  $total_student=count($info);
+  $paid_student=0;
+  
+  $total_fee=0;
+  $total_pay=0;
+  foreach ($info as $key => $value) {
+    $total_fee+=$value['total_fee'];
+    $total_pay+=$value['total_pay'];
+    $paid_student+=($value['status']=="Paid")?1:0;
+  }
+  $res=array();
+  $res['total_student']=$total_student;
+  $res['paid_student']=$paid_student;
+  $res['due_student']=$total_student-$paid_student;
+  $res['total_fee']=$total_fee;
+  $res['total_pay']=$total_pay;
+  $res['total_due']=$total_fee-$total_pay;
+  $res['paid_percent']=($total_pay/$total_fee)*100;
+  $res['paid_percent']=floor($res['paid_percent']);
+
+  return $res;
+
+}
+
+public function get_payment_status_list($data){
+  $program_id=$data['program_id'];
+  $batch_id=$data['batch_id'];
+  $type=$data['payment_type'];
+  $month=$data['month'];
+  $year=$data['year'];
+
+  $student_list=$this->make_student_list($program_id,$batch_id);
+  
+  
+}
+
 
 }
 

@@ -15,7 +15,7 @@ if(isset($_POST['delete_expence'])){
 
 if(isset($_POST['update_expence'])){
 	$info=$_POST['update_expence'];
-	$db->sql_action("expence","update",$info,"no");
+	$db->sql_action("expence","update",$info,"no");  
 }
 
 if(isset($_POST['get_expence_form'])){

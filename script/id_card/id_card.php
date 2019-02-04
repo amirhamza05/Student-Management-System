@@ -75,17 +75,21 @@ foreach ($data as $key => $info) {
   $father_name=($father_name=="")?"-":$father_name;
 
   $mother_name=$student_info1['mother_name'];
-  $mother_name=$this->make_string($mother_name,45);
+  $mother_name=$this->make_string($mother_name,30);
   $mother_name=($mother_name=="")?"-":$mother_name;
 
   $father_mobile=$student_info1['father_mobile'];
+  $father_mobile=(strlen($father_mobile)<11)?"":$father_mobile;
   $mother_mobile=$student_info1['mother_mobile'];
+  $mother_mobile=(strlen($mother_mobile)<11)?"":$mother_mobile;
+
   $mobile=$father_mobile.(($mother_mobile=="")?"":", ".$mother_mobile);
   $mobile=$this->make_string($mobile,30);
   $mobile=($mobile=="")?"-":$mobile;
 
   $address=$student_info1['address'];
   $address=$this->make_string($address,45);
+  $address=($address=="")?"-":$address;
 
   $student_name=$this->make_string($student_name,27);
   $program_name1=$this->make_string($program_name,45);
@@ -118,16 +122,17 @@ foreach ($data as $key => $info) {
   		<div class="font_name">
   			<?php echo "$title"; ?>	
   		</div>
-  		<b></b><i class="fas fa-map-marker-alt"></i> <?php echo $in_add; ?><br/>
+  		<b></b><i class="fa fa-map-marker"></i> <?php echo $in_add; ?><br/>
   		<b></b><i class="fa fa-phone"></i> Phone: </b><?php echo $this->db->phone; ?>
   	</div>	
   </div>
 
   <div class="id_box_body">
-    <img src="<?php echo "$photo"; ?>" class="img_card" align="right">
+    <img src="<?php echo "$photo"; ?>" class="img-tumb img_card" align="right">
     <div class="id_title">ID Card</div>
     <div style="margin-top: 8px;"></div>
       <div class="field">
+        
       	<div class="name_field">
       		<span class="id_field">Student Name : </span> <span class="inf"><?php echo "$student_name"; ?></span>
       	</div>
@@ -151,6 +156,7 @@ foreach ($data as $key => $info) {
 	      <div class="name_field">    
 	      <span class="id_field">Address :</span> <span class="inf"><?php echo "$address"; ?></span>
 	      </div>
+        <div class="field1"></div>
     </div>
   </div>
 
@@ -184,12 +190,13 @@ public function id_card_css(){
 ?>
 <style type="text/css">
 
-@import "https://use.fontawesome.com/releases/v5.6.3/css/all.css";
- .id_card{
+@import "style/lib/font-awesome/css/font-awesome.css";
+ .id_card{ 
  	height: auto;
  }
 
  @media print {
+ 	
    .margin_id_card{
        margin-right: 15px;
    }
@@ -199,7 +206,29 @@ public function id_card_css(){
       	margin:none !important;
       	content: counter(page);
     }
+ }
+ .img-tumb{
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
  }	
+
+ .img_card{
+  height: 75px;
+  width: 65px;
+  overflow: visible;
+  margin-top: 5px;
+  margin-right: 5px;
+  
+  float: right;
+}
 
  .box1{
   height: auto;
@@ -209,6 +238,21 @@ public function id_card_css(){
   margin-left: 50px;
 
 }
+
+.field1 {
+   background: url(<?php echo $this->db->logo; ?>) no-repeat;
+   margin-top: -110px;
+   margin-left: 125px;
+   background-size: 100% 100%;
+   height: 110px;
+   width: 120px;
+   
+   opacity: 0.1;
+
+  
+}
+
+
 .card_box{
 	overflow: hidden;
 	background: #eeeeee;
@@ -241,16 +285,7 @@ public function id_card_css(){
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 	color: #ffffff;
 } 
-.img_card{
-	height: 75px;
-	width: 65px;
-	overflow: visible;
-	margin-top: 5px;
-	margin-right: 5px;
-	border: 1px solid #2E363F;
-	border-radius: 15px;
-	float: right;
-}
+
 .id_title{
 	background-color: #2E363F;
 	height: 20px;
@@ -283,7 +318,6 @@ public function id_card_css(){
 	font-size: 12px;
 	font-weight: bold;
 	float: left;
-	
 	padding: 1px 1px 1px 1px;
 	text-align: right;
 	margin-right: 5px;
@@ -295,7 +329,7 @@ public function id_card_css(){
 	width: 100px;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 3px 1px 1px 1px;
+	padding: 1px 1px 1px 1px;
 	
 }
 	

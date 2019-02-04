@@ -46,7 +46,7 @@ $user_email=$id_card->make_string($user_email,20);
 <li><a href="javascript:void(0)" data-target=".legal-menu_s" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-user"></i> Students<i class="fa fa-collapse"></i></a></li>
         
         <li>
-             <ul class="legal-menu_s nav nav-list collapse<?php if($page_name=="Student List")echo "in"; ?>">
+             <ul class="legal-menu_s nav nav-list collapse">
             <li class=""><a href="student_list.php" class=""><span class="fa fa-caret-right"></span>Student List</a></li>
             <li ><a href="add_student.php"><span class="fa fa-caret-right"></span>Add Student</a></li>
             <li ><a href="attend.php"><span class="fa fa-caret-right"></span>Attendence</a></li>

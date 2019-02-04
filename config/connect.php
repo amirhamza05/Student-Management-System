@@ -75,6 +75,10 @@ public function set_institute_info(){
 
 }
 
+public function date_to_string($date){
+  return date("d M Y h:i:A", strtotime($date));
+}
+
 public function get_select_last_id($query){
   
   if(mysqli_query($this->conn, $query)){
@@ -204,7 +208,7 @@ public function get_previous_data($table,$id){
     $activity['login']=$login;
     $activity['table_id']=$table_id;
     $activity['date']=$this->date();
-    $activity['ip']=$this->ip;
+    $activity['ip']=$this->ip; 
     $activity['browser']=$this->browser;
     $activity['present_data']=$present_data;
     $activity['previous_data']=$previous_data;

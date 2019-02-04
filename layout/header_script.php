@@ -59,7 +59,7 @@ $contest=new contest();
 
 include 'script/payment/payment.php';
 $payment=new payment();
-$payment_info=$payment->get_payment_info();
+
 
 $set_payment_ob=new set_payment();
 $set_payment_info=$set_payment_ob->get_set_payment_list();
