@@ -9,7 +9,6 @@ $install=new install();
 $step=$install->step_install();
 if($step==2)include 'page/login/login.php';
 else header("Location: install_system.php");
-
 }
 else{
 	header("Location: index.php");

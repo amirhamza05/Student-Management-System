@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+body, html {
+	
+	background-repeat: no-repeat;    /*background-image: linear-gradient(rgb(12, 97, 33),rgb(104, 145, 162));*/
+	background:black;
+	position: relative;
+	background-color: #000000;
+
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.icon {
+  padding: 10px;
+  background: #F64343;
+  color: white;
+  height: 42px;
+  font-size: 24px;
+  min-width: 50px;
+  text-align: center;
+  border-radius: 5px 0px 0px 5px;
+}
+.input-field {
+  width: 100%;
+  outline: none;
+  border-radius: 0px 5px 5px 0px !important;
+}
+
+.error_msg{
+	/*background-color: #383534!important;*/
+	margin: 10px 0px 15px 0px;
+	text-align: center;
+	font-weight: bold;
+	padding: 5px 5px 5px 5px;
+	border-color: #F64343;
+	border-width: 1px 1px 1px 1px;
+	border-style: double;
+	border-radius: 5px;
+}
+.error_icon{
+	font-size: 20px;
+}
+
+.body_style{
+	background-image: url('http://localhost/oj/ims/template/upload/site_content/bg.jpg');
+}
+.footer_login{
+	background: #383534!important;
+	padding: 7px;
+	margin-top: 40px;
+	margin-bottom: -20px;
+	margin-left: -20px;
+	margin-right: -20px;
+	color: #ffffff;
+	font-size: 15px;
+	text-align: center;
+	border-radius: 0px 0px 5px 5px;
+
+}
+.header_box{
+	background: #F64343;
+	padding: 15px;
+	margin-bottom: 25px;
+	margin-top: -20px;
+	margin-left: -20px;
+	margin-right: -20px;
+	color: #ffffff;
+	font-size: 20px;
+	border-radius: 5px 5px 0px 0px;
+}
+#login-box {
+	position: absolute;
+	top: 0px;
+	margin: 0 auto;
+	color: #fff;
+	border: 0px solid #F64343;
+	background: rgba(48, 46, 45, 5);
+	height: auto;
+	width: 390px;
+	padding: 20px;
+	z-index: 9999;
+	border-radius: 5px;
+}
+#login-box .logo .logo-caption {
+	font-family: 'Poiret One', cursive;
+	color: white;
+	text-align: center;
+	margin-bottom: 0px;
+}
+#login-box .logo .tweak {
+	color: #ff5252;
+}
+#login-box .controls {
+	padding-top: 30px;
+}
+#login-box .controls input {
+	background: rgb(98, 96, 96);
+	color: white;
+	font-size: 15px;
+	border: 1px solid rgb(98, 96, 96);
+	border-width: 1px 1px 1px 0px;
+	height: 42px;
+	padding: 0px 8px 0px 5px;
+	font-family: 'Nunito', sans-serif;
+	margin-bottom: 5px;
+}
+#login-box .controls input:focus {
+	box-shadow: none;
+	border-radius: 0px;
+	border: 1px solid #F64343;
+	border-width: 1px 1px 1px 0px;
+}
+#login-box .controls input:first-child {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+#login-box .controls input:last-child {
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+#login-box button.btn-custom {
+	border-radius: 10px;
+	margin-top: 8px;
+    padding: 10px;
+	background:#ff5252;
+	font-size: 19px!important;
+	border-color: rgba(48, 46, 45, 1);
+	color: white;
+	font-family: 'Nunito', sans-serif;
+}
+#login-box button.btn-custom:hover{
+	-webkit-transition: all 500ms ease;
+	-moz-transition: all 500ms ease;
+	-ms-transition: all 500ms ease;
+	-o-transition: all 500ms ease;
+	transition: all 500ms ease;
+	background: rgba(48, 46, 45, 1);
+	font-size: 18px;
+	border-color: #ff5252;
+
+}
+#login-box button.btn-custom:focus{
+	outline: none;
+
+}
+#particles-js{
+  	width: 100%;
+  	height: 100%;
+  	background-size: cover;
+  	background-position: 50% 50%;
+  	position: fixed;
+  	top: 0px;
+  	z-index:1;
+}
+
+/*animation loder*/
+.lds-dual-ring {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(300deg);
+  }
+  100% {
+    transform: rotate(600deg);
+  }
+}
+
+/*animated background*/
+

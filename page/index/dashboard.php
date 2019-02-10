@@ -125,7 +125,6 @@ $info=$sms->sms_balance();
        
        if($user_permit<8){
         include "student_admit_graph.php"; 
-        
         include "site_activity.php"; 
         
        }

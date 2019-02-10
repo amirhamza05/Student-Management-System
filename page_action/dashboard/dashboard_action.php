@@ -29,7 +29,7 @@ if(isset($_POST['live_site_action'])){
                             $ago=$value['date'];
                             $ago=$site->timeAgo($ago);
                             if($c==10)break;
-                            if($user_name=="hamza05")continue;
+                            //if($user_name=="hamza05")continue;
                             $c++;
                          ?>
  

@@ -65,15 +65,15 @@ function show_payment_panel(){
 
     	loader(div);
     	$.ajax({
-        type: 'POST',
-        url: url,
-        data:data,
-        success: function(response) {
-           set_html(div,response);
-           get_payment_option("payment_option_overview");
+        	type: 'POST',
+        	url: url,
+        	data:data,
+        	success: function(response) {
+           		set_html(div,response);
+           		get_payment_option("payment_option_overview");
            
-        }
-    });  
+        	}
+    	});  
 }
 
 function get_payment_option(category) {

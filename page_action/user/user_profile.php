@@ -79,6 +79,49 @@ if(isset($_POST['update_profile_info'])){
   echo "Sucess";
 }
 
+if(isset($_POST['update_user_status_form'])){
+  $user_id=$_POST['update_user_status_form'];
+  $user_status=$user[$user_id]['status'];
+  $btn_status=($user_status==0)?1:0;
+  $text=($user_status==0)?"Active User":"Deactive User";
+  $icon=($user_status==0)?"glyphicon glyphicon-ok-circle":"glyphicon glyphicon-ban-circle";
+  echo "<button onclick='update_user_status($btn_status)' class='btn btn-primary' style='margin-top: 10px;width: 100%'><span class='$icon'></span> $text</button>";
+}
+
+if(isset($_POST['update_user_status'])){
+
+  $info=$_POST['update_user_status'];
+  $user_id=$info['user_id'];
+  $status=$info['status'];
+  $data['id']=$user_id;
+  $data['status']=$status;
+
+  print_r($data);
+  $db->sql_action("user", "update", $data, $msg = "no");
+}
+
+if(isset($_POST['update_user_role_form'])){
+  $user_id=$_POST['update_user_role_form'];
+  $user_role=$user[$user_id]['permit'];
+
+  ?>
+  <select class="form-control" id="select_update_user_role">
+    <?php $user_ob->get_user_can_update_option($user_role,$login_user_role); ?>
+  </select>
+  <button id="btn_update_role" class="btn btn-primary" style='margin-top: 10px;width: 100%' onclick="update_user_role()">Update Role</button>
+  <?php 
+}
+if(isset($_POST['update_user_role'])){
+  $info=$_POST['update_user_role'];
+  $user_role=$info['role'];
+  $user_id=$info['user_id'];
+  $user_role=max($login_user_role,$user_role);
+  $data=array();
+  $data['id']=$user_id;
+  $data['permit']=$user_role;
+  $db->sql_action("user", "update", $data, $msg = "no");
+}
+
  
 function old_field()
 {

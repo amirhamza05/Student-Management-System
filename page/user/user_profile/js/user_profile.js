@@ -116,7 +116,65 @@ function update_profile_form() {
     modal_open("md", "Update Profile");
     loader("modal_md_body");
     get_ajax(get_action_data("modal_md_body"), data);
+}
 
+
+
+function update_user_status_form(){
+    var data = {
+        "update_user_status_form": user_id
+    }
+
+    modal_open("sm", "Update User Status");
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body"), data);
+}
+
+function update_user_status(status){
+    var data1 = {
+        "user_id": user_id,
+        "status": status
+    }
+    var data = {
+        "update_user_status": data1
+    }
+    loader("modal_sm_body");
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data:data,
+        success: function(response) {   
+           update_user_status_form();
+        }
+    });
+    
+}
+
+function update_user_role_form(){
+    var data = {
+        "update_user_role_form": user_id
+    }
+
+    modal_open("sm", "Update User Role");
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body"), data);
+}
+
+function update_user_role(){
+    role=get_value("select_update_user_role");
+    if(role==-1){
+        alert("Please Select Role");
+        return;
+    }
+    var data1 = {
+        "user_id": user_id,
+        "role": role
+    }
+    var data = {
+        "update_user_role": data1
+    }
+    loader("modal_sm_body");
+    get_ajax(get_action_data("modal_sm_body",1), data);
 }
 
 function update_profile_info(){

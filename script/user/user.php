@@ -97,6 +97,21 @@ public function user_permission_list(){
 return $per;
 }
 
+public function get_user_can_update_option($user_role,$login_user_role){
+  $list=$this->user_permission_list();
+  $option_list="<option value='-1'>Select User Role</option>";
+  foreach ($list as $key => $value) {
+    $role=$key;
+    $select="";
+    if($user_role<$login_user_role)continue;
+    if($login_user_role>=$role)continue;
+    if($role==$user_role)$select="selected";
+    $option_list.="<option value='$role' $select>$value</option>";
+  }
+  echo "$option_list";
+  return $option_list;
+}
+
 public function get_user_permission($permission){
   $get_per=$this->user_permission_list();
   return $get_per[$permission];

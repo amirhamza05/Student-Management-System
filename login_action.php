@@ -17,23 +17,22 @@ if(isset($_POST['login'])){
   $pass = $_POST['pass'];
   $pass=hash('sha256', $pass);
 
-	$flag=0;
+  $data['error']=0;
+
+	$login_error=1;
 	foreach ($user as $key => $value) {
 		$id=$value['id'];
 		$uname1=$value['uname'];
 		$pass1=$value['pass'];
+		$status=$value['status'];
 		if($pass1==$pass && $uname==$uname1){
-
-			$flag=1;
+			if($status==0)$login_error=2;
+			else $login_error=0;
 			break;
 		}
 	}
 	
-	if($flag==0){
-        echo "0";
-	}
-	else{
-		echo $id;
+	if($login_error==0){
 		$_SESSION['user']=$id;
 		$ex=$_SESSION['user'];
 		$info=array();
@@ -43,9 +42,13 @@ if(isset($_POST['login'])){
         $db->set_login_user($id,$ip,$browser);
 	    $db->sql_action("login","insert",$info,"no");
 	}
-}
-else{
-	 header("Location: login.php");
+
+	$data['error']=$login_error;
+	$data['error_msg']=($login_error==1)?"Please Fill Up Correct User Name and Password":"User Is Deactive.";
+	$data=json_encode($data);
+	echo "$data";
+
+
 }
 
 ?>

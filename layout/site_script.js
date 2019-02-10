@@ -35,6 +35,9 @@ function loader(divname,size=0){
   div_ob.innerHTML =img;
 }
 
+function btn_loader(btn){
+ set_html(btn,"hello")
+}
 
 
 function get_value(div){
