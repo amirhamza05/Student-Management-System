@@ -86,6 +86,10 @@ if(isset($_POST['update_user_status_form'])){
   $text=($user_status==0)?"Active User":"Deactive User";
   $icon=($user_status==0)?"glyphicon glyphicon-ok-circle":"glyphicon glyphicon-ban-circle";
   echo "<button onclick='update_user_status($btn_status)' class='btn btn-primary' style='margin-top: 10px;width: 100%'><span class='$icon'></span> $text</button>";
+
+  ?>
+
+ <?php 
 }
 
 if(isset($_POST['update_user_status'])){

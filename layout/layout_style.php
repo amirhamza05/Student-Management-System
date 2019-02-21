@@ -70,7 +70,7 @@ include "header_script.php";
 
 
 
-<body class=" theme-blue">
+<body class="theme-blue">
 
     <!-- Demo page code -->
 
@@ -84,6 +84,10 @@ include "header_script.php";
         }
         .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover { 
             color: #fff;
+        }
+        .watermark_body{
+            background: url(<?php echo $db->logo; ?>);
+            
         }
     </style>
 

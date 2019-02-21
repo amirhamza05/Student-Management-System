@@ -149,7 +149,7 @@ public function Update_sql($arr,$table){
 public function get_previous_data($table,$id){
   $sql="select * from $table WHERE id=$id";
   $info=$this->get_sql_array($sql);
-  return json_encode($info[0]);
+  if(isset($info[0]))return json_encode($info[0]);
 }
 
 
@@ -217,6 +217,7 @@ public function get_previous_data($table,$id){
   }
 
   if($msg=="yes")$link=$this->action_link($table);
+  
   if($flag==1 && $msg=="yes")echo "<script>alert('Successfully $action_name!');</script><script>document.location='$link.php'</script>";
    else if($msg=="yes") echo "<script>alert('Failed...Please Again Try!');</script><script>document.location='$link.php'</script>";
     if($flag==0)echo("Error description: " . mysqli_error($this->conn));

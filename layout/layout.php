@@ -22,6 +22,7 @@ $root=$site->get_url_root($sub_str);
 <title><?php echo "$page_name"; ?></title>
 <center><?php //include 'menu_button.php'; ?></center>
 <div class="main-content" style="padding-bottom: 30px;margin-top: 15px;" >
+	
 <?php 
 
   include "bubble.php"; 

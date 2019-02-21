@@ -88,24 +88,21 @@
       border-radius: 23px;
       background-color: #00aeef;
       color: #ffe300;
-      font-size: 17px;
+      font-size: 20px;
       opacity: 1;
       z-index: 10;
     }
-    .modal-header .close {
-      margin: 0;
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      width: 40px;
-      height: 40px;
-      border-radius: 23px;
-      background-color: #00aeef;
-      color: #ffe300;
-      font-size: 17px;
-      opacity: 1;
-      z-index: 10;
+    .modal_header .close:hover {
+      outline: none;
+      font-size: 30px;
     }
+    
+    .modal_header .close:focus {
+      outline: none;
+      background-color: #049ad1;
+    }
+
+    
 </style>
 
 <script type="text/javascript">

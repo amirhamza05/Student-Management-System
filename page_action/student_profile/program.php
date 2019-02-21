@@ -50,7 +50,7 @@ if(isset($_POST['get_program_list'])){
       
       <button style="" title="view" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-eye-open" onclick="view_program(<?php echo "$id"; ?>)"></span></button>
       <button style="" title="Edit" onclick="edit_program_area(<?php echo "$id"; ?>)"  class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
-      <button class="btn btn-danger btn-xs" title="Delete"  onclick="open_dilog_delete(<?php echo "$id"; ?>)"><span class="glyphicon glyphicon-trash"></span></button>
+      <button class="btn btn-danger btn-xs" title="Delete"  onclick="delete_program_form(<?php echo "$id"; ?>)"><span class="glyphicon glyphicon-trash"></span></button>
     </center></div>
     </td>
   </tr>
@@ -140,6 +140,7 @@ $program_name=$info['program_name'];
 <?php
 }
 
+
 if(isset($_POST['update_program'])){
   $info=$_POST['update_program'];
   $data['id']=$info['admit_id'];
@@ -148,6 +149,27 @@ if(isset($_POST['update_program'])){
   echo "Sucessfully Update Batch";
 }
 
+if(isset($_POST['delete_program'])){
+  $id=$_POST['delete_program'];
+  $data['id']=$id;
+  $db->sql_action("admit_program","delete",$data,"no");
+  echo "Program Sucessfully Delete";
+}
+
+
+if(isset($_POST['delete_program_form'])){
+  $admit_id=$_POST['delete_program_form'];
+  
+  ?>
+
+    <center>
+    <h3>Are You Want To Delete This Payment</h3><br/>
+    <button class="btn btn-lg btn-primary btn-block" name="insert" type="submit" onclick="delete_program(<?php echo "$admit_id"; ?>)"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+
+  </center>
+
+  <?php
+} 
 
 if(isset($_POST['view_program'])){
   $admit_id=$_POST['view_program'];

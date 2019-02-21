@@ -67,6 +67,34 @@ function update_program(admit_id){
 }
 
 
+function delete_program_form(id){
+  var data={
+    "delete_program_form":id
+  }
+  modal_open("sm", "Delete Program");
+    
+  loader("modal_sm_body");
+  get_ajax(get_action_data("modal_sm_body"), data);
+}
+
+function delete_program(id){
+  var data={
+    "delete_program":id
+  }
+  loader("modal_sm_body");
+  $.ajax({
+        type: 'POST',
+        url: url,
+        data:data,
+        success: function(response) {
+           modal_open("sm", "Program Update Success","close");
+           success(response);
+           program();
+        }
+    });
+
+}
+
 function add_batch(){
 	program_id=get_value("select_program");
 	if(program_id==-1){
