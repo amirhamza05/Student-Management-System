@@ -48,7 +48,7 @@ foreach ($theme_info as $key => $value) {
 
 </style>
 
-
+<div id="response_theme"></div>
 <script type="text/javascript">
 	function themes_select(uid,theme_id){
 
@@ -63,7 +63,8 @@ foreach ($theme_info as $key => $value) {
               //loader("loading");
           },
           success: function(response) {
-             location.reload();
+             //location.reload();
+             set_html("response_theme",response);
    
           }
       });

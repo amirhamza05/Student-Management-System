@@ -1,7 +1,7 @@
 <?php
 
 
-class exam {
+class exam_old {
    
 
 //starting connection

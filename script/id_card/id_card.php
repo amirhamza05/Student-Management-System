@@ -128,7 +128,7 @@ foreach ($data as $key => $info) {
   </div>
 
   <div class="id_box_body">
-    <img src="<?php echo "$photo"; ?>" class="img-tumb img_card" align="right">
+    <img id="img_card" src="<?php echo "$photo"; ?>" class="img-tumb img_card" align="right">
     <div class="id_title">ID Card</div>
     <div style="margin-top: 8px;"></div>
       <div class="field">
@@ -139,7 +139,7 @@ foreach ($data as $key => $info) {
     
 	      <div class="name_field">
 	      	<span class="id_field">Student ID : </span> <span class="inf"><?php echo "$student_id"; ?></span>
-	      </div>
+	      </div> 
 
 	      <div class="name_field">    
 	      	<span class="id_field">Father Name :</span>

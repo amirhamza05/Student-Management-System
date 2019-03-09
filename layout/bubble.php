@@ -1,4 +1,6 @@
 
+<script type="text/javascript" src="layout/js/bubble.js"></script>
+
 <style type="text/css">
 	.theme_select .modal-dialog{max-width: 800px; width: 100%;}
 </style>

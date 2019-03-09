@@ -68,13 +68,13 @@ $set_payment_info=$set_payment_ob->get_set_payment_list();
 include 'script/id_card/id_card.php';
 $id_card=new id_card();
 
-include 'script/exam/exam.php';
-$exam_ob=new exam();
-$exam=$exam_ob->get_exam_info();
+//include 'script/exam/exam.php';
+//$exam_ob=new exam();
+//$exam=$exam_ob->get_exam_info();
 
-include 'script/result/result.php';
-$result=new result();
-$result_info=$result->get_result();
+//include 'script/result/result.php';
+//$result=new result();
+//$result_info=$result->get_result();
 
 
 include 'script/attendence/attendence.php';
@@ -105,6 +105,9 @@ $graph=new graph();
 
 include 'script/chat/chat.php';
 $chat=new chat();
+
+include 'script/exam/exam_category.php';
+$exam=new exam();
 
 
 }

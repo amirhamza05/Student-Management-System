@@ -1,5 +1,9 @@
 <?php
 include "chat_system.php";
+include "sql_editor.php";
+
+
+
 if(isset($_POST['student_info_nav_bar'])){
 	need_css();
 	?>

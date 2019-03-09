@@ -4,7 +4,7 @@
                         <strong>Nombre</strong>
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="background-color: var(--bg-color)">
                         <li>
                             <div class="navbar-login">
                                 <div class="row">

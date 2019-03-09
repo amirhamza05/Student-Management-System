@@ -6,10 +6,21 @@ include "layout/header_script.php";
 if(isset($_POST['update'])){
   $info['id']=$_POST['update'];
   $info['theme']=$_POST['theme'];
-  print_r($info);
 
   $db->sql_action("user","update",$info,"no");
   
+  $info=$theme->get_theme($_POST['theme']);
+  $bg_color=$info['bg_color'];
+  $font_color=$info['font_color'];
+  ?>
+<style type="text/css">
+    :root {
+      --bg-color: <?php echo "$bg_color"; ?>;
+      --font-color: <?php echo "$font_color"; ?>;
+    } 
+ </style>   
+<?php
+
 }
 
 else if(isset($_POST['insert'])){
@@ -23,6 +34,7 @@ else if(isset($_POST['insert'])){
   $info['date']=date("Y-m-d");
   $info['added_by']=$login_user['id'];
   $db->sql_action("theme","insert",$info,"yes");
+
 }
 
 

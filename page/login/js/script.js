@@ -35,7 +35,7 @@ function login_area(per){
           response=JSON.parse(response);
           setTimeout(function () {
                 fun_wait(response);
-           }, 2000); 
+           }, 1000); 
           
         }
     }); 

@@ -47,7 +47,7 @@ body, html {
 }
 
 .body_style{
-	background-image: url('http://localhost/oj/ims/template/upload/site_content/bg.jpg');
+	
 }
 .footer_login{
 	background: #383534!important;
@@ -59,7 +59,7 @@ body, html {
 	color: #ffffff;
 	font-size: 15px;
 	text-align: center;
-	border-radius: 0px 0px 5px 5px;
+	border-radius: 0px 0px 2px 2px;
 
 }
 .header_box{
@@ -71,7 +71,7 @@ body, html {
 	margin-right: -20px;
 	color: #ffffff;
 	font-size: 20px;
-	border-radius: 5px 5px 0px 0px;
+	border-radius: 2px 2px 0px 0px;
 }
 #login-box {
 	position: absolute;

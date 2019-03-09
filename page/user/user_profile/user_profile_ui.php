@@ -5,7 +5,9 @@
 <div class="row">
     <div class="col-md-12">
     <div class="user-profile" style="background-color: #E8EAF6">
-        <div class="profile-header-background"><img id="load_cover_photo" src="http://demo.thedevelovers.com/dashboard/queenadmin-1.2/assets/img/city.jpg" alt="Profile Header Background"></div>
+        <div class="profile-header-background">
+            <div class="profile_background"></div>
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="profile-info-left">
@@ -51,7 +53,20 @@
 </div>
 </div>
 
+<style type="text/css">
+    .profile_background{
 
+        background-image: url(upload/site_content/user_background.jpg);
+        background-size: cover;
+        color: var(--bg-color);
+        height: 130px;
+        font-size: 60px;
+        padding-top: 20px;
+        padding-right: 10px;
+        text-align: center;
+        text-shadow: 0 0 2px var(--bg-color);
+    }
+</style>
 
 <script type="text/javascript">
      set_user_id(<?php echo $uid; ?>);

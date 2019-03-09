@@ -1,6 +1,38 @@
 
 action_url="nav_bar_action.php";
 
+function sql_editor(){
+    var data = {
+        "sql_editor": 1
+    }
+    modal_open("lg", "SQL Editor");
+    loader("modal_lg_body");
+    $.ajax({
+        type: 'POST',
+        url: action_url,
+        data:data,
+        success: function(response) {
+           set_html("modal_lg_body",response);
+        }
+    });  
+}
+function sql_editor_run(){
+  sql=get_value("sql_editor");
+  var data = {
+        "sql_editor_run": sql
+  }
+  loader("sql_editor_output");
+  $.ajax({
+        type: 'POST',
+        url: action_url,
+        data:data,
+        success: function(response) {
+           set_html("sql_editor_output",response);
+        }
+  });  
+
+}
+
 function live_chat_nav(){
 
     var data = {
