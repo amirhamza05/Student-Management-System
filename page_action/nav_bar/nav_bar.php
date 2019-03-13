@@ -9,10 +9,10 @@ if(isset($_POST['student_info_nav_bar'])){
 	?>
 
 			<a href="add_student.php">
-            <button class="btn_tab_under"><i class="fa fa-home"></i> Add Student</button>
+            <button class="btn_tab_under"><i class="fa fa-plus"></i> Add Student</button>
             </a>
-            <button class="btn_tab_under" onclick="nav_bar_student_action(1)"><i class="fa fa-home"></i> View Student</button>
-            <button class="btn_tab_under" onclick="nav_bar_student_action(2)"><i class="fa fa-home"></i> Payment Receive</button>
+            <button class="btn_tab_under" onclick="nav_bar_student_action(1)"><i class="fa fa-search	"></i> Find Student</button>
+            <button class="btn_tab_under" onclick="nav_bar_student_action(2)"><i class="fa fa-usd"></i> Payment Receive</button>
 
 	<?php 
 }

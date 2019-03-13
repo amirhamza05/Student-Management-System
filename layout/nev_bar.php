@@ -29,14 +29,14 @@ $chat_due=($chat_due==0)?"":"($chat_due)";
              <!-- here button -->
            <button onclick="student_info_nav_bar()" class="btn_tab" style="margin-left: 15px;"><span class="glyphicon glyphicon-fire"></span> Student Quick Access</button>
            <button onclick="sms_state_nav()" class="btn_tab" style="margin-left: 15px;"><span class="glyphicon glyphicon-envelope"></span> SMS Statistics</button>
-           <button onclick="live_chat_nav()" class="btn_tab" style="margin-left: 15px;"><span class="glyphicon glyphicon-record"></span> Live Chat <b><?php echo "$chat_due"; ?></b></button>
+           <button onclick="live_chat_nav()" class="btn_tab" style="margin-left: 15px;"><i class="fa fa-comments"></i> Live Chat <b><?php echo "$chat_due"; ?></b></button>
            <button onclick="sql_editor()" class="btn_tab" style="margin-left: 15px;"><span class="glyphicon glyphicon-pencil"></span> SQL Editor</button>
-           
+
 
           </span>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-           <?php include "page/nav_bar_dropdown.php"; ?>        
+           <?php //include "page/nav_bar_dropdown.php"; ?>        
         </ul> 
 
          <!--  -->

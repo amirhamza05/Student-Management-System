@@ -138,16 +138,21 @@ return $timemsg;
 }
 
 public function welcome_time($user_name){
-   $welcome = '';
-  if (date("H") < 12) {
-      $welcome = 'Good Morning';
-  } 
-  else if (date('H') > 11 && date("H") < 18) {
-      $welcome = 'Good Afternoon';
-  } 
-  else if(date('H') > 17) {
-    $welcome = 'Good Evening';
+  $welcome = '';
+  $time = (int)date("H");
+  $timezone = date("e");
+  if ($time >= "19" || $time<="5") {
+        $welcome = "Good Night";
   }
+  else if ($time < "12") {
+        $welcome = "Good Morning";
+  } 
+  else if ($time >= "12" && $time < "17") {
+        $welcome = "Good Afternoon";
+  } 
+  else if ($time >= "17" && $time < "19") {
+        $welcome = "Good Evening";
+  } 
 
   return $welcome.", $user_name";
 }

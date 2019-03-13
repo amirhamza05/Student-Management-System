@@ -50,7 +50,7 @@ if(isset($_POST['sql_editor'])){
 <style type="text/css">
 	.sql_editor_output{
 		height: 370px;
-		overflow: scroll;
+		
 		background-color: #F5F5F5;
 		padding: 5px;
 		border: 1px solid var(--bg-color);
@@ -61,7 +61,8 @@ if(isset($_POST['sql_editor'])){
 		color: #333333;
 		font-size: 13px;
 		border-width: 0px;
-		overflow: -moz-scrollbars-none;
+		height: 100%;
+		overflow: scroll;
 	}
 
 	.sql_editor{
@@ -73,7 +74,8 @@ if(isset($_POST['sql_editor'])){
 		font-weight: bold;
 		resize: none;
 		border: 1px solid var(--bg-color);
-		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		background-color: #F5F5F5;
+		color: #1e272e;
 	}
 	.sql_editor:focus{
 		outline: none;
@@ -81,7 +83,7 @@ if(isset($_POST['sql_editor'])){
 	}
 	.sql_header{
 		padding: 10px;
-		background-color: var(--bg-color);
+		background-color:var(--bg-color);
 		color: var(--font-color);
 		font-weight: bold;
 	}

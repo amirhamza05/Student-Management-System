@@ -11,8 +11,6 @@
                             </a>
                             <div class="circle-tile-content dark-blue">
                                 <center>
-          
-
                                 <div class="description_area">
                                   <font class="site_title"><?php echo $db->site_name; ?></font><br/>
                                       <font class="site_description">
@@ -36,9 +34,10 @@
         	$uname=$login_user['uname'];
         	$date=date("d M Y h:i:A", strtotime($db->date()));
         	$day=date("l", strtotime($db->date()));
+          $user_permission=$user_ob->get_user_permission($role);
          	
          ?>
-         	<marquee behavior="scroll" direction="right"><?php echo $site->welcome_time($uname); ?></marquee>
+         	<marquee style='color: var(--bg-color)' behavior="scroll" direction="left"><?php echo $site->welcome_time($uname); ?></marquee>
 
          </font></center>
                 <table width="100%">
@@ -60,7 +59,7 @@
                     </tr>
                     <tr>
                         <td class="td_info1">Your Permission: </td>
-                        <td class="td_info2">-</td>
+                        <td class="td_info2"><?php echo $user_permission; ?></td>
                     </tr>
                     
                 </table>
