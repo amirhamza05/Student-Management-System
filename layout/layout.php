@@ -13,9 +13,7 @@ include "side_bar.php";
  <?php
 
 	$link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	$sub_str=$site->get_page_sub_str($link);
-	$page_name=$site->get_page_name($sub_str);
-	$root=$site->get_url_root($sub_str);
+	$page_name=$site->get_page_name($link);
  ?>
 
 
