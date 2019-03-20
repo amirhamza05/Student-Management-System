@@ -33,7 +33,7 @@ $db=new database();
               <span class="glyphicon glyphicon-remove error_icon"></span><br/>
               <span id="error_msg_text"></span>
             </div>
-
+            
             <div class="input-container">
                 <i class="fa fa-user icon"></i>
                 <input class="input-field" autocomplete="off" type="text" placeholder="Username" id="uname" name="uname">
@@ -72,7 +72,11 @@ function loader(){
 
 ?>
 
-<style type="text/css">@keyframes lds-ellipsis3 {
+<style type="text/css">
+
+
+
+  @keyframes lds-ellipsis3 {
   0%, 25% {
     left: 32px;
     -webkit-transform: scale(0);
@@ -189,44 +193,44 @@ function loader(){
   position: absolute;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
 }
 .lds-ellipsis div > div {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #f00;
   position: absolute;
   top: 100px;
   left: 32px;
-  -webkit-animation: lds-ellipsis 3.1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-  animation: lds-ellipsis 3.1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  -webkit-animation: lds-ellipsis 2s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  animation: lds-ellipsis 2s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
 }
 .lds-ellipsis div:nth-child(1) div {
-  -webkit-animation: lds-ellipsis2 3.1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-  animation: lds-ellipsis2 3.1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-  background: #a22e29;
+  -webkit-animation: lds-ellipsis2 2s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  animation: lds-ellipsis2 2s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  background: #be2222;
 }
 .lds-ellipsis div:nth-child(2) div {
-  -webkit-animation-delay: -1.55s;
-  animation-delay: -1.55s;
-  background: #a22e29;
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+  background: #d72929;
 }
 .lds-ellipsis div:nth-child(3) div {
-  -webkit-animation-delay: -0.775s;
-  animation-delay: -0.775s;
-  background: #f24a3c;
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+  background: #d51515;
 }
 .lds-ellipsis div:nth-child(4) div {
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
-  background: #a22e29;
+  background: #d92c2c;
 }
 .lds-ellipsis div:nth-child(5) div {
-  -webkit-animation: lds-ellipsis3 3.1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-  animation: lds-ellipsis3 3.1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-  background: #a22e29;
+  -webkit-animation: lds-ellipsis3 2s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  animation: lds-ellipsis3 2s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  background: #be2222;
 }
 .lds-ellipsis {
   width: 200px !important;

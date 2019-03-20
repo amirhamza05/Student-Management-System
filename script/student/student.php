@@ -15,7 +15,6 @@ class student extends student_edit
      
      $this->db=new database();
      $this->conn=$this->db->conn;
-     $this->site_ob=new site_content();
      $this->program_ob=new program();
      $this->student_list=$this->get_student_info1();
      
@@ -315,9 +314,6 @@ public function find_student($student_id){
   return $flag;
 }
 
-public function test(){
-  $this->site_ob->test();
-}
 
 
 

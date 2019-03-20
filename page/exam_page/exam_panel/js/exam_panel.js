@@ -63,6 +63,23 @@ function view_exam_panel(){
     })
 }
 
+function view_exam(exam_id){
+
+    var data={
+        "view_exam": exam_id
+    }
+    loader("exam_panel_body");
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success:function(responce){
+            set_html("exam_panel_body",responce);
+        }
+    })
+
+}
+
 function get_dashboard(){
     var data={
         "get_dashboard": exam_category
@@ -92,3 +109,5 @@ function admit_card(){
     loader("exam_panel_body");
     get_ajax(get_action_data("exam_panel_body"), data);
 }
+
+

@@ -5,7 +5,7 @@
 <?php
 
 if(isset($_GET['get_id'])){
-
+$flag=0;
 $id=$_GET['get_id'];
 foreach ($student as $key => $info) {
   $sid=$info['id'];
@@ -15,7 +15,7 @@ foreach ($student as $key => $info) {
 
 
 if($sid==$id){
-
+$flag=1;
 
  ?>
  <script type="text/javascript">
@@ -129,24 +129,15 @@ else echo "<script>info()</script>";
 
 <?php
 
-}
 
-}
-
-}
-else include "404.php";
-
- ?>
-
-
+?>
 
 <div class="modal fade student_add" id="student_profile_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
     <div class="modal-content">
         
         <div style="padding: 0px;" class="modal-body" style="background-color: #ecf0f1">
-            <?php 
-            $student_ob->student_edit_form($id);
+            <?php $student_ob->student_edit_form($id); ?>
           ?>
         </div>
       </div>
@@ -168,3 +159,17 @@ else include "404.php";
     myWindow.close();
   }
 </script>
+
+<?php
+
+}
+
+}
+
+}
+if($flag==0) include "404.php";
+
+ ?>
+
+
+

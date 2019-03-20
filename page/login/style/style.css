@@ -59,7 +59,7 @@ body, html {
 	color: #ffffff;
 	font-size: 15px;
 	text-align: center;
-	border-radius: 0px 0px 2px 2px;
+	border-radius: 0px 0px 0px 0px;
 
 }
 .header_box{
@@ -71,7 +71,7 @@ body, html {
 	margin-right: -20px;
 	color: #ffffff;
 	font-size: 20px;
-	border-radius: 2px 2px 0px 0px;
+	border-radius: 0px 0px 0px 0px;
 }
 #login-box {
 	position: absolute;
@@ -173,7 +173,7 @@ body, html {
   border-radius: 50%;
   border: 5px solid #fff;
   border-color: #fff transparent #fff transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  animation: lds-dual-ring 0.1s linear infinite;
 }
 @keyframes lds-dual-ring {
   0% {

@@ -33,7 +33,8 @@ public $program;
 public function get_student_profile($student_id){
   $info=$this->get_student_info();
   $info=$info[$student_id];
-  $barcode=$this->site_ob->barcode($student_id);
+  $site_ob=new site_content();
+  $barcode=$site_ob->barcode($student_id);
 ?>
 
 <div style="margin-top: 70px;"></div>
@@ -188,7 +189,7 @@ public function test_edit(){
 }
 
 public function student_edit_form($id){
-	$site=$this->site_ob;
+	$site=new site_content();;
 	
 	$student=$this->get_student_info();
 	$info=$student[$id];
@@ -264,7 +265,7 @@ public function student_edit_form($id){
 
       //$site->form_input($level,$name,$id,$type="text",$icon="exclamation-sign",$value="",$ex="",$req="yes")
       
-       $this->site_ob->form_input("Student Full Name","name","name","text","exclamation-sign","$name","","yes");
+       $site->form_input("Student Full Name","name","name","text","exclamation-sign","$name","","yes");
 
       $site->form_input("Student Nick Name","nick","nick","text","exclamation-sign","$nick","","yes");
 

@@ -33,7 +33,7 @@
     <div class="modal-content">
         
         <div class="modal-body" style="background-color: #ecf0f1">
-        	<?php include 'page/theme/theme_list.php'; ?> 
+        	<?php //include 'page/theme/theme_list.php'; ?> 
         </div>
       </div>
     </div>

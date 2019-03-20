@@ -1,4 +1,4 @@
-url="http://localhost/project/youth/api.php?key=12345&type=student_info&student_id=10021";
+url="http://localhost/project/youth/api.php?key=12345&type=student_info&student_id=10041";
 
 app.controller("get_student_info", function($scope, $http) {
  
@@ -35,7 +35,7 @@ app.controller("dashboard", function($scope, $http) {
   });
     
     $scope.units = [
-        {'name': 'Profile', 'icon': 'user','function': '1'},
+        {'name': 'Profile', 'icon': 'user','function': '3'},
         {'name': 'Result', 'icon': 'list-alt','function': '2'},
         {'name': 'Payment', 'icon': 'eur','function': '1'},
         {'name': 'Attendence', 'icon': 'check','function': '2'},
@@ -49,9 +49,10 @@ app.controller("dashboard", function($scope, $http) {
     $scope.get_login=function(no){
 
       if(no==1)theme="views/login.html";
-      else if(no==2)theme="views/result.html";
+      else if(no==2)theme="views/result.html"; 
       else if(no==2)theme="views/login.html";
       else if(no==2)theme="views/login.html";
+      else if(no==3)theme="views/student_info.html";
       return theme;
     }
 
@@ -65,12 +66,14 @@ app.controller("dashboard", function($scope, $http) {
 
 });
 
+
 app.controller("login", function($scope, $http,$window) {
  
  	$scope.submit=function(){
     var user_name=$scope.user_name;
     var pass=$scope.pass;
     if(user_name=="admin" && pass=="12345"){
+      alert(user_name);
       $window.location.href = '../student/';
     }
     else alert("Wrong Pass");

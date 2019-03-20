@@ -10,10 +10,8 @@ if(isset($_POST['program_select'])){
 
 if(isset($_POST['view_exam_panel'])){
 $category_id=$_POST['view_exam_panel'];
-
-
+need_css();
 ?>
-<link rel="stylesheet" type="text/css" href="page_action/exam_panel/css/style.css">
 <div class="exam_panel_box">
 	<div class="row no-gutter">
 		<div class="col-md-3">
@@ -48,5 +46,67 @@ $category_id=$_POST['view_exam_panel'];
 		</div>
 	</div>
 </div>
+
+<?php } 
+
+function need_css(){
+?>
+
+<style type="text/css">
+	.exam_panel_box{
+
+	}
+	.exam_panel_left{
+		background-color: #ffffff;
+		height: auto;
+		border-radius: 5px 5px 5px 5px;
+		margin-bottom: 10px;
+	}
+	.exam_panel_right{
+		background-color: #ffffff;
+		height: auto;
+		border-radius: 5px 5px 5px 5px;
+	}
+	.panel_title{
+		font-size: 20px;
+		text-align: center;
+		padding: 7px;
+		font-weight: bold;
+		color: var(--font-color);
+		background-color: var(--bg-color);
+		border-radius: 5px 5px 0px 0px;
+	}
+	.panel_left_option{
+		
+	}
+	.panel_option_link{
+		font-size: 16px;
+		font-weight: bold;
+		color: #8E8C9D;
+		cursor: pointer;
+		font-family:sans-serif;
+		padding: 10px 5px 10px 15px;
+	}
+	.panel_option_link:hover{
+		background-color: #f5f5f5;
+		color: var(--bg-color);
+		border: 1px solid var(--bg-color);
+		border-width: 0px 0px 0px 5px;
+	}
+	.icon_class{
+		position: relative;
+  		top: 4px;
+  		left: 1px;
+  		font-size: 20px;
+	}
+	.no-gutter > [class*='col-'] {
+    	padding-right:1;
+    	padding-left: 1;
+	}
+	.exam_panel_body{
+		padding: 5px;
+	}
+
+</style>
 
 <?php } ?>

@@ -10,7 +10,7 @@ if (isset($_POST['program_select'])) {
 
 if(isset($_POST['view_program'])){
 
-?>
+?> 
 <div class="row">
 <div class="col-md-12 col-sm-12 col-lg-12">
         <div style="border-width: 0px; background-color: #C6C9D1" class="panel with-nav-tabs panel-primary animated slideInDown">

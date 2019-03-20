@@ -17,6 +17,7 @@ class site_content extends site_config {
      $this->db=new database();
      $this->conn=$this->db->conn;
      $this->barcode_ob= new \Picqer\Barcode\BarcodeGeneratorPNG();
+     
 
  }
 

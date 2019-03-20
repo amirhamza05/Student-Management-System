@@ -13,6 +13,7 @@ class exam {
 
  }
 
+
  public function select($query){
    return $this->result=$this->db->select($query);
   }
