@@ -39,7 +39,7 @@ class site_content extends site_config
     
     public function get_md5($st)
     {
-        $en = "techserm_group";
+        $en = "techserm";
         $st = $st . $en;
         $st = md5($st);
         $st = $en . $st;
@@ -77,8 +77,9 @@ class site_content extends site_config
     }
     
     
-    public function get_page_name($link)
+    public function get_page_name()
     {
+        $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $list_name = $this->url_name();
         $page_name = "";
         foreach ($list_name as $key => $value) {
@@ -187,15 +188,10 @@ class site_content extends site_config
     {
 ?>
   <div class="school_header_area">
-      <img class="header_area_logo" src="<?php
-        echo $this->db->logo;
-?><br/>
+      <img class="header_area_logo" src="<?php echo $this->db->logo;?>"><br/>
       <span class="school_title"><?php
-        echo $this->db->site_name;
-?></span><br/>
-      <span class="glyphicon glyphicon-map-marker"></span> <?php
-        echo $this->db->address;
-?><br/>
+        echo $this->db->site_name;?></span><br/>
+      <span class="glyphicon glyphicon-map-marker"></span> <?php echo $this->db->address;?><br/>
       <span class="glyphicon glyphicon-phone"></span> Phone: <?php
         echo $this->db->phone;
 ?> | <span class="glyphicon glyphicon-envelope"></span> Email: <?php

@@ -12,59 +12,48 @@ include "header_script.php";
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="<?php echo $db->logo; ?>" type="image/gif" sizes="16x16">
-
+    <title><?php echo $site->get_page_name(); ?></title>
 
     <?php include 'header_lib.php'; ?>
 
- <script>
-    $(document).ready(function() {
-    $('#datatable').dataTable({
-        "sScrollX": "100%",
-        "sScrollY": "100%",
-        "sScrollXInner": "100%",
-    });
+    <script>
+        $(document).ready(function() {
+            $('#datatable').dataTable({
+                "sScrollX": "100%",
+                "sScrollY": "100%",
+                "sScrollXInner": "100%",
+            });
 
-     $("[data-toggle=tooltip]").tooltip();
-} );
+            $("[data-toggle=tooltip]").tooltip();
+        } );
+    </script>
 
-</script>
 
+    <?php
+        $ut_info=$theme->get_theme($login_user['theme']);
+        $bg_color=$ut_info['bg_color'];
+        $font_color=$ut_info['font_color'];
+    ?>
 
-<?php
-    $ut_info=$theme->get_theme($login_user['theme']);
-    $bg_color=$ut_info['bg_color'];
-    $sidebar_hover=$ut_info['sidebar_hover'];
-    $sidebar_list=$ut_info['sidebar_list'];
-    $sidebar_list_hover=$ut_info['sidebar_list_hover'];
-    $font_color=$ut_info['font_color'];
- 
-?>
     <!-- End Datatable Style Sheet -->
-<script src="style/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
+
+    <script src="style/lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function() {
             $(".knob").knob();
         });
-
         var bg_color="<?php echo "$bg_color"; ?>";
     </script>
 
 
- <style type="text/css">
-    :root {
-      --bg-color: <?php echo "$bg_color"; ?>;
-      --sidebar-hover: <?php echo "$sidebar_hover"; ?>;
-      --sidebar-list: <?php echo "$sidebar_list"; ?>;
-      --sidebar-list-hover: <?php echo "$sidebar_list_hover"; ?>;
-      --font-color: <?php echo "$font_color"; ?>;
-    } 
- </style>
-
-
+    <style type="text/css">
+        :root {
+            --bg-color: <?php echo "$bg_color"; ?>;
+            --font-color: <?php echo "$font_color"; ?>;
+        } 
+    </style>
 
     <link rel="stylesheet" type="text/css" href="style/stylesheets/theme.css">
-    <!-- <link rel="stylesheet" type="text/css" href="style/stylesheets/custom.css"> -->
-    
 
 </head>
 
@@ -110,12 +99,3 @@ include "header_script.php";
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-  
-
-  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
-  <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
-  <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
-  <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!--> 
-   
-  <!--<![endif]-->

@@ -49,6 +49,7 @@ class sms
 
     public function send_sms_getway($info)
     {
+        return;
         
         $to      = $info['to'];
         $message = $info['message'];
@@ -264,8 +265,6 @@ class sms
       return (strlen($number)==11)?1:0;
     }
     
-    
-   
     
     public function get_sms_recever_option()
     {
