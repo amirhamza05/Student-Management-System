@@ -185,7 +185,7 @@ $info=$sms->sms_balance();
 						<tr>
 							<td class="td_list2"></td>
                 			<td class="td_list2"><?php echo $value['id']; ?></td>
-                			<td class="td_list2"><?php echo $value['number']; ?></td class="td_list1">
+                			<td class="td_list2"><textarea><?php echo $value['number']; ?></textarea></td class="td_list1">
                 			<td class="td_list2">
                 				<textarea><?php echo $value['message']; ?></textarea>
                 				</td>

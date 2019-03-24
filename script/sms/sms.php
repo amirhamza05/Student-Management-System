@@ -47,102 +47,6 @@ class sms
         return $info[0];
     }
 
-    public function send_sms_getway($info)
-    {
-        return;
-        
-        $to      = $info['to'];
-        $message = $info['message'];
-        $token   = $info['token'];
-        $url     = $info['gateway'];
-        
-        $data = array(
-            'to' => "$to",
-            'message' => "$message",
-            'token' => "$token"
-        );
-        $ch   = curl_init(); // Initialize cURL
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $smsresult = curl_exec($ch);
-        
-    }
-
-    public function send_mobile_phone($sms_list)
-    {
-        
-        $sms_list=$this->make_sms_list_package($sms_list);
-       
-        $sql     = "select * from sms_setting";
-        $info    = $this->db->get_sql_array($sql);
-        $info    = $info[0];
-        $gateway = $info['gateway'];
-        $token   = $info['token'];
-        
-        foreach ($sms_list as $key => $value) {
-            $data            = array();
-            $data['to']      = $value['to'];
-            $data['message'] = $value['message'];
-            $data['gateway'] = $gateway;
-            $data['token']   = $token;
-            $this->send_sms_getway($data);
-        }
-        
-    }
-
-    public function make_sms_list_package($sms_list){
-
-        $final_sms_list=array();
-        $c=0;
-        $visit_index=array();
-        foreach ($sms_list as $key => $value) {
-            $msg=$value['message'];
-            $in=$key;
-            if(isset($visit_index[$in]))continue;
-            
-            $to_list=array();
-            foreach ($sms_list as $key => $value1) {
-                $msg1=$value1['message'];
-                $number=$value1['to'];
-                
-                if($msg==$msg1){
-                    $visit_index[$key]=1;
-                    array_push($to_list, $number);
-                }
-            }
-            $to_list=implode(',', $to_list);
-            $data=$this->make_sms_array($to_list,$msg);
-            array_push($final_sms_list, $data);
-            
-        }
-        return $final_sms_list;
-    }
-    
-    
-    public function sms_balance()
-    {
-        $now             = $this->db->date();
-        $sql             = "select SUM(total_sms) as total_sms ,SUM(total_send) as total_send from sms_add WHERE '$now' BETWEEN start AND end";
-        $info            = $this->db->get_sql_array($sql);
-        $info            = $info[0];
-        $info['balance'] = $info['total_sms'] - $info['total_send'];
-        $balance         = $info['balance'];
-        
-        $sql                = "select SUM(total_sms) as total_sms,SUM(total_send) as total_send from sms_add";
-        $info               = $this->db->get_sql_array($sql);
-        $info               = $info[0];
-        $total_sms          = $info['total_sms'];
-        $total_send         = $info['total_send'];
-        $ex                 = ($total_sms - ($total_send + $balance));
-        $data['total_sms']  = $total_sms;
-        $data['total_send'] = $total_send;
-        $data['ex']         = $ex;
-        $data['balance']    = $balance;
-        return $data;
-    }
-    
-    
     public function send_sms($sms_list)
     {
         
@@ -151,11 +55,13 @@ class sms
 
         $total      = $data['total'];
         $start_time = strtotime($this->db->date());
-        $check_getway=$this->insert_sms_database($sms_list);
+        $check_getway=$this->check_getway_database();
+        
         if($check_getway==-1){
             echo "<b style='color:red'>You Can not add any gateway.Please Add Any Gateway For Send SMS</b>";
             return;
         }
+
         $this->sms_dist($total);
         $this->send_mobile_phone($sms_list);
         $end_time = strtotime($this->db->date());
@@ -165,8 +71,7 @@ class sms
         <li>Total SMS Send: $total</li>
         <li>Total Time: $diff Second</li></b>";
     }
-    
-    
+
     public function check_sms_balance_list($sms_list)
     {
         
@@ -191,8 +96,38 @@ class sms
 
         return $data;
     }
+
+    public function sms_balance()
+    {
+        $now             = $this->db->date();
+        $sql             = "select SUM(total_sms) as total_sms ,SUM(total_send) as total_send from sms_add WHERE '$now' BETWEEN start AND end";
+        $info            = $this->db->get_sql_array($sql);
+        $info            = $info[0];
+        $info['balance'] = $info['total_sms'] - $info['total_send'];
+        $balance         = $info['balance'];
+        
+        $sql                = "select SUM(total_sms) as total_sms,SUM(total_send) as total_send from sms_add";
+        $info               = $this->db->get_sql_array($sql);
+        $info               = $info[0];
+        $total_sms          = $info['total_sms'];
+        $total_send         = $info['total_send'];
+        $ex                 = ($total_sms - ($total_send + $balance));
+        $data['total_sms']  = $total_sms;
+        $data['total_send'] = $total_send;
+        $data['ex']         = $ex;
+        $data['balance']    = $balance;
+        return $data;
+    }
+
+    public function check_getway_database(){
+        $sql     = "select * from sms_setting";
+        $info    = $this->db->get_sql_array($sql);
+        if(!isset($info[0]))return -1;
+        return 1;
+    }
+
     
-    
+
     public function sms_dist($total)
     {
         $now  = $this->db->date();
@@ -222,15 +157,68 @@ class sms
         
     }
     
-    public function insert_sms_database($sms_list)
+    public function send_mobile_phone($sms_list)
     {
         
+        $sms_list=$this->make_sms_list_package($sms_list);
+        
         $sql     = "select * from sms_setting";
-        $info    = $this->db->get_sql_array($sql);
-        if(!isset($info[0]))return -1;
-        $info    = $info[0];
-        $gateway = $info['gateway'];
-        $token   = $info['token'];
+        $gateway_info    = $this->db->get_sql_array($sql);
+        $gateway_info    = $gateway_info[0];
+        $gateway = $gateway_info['gateway'];
+        $token   = $gateway_info['token'];
+
+        $this->insert_sms_database($sms_list,$gateway_info);
+        
+        foreach ($sms_list as $key => $value) {
+            $data            = array();
+            $data['to']      = $value['to'];
+            $data['message'] = $value['message'];
+            $data['gateway'] = $gateway;
+            $data['token']   = $token;
+            $this->send_sms_getway($data);
+        }
+        
+    }
+
+    public function make_sms_list_package($sms_list){
+
+        /**make sms package
+            017,014,013=>hello user1
+            018,015,018=>hello user2
+        */
+        $final_sms_list=array();
+        $c=0;
+        $visit_index=array();
+        foreach ($sms_list as $key => $value) {
+            $msg=$value['message'];
+            $in=$key;
+            if(isset($visit_index[$in]))continue;
+            
+            $to_list=array();
+            foreach ($sms_list as $key => $value1) {
+                $msg1=$value1['message'];
+                $number=$value1['to'];
+                
+                if($msg==$msg1){
+                    $visit_index[$key]=1;
+                    array_push($to_list, $number);
+                }
+            }
+            $to_list=implode(',', $to_list);
+            $data=$this->make_sms_array($to_list,$msg);
+            array_push($final_sms_list, $data);
+            
+        }
+        return $final_sms_list;
+    }
+
+    public function insert_sms_database($sms_list,$gateway_info)
+    {
+        
+        $gateway = $gateway_info['gateway'];
+        $token   = $gateway_info['token'];
+
         foreach ($sms_list as $key => $value) {
             $info            = array();
             $info['number']  = $value['to'];
@@ -244,13 +232,38 @@ class sms
         }
         return 1;
     }
-    
-    
-    
+
+    public function send_sms_getway($info)
+    {
+        return;
+        
+        $to      = $info['to'];
+        $message = $info['message'];
+        $token   = $info['token'];
+        $url     = $info['gateway'];
+        
+        $data = array(
+            'to' => "$to",
+            'message' => "$message",
+            'token' => "$token"
+        );
+        $ch   = curl_init(); // Initialize cURL
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $smsresult = curl_exec($ch);
+        
+    }
+
+
     public function make_sms_array($number, $text)
     {
         $len = strlen($text);
         $len = ceil($len / 160);
+
+        $total_number=explode(',', $number);
+        $total_number=count($total_number);
+        $len=$len*$total_number;
         $res = array(
             "to" => $number,
             "message" => $text,
