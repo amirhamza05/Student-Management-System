@@ -28,10 +28,7 @@ class theme {
       $sub['id']=$id;
       $sub['name']=$row['name'];
       $sub['bg_color']=$row['bg_color'];
-      $sub['sidebar_hover']=$row['sidebar_hover'];
-      $sub['sidebar_list']=$row['sidebar_list'];
-      $sub['sidebar_list_hover']=$row['sidebar_list_hover'];
-      $sub['font_color']=$row['font_color'];
+      $sub['font_color']=$row['font_color']; 
       $sub['date']=$row['date'];
       $sub['added_by']=$row['added_by'];
       $info[$id]=$sub;

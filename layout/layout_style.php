@@ -45,14 +45,14 @@ include "header_script.php";
         var bg_color="<?php echo "$bg_color"; ?>";
     </script>
 
-
+<div id="theme_color">
     <style type="text/css">
         :root {
             --bg-color: <?php echo "$bg_color"; ?>;
             --font-color: <?php echo "$font_color"; ?>;
         } 
     </style>
-
+</div>
     <link rel="stylesheet" type="text/css" href="style/stylesheets/theme.css">
 
 </head>

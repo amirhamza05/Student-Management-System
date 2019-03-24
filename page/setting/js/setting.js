@@ -18,8 +18,10 @@ $(document).ready(function (e) {
       processData:false,      
       success: function(data){
           success('Successfully Update Site Info');
+          document.getElementById("update_btn").disabled=false;
+          set_html("update_btn","<span class='glyphicon glyphicon-refresh'></span> Update Information");
           //document.getElementById("res").innerHTML=data;
-          window.location.href = '';
+         // window.location.href = '';
           
       }
   });

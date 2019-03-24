@@ -1,6 +1,7 @@
 <?php
-include "chat_system.php";
-include "sql_editor.php";
+include "page_action/nav_bar/chat_system.php";
+include "page_action/nav_bar/sql_editor.php";
+include "page_action/nav_bar/theme.php";
 
 
 

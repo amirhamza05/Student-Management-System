@@ -19,7 +19,7 @@
           </button></div>
           <ul class="dropdown-menu dropdown-menu-right" role="menu">
 
-            <li class="dropdown_sub" style=""><a data-toggle="modal" data-target="#theme" style=""><i class="fa fa-tint"></i></a> </li>
+            <li class="dropdown_sub" style=""><a onclick="get_theme_list()" style=""><i class="fa fa-tint"></i></a> </li>
 
           </ul>
         </div>
@@ -33,7 +33,7 @@
     <div class="modal-content">
         
         <div class="modal-body" style="background-color: #ecf0f1">
-        	<?php //include 'page/theme/theme_list.php'; ?> 
+        	<?php include 'page/theme/theme_list.php'; ?> 
         </div>
       </div>
     </div>
