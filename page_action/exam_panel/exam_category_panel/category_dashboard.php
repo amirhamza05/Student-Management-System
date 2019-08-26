@@ -4,8 +4,6 @@ if(isset($_POST['program_select'])){
 	$program_id=$_POST['program_select'];
 	echo "<option value='-1'>Select Exam Category</option>";
 	$exam->get_exam_category_option($program_id);
-
-
 }
 
 if(isset($_POST['view_exam_panel'])){
@@ -82,7 +80,7 @@ function need_css(){
 	.panel_option_link{
 		font-size: 16px;
 		font-weight: bold;
-		color: #8E8C9D;
+		color: #474747;
 		cursor: pointer;
 		font-family:sans-serif;
 		padding: 10px 5px 10px 15px;

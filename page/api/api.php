@@ -11,6 +11,7 @@ include "script/payment/set_payment.php";
 include 'script/student/student.php';
 include 'script/batch/batch.php';
 include 'script/subject/subject.php'; 
+include 'script/sms/sms.php';
 
 
 $site_key="12345";
@@ -43,9 +44,15 @@ if($key==$site_key){
 		}
 	}
 
-
-
-
+	else if($type="send_sms"){
+		$data['error']=0;
+		$info['sms']="hello bangladesh";
+	}
+	else if($type=="post_sms"){
+		$data['error']=0;
+		$val=$_GET['data'];
+		$info=$val;
+	}
 
 }
 

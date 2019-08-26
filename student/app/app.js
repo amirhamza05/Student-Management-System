@@ -33,6 +33,11 @@ app.config(function($routeProvider) {
     controller : "login"
   })
 
+  .when("/send_sms",{
+    templateUrl: "views/send_sms",
+    controller: "send_sms"
+  })
+
   .otherwise({
     redirectTo: "/login"
   });

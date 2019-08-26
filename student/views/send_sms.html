@@ -1,0 +1,13 @@
+sms page
+
+<div ng-if="sms_error==0">
+	{{sms.sms}}
+	<br/>
+	<input type="text" id="mobile" placeholder="Enter Your Mobile" name=""><br/>
+	<textarea id="text" placeholder="Enter Your SMS"></textarea><br/>
+	<button ng-click="send_sms()">Send SMS</button>
+</div>
+
+<div ng-if="sms_error==1">
+	failed send
+</div>

@@ -1,7 +1,7 @@
  <?php
 
  if(isset($_POST['get_student_info'])){
- 	$student_id=$_POST['get_student_info'];
+ 	$student_id=$_POST['get_student_info']; 
  	$info=$student_ob->get_info($student_id);
  	?>
 

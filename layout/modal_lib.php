@@ -65,6 +65,8 @@
     .modal_sm_body,.modal_md_body,.modal_lg_body{
         padding: 20px;
         background-color: #ECF0F1;
+        overflow: scroll;
+        max-height: 500px;
     }
     .modal-content  {
      -webkit-border-radius: 5px !important;

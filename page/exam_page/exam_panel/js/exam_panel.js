@@ -63,6 +63,8 @@ function view_exam_panel(){
     })
 }
 
+
+
 function view_exam(exam_id){
 
     var data={
@@ -77,7 +79,6 @@ function view_exam(exam_id){
             set_html("exam_panel_body",responce);
         }
     })
-
 }
 
 function get_dashboard(){
@@ -108,6 +109,17 @@ function admit_card(){
 
     loader("exam_panel_body");
     get_ajax(get_action_data("exam_panel_body"), data);
+}
+
+// function for exam panel
+function exam_control(type){
+
+    var data={};
+    data[type]=1;
+
+    set_html("exam_panel_title",type);
+    loader("exam_control_panel_body");
+    get_ajax(get_action_data("exam_control_panel_body"), data);
 }
 
 

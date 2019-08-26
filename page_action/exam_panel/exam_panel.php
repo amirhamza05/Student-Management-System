@@ -1,17 +1,7 @@
 <?php
 
-$path="page_action/exam_panel/";
-$file=array();
-array_push($file, "exam_panel_main.php");
-array_push($file, "add_result.php");
-array_push($file, "admit_card.php");
-array_push($file, "exam_dashboard.php");
-array_push($file, "exam_list.php");
-
-foreach ($file as $key => $value) {
-	$file_name="$path$value";
-	include $file_name;
-}
+include "page_action/exam_panel/exam_category_panel/include_file.php";
+include "page_action/exam_panel/exam_control_panel/include_file.php";
 
 
 ?>

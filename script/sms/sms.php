@@ -235,7 +235,6 @@ class sms
 
     public function send_sms_getway($info)
     {
-        return;
         
         $to      = $info['to'];
         $message = $info['message'];

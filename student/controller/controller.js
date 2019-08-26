@@ -1,38 +1,23 @@
-url="http://localhost/project/youth/api.php?key=12345&type=student_info&student_id=10041";
 
-app.controller("get_student_info", function($scope, $http) {
- 
- 	$http.get(url).then(function (response) {
-      $scope.error=response.data.error
-      $scope.myData = response.data.data;
-  	});
-
-  	$scope.units = [
-        {'id': -1, 'label': 'Select Program'},
-        {'id': 10, 'label': 'SSC Program'},
-        {'id': 27, 'label': 'JSC Program'},
-        {'id': 39, 'label': 'HSC Program'},
-    ]
-
-    $scope.data = {
-      'unit': -1
-    }
-
-	 $scope.unitChanged= function(val){
-    	
-    } 
-
-});
-
+site_url="http://localhost/project/youth/api.php?key=12345";
+url="http://localhost/project/youth/api.php?key=12345&type=student_info&student_id=10001";
+send_sms_url=site_url+"&type=send_sms";
 
 app.controller("dashboard", function($scope, $http) {
     
-  var theme="views/student_info.html";
+  var theme="views/send_sms.html";
 
- 	 $http.get(url).then(function (response) {
+ 	$http.get(send_sms_url).then(function(response){
+        $scope.sms_error=response.data.error
+        $scope.sms = response.data.data;
+  });
+
+  $http.get(url).then(function (response) {
         $scope.error=response.data.error
         $scope.student = response.data.data;
   });
+
+ 
     
     $scope.units = [
         {'name': 'Profile', 'icon': 'user','function': '3'},
@@ -49,7 +34,7 @@ app.controller("dashboard", function($scope, $http) {
     $scope.get_login=function(no){
 
       if(no==1)theme="views/login.html";
-      else if(no==2)theme="views/result.html"; 
+      else if(no==2)theme="views/send_sms.html"; 
       else if(no==2)theme="views/login.html";
       else if(no==2)theme="views/login.html";
       else if(no==3)theme="views/student_info.html";
@@ -63,6 +48,22 @@ app.controller("dashboard", function($scope, $http) {
   	$scope.get_template= function (name){
   		return name;
   	}
+
+    $scope.send_sms=function(){
+      var mobile=document.getElementById('mobile').value;
+      var text=document.getElementById('text').value;
+      var sms_data={
+        'mobile': mobile,
+        'text': text
+      }
+      sms_data=JSON.stringify(sms_data);
+      var make_url="&type=post_sms&data="+sms_data;
+      make_url=site_url+make_url;
+      $http.get(make_url).then(function(response1){
+        console.log(response1.data.data);
+      });
+
+    }
 
 });
 
@@ -99,3 +100,13 @@ app.controller("student", function($scope, $http) {
   });
 
 });
+
+app.controller("send_sms",function($scope,$http){
+
+
+    $http.get(send_sms_url).then(function(response){
+        $scope.error=response.data.error
+        $scope.sms = response.data.data;
+    });
+
+}); 
