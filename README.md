@@ -28,27 +28,27 @@ Language
 
 Screen Shot
 -----------------------
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/dashboard.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/dashboard.PNG">
 <p align="center"><b>Dashboard</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/student_profile.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/student_profile.PNG">
 <p align="center"><b>Student Profile</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/user_profile.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/user_profile.PNG">
 <p align="center"><b>User Profile</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/id_card.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/id_card.PNG">
 <p align="center"><b>ID Card</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/print_id_card.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/print_id_card.PNG">
 <p align="center"><b>Print ID Card</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/monthly_attendence_report.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/monthly_attendence_report.PNG">
 <p align="center"><b>Student Attendence Report</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/payment_dashboard.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_dashboard.PNG">
 <p align="center"><b>Payment Dashboard</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/payment_status_list.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_status_list.PNG">
 <p align="center"><b>Payment Status List</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/payment_money_recept.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_money_recept.PNG">
 <p align="center"><b>Payment Money Recept</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/sms_dashboard.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/sms_dashboard.PNG">
 <p align="center"><b>SMS Dashboard</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/meterial/compare_user_activity_data.PNG">
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/compare_user_activity_data.PNG">
 <p align="center"><b>Compare User Activity</b></p>
 
 
