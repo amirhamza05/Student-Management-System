@@ -156,15 +156,20 @@ class sms
         }
         
     }
+
+    public function get_gateway_info(){
+        $sql     = "select * from sms_setting";
+        $gateway_info    = $this->db->get_sql_array($sql);
+        $gateway_info    = $gateway_info[0];
+        return $gateway_info;
+    }
     
     public function send_mobile_phone($sms_list)
     {
         
         $sms_list=$this->make_sms_list_package($sms_list);
         
-        $sql     = "select * from sms_setting";
-        $gateway_info    = $this->db->get_sql_array($sql);
-        $gateway_info    = $gateway_info[0];
+        $gateway_info=$this->get_gateway_info();
         $gateway = $gateway_info['gateway'];
         $token   = $gateway_info['token'];
 
@@ -176,7 +181,7 @@ class sms
             $data['message'] = $value['message'];
             $data['gateway'] = $gateway;
             $data['token']   = $token;
-            $this->send_sms_getway($data);
+            $this->save_pending_sms($data);
         }
         
     }
@@ -233,6 +238,32 @@ class sms
         return 1;
     }
 
+    public function save_pending_sms($info){
+        $data=array();
+        $data['number_list']=$info['to'];
+        $data['message']=mysqli_real_escape_string($this->db->conn, $info['message']);
+        $this->db->sql_action("pending_sms", "insert", $data, "no");
+    }
+
+    public function get_pending_sms_list(){
+        $sql="select * from pending_sms";
+        $info = $this->db->get_sql_array($sql);
+        return $info;
+    }
+
+    public function send_pending_sms($pending_id){
+        $sql="select * from pending_sms where id=$pending_id";
+        $info = $this->db->get_sql_array($sql);
+        if(count($info)==0)return;
+        $data=$this->get_gateway_info();
+        $data['to']=$info[0]['number_list'];
+        $data['message']=$info[0]['message'];
+        $this->send_sms_getway($data);
+        $del_data=array();
+        $del_data['id']=$info[0]['id'];
+        $this->db->sql_action("pending_sms", "delete", $del_data, "no");
+    }
+
     public function send_sms_getway($info)
     {
         
@@ -241,11 +272,13 @@ class sms
         $token   = $info['token'];
         $url     = $info['gateway'];
         
+
         $data = array(
             'to' => "$to",
             'message' => "$message",
             'token' => "$token"
         );
+
         $ch   = curl_init(); // Initialize cURL
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));

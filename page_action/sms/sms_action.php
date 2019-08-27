@@ -1,5 +1,10 @@
 <?php
 
+if(isset($_POST['send_pending_sms'])){
+    $id=$_POST['send_pending_sms'];
+    $sms->send_pending_sms($id);
+}
+
 if(isset($_POST['insert_sms'])){
 	$info=$_POST['insert_sms'];
 	unset($info['id']);
