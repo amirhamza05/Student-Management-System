@@ -271,7 +271,6 @@ class sms
         $message = $info['message'];
         $token   = $info['token'];
         $url     = $info['gateway'];
-        
 
         $data = array(
             'to' => "$to",

@@ -114,6 +114,7 @@ $user_email=$id_card->make_string($user_email,20);
                     <li>
                         <ul class="sms nav nav-list collapse">
                             <li><a href="sms_dashboard.php" class="l_active"><span class="fa fa-caret-right"></span>SMS Dashboard</a></li>
+                            <li><a href="pending_sms_list.php" class="l_active"><span class="fa fa-caret-right"></span>Pending SMS (<?php echo count($sms->get_pending_sms_list()); ?>)</a></li>
 
                         </ul>
                     </li>
