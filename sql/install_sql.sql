@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2019 at 12:42 AM
+-- Generation Time: Aug 27, 2019 at 12:42 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -110,6 +110,37 @@ CREATE TABLE `exam_category` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `exam_list`
+--
+
+CREATE TABLE `exam_list` (
+  `id` int(11) NOT NULL,
+  `exam_name` text NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `subject_name` int(11) NOT NULL,
+  `exam_date` datetime NOT NULL,
+  `date` datetime NOT NULL,
+  `add_by` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exam_mark`
+--
+
+CREATE TABLE `exam_mark` (
+  `id` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `mark_category_id` int(11) NOT NULL,
+  `total_mark` int(11) NOT NULL DEFAULT '0',
+  `date` datetime NOT NULL,
+  `add_by` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `expence`
 --
 
@@ -152,6 +183,19 @@ CREATE TABLE `income` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mark_category`
+--
+
+CREATE TABLE `mark_category` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `add_by` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notice`
 --
 
@@ -176,6 +220,18 @@ CREATE TABLE `payment` (
   `next_date` date DEFAULT NULL,
   `date` datetime NOT NULL,
   `add_by` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pending_sms`
+--
+
+CREATE TABLE `pending_sms` (
+  `id` int(11) NOT NULL,
+  `number_list` text NOT NULL,
+  `message` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -242,19 +298,6 @@ CREATE TABLE `setting` (
   `option_name` text,
   `option_value` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `setting`
---
-
-INSERT INTO `setting` (`id`, `option_name`, `option_value`) VALUES
-(1, 'name', 'TechSerm Education Software'),
-(2, 'sort_name', 'TechsermSoft'),
-(3, 'address', 'Aftab Nogor,Dhaka,Bangladesh sdaf sdaf'),
-(4, 'main_logo', 'techserm_full_logo.jpg'),
-(5, 'logo', 'techserm_small_logo.png'),
-(6, 'phone', '01991223020, 01777564786'),
-(7, 'email', 'techserm@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -339,13 +382,6 @@ CREATE TABLE `sms_setting` (
   `date` datetime NOT NULL,
   `add_by` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sms_setting`
---
-
-INSERT INTO `sms_setting` (`id`, `gateway`, `token`, `date`, `add_by`) VALUES
-(2, 'http://api.greenweb.com.bd/api.php', 'your token', '2018-12-24 00:00:00', 3);
 
 -- --------------------------------------------------------
 
@@ -475,7 +511,8 @@ INSERT INTO `theme` (`id`, `name`, `bg_color`, `sidebar_hover`, `sidebar_list`, 
 (20, 'Google Red', '#DB4437', '#EDE6EC', '#EDE6EC', '#EDE6EC', '#FFFFFF', '2018-11-21', 3),
 (24, 'new theme', '#331F77', '#EDE6EC', '#EDE6EC', '#EDE6EC', '#FFFFFF', '2019-01-21', 3),
 (25, 'apply', '#ED3B19', '#EDE6EC', '#EDE6EC', '#EDE6EC', '#FFFFFF', '2019-02-01', 3),
-(26, 'dark blue', '#001E4C', '#EDE6EC', '#EDE6EC', '#EDE6EC', '#FFFFFF', '2019-02-08', 3);
+(26, 'dark blue', '#001E4C', '#EDE6EC', '#EDE6EC', '#EDE6EC', '#FFFFFF', '2019-02-08', 3),
+(27, 'Copy Theme 1', '#2C293E', '#EDE6EC', '#EDE6EC', '#EDE6EC', '#EDEDED', '2019-04-28', 3);
 
 -- --------------------------------------------------------
 
@@ -503,8 +540,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `uname`, `fname`, `photo`, `gender`, `email`, `phone`, `address`, `pass`, `permit`, `status`, `theme`) VALUES
-(3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'sk.amirhamza@gmail.com', 1777564786, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 1, 22),
-(2, 'shakib', 'all hassan', 'user_2.jpg', '', 'sk.amirhamza1@gmail.com', 177756478, '', 'd4fc23375ec457523736a83bc9e8815a2bf434e987d0c45a769104c566050283', 2, 1, 1),
+(3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'sk.amirhamza@gmail.com', 1777564786, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 1, 23),
+(2, 'shakib', 'all hassan', 'user_2.jpg', '', 'sk.amirhamza1@gmail.com', 177756478, '', 'd4fc23375ec457523736a83bc9e8815a2bf434e987d0c45a769104c566050283', 7, 1, 1),
 (5, 'rahim', 'Musfiqur Rahim', 'user_5.jpg', 'Male', 'rahim@gmail.com', 1777564786, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 7, 1, 1),
 (7, 'admin', 'amir hamza', 'avatar.png', '', 'sf', 32154, '', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 8, 1, 12);
 
@@ -549,6 +586,18 @@ ALTER TABLE `exam_category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `exam_list`
+--
+ALTER TABLE `exam_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `exam_mark`
+--
+ALTER TABLE `exam_mark`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `expence`
 --
 ALTER TABLE `expence`
@@ -567,6 +616,12 @@ ALTER TABLE `income`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mark_category`
+--
+ALTER TABLE `mark_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `notice`
 --
 ALTER TABLE `notice`
@@ -576,6 +631,12 @@ ALTER TABLE `notice`
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pending_sms`
+--
+ALTER TABLE `pending_sms`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -709,6 +770,16 @@ ALTER TABLE `exam`
 ALTER TABLE `exam_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `exam_list`
+--
+ALTER TABLE `exam_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `exam_mark`
+--
+ALTER TABLE `exam_mark`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `expence`
 --
 ALTER TABLE `expence`
@@ -724,6 +795,11 @@ ALTER TABLE `expence_category`
 ALTER TABLE `income`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `mark_category`
+--
+ALTER TABLE `mark_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
@@ -732,6 +808,11 @@ ALTER TABLE `notice`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pending_sms`
+--
+ALTER TABLE `pending_sms`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `program`
