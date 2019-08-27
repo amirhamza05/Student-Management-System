@@ -50,6 +50,7 @@ Screen Shot
 <p align="center"><b>SMS Dashboard</b></p>
 <img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/compare_user_activity_data.PNG">
 <p align="center"><b>Compare User Activity</b></p>
-
+<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/theme_change.PNG">
+<p align="center"><b>Theme</b></p>
 
 
