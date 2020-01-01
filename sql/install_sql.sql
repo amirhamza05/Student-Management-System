@@ -299,6 +299,20 @@ CREATE TABLE `setting` (
   `option_value` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `setting`
+--
+
+INSERT INTO `setting` (`id`, `option_name`, `option_value`) VALUES
+(1, 'site_name', 'TechSerm Education Software'),
+(2, 'sort_name', 'SA'),
+(3, 'address', 'Aftab Nogor, Dhaka, Bangladesh'),
+(4, 'main_logo', 'main_logo.png'),
+(5, 'logo', 'logo.png'),
+(6, 'phone', '000000000'),
+(7, 'email', 'admin@gmail.com'),
+(8, 'msg', 'Step up');
+
 -- --------------------------------------------------------
 
 --
