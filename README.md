@@ -1,6 +1,11 @@
 # Student Management System
 
-This is a simple web-based software written in PHP and JavaScript. This was specifically written for school or educational organization. 
+> This is a simple web-based open source software written in PHP and JavaScript. This was specifically written for school or educational organization. You can easily install this system in your own server.
+
+> If you find any bug or added new feature feel free to send a pull request.
+
+> If you have any suggestions feel free create issues.
+
 
 Feature of Student Management System
 -----------------------------
