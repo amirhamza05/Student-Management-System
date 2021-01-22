@@ -14,7 +14,7 @@
                
 <div class="footer-style custom_footer">
                 <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-                <center>Design & Developed By: <a class="a_footer" href="http://techserm.com">TechSerm</a></center>
+                <center>Design & Developed By: <a class="a_footer" href="https://github.com/amirhamza05/Student-Management-System">Amir Hamza</a></center>
            
 </div>
             <!-- </footer> -->

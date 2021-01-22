@@ -1,26 +1,48 @@
-<?php
 
+<title>Install Student Management System</title>
 
-?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css?family=Exo 2" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <script type="text/javascript" src="page/install/js/install_system.js"></script>
 <script language="JavaScript" src="layout/site_script.js" type="text/javascript"></script>
+
+<style type="text/css">
+    body{
+
+    }
+</style>
+
 <div  style="padding: 0px 8px 0px 0px">
 
-<div class="containerr register" style="padding: 8px">
-                <div class="row">
+<div class="container" style="padding: 10px;margin-top: 5px;">
+                <div class="row register" style="padding: 5px;">
                     <div class="col-md-4 col-sm-12 register-left">
 
-                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-                        <div style="margin-top: -65px;"><img src="upload/custom_content/techserm_full_logo.jpg" style="height: 80px;width: 300px;border-radius: 15px;" alt=""/></div>
                         
-                        <b style="font-size: 25px;">TechSerm Education Software</b>
-                        <div style="margin-top: 46px;"></div>
+                        <div style="margin-top: 10px;"></div>
+                        <b style="font-size: 13px;">Open Source</b><br/>
+                        <b style="font-size: 25px;">Student Management System</b><br/>
+                        By <b style="font-size: 16px;"><a href="https://github.com/amirhamza05" style="color: #ffffff">Amir Hamza</a></b>
+                        <div style="margin-top: 35px;text-align: left;">
+                            <ul style="font-size: 15px;">
+                                <li>Add Student Information</li>
+                                <li>Admit Student In Multiple Program</li>
+                                <li>Student Payment System</li>
+                                <li>Student Attendence System</li>
+                                <li>Generate Student Id Card</li>
+                                <li>Program Add</li>
+                                <li>Exam Add</li>
+                                <li>Add Exam Result Add and generate Auto Ranking</li>
+                                <li>Sending Result by SMS</li>
+                                <li>Sending Notice By SMS</li>
+                                <li>Institute Report (Payment,Expence,Income,Profit,Attendence)</li>
+                            </ul>
+                        </div>
                         
-                        <a href="http://techserm.com"><input type="submit" name="" value="TechSerm"/></a><br/>
+                        <a href="https://github.com/amirhamza05/Student-Management-System"><input type="submit" name="" value="Github"/></a><br/>
                     </div>
                     <div class="col-md-8 col-sm-12 register-right">
                         
@@ -45,9 +67,10 @@
             <style type="text/css">
           body{
           	background-color: #ffffff;
+
           	
           }  	
-            	.register{
+.register{
     background-color: #000000;
     margin-top: 0%;
     padding: 0%;
@@ -79,6 +102,22 @@
 	cursor: pointer;
 
 }
+.inputField{
+    padding: 10px;
+    width: 100%;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #888A88;
+    border: 1px solid #E6E6E6;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+.inputField:focus{
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--blue);
+    box-shadow: 0 0 3px 3px #CCC7D8;
+}
 .register-left input{
     border: none;
     border-radius: 1.5rem;
@@ -100,10 +139,10 @@
   100% {background-color: #a4b0be;}
 }
 .register-right{
-    background: #F1F1F1;
+    background: #f5f5f5;
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
-	animation: myanimation1 10s infinite;
+	
 }
 .register-left img{
     margin-top: 15%;
@@ -133,6 +172,14 @@
     font-weight: 600;
     width: 230px;
     cursor: pointer;
+}
+
+.formLabel{
+    color: #3f3d3e;
+    margin-left: 5px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    font-size: 13px;
 }
 
 .register-heading{

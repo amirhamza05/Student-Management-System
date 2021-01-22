@@ -301,6 +301,23 @@ CREATE TABLE `setting` (
 
 -- --------------------------------------------------------
 
+
+--  
+-- Dumping data for table `setting` 
+--  
+
+INSERT INTO `setting` (`id`, `option_name`, `option_value`) VALUES  
+(1, 'site_name', 'Open Source Student Management System'),  
+(2, 'sort_name', 'EMS'), 
+(3, 'address', 'Dhaka, Bangladesh'), 
+(4, 'main_logo', 'techserm_full_logo.jpg'),  
+(5, 'logo', 'techserm_small_logo.png'),  
+(6, 'phone', '-'),  
+(7, 'email', 'sk.amirhamza@gmail.com'),  
+(8, 'msg', 'EMS');  
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `set_payment`
 --
@@ -540,11 +557,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `uname`, `fname`, `photo`, `gender`, `email`, `phone`, `address`, `pass`, `permit`, `status`, `theme`) VALUES
-(3, 'hamza05', 'Sk.Amir Hamza', 'user_3.jpg', 'Male', 'sk.amirhamza@gmail.com', 1777564786, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 1, 1, 23),
-(2, 'shakib', 'all hassan', 'user_2.jpg', '', 'sk.amirhamza1@gmail.com', 177756478, '', 'd4fc23375ec457523736a83bc9e8815a2bf434e987d0c45a769104c566050283', 7, 1, 1),
-(5, 'rahim', 'Musfiqur Rahim', 'user_5.jpg', 'Male', 'rahim@gmail.com', 1777564786, 'Dhaka', '1be703389b8403475f45de8245e47baf16361db33e42f80c30eb401666d43599', 7, 1, 1),
-(7, 'admin', 'amir hamza', 'avatar.png', '', 'sf', 32154, '', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 8, 1, 12);
-
+(1, 'admin', 'Admin', 'avatar.png', 'Male', 'admin@gmail.com', 012345678910, 'Bangladesh', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 1, 1);
 --
 -- Indexes for dumped tables
 --
