@@ -46,7 +46,7 @@ Screen Shot
 ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/sms_dashboard.PNG) SMS Dashboard | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/compare_user_activity_data.PNG) Compare User Activity |
 |-|-|
 
-![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/theme_change.png) Multiple Themes | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/update_setting.PNG) Update Institute Information |
+![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/theme_change.PNG) Multiple Themes | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/update_setting.png) Update Institute Information |
 |-|-|
 
 
