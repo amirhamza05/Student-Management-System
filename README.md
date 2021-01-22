@@ -6,6 +6,10 @@
 
 > If you have any suggestions feel free create issues.
 
+- [Feature](#feature-of-student-management-system)
+- [Technology](#technology)
+- [Screen Shot](#screen-shot)
+- [Installation](#installation)
 
 Feature of Student Management System
 -----------------------------
@@ -22,7 +26,7 @@ Feature of Student Management System
 - Institute Report (Payment,Expence,Income,Profit,Attendence)
 - All Activity are Auto Saved and Admin or User Can See Change Previous and Present Change
 
-Language
+Technology
 -----------------------
 - PHP
 - Ajax
