@@ -15,7 +15,7 @@ Feature of Student Management System
 - Sending Result by SMS
 - Sending Notice By SMS
 - Institute Report (Payment,Expence,Income,Profit,Attendence)
-- All Activity are Auto Saved and Admin or User Can See Change Previous and Present Chnage
+- All Activity are Auto Saved and Admin or User Can See Change Previous and Present Change
 
 Language
 -----------------------
