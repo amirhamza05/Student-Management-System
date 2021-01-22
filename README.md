@@ -28,29 +28,26 @@ Language
 
 Screen Shot
 -----------------------
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/dashboard.PNG">
-<p align="center"><b>Dashboard</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/student_profile.PNG">
-<p align="center"><b>Student Profile</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/user_profile.PNG">
-<p align="center"><b>User Profile</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/id_card.PNG">
-<p align="center"><b>ID Card</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/print_id_card.PNG">
-<p align="center"><b>Print ID Card</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/monthly_attendence_report.PNG">
-<p align="center"><b>Student Attendence Report</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_dashboard.PNG">
-<p align="center"><b>Payment Dashboard</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_status_list.PNG">
-<p align="center"><b>Payment Status List</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_money_recept.PNG">
-<p align="center"><b>Payment Money Recept</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/sms_dashboard.PNG">
-<p align="center"><b>SMS Dashboard</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/compare_user_activity_data.PNG">
-<p align="center"><b>Compare User Activity</b></p>
-<img src="https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/theme_change.PNG">
-<p align="center"><b>Theme</b></p>
+![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/login_screen.PNG) Login Screen | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/dashboard.PNG) Dashboard |
+|-|-|
+
+![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/user_profile.PNG) User Profile | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/student_profile.PNG) Student Profile |
+|-|-|
+
+![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/id_card.PNG) ID Card | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/print_id_card.PNG) Print ID Card | 
+|-|-|
+
+![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/monthly_attendence_report.PNG) Student Attendence Report | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_dashboard.PNG) Payment Dashboard |
+|-|-|
+
+![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_status_list.PNG) Payment Status List | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/payment_money_recept.PNG) Payment Money Recept |
+|-|-|
+
+![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/sms_dashboard.PNG) SMS Dashboard | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/compare_user_activity_data.PNG) Compare User Activity |
+|-|-|
+
+![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/theme_change.PNG) Multiple Themes | ![screenshot](https://raw.githubusercontent.com/amirhamza05/Student-Management-System/master/screen_shot/update_setting.PNG) Update Institute Information |
+|-|-|
+
 
 
