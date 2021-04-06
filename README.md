@@ -15,8 +15,8 @@
 Demo
 -----------------------------
 - **URL** - http://ems.tserm.com
-- **Username** -  github-user
-- **Password** - github-user
+- **Username** -  github_user
+- **Password** - guser
 
 Feature of Student Management System
 -----------------------------
