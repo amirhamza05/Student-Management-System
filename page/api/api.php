@@ -14,7 +14,7 @@ include 'script/subject/subject.php';
 include 'script/sms/sms.php';
 
 
-$site_key="12345";
+$site_key=getenv("STUDENT_API_KEY");
 $data=array();
 $info=array();
 $data['error']=1;
@@ -22,7 +22,7 @@ $key=(isset($_GET['key']))?$_GET['key']:"";
 $type=(isset($_GET['type']))?$_GET['type']:"";
 
 
-if($key==$site_key){
+if($site_key!==false && $site_key!=="" && hash_equals($site_key,$key)){
 	if($type=="student_info"){
 		if(isset($_GET['student_id'])){
 			$student_ob=new student();
